@@ -44,13 +44,24 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
         <h1 class="mt-3 text-3xl font-black leading-tight md:text-5xl">{frontmatter.title}</h1>
         <p class="mt-4 max-w-2xl text-base leading-relaxed text-guide-ink-muted">{frontmatter.description}</p>
 
-        <div class="mt-5 flex flex-wrap gap-2">
-          <span class="gp-badge">最終更新 {frontmatter.lastUpdated}</span>
+        <div class="mt-5 flex flex-wrap items-center gap-2">
+          <span class="gp-badge">最終確認 {frontmatter.lastUpdated}</span>
           <span class="gp-badge">一次情報ベース・出典14件</span>
+          <span class="gp-badge">対象：個人情報を扱う全ての組織</span>
+          <button type="button" class="gp-print-button" onclick="window.print()">
+            🖨 印刷 / PDF保存
+          </button>
+        </div>
+
+        <div class="mt-6 gp-keypoints">
+          <p class="gp-keypoints-title">この資料でわかること</p>
+          <ul class="gp-keypoints-list">
+            {frontmatter.keyPoints.map((point: string) => <li>{point}</li>)}
+          </ul>
         </div>
 
         <p class="mt-5 max-w-2xl text-xs leading-relaxed text-guide-ink-muted">
-          対象読者：{frontmatter.audience}。特定のベンダーやサービスの宣伝を目的としたものではありません。
+          対象読者：{frontmatter.audience}。特定のベンダーやサービスの宣伝を目的としたものではありません。本文中の番号「[n]」は巻末「出典一覧」の番号に対応します。
         </p>
       </div>
     </header>

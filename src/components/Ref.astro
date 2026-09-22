@@ -1,0 +1,17 @@
+---
+interface Props {
+  n?: number;
+  dagger?: boolean;
+}
+
+const { n, dagger = false } = Astro.props;
+
+if (!dagger && n === undefined) {
+  throw new Error('Ref: either "n" or "dagger" must be provided');
+}
+
+const href = dagger ? '#ref-dagger' : `#ref-${n}`;
+const label = dagger ? '[†]' : `[${n}]`;
+---
+
+<a href={href} class="gp-ref">{label}</a>

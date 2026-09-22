@@ -1,0 +1,52 @@
+---
+interface RefItem {
+  n?: number;
+  dagger?: boolean;
+  text: string;
+  url?: string;
+}
+
+interface RefGroup {
+  category: string;
+  items: RefItem[];
+}
+
+interface Props {
+  groups: RefGroup[];
+}
+
+const { groups } = Astro.props;
+---
+
+<div class="gp-ref-list">
+  {
+    groups.map((group) => (
+      <section class="gp-ref-group">
+        <h3 class="gp-ref-category">{group.category}</h3>
+        <ol class="gp-ref-items">
+          {group.items.map((item) => {
+            const anchorId = item.dagger ? 'ref-dagger' : `ref-${item.n}`;
+            const label = item.dagger ? '†' : item.n;
+            return (
+              <li id={anchorId} class="gp-ref-item">
+                <span class="gp-ref-number">{label}</span>
+                <span class="gp-ref-body">
+                  {item.text}
+                  {item.url && (
+                    <>
+                      {' '}
+                      —{' '}
+                      <a href={item.url} target="_blank" rel="noopener noreferrer">
+                        {item.url.replace(/^https?:\/\//, '')}
+                      </a>
+                    </>
+                  )}
+                </span>
+              </li>
+            );
+          })}
+        </ol>
+      </section>
+    ))
+  }
+</div>

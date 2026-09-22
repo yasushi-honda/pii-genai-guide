@@ -3,42 +3,72 @@ title: "個人情報×生成AI 実務ガイド"
 description: "個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成。公式一次情報だけで組み立て直す実務資料。"
 audience: "個人情報・要配慮個人情報を扱いながら生成AIの活用を検討する、福祉施設・自治体・NPO・中小企業等の意思決定者および情報システム担当者"
 lastUpdated: "2026-09-22"
+keyPoints:
+  - "個人情報保護法が課す「2つの独立した義務」の違いと、それぞれの解決手段"
+  - "AIに入れてよい情報のレベルを、3つの質問だけで判定する方法"
+  - "「ISMAP登録済み」という言葉が実際に意味すること・意味しないこと"
+  - "越境移転規制（法28条）が生成AI利用に与える具体的な影響"
+  - "要配慮個人情報を実名で扱うための、現実的な技術構成とコストの根拠"
 ---
 
 import Caution from '../components/Caution.astro';
 import BeforeAfter from '../components/NgOk.astro';
 import DecisionFlow from '../components/DecisionFlow.astro';
 import ComparisonMatrix from '../components/TierMatrix.astro';
+import ChapterHeading from '../components/ChapterHeading.astro';
+import TableOfContents from '../components/TableOfContents.astro';
+import Ref from '../components/Ref.astro';
+import ReferenceList from '../components/ReferenceList.astro';
+import Figure from '../components/Figure.astro';
+import ConceptPair from '../components/ConceptPair.astro';
+import BranchDiagram from '../components/BranchDiagram.astro';
+import ArchDiagram from '../components/ArchDiagram.astro';
 
-## この資料でわかること
+<TableOfContents />
 
-- 個人情報保護法が課す「2つの独立した義務」の違いと、それぞれの解決手段
-- AI に入れてよい情報のレベルを、3つの質問だけで判定する方法
-- 「ISMAP登録済み」という言葉が実際に意味すること・意味しないこと
-- 越境移転規制（法28条）が生成AI利用に与える具体的な影響
-- 要配慮個人情報を実名で扱うための、現実的な技術構成とコストの根拠
-
-本文中の番号「[n]」は、末尾「出典一覧」の番号に対応します。専門的な法律用語には初出時に簡単な説明を添えています。なお本資料は、特定の福祉施設・自治体・団体名や個別の相談内容には触れていません。個人情報を扱いながら生成AIの活用を検討する組織全般に共通する論点として整理しています。
-
-## 00. はじめに：「ISMAPを満たしているから安全」——それ、半分しか合っていません
+<ChapterHeading id="ch00" />
 
 個人情報を扱う組織が生成AIの導入を検討する際、「ISMAPを満たしているので個人情報を安全に取り扱える」という説明に出会うことがあります。では実際には、どのレベルの情報まで入力してよいのでしょうか。
 
-この質問の背景には、よくある誤解があります。「ISMAP登録済み」「学習に使われない」といった言葉は、**安全に“守る”仕組み**があるかどうかの話でしかありません。そもそも**その情報を扱ってよいか**は、まったく別の判断軸です。
+<Caution title="よくある誤解" level="info">
+「ISMAP登録済み」「学習に使われない」といった言葉は、<strong>安全に"守る"仕組み</strong>があるかどうかの話でしかありません。そもそも<strong>その情報を扱ってよいか</strong>は、まったく別の判断軸です。
+</Caution>
 
-この資料は、次の2つを公式一次情報だけを根拠に整理し直したものです。
+### この資料の狙い
+
+この資料は、上記のような現場の疑問に対して、2026年9月時点で確認できる公式一次情報だけを根拠に、次の2つを整理し直したものです。
 
 1. **判定フロー** — 手元のデータをAIに入れてよいかを、3つの質問で判定する方法（→ 02章）
 2. **技術構成** — 要配慮個人情報を実名で扱わざるを得ない場合に、現実的に組める技術構成とその根拠（→ 07章）
 
-## 01. 大原則：「安全に守る」義務と「そもそも使ってよいか」の義務は、独立している
+### 読み方
+
+本文中の `[n]` は、巻末の<a href="#references">出典一覧</a>の番号に対応します。日本語OCRの精度比較のみ、社内の非公開実機検証に基づく知見のため、`[†]` で示し公開リンクなしと明記しています。専門的な法律用語には、初出時に簡単な説明を添えています。
+
+なお本資料は、特定の福祉施設・自治体・団体名や個別の相談内容には触れていません。個人情報を扱いながら生成AIの活用を検討する組織全般に共通する論点として整理しています。
+
+<ChapterHeading id="ch01" />
 
 個人情報保護法は、大きく分けて2つの義務を組織に課しています。この2つは監督する条文も、満たす手段もまったく別物であり、**片方を満たしても、もう片方の違反は消えません。**
 
-| 義務 | 根拠 | 内容 | 解決手段 |
-|---|---|---|---|
-| 安全管理措置 | 法23条 | データを守る仕組み（region指定・ISMAP登録済み基盤・APIキー不要の認証・監査ログ） | アーキテクチャ（技術）で解決できる |
-| 適法な取得・利用 | 法17・18・20条2項・21条 | そもそも扱ってよいか（利用目的の特定・通知・同意書・委託契約・責任分界） | 法務・組織対応でしか解決できない |
+<Figure num={1}>
+  <ConceptPair
+    left={{
+      title: '安全管理措置',
+      subtitle: '法23条',
+      lines: ['＝データを守る仕組み', 'region指定・ISMAP登録済み基盤', 'APIキー不要の認証・監査ログ'],
+      footer: '→ アーキテクチャで解決できる',
+    }}
+    right={{
+      title: '適法な取得・利用',
+      subtitle: '法17・18・20②・21条',
+      lines: ['＝そもそも扱ってよいか', '利用目的の特定・通知・同意書', '委託契約・責任分界'],
+      footer: '→ 法務・組織対応でしか解決できない',
+    }}
+    centerLabel="代替不可"
+  />
+  <Fragment slot="caption">個人情報保護法が課す2つの独立した義務。片方（技術）を満たしても他方（法務）の代わりにはならない。</Fragment>
+</Figure>
 
 「アーキテクチャを固めたから要配慮個人情報も安全」は成立しません。
 
@@ -55,33 +85,36 @@ import ComparisonMatrix from '../components/TierMatrix.astro';
 | 27条 | 第三者提供の制限（原則） | 法務 |
 | 28条 | 外国にある第三者への提供の制限（越境移転規制） | 技術＋法務 |
 
-条文番号は現行の個人情報保護法（令和2年改正後）に基づきます[3]。
+条文番号は現行の個人情報保護法（令和2年改正後）に基づきます<Ref n={3} />。
 
-## 02. 判定フロー：3つの質問で、入れていいレベルが決まる
+<ChapterHeading id="ch02" />
 
 「結局、どのレベルから個人情報を入れてよいのか」という疑問に、3段階の質問で答えます。「はい」を辿るほど要件は厳しくなり、要配慮個人情報は必ず最後の質問まで確認する必要があります。
 
-<DecisionFlow
-  branches={[
-    {
-      question: '個人を特定できる情報を含むか？',
-      yes: '次の質問へ（要配慮個人情報の有無を確認）',
-      no: '匿名化データ・統計情報。組み合わせでの再識別可否を要確認のうえ利用可',
-      continueIf: 'yes',
-    },
-    {
-      question: '要配慮個人情報（病歴・障害・犯罪歴等）を含むか？',
-      yes: '次の質問へ（処理体制の確認）',
-      no: '通常の個人情報。ISMAP登録済みクラウド＋DPA＋同意があれば利用可（越境移転規制に注意 → 03章）',
-      continueIf: 'yes',
-    },
-    {
-      question: '日本国内処理保証＋3省2ガイドライン対応済みのツールか？',
-      yes: '技術要件は満たす。ただし同意取得・DPA締結等の法務対応（08章）が別途必須（→ 07・08章）',
-      no: '利用不可',
-    },
-  ]}
-/>
+<Figure num={2}>
+  <DecisionFlow
+    branches={[
+      {
+        question: '個人を特定できる情報を含むか？',
+        yes: '次の質問へ（要配慮個人情報の有無を確認）',
+        no: '匿名化データ・統計情報。組み合わせでの再識別可否を要確認のうえ利用可',
+        continueIf: 'yes',
+      },
+      {
+        question: '要配慮個人情報（病歴・障害・犯罪歴等）を含むか？',
+        yes: '次の質問へ（処理体制の確認）',
+        no: '通常の個人情報。ISMAP登録済みクラウド＋DPA＋同意があれば利用可（越境移転規制に注意 → 03章）',
+        continueIf: 'yes',
+      },
+      {
+        question: '日本国内処理保証＋3省2ガイドライン対応済みのツールか？',
+        yes: '技術要件は満たす。ただし同意取得・DPA締結等の法務対応（08章）が別途必須（→ 07・08章）',
+        no: '利用不可',
+      },
+    ]}
+  />
+  <Fragment slot="caption">個人情報のレベル別判定フロー。DPA＝データ処理契約（第8章で詳述）。3省2ガイドライン＝厚生労働省・総務省・経済産業省が定める医療情報の安全管理ガイドライン群。</Fragment>
+</Figure>
 
 ### 具体例早見表
 
@@ -102,64 +135,76 @@ import ComparisonMatrix from '../components/TierMatrix.astro';
 </Caution>
 
 <Caution title="生活保護受給歴の扱いについての注記" level="info">
-「生活保護の受給歴」そのものは、個人情報保護法が列挙する要配慮個人情報の定義に直接該当するとは限りません[3]。しかし、ケース記録には病歴・障害等の要配慮個人情報が併記されることが多く、実務上は要配慮情報に準じた慎重な取り扱いが妥当です。個別の該当性判断は専門家にご確認ください。
+「生活保護の受給歴」そのものは、個人情報保護法が列挙する要配慮個人情報の定義に直接該当するとは限りません<Ref n={3} />。しかし、ケース記録には病歴・障害等の要配慮個人情報が併記されることが多く、実務上は要配慮情報に準じた慎重な取り扱いが妥当です。個別の該当性判断は専門家にご確認ください。
 </Caution>
 
-## 03. 見落とされがちな論点：「日本国内処理」が必要になる理由 — 個人情報保護法28条
+<ChapterHeading id="ch03" />
 
-ISMAP登録の有無（法23条）とは別に、もう一つ重要な論点があります。**外国にある第三者への提供の制限（法28条）**です。令和2年改正により、この規定は旧24条から現在の28条へ条番号が変更されています[3]。
+ISMAP登録の有無（法23条）とは別に、もう一つ重要な論点があります。<strong>外国にある第三者への提供の制限（法28条）</strong>です。令和2年改正により、この規定は旧24条から現在の28条へ条番号が変更されています<Ref n={3} />。
 
 多くの生成AIサービスは、データの処理地を「グローバル」「米国」「ヨーロッパ」といった広域リージョンからしか選べず、日本国内に固定できません。法28条は、次のいずれかに該当しない限り、あらかじめ本人の同意を得ることを求めています。
 
-1. 同等水準国（EU・英国）
-2. 基準適合体制を継続的に整備
-3. その他の例外事由
+<Figure num={3}>
+  <BranchDiagram
+    sourceLabel="海外で処理"
+    sourceDetail="（例：グローバル／米国）"
+    conditionTitle="いずれかに該当？"
+    conditions={['① 同等水準国（EU・英国）', '② 基準適合体制を継続的に整備', '③ その他の例外事由']}
+    conditionNote="1つでも該当すれば事前同意は不要"
+    outcomes={[
+      { label: '該当', result: '事前の本人同意なしで提供可', detail: '（安全管理措置等、他の要件は別途必要）', tone: 'ok' },
+      { label: '非該当', result: '越境移転への本人同意が必要', detail: '米国は①の同等水準国に該当しない', tone: 'ng' },
+    ]}
+  />
+  <Fragment slot="caption">個人情報保護法28条の判定構造<Ref n={1} />。ISMAP登録（法23条）はこの論点をクリアする根拠にはならない。</Fragment>
+</Figure>
 
-1つでも該当すれば事前の本人同意なしで提供可（安全管理措置等、他の要件は別途必要）。いずれにも該当しなければ、越境移転への本人同意が必要です。
-
-個人情報保護委員会は、EU（欧州連合）と英国を「個人の権利利益を保護する上で我が国と同等の水準にあると認められる国」として指定しています[1][2]。米国はこの指定対象に含まれないため、米国リージョンでの処理を伴うサービスでは、②の基準適合体制がない限り、越境移転への本人同意が実務上ほぼ必須になります。
+個人情報保護委員会は、EU（欧州連合）と英国を「個人の権利利益を保護する上で我が国と同等の水準にあると認められる国」として指定しています<Ref n={1} /><Ref n={2} />。米国はこの指定対象に含まれないため、米国リージョンでの処理を伴うサービスでは、②の基準適合体制がない限り、越境移転への本人同意が実務上ほぼ必須になります。
 
 <Caution title="「委託」に伴う提供は扱いが異なる場合がある" level="info">
 個人情報保護法上、利用目的の達成に必要な範囲内でクラウド事業者に個人データの取扱いを委託する場合、その提供先は「第三者」に該当しないものとされます（法27条5項1号）。この扱いが法28条（越境移転規制）にもそのまま及ぶかは、委託の範囲・契約内容（事業者が自社の目的でもデータを扱っていないか等）によって個別判断が必要です。「DPAを締結した委託先だから一律に同意不要」と断定せず、契約内容を踏まえて確認することを推奨します。
 </Caution>
 
-## 04. ISMAP登録の構造と落とし穴：「基盤の登録」は「上位サービス」に自動継承されない
+<ChapterHeading id="ch04" />
 
-ISMAP（政府情報システムのためのセキュリティ評価制度）は、国家サイバー統括室・デジタル庁・総務省・経済産業省が所管し、IPA（情報処理推進機構）が運用支援機関として実務を担う、令和2年6月開始の制度です。評価済みのクラウドサービスは、ISMAPクラウドサービスリストに登録番号とともに掲載されます[5]。
+ISMAP（政府情報システムのためのセキュリティ評価制度）は、国家サイバー統括室・デジタル庁・総務省・経済産業省が所管し、IPA（情報処理推進機構）が運用支援機関として実務を担う、令和2年6月開始の制度です。評価済みのクラウドサービスは、ISMAPクラウドサービスリストに登録番号とともに掲載されます<Ref n={5} />。
 
 ここで見落とされがちなのが、「登録済みの基盤の上に構築されたサービスが、自動的に同じ扱いになるとは限らない」という原則です。ISMAP公式FAQは次のように明記しています。
 
-> 「ISMAP登録済みのIaaS／PaaS上に構築したSaaSは、SaaS自体が別途登録しない限り同等とみなさない」[4]
+> 「ISMAP登録済みのIaaS／PaaS上に構築したSaaSは、SaaS自体が別途登録しない限り同等とみなさない」<Ref n={4} />
 
-<ComparisonMatrix
-  items={[
-    {
-      name: 'Google 関連（3層・別々の登録）',
-      attributes: [
-        { label: 'Google Cloud Platform', value: 'C21-0004-2' },
-        { label: 'Google Workspace', value: 'C21-0005-2' },
-        { label: 'Gemini Enterprise', value: 'C26-0114-2（別製品として個別登録）' },
-      ],
-    },
-    {
-      name: 'AWS（単一登録）',
-      highlight: true,
-      highlightLabel: '構造がシンプル',
-      attributes: [
-        { label: '登録番号', value: 'C21-0008-2' },
-        { label: '対象範囲', value: 'Bedrock・Transcribeを含む単一登録。除外はBedrock Marketplaceのみ' },
-      ],
-    },
-  ]}
-/>
+<Figure num={4}>
+  <ComparisonMatrix
+    items={[
+      {
+        name: 'Google 関連（3層・別々の登録）',
+        attributes: [
+          { label: 'Google Cloud Platform', value: 'C21-0004-2' },
+          { label: 'Google Workspace', value: 'C21-0005-2' },
+          { label: 'Gemini Enterprise', value: 'C26-0114-2（別製品として個別登録）' },
+        ],
+      },
+      {
+        name: 'AWS（単一登録）',
+        highlight: true,
+        highlightLabel: '構造がシンプル',
+        attributes: [
+          { label: '登録番号', value: 'C21-0008-2' },
+          { label: '対象範囲', value: 'Bedrock・Transcribeを含む単一登録。除外はBedrock Marketplaceのみ' },
+        ],
+      },
+    ]}
+  />
+  <Fragment slot="caption">Google関連は3つの独立した登録番号に分かれる一方、AWSはBedrockを含む単一登録<Ref n={5} /><Ref n={7} /><Ref n={8} />。個々のモデルは基盤の登録範囲内であれば別途登録不要という点はISMAP運営主体の公式見解<Ref n={6} />。</Fragment>
+</Figure>
 
-個々の生成AIモデル（Gemini・Nova等）自体は、基盤がISMAP登録範囲に含まれていれば別途登録不要というのが、ISMAP運営主体自身の公式見解です[6]。実際、Gemini Enterprise（C26-0114-2）はVertex AI Platform（C21-0004-2に含まれる）上に構築されているにもかかわらず、2026年4月28日に別途本登録が必要でした[7]。「基盤がISMAPだから上位のSaaS機能も自動的にISMAP」という推論は成立しません。
+個々の生成AIモデル（Gemini・Nova等）自体は、基盤がISMAP登録範囲に含まれていれば別途登録不要というのが、ISMAP運営主体自身の公式見解です<Ref n={6} />。実際、Gemini Enterprise（C26-0114-2）はVertex AI Platform（C21-0004-2に含まれる）上に構築されているにもかかわらず、2026年4月28日に別途本登録が必要でした<Ref n={7} />。「基盤がISMAPだから上位のSaaS機能も自動的にISMAP」という推論は成立しません。
 
 <Caution title="「ISMAP登録済み」は法23条そのものではない" level="warn">
-ISMAPが評価するのは**クラウドサービス（ベンダー）側**のセキュリティ対策です。個人情報保護法23条（安全管理措置）の義務を負うのは、あくまで**組織自身（個人情報取扱事業者）**であり、ISMAP登録済みサービスを選ぶことはその義務を果たすための重要な要素ですが、それだけで完結するわけではありません。組織自身のアクセス権限設計・端末管理・職員教育等の運用も、別途整える必要があります。本資料で「ISMAP登録（法23条）を満たす」のように表記している箇所も、この前提のうえでの略記です。
+ISMAPが評価するのは<strong>クラウドサービス（ベンダー）側</strong>のセキュリティ対策です。個人情報保護法23条（安全管理措置）の義務を負うのは、あくまで<strong>組織自身（個人情報取扱事業者）</strong>であり、ISMAP登録済みサービスを選ぶことはその義務を果たすための重要な要素ですが、それだけで完結するわけではありません。組織自身のアクセス権限設計・端末管理・職員教育等の運用も、別途整える必要があります。本資料で「ISMAP登録（法23条）を満たす」のように表記している箇所も、この前提のうえでの略記です。
 </Caution>
 
-## 05. 実名データの3段階：Tier A / B / C — 右に行くほど要件が跳ね上がる
+<ChapterHeading id="ch05" />
 
 実名データを扱う場合に必要な技術要件は、データの機微度によって3段階に分かれます。
 
@@ -193,19 +238,19 @@ ISMAPが評価するのは**クラウドサービス（ベンダー）側**の�
 
 ### Tier Bで利用可能な選択肢／避けるべき選択肢
 
-- **Gemini in Workspace / Google Workspace で利用するGemini** — Google Workspace自体がISMAP登録済みで、Geminiアプリ・Gemini in Workspaceは対象範囲に明記されています[5][14]。日本限定の選択肢はないが、Tier Bでは許容範囲
+- **Gemini in Workspace / Google Workspace で利用するGemini** — Google Workspace自体がISMAP登録済みで、Geminiアプリ・Gemini in Workspaceは対象範囲に明記されています<Ref n={5} /><Ref n={14} />。日本限定の選択肢はないが、Tier Bでは許容範囲
 - **Gemini Enterprise** — Workspaceとは別契約。日本ロケーション指定が可能で、より安全に倒せる選択肢
 - **Vertex AI（Gemini Enterprise Agent Platform）のAPI** — ISMAP登録済み。リージョン問わずTier Bなら利用可
 
 <Caution title="Google AI Studioの素のAPIキーはNG" level="warn">
-ISMAP対象外の別製品で、データが世界中どこでも保存されうる仕様です[13]。
+ISMAP対象外の別製品で、データが世界中どこでも保存されうる仕様です<Ref n={13} />。
 </Caution>
 
 <Caution title="補足：Gemini Enterpriseの無料トライアルに注意" level="info">
-Gemini EnterpriseはBusiness版であれば、IT部門のセットアップや営業への問い合わせなしで30日間の無料トライアルをセルフサーブで開始できます[12]。したがって「管理コンソールでトグルがオンになっている」＝「正式に契約済み」とは限らず、実際の契約状況は別途確認が必要です。
+Gemini EnterpriseはBusiness版であれば、IT部門のセットアップや営業への問い合わせなしで30日間の無料トライアルをセルフサーブで開始できます<Ref n={12} />。したがって「管理コンソールでトグルがオンになっている」＝「正式に契約済み」とは限らず、実際の契約状況は別途確認が必要です。
 </Caution>
 
-## 06. よくある間違いと正しい対応
+<ChapterHeading id="ch06" />
 
 ここまでの判定フローとTier分類を理解していても、現場では「良かれと思って」誤った使い方をしてしまうことがあります。
 
@@ -214,7 +259,7 @@ Gemini EnterpriseはBusiness版であれば、IT部門のセットアップや�
 <BeforeAfter beforeLabel="❌ NG例：相談記録をそのまま要約させている" afterLabel="✅ OK例：用途に応じて仕分けている">
   <div slot="before">
     職員が、利用者の氏名・病歴・生活状況を含む相談記録を、法人契約のGemini in Workspaceに貼り付けて「要約して」と依頼している。ISMAP登録済みだから安全だと考えている。<br /><br />
-    <strong>実態：</strong>これはTier CのデータをTier Bの環境で処理している状態。ISMAP登録済みのクラウドを使っていても、①処理地を日本国内に固定できない（法28条・越境移転）、②要配慮個人情報の取得同意が想定範囲を超えている可能性（法20条2項）という2つの問題が残ったままです。
+    <strong>実態：</strong>これは<code>Tier C</code>のデータを<code>Tier B</code>の環境で処理している状態。ISMAP登録済み（法23条）は満たしていても、①処理地を日本国内に固定できない（法28条・越境移転）、②要配慮個人情報の取得同意が想定範囲を超えている可能性（法20条2項）<Ref n={3} />という2つの問題が残ったままです。
   </div>
   <div slot="after">
     同じ相談記録でも、氏名・住所等の個人情報を含まず、病歴・生活歴等の要配慮個人情報も一切含まない案内文の下書き程度の用途に限り、Gemini in Workspaceで作成。相談記録の要約のように要配慮個人情報を伴う作業は、AIには一切入力せず、正式なTier C構成（→07章）が整うまで人手で行うと決めている。<br /><br />
@@ -238,7 +283,7 @@ Gemini EnterpriseはBusiness版であれば、IT部門のセットアップや�
 <BeforeAfter beforeLabel="❌ NG：Google AI StudioのAPIキーで自作した社内ツール" afterLabel="✅ OK：Vertex AI経由で作り直す">
   <div slot="before">
     情報システム担当者がGoogle AI Studioで発行した無料のAPIキーを使い、社内向けの文書要約ツールを自作。便利なので現場が要配慮個人情報を含む文書もどんどん投入している。<br /><br />
-    <strong>問題：</strong>このAPIキーはISMAP対象外の別製品で、データが世界中どこでも保存されうる仕様です[13]。「自分たちで作ったから安心」という思い込みが、実は最も無防備な経路になっている典型例です。
+    <strong>問題：</strong>このAPIキーはISMAP対象外の別製品で、データが世界中どこでも保存されうる仕様です<Ref n={13} />。「自分たちで作ったから安心」という思い込みが、実は最も無防備な経路になっている典型例です。
   </div>
   <div slot="after">
     同じ機能をVertex AI（Gemini Enterprise Agent Platform）のAPI経由で作り直す。ISMAP登録済みの環境の範囲内に収まります。<br /><br />
@@ -246,9 +291,17 @@ Gemini EnterpriseはBusiness版であれば、IT部門のセットアップや�
   </div>
 </BeforeAfter>
 
+### なぜ組織は気づきにくいのか
+
+「ISMAP登録済み」「大手ベンダーの法人契約」という言葉が、安心感を生みやすいためです。しかし<a href="#ch01">第1章</a>・<a href="#ch04">第4章</a>で見たとおり、ISMAP登録（安全管理措置）と、越境移転規制・同意取得（適法な取得・利用）は**独立した別の壁**です。片方が万全でも、もう片方はクリアできていない、という状態が最も見落とされやすいパターンです。
+
+<Caution title="見分け方：3秒でできるセルフチェック" level="info">
+入力しようとしている文章に、①氏名・住所等の直接的な識別子、②病歴・障害・犯罪歴等の要配慮情報、③年代＋地域＋利用施設のような組み合わせ、のいずれかが残っていないか。1つでも該当するなら、それは<code>Tier C</code>相当の可能性が高く、通常のGemini in Workspaceでの処理は避けるべきタイミングです（判定フローは<a href="#ch02">第2章</a>）。
+</Caution>
+
 この3つのケースはいずれも、①扱っているデータの機微度と、②実際に使っているツールの体制がずれていることが原因です。ずれに気づいたら、次章（Tier Cの技術構成）で扱う正式な移行を検討してください。
 
-## 07. Tier Cの技術構成とその根拠：要配慮個人情報を実名で扱う場合の、現実的な最適構成
+<ChapterHeading id="ch07" />
 
 2026年9月時点で最も現実的なのは、既存のGoogle Cloudインフラは維持しつつ、テキスト生成・要約・音声文字起こしはAWS Bedrockに任せるハイブリッド構成です。ただしAI OCRだけは例外で、自前ホスティングへ切り出します（理由は後述）。
 
@@ -258,30 +311,59 @@ Gemini EnterpriseはBusiness版であれば、IT部門のセットアップや�
 - テキスト生成・要約・音声は **AWS Bedrock / Transcribe**
 - クラウド間の認証はAPIキー不要の**キーレス方式**
 
+<Figure num={5}>
+  <ArchDiagram
+    entryLabel="利用者"
+    hubTitle="Cloud Run"
+    hubSubtitle="GCP・日本リージョン"
+    branches={[
+      { edgeLabel: '保存', title: 'Firestore', subtitle: 'GCP・データ保存' },
+      { edgeLabel: 'AI OCR', title: 'PaddleOCR（自前）', subtitle: 'Cloud Run CPU・東京', highlight: true },
+      { edgeLabel: '生成・要約・音声', title: 'AWS Bedrock', subtitle: 'Transcribe（音声）・東京リージョン' },
+    ]}
+  />
+  <Fragment slot="caption">データの保存・AI処理は常に日本国内に閉じる。AI OCRだけを自前ホスティングへ、それ以外の生成AI処理はAWS Bedrockへ。クラウド間はキーレス認証。</Fragment>
+</Figure>
+
 データの保存・AI処理は常に日本国内に閉じます。AI OCRだけを自前ホスティングへ、それ以外の生成AI処理はAWS Bedrockへ、という役割分担です。
 
-### この構成が変わりうる条件
-
-各社の料金・対応リージョンは半年単位で変わります。契約更新のタイミングで、出典一覧のリンクから再確認することを推奨します。
-
-### 技術を固めても残る法務対応
-
-- 利用者への同意取得・プライバシーポリシー改定
-- クラウド事業者とのDPA（データ処理契約）締結
-- 委託先とのNDA（秘密保持契約）・業務委託契約
-- 3省2ガイドライン相当の組織的措置
+<div class="gp-2col my-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+  <div class="gp-card">
+    <p class="m-0 mb-2 text-sm font-bold text-guide-ink">技術を固めても残る法務対応</p>
+    <ul class="m-0 space-y-1 pl-4 text-sm text-guide-ink">
+      <li>利用者への同意取得・プライバシーポリシー改定</li>
+      <li>クラウド事業者とのDPA（データ処理契約）締結</li>
+      <li>委託先とのNDA（秘密保持契約）・業務委託契約</li>
+      <li>3省2ガイドライン相当の組織的措置</li>
+    </ul>
+  </div>
+  <div class="gp-card">
+    <p class="m-0 mb-2 text-sm font-bold text-guide-ink">この構成が変わりうる条件</p>
+    <p class="m-0 text-sm text-guide-ink">各社の料金・対応リージョンは半年単位で変わります。契約更新のタイミングで、<a href="#references">出典一覧</a>のリンクから再確認することを推奨します。</p>
+  </div>
+</div>
 
 ### なぜこの構成が現実的か：コストと精度、両方の一次情報が同じ結論を指す
 
-**コスト構造**：Gemini 3.5 Flashを日本リージョン（asia-northeast1）で使う場合、標準従量課金（Standard PayGo）は非対応です[9]。利用できるのは単一ゾーンのProvisioned Throughputのみで、購入には「Google Cloudアカウント担当者への問い合わせ」が必須の個別契約になります[10]。公式料金ページの試算例では、月額 $2,700 × GSU数 という水準が示されています[11]。小規模な組織には現実的ではありません。対して、AWS Bedrock（Nova系・Claude系）は固定費なしの従量課金のまま、東京リージョン内で完結します[8]。
+**コスト構造**：Gemini 3.5 Flashを日本リージョン（asia-northeast1）で使う場合、標準従量課金（Standard PayGo）は非対応です<Ref n={9} />。利用できるのは単一ゾーンのProvisioned Throughputのみで、購入には「Google Cloudアカウント担当者への問い合わせ」が必須の個別契約になります<Ref n={10} />。公式料金ページの試算例では、月額 $2,700 × GSU数 という水準が示されています<Ref n={11} />。小規模な組織には現実的ではありません。対して、AWS Bedrock（Nova系・Claude系）は固定費なしの従量課金のまま、東京リージョン内で完結します<Ref n={8} />。
 
-**日本語OCR精度の実機比較**：実際の日本語書類（旧字体異体字・類似漢字・事業所名の紛らわしいペア等）を使った実機検証では、AWS Bedrock（Claude／Nova系）は特定の漢字を再現性ある形で誤読することが確認されました。自前ホスティングのPaddleOCRは、Gemini系とほぼ同水準の精度を達成しています（実際の業務文書を用いた社内実機検証に基づく知見です。公開されている一次情報へのリンクはありません。数値の再現性は検証環境に依存します）。
+**日本語OCR精度の実機比較**：実際の日本語書類（旧字体異体字・類似漢字・事業所名の紛らわしいペア等）を使った実機検証では、AWS Bedrock（Claude／Nova系）は特定の漢字を再現性ある形で誤読することが確認されました。自前ホスティングのPaddleOCRは、Gemini系とほぼ同水準の精度を達成しています<Ref dagger />。
+
+| モデル | 正解率（96判定中） | 備考 |
+|---|---|---|
+| Gemini 2.5 Flash | 100% | 2026年10月20日一般提供終了・2027年3月31日完全廃止のため除外 |
+| Gemini 3.5 Flash | 99%（95/96） | |
+| PaddleOCR（自前ホスティング） | 98%（94/96） | Apache 2.0、東京リージョンCloud Run運用可 |
+| AWS Bedrock Claude Sonnet 4.5 | 約87.5% | |
+| AWS Bedrock Claude Haiku 4.5 | 62.5〜75% | enum制約等の改善後の数値 |
+
+評価軸：OCRテキストを既知のマスターリストにfuzzy matchで解決できるかという、実運用に即した基準<Ref dagger />。いずれのモデルも「誤って別の実在レコードに確定する」危険な誤りは検証全体を通じて0件でした。
 
 <Caution title="モデル世代の入れ替わりに注意" level="warn">
 Gemini 2.5 Flash / Pro 系は、Gemini Enterprise Agent Platform上で2026年10月20日に一般提供終了、2027年3月31日（多くのリージョン）に完全廃止が予定されています。長期の技術選定では、Gemini 3.5系以降を前提に検討してください。
 </Caution>
 
-## 08. 技術を固めても残るもの：4つの軸——積み上げれば完了するもの、しないもの
+<ChapterHeading id="ch08" />
 
 アーキテクチャ・NDA/DPA・同意書・ログ整備を積み上げれば自動的に「合格」になる、というチェックリストではありません。要配慮個人情報を扱う体制は、性質の異なる次の4つの軸に分けて確認する必要があります。
 
@@ -298,15 +380,18 @@ Gemini 2.5 Flash / Pro 系は、Gemini Enterprise Agent Platform上で2026年10�
 
 **マルチベンダー構成はコンプライアンス上むしろ改善しうる**：「単一の生成AIベンダーに全タスクを寄せる」構成から、「最も機微データ密度が高い処理（例：生文書画像のOCR）だけを自前ホスティングに切り出し、それ以外を用途別に別ベンダーへ振り分ける」構成に変えると、生の機微データに触れる第三者事業者の数はむしろ減る方向に働きます。ベンダーを増やす＝リスク増、という直感は必ずしも正しくありません。ただし、既存の同意書・プライバシーポリシーが新しい委託先を含む処理を許容する記載になっているかは、都度レビューが必要です。
 
-## 09. まとめ：今日からできること、正直まだできないこと
+<ChapterHeading id="ch09" />
 
-### ✅ 今日からできる
-
-個人が特定されない一般的な文章生成・要約・案内文は、今使っているツールのままで問題ありません。氏名・住所・生年月日等を仮名（A様、B様等）に置き換えれば、活用の幅はかなり広がります。ただし氏名等を仮名化しただけでは不十分な場合があります（年代＋地域＋利用施設等の組み合わせで本人が特定できてしまう場合や、病歴・生活歴等の要配慮個人情報が残っている場合は対象外、→ 02章・06章）。「困ったら、まず匿名化してから」を職場のルールにするだけで効果がありますが、仮名化後も再識別できないかの確認は省略しないでください。
-
-### ❌ 正直、まだできない
-
-利用者の実名と病歴・生活歴等をそのまま一般的なAIツールに入力すること。「今の契約・今のツールのまま」でこれを安全にクリアする方法は、2026年9月時点では存在しません。期待を持たせすぎないよう、はっきりお伝えします。
+<div class="gp-2col my-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+  <div class="gp-ok">
+    <p class="m-0 mb-2 text-sm font-bold text-guide-ok-border">✅ 今日からできる</p>
+    <p class="m-0 text-sm leading-relaxed text-guide-ink">個人が特定されない一般的な文章生成・要約・案内文は、今使っているツールのままで問題ありません。氏名・住所・生年月日等を仮名（A様、B様等）に置き換えれば、活用の幅はかなり広がります。ただし氏名等を仮名化しただけでは不十分な場合があります（年代＋地域＋利用施設等の組み合わせで本人が特定できてしまう場合や、病歴・生活歴等の要配慮個人情報が残っている場合は対象外、→ <a href="#ch02">02章</a>・<a href="#ch06">06章</a>）。「困ったら、まず匿名化してから」を職場のルールにするだけで効果がありますが、仮名化後も再識別できないかの確認は省略しないでください。</p>
+  </div>
+  <div class="gp-ng">
+    <p class="m-0 mb-2 text-sm font-bold text-guide-ng-border">❌ 正直、まだできない</p>
+    <p class="m-0 text-sm leading-relaxed text-guide-ink">利用者の実名と病歴・生活歴等をそのまま一般的なAIツールに入力すること。「今の契約・今のツールのまま」でこれを安全にクリアする方法は、2026年9月時点では存在しません。期待を持たせすぎないよう、はっきりお伝えします。</p>
+  </div>
+</div>
 
 ### 組織として計画的に準備すべきこと
 
@@ -320,31 +405,46 @@ Gemini 2.5 Flash / Pro 系は、Gemini Enterprise Agent Platform上で2026年10�
 
 これらは技術・法務の両面にまたがる専門的な整理が必要で、片手間で進めるのは現実的ではありません。まずは「誰が意思決定者で、いつまでにどの範囲を実現したいか」を組織内で確認するところから始めることをおすすめします。
 
-## 出典一覧
+<ChapterHeading id="references" />
 
-本文中の番号 [n] に対応します。いずれも2026年9月時点で内容を直接確認しています。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。
+本文中の番号 `[n]` に対応します。いずれも2026年9月時点で内容を直接確認しています。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。
 
-**法令・個人情報保護**
+<ReferenceList groups={[
+  {
+    category: '法令・個人情報保護',
+    items: [
+      { n: 1, text: '個人情報保護法ガイドライン（外国にある第三者への提供編）｜個人情報保護委員会', url: 'https://www.ppc.go.jp/personalinfo/legal/guidelines_offshore/' },
+      { n: 2, text: '個人情報の保護に関する法律第28条に基づくEU及び英国の指定の見直しに関する報告書｜個人情報保護委員会事務局', url: 'https://www.ppc.go.jp/files/pdf/20230322_review_report.pdf' },
+      { n: 3, text: '個人情報保護法ガイドライン（通則編）｜個人情報保護委員会', url: 'https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/' },
+    ],
+  },
+  {
+    category: 'ISMAP',
+    items: [
+      { n: 4, text: 'ISMAPポータル公式KB0010826（IaaS/PaaS上のSaaSは別途登録が必要という原則）', url: 'https://www.ismap.go.jp/csm?id=kb_article_view&sysparm_article=KB0010826' },
+      { n: 5, text: 'ISMAPクラウドサービスリスト｜ISMAPポータル公式', url: 'https://www.ismap.go.jp/csm?id=cloud_service_list' },
+      { n: 6, text: 'ISMAPポータル公式KB0011070（生成AIサービスに関する留意点について）', url: 'https://www.ismap.go.jp/csm?id=kb_article_view&sysparm_article=KB0011070' },
+      { n: 7, text: 'Gemini Enterprise・NotebookLM EnterpriseのISMAP登録を完了｜Google Cloud公式ブログ', url: 'https://cloud.google.com/blog/ja/products/gcp/completed-ismap-registration-for-gemini-enterprise-and-notebooklm-enterprise' },
+    ],
+  },
+  {
+    category: 'クラウド料金・データ所在地',
+    items: [
+      { n: 8, text: 'Amazon BedrockはISMAPの言明対象であることについての考え方｜AWS公式ブログ', url: 'https://aws.amazon.com/jp/blogs/news/amazon-bedrock-ismap/' },
+      { n: 9, text: 'Gemini 3.5 Flash モデルページ｜Google Cloud公式', url: 'https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-flash' },
+      { n: 10, text: 'プロビジョンド スループットを購入する｜Google Cloud公式', url: 'https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/purchase-provisioned-throughput' },
+      { n: 11, text: 'Agent Platform の料金｜Google Cloud公式', url: 'https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing' },
+      { n: 12, text: 'Gemini Enterprise app FAQ（30日間無料トライアル）｜Google Cloud公式', url: 'https://cloud.google.com/gemini-enterprise/faq' },
+      { n: 13, text: 'Gemini API 利用規約｜Google AI for Developers公式', url: 'https://ai.google.dev/gemini-api/terms' },
+      { n: 14, text: 'Google Workspace「生成AIに関する情報」開示書（Google LLC提出、ISMAPポータル）', url: 'https://www.ismap.go.jp/sys_attachment.do?sys_id=4fe2e2e52b2107d0f0bbfd69fe91bf04' },
+    ],
+  },
+  {
+    category: '非公開の社内検証',
+    items: [
+      { dagger: true, text: '日本語OCR精度の比較（07章）は、実際の業務文書を用いた社内実機検証に基づく知見です。公開されている一次情報へのリンクはありません。数値の再現性は検証環境に依存します。' },
+    ],
+  },
+]} />
 
-1. [個人情報保護法ガイドライン（外国にある第三者への提供編）｜個人情報保護委員会](https://www.ppc.go.jp/personalinfo/legal/guidelines_offshore/)
-2. [個人情報の保護に関する法律第28条に基づくEU及び英国の指定の見直しに関する報告書｜個人情報保護委員会事務局](https://www.ppc.go.jp/files/pdf/20230322_review_report.pdf)
-3. [個人情報保護法ガイドライン（通則編）｜個人情報保護委員会](https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/)
-
-**ISMAP**
-
-4. [ISMAPポータル公式KB0010826（IaaS/PaaS上のSaaSは別途登録が必要という原則）](https://www.ismap.go.jp/csm?id=kb_article_view&sysparm_article=KB0010826)
-5. [ISMAPクラウドサービスリスト｜ISMAPポータル公式](https://www.ismap.go.jp/csm?id=cloud_service_list)
-6. [ISMAPポータル公式KB0011070（生成AIサービスに関する留意点について）](https://www.ismap.go.jp/csm?id=kb_article_view&sysparm_article=KB0011070)
-7. [Gemini Enterprise・NotebookLM EnterpriseのISMAP登録を完了｜Google Cloud公式ブログ](https://cloud.google.com/blog/ja/products/gcp/completed-ismap-registration-for-gemini-enterprise-and-notebooklm-enterprise)
-
-**クラウド料金・データ所在地**
-
-8. [Amazon BedrockはISMAPの言明対象であることについての考え方｜AWS公式ブログ](https://aws.amazon.com/jp/blogs/news/amazon-bedrock-ismap/)
-9. [Gemini 3.5 Flash モデルページ｜Google Cloud公式](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-flash)
-10. [プロビジョンド スループットを購入する｜Google Cloud公式](https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/purchase-provisioned-throughput)
-11. [Agent Platform の料金｜Google Cloud公式](https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing)
-12. [Gemini Enterprise app FAQ（30日間無料トライアル）｜Google Cloud公式](https://cloud.google.com/gemini-enterprise/faq)
-13. [Gemini API 利用規約｜Google AI for Developers公式](https://ai.google.dev/gemini-api/terms)
-14. [Google Workspace「生成AIに関する情報」開示書（Google LLC提出、ISMAPポータル）](https://www.ismap.go.jp/sys_attachment.do?sys_id=4fe2e2e52b2107d0f0bbfd69fe91bf04)
-
-> ※ 上記はいずれも一次情報（ベンダー公式ドキュメント・政府機関公式ページ）です。第三者の集計サイトやまとめ記事は根拠として使用していません。日本語OCRの精度比較は社内の実機検証に基づくもので、公開されている一次情報へのリンクはありません。
+> ※ 上記はいずれも一次情報（ベンダー公式ドキュメント・政府機関公式ページ）です。第三者の集計サイトやまとめ記事は根拠として使用していません。

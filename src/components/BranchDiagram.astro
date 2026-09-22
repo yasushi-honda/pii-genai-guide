@@ -1,0 +1,50 @@
+---
+interface Outcome {
+  label: string;
+  result: string;
+  detail: string;
+  tone: 'ok' | 'ng';
+}
+
+interface Props {
+  sourceLabel: string;
+  sourceDetail: string;
+  conditionTitle: string;
+  conditions: string[];
+  conditionNote: string;
+  outcomes: Outcome[];
+}
+
+const { sourceLabel, sourceDetail, conditionTitle, conditions, conditionNote, outcomes } = Astro.props;
+---
+
+<div class="gp-branch-diagram">
+  <div class="gp-branch-source gp-card">
+    <p class="m-0 text-sm font-bold text-guide-ink">{sourceLabel}</p>
+    <p class="m-0 mt-1 text-xs text-guide-ink-muted">{sourceDetail}</p>
+  </div>
+
+  <span class="gp-branch-arrow" aria-hidden="true">→</span>
+
+  <div class="gp-branch-condition gp-card">
+    <p class="m-0 mb-2 text-sm font-bold text-guide-ink">{conditionTitle}</p>
+    <ol class="m-0 space-y-1 pl-4 text-xs text-guide-ink">
+      {conditions.map((c) => <li>{c}</li>)}
+    </ol>
+    <p class="m-0 mt-2 text-[11px] text-guide-ink-muted">{conditionNote}</p>
+  </div>
+
+  <div class="gp-branch-outcomes">
+    {
+      outcomes.map((o) => (
+        <div class={`gp-branch-outcome ${o.tone === 'ok' ? 'gp-ok' : 'gp-ng'}`}>
+          <p class={`m-0 text-xs font-bold ${o.tone === 'ok' ? 'text-guide-ok-border' : 'text-guide-ng-border'}`}>
+            {o.label}
+          </p>
+          <p class="m-0 mt-1 text-sm font-bold text-guide-ink">{o.result}</p>
+          <p class="m-0 mt-1 text-xs text-guide-ink-muted">{o.detail}</p>
+        </div>
+      ))
+    }
+  </div>
+</div>

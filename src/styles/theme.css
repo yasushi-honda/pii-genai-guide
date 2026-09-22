@@ -119,9 +119,17 @@
     color: var(--color-guide-ink);
     border-bottom: 1px solid var(--color-guide-divider);
     padding-bottom: 0.5rem;
-    margin-top: 3rem;
+    margin-top: 0;
     margin-bottom: 1rem;
     font-size: 1.375rem;
+  }
+
+  .gp-chapter-heading {
+    margin-top: 3.5rem;
+  }
+
+  .gp-chapter-kicker {
+    margin-bottom: 0.5rem;
   }
 
   .gp-article h3 {
@@ -189,5 +197,450 @@
     padding: 0.5rem 0.75rem;
     border: 1px solid var(--color-guide-divider);
     vertical-align: top;
+  }
+
+  /* ===== 目次 (TableOfContents) ===== */
+  .gp-toc {
+    margin: 2rem 0 3rem;
+  }
+
+  .gp-toc-title {
+    font-family: var(--font-guide-display);
+    font-weight: 900;
+    font-size: 1.75rem;
+    color: var(--color-guide-ink);
+    margin: 0.375rem 0 1.25rem;
+  }
+
+  .gp-article ol.gp-toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gp-toc-item {
+    border-top: 1px solid var(--color-guide-divider);
+  }
+
+  .gp-toc-item:last-child {
+    border-bottom: 1px solid var(--color-guide-divider);
+  }
+
+  .gp-toc-link {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.75rem 0.25rem;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .gp-toc-link:hover .gp-toc-chapter-title {
+    text-decoration: underline;
+  }
+
+  .gp-toc-num {
+    font-family: var(--font-guide-mono);
+    font-weight: 700;
+    font-size: 0.8125rem;
+    color: var(--color-guide-accent);
+    flex: none;
+    width: 1.75rem;
+  }
+
+  .gp-toc-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.125rem;
+  }
+
+  .gp-toc-chapter-title {
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--color-guide-ink);
+  }
+
+  .gp-toc-subtitle {
+    font-size: 0.8125rem;
+    color: var(--color-guide-ink-muted);
+  }
+
+  /* ===== 脚注リンク (Ref) ===== */
+  .gp-ref {
+    font-family: var(--font-guide-mono);
+    font-weight: 700;
+    font-size: 0.8em;
+    color: var(--color-guide-accent);
+    text-decoration: none;
+    vertical-align: super;
+    line-height: 1;
+  }
+
+  .gp-ref:hover {
+    text-decoration: underline;
+  }
+
+  /* ===== 出典一覧 (ReferenceList) ===== */
+  .gp-ref-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0 2.5rem;
+    margin-top: 1rem;
+  }
+
+  @media (min-width: 768px) {
+    .gp-ref-list {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .gp-ref-group {
+    margin-bottom: 1.5rem;
+  }
+
+  .gp-ref-category {
+    font-family: var(--font-guide-mono);
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.04em;
+    color: var(--color-guide-ink);
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.375rem;
+    border-bottom: 1px solid var(--color-guide-divider);
+  }
+
+  .gp-article ol.gp-ref-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .gp-ref-item {
+    display: flex;
+    gap: 0.625rem;
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    margin-bottom: 0.875rem;
+    scroll-margin-top: 1.5rem;
+  }
+
+  .gp-ref-item:target {
+    background: var(--color-guide-accent-soft);
+    border-radius: 0.375rem;
+    margin: 0 -0.5rem 0.875rem;
+    padding: 0.25rem 0.5rem;
+  }
+
+  .gp-ref-number {
+    font-family: var(--font-guide-mono);
+    font-weight: 700;
+    color: var(--color-guide-accent);
+    flex: none;
+  }
+
+  .gp-ref-body a {
+    color: var(--color-guide-accent);
+    word-break: break-all;
+  }
+
+  /* ===== 図キャプション (Figure) ===== */
+  .gp-figure {
+    margin: 1.5rem 0;
+  }
+
+  .gp-figure-caption {
+    margin-top: 0.625rem;
+    font-size: 0.75rem;
+    color: var(--color-guide-ink-muted);
+    line-height: 1.6;
+  }
+
+  /* ===== 概念対比図 (ConceptPair / 図1) ===== */
+  .gp-concept-pair {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+    align-items: stretch;
+  }
+
+  @media (min-width: 640px) {
+    .gp-concept-pair {
+      grid-template-columns: 1fr auto 1fr;
+    }
+  }
+
+  .gp-concept-box {
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-guide-divider);
+    background: var(--color-guide-bg);
+    padding: 1.25rem;
+  }
+
+  .gp-concept-box-title {
+    margin: 0;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--color-guide-ink);
+    text-align: center;
+  }
+
+  .gp-concept-box-subtitle {
+    margin: 0.25rem 0 0.75rem;
+    font-family: var(--font-guide-mono);
+    font-size: 0.75rem;
+    color: var(--color-guide-ink-muted);
+    text-align: center;
+  }
+
+  .gp-article ul.gp-concept-box-lines {
+    margin: 0 0 0.75rem;
+    padding: 0;
+    list-style: none;
+    font-size: 0.8125rem;
+    color: var(--color-guide-ink);
+    text-align: center;
+    line-height: 1.6;
+  }
+
+  .gp-concept-box-footer {
+    margin: 0;
+    text-align: center;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    color: var(--color-guide-accent);
+  }
+
+  .gp-concept-center {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .gp-concept-center {
+      flex-direction: column;
+    }
+  }
+
+  .gp-concept-arrow {
+    font-size: 1.5rem;
+    color: var(--color-guide-ink-muted);
+  }
+
+  .gp-concept-center-label {
+    font-family: var(--font-guide-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-guide-ink-muted);
+    white-space: nowrap;
+  }
+
+  /* ===== 分岐図 (BranchDiagram / 図3) ===== */
+  .gp-branch-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .gp-branch-diagram {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  .gp-branch-source,
+  .gp-branch-condition {
+    flex: 1;
+  }
+
+  .gp-branch-arrow {
+    align-self: center;
+    font-size: 1.25rem;
+    color: var(--color-guide-ink-muted);
+    transform: rotate(90deg);
+  }
+
+  @media (min-width: 768px) {
+    .gp-branch-arrow {
+      transform: none;
+    }
+  }
+
+  .gp-branch-outcomes {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    flex: 1;
+  }
+
+  .gp-branch-outcome {
+    padding: 0.75rem 1rem;
+  }
+
+  /* ===== アーキテクチャ図 (ArchDiagram / 図5) ===== */
+  .gp-arch-diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .gp-arch-entry,
+  .gp-arch-hub {
+    width: 100%;
+    max-width: 20rem;
+    text-align: center;
+  }
+
+  .gp-arch-arrow {
+    font-size: 1.25rem;
+    color: var(--color-guide-ink-muted);
+  }
+
+  .gp-arch-branches {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  @media (min-width: 768px) {
+    .gp-arch-branches {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  .gp-arch-branch {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .gp-arch-edge-label {
+    font-family: var(--font-guide-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--color-guide-ink-muted);
+  }
+
+  .gp-arch-branch-box {
+    width: 100%;
+    text-align: center;
+  }
+
+  .gp-arch-branch-highlight {
+    border-color: var(--color-guide-ok-border);
+    background: var(--color-guide-ok-bg);
+  }
+
+  /* ===== カバーの「わかること」カード ===== */
+  .gp-keypoints {
+    border-radius: 0.75rem;
+    background: var(--color-guide-accent-soft);
+    border: 1px solid var(--color-guide-divider);
+    padding: 1.25rem 1.5rem;
+  }
+
+  .gp-keypoints-title {
+    margin: 0 0 0.75rem;
+    font-weight: 700;
+    font-size: 0.9375rem;
+    color: var(--color-guide-ink);
+  }
+
+  .gp-keypoints-list {
+    list-style: disc;
+    margin: 0;
+    padding-left: 1.25rem;
+    font-size: 0.875rem;
+    line-height: 1.8;
+    color: var(--color-guide-ink);
+  }
+
+  /* ===== 印刷ボタン ===== */
+  .gp-print-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: 9999px;
+    border: 1px solid var(--color-guide-accent);
+    background: var(--color-guide-bg);
+    color: var(--color-guide-accent);
+    font-family: var(--font-guide-mono);
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.375rem 0.875rem;
+    cursor: pointer;
+  }
+
+  .gp-print-button:hover {
+    background: var(--color-guide-accent-soft);
+  }
+}
+
+/* =============================================================
+   印刷スタイル（@layer の外：詳細度の解決順で意図せず負けないため）
+   ============================================================= */
+@media print {
+  .gp-print-button {
+    display: none !important;
+  }
+
+  .guide-pdf-page {
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+
+  .gp-chapter-heading {
+    break-before: page;
+    margin-top: 0;
+  }
+
+  .gp-chapter-heading:first-of-type,
+  #ch00.gp-chapter-heading {
+    break-before: avoid;
+  }
+
+  .gp-toc {
+    break-before: page;
+    break-after: page;
+  }
+
+  .gp-table,
+  .gp-article table,
+  .gp-card,
+  .gp-panel,
+  .gp-panel-warn,
+  .gp-ok,
+  .gp-ng,
+  .gp-figure,
+  .gp-concept-pair,
+  .gp-branch-diagram,
+  .gp-arch-diagram,
+  .gp-ref-group {
+    break-inside: avoid;
+  }
+
+  /* sm:/lg: のビューポート判定に印刷時のページ幅が満たない場合でも
+     PDF同様の2カラム対比を保つ（用紙サイズ・余白設定に依存しないため）*/
+  .gp-2col {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+  }
+
+  .gp-article a {
+    color: var(--color-guide-accent) !important;
+  }
+
+  @page {
+    size: A4;
+    margin: 16mm 14mm;
   }
 }

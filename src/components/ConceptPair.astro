@@ -1,0 +1,41 @@
+---
+interface Box {
+  title: string;
+  subtitle: string;
+  lines: string[];
+  footer: string;
+}
+
+interface Props {
+  left: Box;
+  right: Box;
+  centerLabel?: string;
+}
+
+const { left, right, centerLabel = '代替不可' } = Astro.props;
+---
+
+<div class="gp-concept-pair">
+  <div class="gp-concept-box">
+    <p class="gp-concept-box-title">{left.title}</p>
+    <p class="gp-concept-box-subtitle">{left.subtitle}</p>
+    <ul class="gp-concept-box-lines">
+      {left.lines.map((line) => <li>{line}</li>)}
+    </ul>
+    <p class="gp-concept-box-footer">{left.footer}</p>
+  </div>
+
+  <div class="gp-concept-center" aria-hidden="true">
+    <span class="gp-concept-arrow">⇎</span>
+    <span class="gp-concept-center-label">{centerLabel}</span>
+  </div>
+
+  <div class="gp-concept-box">
+    <p class="gp-concept-box-title">{right.title}</p>
+    <p class="gp-concept-box-subtitle">{right.subtitle}</p>
+    <ul class="gp-concept-box-lines">
+      {right.lines.map((line) => <li>{line}</li>)}
+    </ul>
+    <p class="gp-concept-box-footer">{right.footer}</p>
+  </div>
+</div>
