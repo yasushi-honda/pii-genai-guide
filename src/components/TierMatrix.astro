@@ -1,0 +1,51 @@
+---
+interface Attribute {
+  label: string;
+  value: string;
+}
+
+interface Item {
+  name: string;
+  attributes: Attribute[];
+  highlight?: boolean;
+  highlightLabel?: string;
+}
+
+interface Props {
+  items: Item[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="my-4 grid grid-cols-1 gap-3 sm:grid-cols-2 lg:grid-cols-3" role="list">
+  {
+    items.map((item) => (
+      <div
+        role="listitem"
+        class={`rounded-xl p-4 ${
+          item.highlight
+            ? 'border-2 border-guide-ng-border bg-guide-ng-bg'
+            : 'border border-guide-divider bg-guide-bg'
+        }`}
+      >
+        <div class="mb-2 flex flex-wrap items-center gap-2">
+          <strong class="text-sm font-bold text-guide-ink" set:html={item.name} />
+          {item.highlight && (
+            <span class="rounded-full bg-guide-ng-border px-2 py-0.5 text-[10px] font-bold text-white">
+              {item.highlightLabel ?? 'おすすめ'}
+            </span>
+          )}
+        </div>
+        <dl class="m-0 space-y-1.5">
+          {item.attributes.map((attr) => (
+            <div class="text-xs leading-relaxed">
+              <dt class="inline font-bold text-guide-ink-muted">{attr.label}：</dt>
+              <dd class="m-0 inline text-guide-ink" set:html={attr.value} />
+            </div>
+          ))}
+        </dl>
+      </div>
+    ))
+  }
+</div>

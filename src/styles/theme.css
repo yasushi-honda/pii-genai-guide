@@ -1,0 +1,193 @@
+@import "tailwindcss";
+
+/* =============================================================
+   「個人情報×生成AI 実務ガイド」専用テーマ
+   /guide ページ専用。サイト本体（global.css）のテーマトークンとは
+   意図的に完全に独立させている（相互に依存・参照しない）。
+   配色・フォントは元PDF（個人情報×生成AI 実務ガイド.pdf）を
+   pdfplumberで実測して抽出した値。
+   ============================================================= */
+@theme {
+  --color-guide-bg: #FFFFFF;
+  --color-guide-ink: #17233A;
+  --color-guide-ink-muted: #5A6B84;
+  --color-guide-accent: #2857A6;
+  --color-guide-accent-soft: #E4ECF7;
+  --color-guide-divider: #E4E8EE;
+  --color-guide-ok-bg: #E3F1EA;
+  --color-guide-ok-border: #1F7A5C;
+  --color-guide-ng-bg: #F7E6E4;
+  --color-guide-ng-border: #A8332E;
+  --color-guide-amber-bg: #F6ECD9;
+  --color-guide-amber-border: #B08A3E;
+
+  --font-guide-display: "Zen Kaku Gothic New", "Hiragino Sans", sans-serif;
+  --font-guide-mono: "JetBrains Mono", ui-monospace, "SF Mono", monospace;
+}
+
+@layer base {
+  .guide-pdf-page {
+    background: var(--color-guide-bg);
+    color: var(--color-guide-ink);
+    font-family: var(--font-guide-display);
+  }
+}
+
+@layer components {
+  .gp-label {
+    font-family: var(--font-guide-mono);
+    color: var(--color-guide-accent);
+    letter-spacing: 0.08em;
+  }
+
+  .gp-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    border-radius: 9999px;
+    background: var(--color-guide-accent-soft);
+    color: var(--color-guide-accent);
+    font-family: var(--font-guide-mono);
+    font-weight: 700;
+    font-size: 0.75rem;
+    padding: 0.375rem 0.875rem;
+  }
+
+  .gp-card {
+    border-radius: 0.75rem;
+    border: 1px solid var(--color-guide-divider);
+    background: var(--color-guide-bg);
+    padding: 1rem;
+  }
+
+  .gp-panel {
+    border-radius: 0.75rem;
+    background: var(--color-guide-accent-soft);
+    border-left: 4px solid var(--color-guide-accent);
+    padding: 1rem 1.25rem;
+  }
+
+  .gp-panel-warn {
+    border-radius: 0.75rem;
+    background: var(--color-guide-ng-bg);
+    border-left: 4px solid var(--color-guide-ng-border);
+    padding: 1rem 1.25rem;
+  }
+
+  .gp-ok {
+    border-radius: 0.75rem;
+    background: var(--color-guide-ok-bg);
+    border: 1px solid var(--color-guide-ok-border);
+    padding: 1rem 1.25rem;
+  }
+
+  .gp-ng {
+    border-radius: 0.75rem;
+    background: var(--color-guide-ng-bg);
+    border: 1px solid var(--color-guide-ng-border);
+    padding: 1rem 1.25rem;
+  }
+
+  .gp-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+  }
+
+  .gp-table th {
+    background: var(--color-guide-divider);
+    text-align: left;
+    font-family: var(--font-guide-mono);
+    font-weight: 700;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-guide-divider);
+  }
+
+  .gp-table td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-guide-divider);
+    vertical-align: top;
+  }
+
+  .gp-article {
+    line-height: 1.8;
+  }
+
+  .gp-article h2 {
+    font-family: var(--font-guide-display);
+    font-weight: 700;
+    color: var(--color-guide-ink);
+    border-bottom: 1px solid var(--color-guide-divider);
+    padding-bottom: 0.5rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    font-size: 1.375rem;
+  }
+
+  .gp-article h3 {
+    font-family: var(--font-guide-display);
+    font-weight: 700;
+    color: var(--color-guide-ink);
+    border-top: 1px solid var(--color-guide-divider);
+    padding-top: 1.5rem;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    font-size: 1.125rem;
+  }
+
+  .gp-article p {
+    margin-bottom: 1rem;
+  }
+
+  .gp-article ul,
+  .gp-article ol {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+  }
+
+  .gp-article ul {
+    list-style: disc;
+  }
+
+  .gp-article ol {
+    list-style: decimal;
+  }
+
+  .gp-article a {
+    color: var(--color-guide-accent);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+
+  .gp-article blockquote {
+    margin: 1rem 0;
+    border-left: 4px solid var(--color-guide-accent);
+    background: var(--color-guide-accent-soft);
+    border-radius: 0 0.75rem 0.75rem 0;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: var(--color-guide-ink-muted);
+  }
+
+  .gp-article table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.875rem;
+    margin: 1rem 0;
+    table-layout: fixed;
+  }
+
+  .gp-article th {
+    background: var(--color-guide-divider);
+    text-align: left;
+    font-family: var(--font-guide-mono);
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-guide-divider);
+  }
+
+  .gp-article td {
+    padding: 0.5rem 0.75rem;
+    border: 1px solid var(--color-guide-divider);
+    vertical-align: top;
+  }
+}

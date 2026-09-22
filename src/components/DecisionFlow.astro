@@ -1,0 +1,44 @@
+---
+interface Branch {
+  question: string;
+  yes: string;
+  no: string;
+  continueIf?: 'yes' | 'no';
+}
+
+interface Props {
+  branches: Branch[];
+}
+
+const { branches } = Astro.props;
+---
+
+<div class="my-4">
+  {
+    branches.map((b, i) => (
+      <>
+        <div class="gp-card">
+          <p class="m-0 mb-2 text-sm font-bold text-guide-ink">{b.question}</p>
+          <div class="flex flex-wrap gap-2 text-xs">
+            <span class="gp-badge">✅ はい：{b.yes}</span>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-guide-amber-bg px-3.5 py-1.5 font-mono text-xs font-bold text-guide-ink">
+              ⚠ いいえ：{b.no}
+            </span>
+          </div>
+        </div>
+        {i < branches.length - 1 && (
+          <div class="flex flex-col items-center gap-0.5 py-1.5">
+            <span class="font-guide-mono text-lg text-guide-accent" aria-hidden="true">
+              ↓
+            </span>
+            {b.continueIf && (
+              <span class="text-[11px] text-guide-ink-muted">
+                （「{b.continueIf === 'yes' ? 'はい' : 'いいえ'}」の場合のみ、次の質問へ）
+              </span>
+            )}
+          </div>
+        )}
+      </>
+    ))
+  }
+</div>

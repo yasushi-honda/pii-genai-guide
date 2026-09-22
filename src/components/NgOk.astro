@@ -1,0 +1,23 @@
+---
+interface Props {
+  beforeLabel?: string;
+  afterLabel?: string;
+}
+
+const { beforeLabel = 'NG', afterLabel = 'OK' } = Astro.props;
+---
+
+<div class="my-4 grid grid-cols-1 gap-3 sm:grid-cols-2">
+  <div class="gp-ng">
+    <div class="mb-2 text-xs font-bold text-guide-ng-border">{beforeLabel}</div>
+    <div class="text-sm leading-relaxed text-guide-ink">
+      <slot name="before" />
+    </div>
+  </div>
+  <div class="gp-ok">
+    <div class="mb-2 text-xs font-bold text-guide-ok-border">{afterLabel}</div>
+    <div class="text-sm leading-relaxed text-guide-ink">
+      <slot name="after" />
+    </div>
+  </div>
+</div>
