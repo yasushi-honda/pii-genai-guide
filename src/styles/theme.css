@@ -599,14 +599,13 @@
     -webkit-print-color-adjust: exact;
   }
 
+  /* 章ごとの強制改ページはしない: 内容量が章ごとに大きく異なるため、
+     1章=1ページに固定すると各章末に大きな余白が生まれページ数が
+     大幅に膨張する。見出し自体が分断されないことだけ保証する。 */
   .gp-chapter-heading {
-    break-before: page;
     margin-top: 0;
-  }
-
-  .gp-chapter-heading:first-of-type,
-  #ch00.gp-chapter-heading {
-    break-before: avoid;
+    break-inside: avoid;
+    break-after: avoid;
   }
 
   .gp-toc {
@@ -639,8 +638,45 @@
     color: var(--color-guide-accent) !important;
   }
 
+  /* 画面表示は読みやすさ優先の余白・行間だが、印刷はページ数が
+     直接コストになるため、情報密度を上げて元PDFの分量に近づける */
+  .gp-article {
+    font-size: 0.8125rem;
+    line-height: 1.5;
+  }
+
+  .gp-article h2 {
+    font-size: 1.125rem;
+    margin-bottom: 0.5rem;
+    padding-bottom: 0.375rem;
+  }
+
+  .gp-article h3 {
+    margin-top: 1.25rem;
+    margin-bottom: 0.5rem;
+    padding-top: 0.75rem;
+  }
+
+  .gp-article p,
+  .gp-article ul,
+  .gp-article ol {
+    margin-bottom: 0.5rem;
+  }
+
+  .gp-article .my-4 {
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+
+  header > div,
+  main,
+  footer > div {
+    padding-top: 0.5rem !important;
+    padding-bottom: 0.5rem !important;
+  }
+
   @page {
     size: A4 landscape;
-    margin: 16mm 14mm;
+    margin: 12mm 12mm;
   }
 }
