@@ -608,9 +608,25 @@
     break-after: avoid;
   }
 
+  /* 目次の最後の1項目だけが次ページへ孤立しないよう、
+     全11項目が確実に1ページへ収まる密度まで詰める */
   .gp-toc {
     break-before: page;
     break-after: page;
+    margin: 0.5rem 0 1rem;
+  }
+
+  .gp-toc-title {
+    font-size: 1.25rem;
+    margin: 0.25rem 0 0.5rem;
+  }
+
+  .gp-toc-link {
+    padding: 0.375rem 0.25rem;
+  }
+
+  .gp-toc-subtitle {
+    font-size: 0.75rem;
   }
 
   .gp-table,
