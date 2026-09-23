@@ -1,8 +1,12 @@
 ---
 import '../styles/theme.css';
 import Report, { frontmatter } from '../content/personal-info-generative-ai.mdx';
+import SideNav from '../components/SideNav.astro';
+import ReadingProgress from '../components/ReadingProgress.astro';
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const pdfHref = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/downloads/pii-genai-guide.pdf`;
+const deckHref = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/deck/`;
 ---
 
 <!DOCTYPE html>
@@ -38,6 +42,7 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
     />
   </head>
   <body class="guide-pdf-page min-h-screen">
+    <ReadingProgress />
     <header class="border-b border-guide-divider">
       <div class="mx-auto max-w-4xl px-6 py-12 md:py-16">
         <span class="gp-label block text-xs font-bold uppercase">AIガバナンス実務資料</span>
@@ -48,8 +53,17 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
           <span class="gp-badge">最終確認 {frontmatter.lastUpdated}</span>
           <span class="gp-badge">一次情報ベース・出典14件</span>
           <span class="gp-badge">対象：個人情報を扱う全ての組織</span>
-          <button type="button" class="gp-print-button" onclick="window.print()">
-            🖨 印刷 / PDF保存
+        </div>
+
+        <div class="mt-4 flex flex-wrap items-center gap-2">
+          <a href={pdfHref} download="個人情報-生成AI-実務ガイド.pdf" class="gp-download-button">
+            📄 PDF版をダウンロード（A4横・16ページ）
+          </a>
+          <a href={deckHref} class="gp-print-link" style="text-decoration:none;">
+            PDFと同じレイアウトで読む ↗
+          </a>
+          <button type="button" class="gp-print-link" onclick="window.print()">
+            🖨 このページを印刷
           </button>
         </div>
 
@@ -66,10 +80,15 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
       </div>
     </header>
 
-    <main class="mx-auto max-w-4xl px-6 py-10 md:py-14">
-      <article class="gp-article">
-        <Report />
-      </article>
+    <main class="mx-auto max-w-6xl px-6 py-10 md:py-14">
+      <div class="lg:grid lg:grid-cols-[220px_1fr] lg:gap-12">
+        <aside class="hidden lg:block">
+          <SideNav />
+        </aside>
+        <article class="gp-article max-w-3xl">
+          <Report />
+        </article>
+      </div>
     </main>
 
     <footer class="border-t border-guide-divider">
@@ -77,5 +96,18 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
         {frontmatter.title} ／ 最終更新 {frontmatter.lastUpdated}
       </div>
     </footer>
+
+    <script>
+      // h2/h3 にはAstroの自動heading-id付与で既にidが入っている。
+      // ホバー時に共有用の permalink アンカーを注入するだけで済む。
+      document.querySelectorAll<HTMLHeadingElement>('.gp-article h2[id], .gp-article h3[id]').forEach((heading) => {
+        const anchor = document.createElement('a');
+        anchor.href = `#${heading.id}`;
+        anchor.className = 'gp-heading-anchor';
+        anchor.setAttribute('aria-label', '見出しへのリンク');
+        anchor.textContent = '#';
+        heading.appendChild(anchor);
+      });
+    </script>
   </body>
 </html>
