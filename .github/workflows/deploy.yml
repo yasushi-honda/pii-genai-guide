@@ -43,7 +43,7 @@ jobs:
           set -uo pipefail
           manifest=public/downloads/pii-genai-guide.pdf.source-sha256
           pdf=public/downloads/pii-genai-guide.pdf
-          deck=public/deck/index.html
+          deck=public/index.html
           regen_hint="Run 'pnpm generate:pdf' locally (macOS) and commit the result."
 
           # shasum/grep をパイプで使うため、GitHub Actions既定の `bash -e {0}`
