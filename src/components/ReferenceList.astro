@@ -42,6 +42,7 @@ const { groups } = Astro.props;
                     </>
                   )}
                 </span>
+                <button type="button" class="gp-ref-back">↩ 本文へ戻る</button>
               </li>
             );
           })}
@@ -50,3 +51,76 @@ const { groups } = Astro.props;
     ))
   }
 </div>
+
+<script>
+  // .gp-ref (本文中の [n] リンク) は約26箇所あるが、ポップオーバー配線は
+  // ここで一度だけ行う。表示内容は出典リスト自身のDOMから読み取るため、
+  // 呼び出し側(Ref.astro)にテキストを二重管理させる必要がない。
+  let popover = document.querySelector<HTMLDivElement>('.gp-ref-popover');
+  if (!popover) {
+    popover = document.createElement('div');
+    popover.className = 'gp-ref-popover';
+    popover.id = 'gp-ref-popover';
+    popover.setAttribute('role', 'tooltip');
+    popover.hidden = true;
+    document.body.appendChild(popover);
+  }
+  const p = popover;
+  let currentAnchor: HTMLAnchorElement | null = null;
+
+  function showPopover(anchor: HTMLAnchorElement) {
+    const id = anchor.getAttribute('href')?.slice(1);
+    const target = id ? document.getElementById(id) : null;
+    const body = target?.querySelector('.gp-ref-body');
+    if (!body) return;
+    p.textContent = body.textContent;
+    p.hidden = false;
+    const rect = anchor.getBoundingClientRect();
+    const maxLeft = window.scrollX + document.documentElement.clientWidth - 336;
+    const left = Math.min(rect.left + window.scrollX, Math.max(8, maxLeft));
+    p.style.top = `${rect.bottom + window.scrollY + 6}px`;
+    p.style.left = `${left}px`;
+    anchor.setAttribute('aria-describedby', p.id);
+    currentAnchor = anchor;
+  }
+
+  function hidePopover() {
+    p.hidden = true;
+    currentAnchor?.removeAttribute('aria-describedby');
+    currentAnchor = null;
+  }
+
+  document.querySelectorAll<HTMLAnchorElement>('a.gp-ref').forEach((a) => {
+    a.addEventListener('mouseenter', () => showPopover(a));
+    a.addEventListener('mouseleave', hidePopover);
+    a.addEventListener('focus', () => showPopover(a));
+    a.addEventListener('blur', hidePopover);
+  });
+
+  // 「↩ 本文へ戻る」: history.back() は出典URLへ直接来た場合や別ページ経由の
+  // 場合に本文へ戻らないことがあるため、最後にクリックされた本文中の
+  // Refリンクの位置を記録し、そこへ戻す。記録がなければ history.back() に
+  // フォールバックする。
+  let lastRefOriginId: string | null = null;
+  let anonIdSeq = 0;
+
+  document.addEventListener('click', (e) => {
+    const anchor = (e.target as HTMLElement).closest('a.gp-ref') as HTMLAnchorElement | null;
+    if (!anchor) return;
+    if (!anchor.id) {
+      anchor.id = `gp-ref-origin-${anonIdSeq++}`;
+    }
+    lastRefOriginId = anchor.id;
+  });
+
+  document.querySelectorAll<HTMLButtonElement>('.gp-ref-back').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const origin = lastRefOriginId ? document.getElementById(lastRefOriginId) : null;
+      if (origin) {
+        origin.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        history.back();
+      }
+    });
+  });
+</script>
