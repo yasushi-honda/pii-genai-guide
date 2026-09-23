@@ -157,6 +157,8 @@
   .tag.warn{ background:#F6ECD9; color:#8A5E13; }
   .tag.stamp{ background:#F7E6E4; color:#A8332E; }
   .tag.accent{ background:#E4ECF7; color:#1B3E7C; }
+  /* Webではroot自体が最新版のため自己参照になり不要。PDF(印刷)でのみ表示する。 */
+  .latest-version-link{ display:none; }
 
   table{ border-collapse:collapse; width:100%; font-size:var(--fs-table); }
   th,td{ text-align:left; padding:4.5px 10px; border-bottom:1px solid #E4E8EE; vertical-align:top; line-height:1.5; }
@@ -199,6 +201,7 @@
     @page{ size:A4 landscape; margin:0; }
     body{ background:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
     .toolbar{ display:none !important; }
+    .latest-version-link{ display:inline-block !important; }
     .stack{ padding:0; }
     .page{ box-shadow:none; margin:0; page-break-after:always; break-after:page; }
     .page:last-of-type{ page-break-after:auto; break-after:auto; }
@@ -229,7 +232,7 @@
         <span class="tag accent">最終確認 2026-09-22</span>
         <span class="tag accent">一次情報ベース・出典14件</span>
         <span class="tag accent">対象：個人情報を扱う全ての組織</span>
-        <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent" style="text-decoration:none;">最新版はこちら ↗</a>
+        <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
       </div>
 
       <div class="summary-box">
