@@ -16,10 +16,7 @@
     "generate:pdf": "node scripts/generate-pdf.mjs"
   },
   "dependencies": {
-    "@astrojs/mdx": "^7.0.0",
-    "@tailwindcss/vite": "^4.3.1",
-    "astro": "^7.0.2",
-    "tailwindcss": "^4.3.1"
+    "astro": "^7.0.2"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",

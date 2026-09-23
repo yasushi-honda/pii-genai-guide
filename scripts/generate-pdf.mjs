@@ -1,5 +1,5 @@
-// public/deck/index.html を元PDF「個人情報×生成AI 実務ガイド」(A4横・16ページ) と
-// 同一の見た目でPDF化し、public/downloads/ へ出力する。
+// public/index.html（サイトのルート、元PDF「個人情報×生成AI 実務ガイド」(A4横・
+// 16ページ) と同一の固定レイアウトHTML）をPDF化し、public/downloads/ へ出力する。
 //
 // このスクリプトは macOS ローカルでの実行を前提にしている。元PDFは macOS 上で
 // レンダリングされており、デッキHTML内の日本語等幅テキスト(.page-footer 等)は
@@ -14,7 +14,7 @@ import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { existsSync } from 'node:fs';
 
 const root = new URL('../', import.meta.url);
-const deckPath = new URL('public/deck/index.html', root);
+const deckPath = new URL('public/index.html', root);
 const outDir = new URL('public/downloads/', root);
 const outPdfPath = new URL('pii-genai-guide.pdf', outDir);
 const outHashPath = new URL('pii-genai-guide.pdf.source-sha256', outDir);
@@ -61,7 +61,7 @@ function assertDeckExists() {
   if (!existsSync(deckPath)) {
     throw new Error(
       `デッキHTMLが見つかりません: ${deckPath.pathname}\n` +
-        '先に public/deck/index.html を配置してください。',
+        '先に public/index.html を配置してください。',
     );
   }
 }
