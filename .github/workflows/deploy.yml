@@ -40,27 +40,49 @@ jobs:
 
       - name: Verify PDF exists and matches deck source
         run: |
+          set -uo pipefail
           manifest=public/downloads/pii-genai-guide.pdf.source-sha256
           pdf=public/downloads/pii-genai-guide.pdf
+          deck=public/deck/index.html
+          regen_hint="Run 'pnpm generate:pdf' locally (macOS) and commit the result."
 
+          # shasum/grep をパイプで使うため、GitHub Actions既定の `bash -e {0}`
+          # (pipefail なし)では中間コマンドの失敗が握りつぶされ、両辺が空文字列
+          # のまま "一致" 判定されてしまう。存在チェックを先に済ませ、
+          # マニフェストの中身も空でないことを個別に確認してから比較する。
           if [ ! -s "$pdf" ]; then
             echo "$pdf is missing or empty."
+            exit 1
+          fi
+          if [ ! -s "$deck" ]; then
+            echo "$deck is missing or empty."
+            exit 1
+          fi
+          if [ ! -s "$manifest" ]; then
+            echo "$manifest is missing or empty."
+            echo "$regen_hint"
             exit 1
           fi
 
           expected_deck=$(grep '^deck_sha256=' "$manifest" | cut -d= -f2)
           expected_pdf=$(grep '^pdf_sha256=' "$manifest" | cut -d= -f2)
-          actual_deck=$(shasum -a 256 public/deck/index.html | awk '{print $1}')
+          if [ -z "$expected_deck" ] || [ -z "$expected_pdf" ]; then
+            echo "$manifest is malformed (missing deck_sha256 or pdf_sha256)."
+            echo "$regen_hint"
+            exit 1
+          fi
+
+          actual_deck=$(shasum -a 256 "$deck" | awk '{print $1}')
           actual_pdf=$(shasum -a 256 "$pdf" | awk '{print $1}')
 
           if [ "$expected_deck" != "$actual_deck" ]; then
-            echo "public/deck/index.html has changed but $pdf was not regenerated."
-            echo "Run 'pnpm generate:pdf' locally (macOS) and commit the result."
+            echo "$deck has changed but $pdf was not regenerated."
+            echo "$regen_hint"
             exit 1
           fi
           if [ "$expected_pdf" != "$actual_pdf" ]; then
             echo "$pdf does not match the manifest recorded at generation time."
-            echo "Run 'pnpm generate:pdf' locally (macOS) and commit the result."
+            echo "$regen_hint"
             exit 1
           fi
 

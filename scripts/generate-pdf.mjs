@@ -32,16 +32,30 @@ const PT_TOLERANCE = 1;
 // macOS でこのデッキが正しくレンダリングされた場合に実際に使われる物理フォント。
 // Osaka / Osaka-Mono / Apple Color Emoji は、JetBrains Mono や Zen Kaku Gothic
 // New のサブセットに日本語グリフ・絵文字がないために起きる「正常な」フォール
-// バックであり、元PDFの埋め込みフォント構成そのもの。これ以外が出た場合は
-// フォント取得の失敗かレンダリング環境の差なので異常終了させる。
-const ALLOWED_FONTS = new Set([
+// バックであり、元PDFの埋め込みフォント構成そのもの。
+// Hiragino Kaku Gothic ProN は `--font-body:'Zen Kaku Gothic New','Hiragino Sans',
+// sans-serif` がCSS自身で明示する第2フォールバックの実体（'Hiragino Sans' は
+// 論理ファミリー名で、実際にはウェイト別の物理フォントに解決される）。
+// どの文字がこの経路に落ちるかはOSのフォントキャッシュ状態に依存し実行毎に
+// 変わりうることを実機で確認済みだが、フォールバック先の「ファミリー」自体は
+// CSSが意図した2択のどちらかで固定されるため許可リストに含める。
+// これら以外が出た場合はフォント取得の失敗かレンダリング環境の差(Linux等)
+// なので異常終了させる。
+// CDP は太字バリアントを別ファミリーとして返すことがある
+// (例: "Shippori Mincho" ExtraBold ウェイト → familyName "Shippori Mincho ExtraBold")
+// ため、前方一致で判定する。
+const ALLOWED_FONT_PREFIXES = [
   'Zen Kaku Gothic New',
   'Shippori Mincho',
   'JetBrains Mono',
   'Osaka',
-  'Osaka-Mono',
   'Apple Color Emoji',
-]);
+  'Hiragino Kaku Gothic ProN',
+];
+
+function isAllowedFont(familyName) {
+  return ALLOWED_FONT_PREFIXES.some((prefix) => familyName.startsWith(prefix));
+}
 
 function assertDeckExists() {
   if (!existsSync(deckPath)) {
@@ -63,7 +77,10 @@ async function waitForFontsStable(page) {
     prev = loaded;
     await page.waitForTimeout(250);
   }
-  return prev;
+  throw new Error(
+    `フォントの読み込みが安定しませんでした（最終値 ${prev} face）。` +
+      'ネットワーク環境を確認し、再実行してください。',
+  );
 }
 
 async function assertPlatformFonts(page) {
@@ -71,18 +88,32 @@ async function assertPlatformFonts(page) {
   await cdp.send('DOM.enable');
   await cdp.send('CSS.enable');
   const { root: domRoot } = await cdp.send('DOM.getDocument', { depth: -1 });
-  const { nodeIds } = await cdp.send('DOM.querySelectorAll', {
+  const { nodeIds: pageNodeIds } = await cdp.send('DOM.querySelectorAll', {
     nodeId: domRoot.nodeId,
     selector: '.page',
   });
 
   const violations = [];
-  for (let i = 0; i < nodeIds.length; i++) {
-    const { fonts } = await cdp.send('CSS.getPlatformFontsForNode', { nodeId: nodeIds[i] });
-    const bad = fonts.filter((f) => !ALLOWED_FONTS.has(f.familyName));
-    if (bad.length > 0) {
+  for (let i = 0; i < pageNodeIds.length; i++) {
+    // CSS.getPlatformFontsForNode は指定ノード自身の直接のテキストしか
+    // 集計しない（実測で確認済み）。.page はテキストを持たない純粋な
+    // コンテナ要素なので、配下の全要素を個別に走査する必要がある。
+    const { nodeIds: descendantIds } = await cdp.send('DOM.querySelectorAll', {
+      nodeId: pageNodeIds[i],
+      selector: '*',
+    });
+    const bad = new Map();
+    for (const nodeId of descendantIds) {
+      const { fonts } = await cdp.send('CSS.getPlatformFontsForNode', { nodeId });
+      for (const f of fonts) {
+        if (!isAllowedFont(f.familyName)) {
+          bad.set(f.familyName, (bad.get(f.familyName) ?? 0) + f.glyphCount);
+        }
+      }
+    }
+    if (bad.size > 0) {
       violations.push(
-        `p.${i + 1}: ${bad.map((f) => `${f.familyName}(${f.glyphCount}字)`).join(', ')}`,
+        `p.${i + 1}: ${[...bad.entries()].map(([name, count]) => `${name}(${count}字)`).join(', ')}`,
       );
     }
   }
@@ -128,6 +159,8 @@ async function assertLayout(page) {
 }
 
 async function assertOutputPdf(bytes) {
+  // page.pdf() の出力は暗号化されないため現状は no-op。pdf-lib は既定で
+  // 暗号化PDFの読み込みを拒否するため、将来の変更に備えた保険として残す。
   const doc = await PDFDocument.load(bytes, { ignoreEncryption: true });
   const pageCount = doc.getPageCount();
   if (pageCount !== EXPECTED_PAGE_COUNT) {
@@ -201,6 +234,6 @@ async function main() {
 }
 
 main().catch((err) => {
-  console.error(err.message ?? err);
+  console.error(err instanceof Error ? (err.stack ?? err.message) : err);
   process.exit(1);
 });
