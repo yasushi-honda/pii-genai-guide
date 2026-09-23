@@ -1,0 +1,863 @@
+<!doctype html>
+<!--
+  元PDF「個人情報×生成AI 実務ガイド」(A4横・16ページ) の生成元となった固定レイアウトHTML。
+  scripts/generate-pdf.mjs がこのファイルを開いて public/downloads/pii-genai-guide.pdf を生成する。
+  src/content/personal-info-generative-ai.mdx (連続スクロール版) とは内容が独立している。
+  本文を更新する場合は両方を手動で同期し、`pnpm generate:pdf` を再実行すること。
+-->
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>個人情報×生成AI 実務ガイド</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Shippori+Mincho:wght@500;700;800&family=Zen+Kaku+Gothic+New:wght@400;500;700;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --canvas:#E6EAF0;
+    --paper:#FFFFFF;
+    --ink-1:#17233A;
+    --ink-2:#3C4A61;
+    --ink-3:#5A6B84;
+    --border:#DCE3EC;
+    --border-strong:#B9C6D6;
+    --accent:#2857A6;
+    --accent-strong:#1B3E7C;
+    --accent-soft:#E4ECF7;
+    --stamp:#A8332E;
+    --stamp-soft:#F7E6E4;
+    --good:#1F7A5C;
+    --good-soft:#E3F1EA;
+    --warn:#8A5E13;
+    --warn-soft:#F6ECD9;
+    --font-display:'Shippori Mincho', serif;
+    --font-body:'Zen Kaku Gothic New', 'Hiragino Sans', sans-serif;
+    --font-mono:'JetBrains Mono', ui-monospace, monospace;
+
+    /* type scale — used consistently everywhere, no ad-hoc sizes */
+    --fs-cover-title:34px;
+    --fs-cover-sub:15.5px;
+    --fs-h2:20px;
+    --fs-h3:15px;
+    --fs-body:14px;
+    --fs-small:12.5px;
+    --fs-caption:11.5px;
+    --fs-label:10.5px;
+    --fs-table:13px;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --canvas:#11151C;
+      --border-strong:#3B495E;
+    }
+  }
+  :root[data-theme="dark"]{
+    --canvas:#11151C;
+    --border-strong:#3B495E;
+  }
+
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    margin:0;
+    background:var(--canvas);
+    color:var(--ink-1);
+    font-family:var(--font-body);
+  }
+  h1,h2,h3{ font-family:var(--font-display); text-wrap:balance; margin:0; color:var(--ink-1); }
+  a{ color:var(--accent-strong); text-decoration-thickness:1px; text-underline-offset:2px; }
+  a:hover{ color:var(--accent); }
+  .mono{ font-family:var(--font-mono); font-variant-numeric:tabular-nums; }
+  sup.cite{ font-family:var(--font-mono); font-size:10.5px; font-weight:700; color:var(--accent-strong); margin-left:1px; }
+  sup.cite a{ color:inherit; text-decoration:none; }
+
+  /* ================= PAGE SHELL ================= */
+  /* Each .page is a literal A4 sheet, on screen and in print alike — what you see is what prints. */
+  .toolbar{
+    position:sticky; top:0; z-index:20; display:flex; justify-content:center;
+    padding:10px 0; background:linear-gradient(var(--canvas) 60%, transparent);
+  }
+  .toolbar span{
+    font-family:var(--font-mono); font-size:11px; color:var(--ink-3);
+    background:var(--paper); border:1px solid var(--border); border-radius:999px; padding:6px 14px;
+    box-shadow:0 1px 2px rgba(23,35,58,.08);
+  }
+  .stack{ padding: 8px 0 60px; }
+  .page{
+    width:297mm;
+    min-height:210mm;
+    margin: 0 auto 14px;
+    background:var(--paper);
+    color:#17233A; /* paper is deliberately always light, like real printed output */
+    padding: 14mm 18mm 13mm;
+    box-shadow: 0 1px 2px rgba(15,23,42,.10), 0 18px 40px rgba(15,23,42,.16);
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+  .page-footer{
+    position:absolute; left:18mm; right:18mm; bottom:7mm;
+    display:flex; justify-content:space-between; align-items:baseline;
+    border-top:1px solid #E4E8EE; padding-top:4px;
+    font-family:var(--font-mono); font-size:9.5px; color:#9AA7BC; letter-spacing:.02em;
+  }
+  .page-body{ flex:1; max-width:225mm; width:100%; margin-inline:auto; }
+  figure svg{ max-width:780px; width:100%; height:auto; display:block; margin-inline:auto; }
+
+  .eyebrow{
+    display:flex; align-items:baseline; gap:8px;
+    font-family:var(--font-mono); font-size:var(--fs-label); letter-spacing:.09em; text-transform:uppercase;
+    color:#2857A6; margin-bottom:8px;
+  }
+  h2.h2{ font-size:var(--fs-h2); font-weight:700; line-height:1.4; }
+  h3.h3{ font-family:var(--font-body); font-size:var(--fs-h3); font-weight:700; margin:0 0 6px; color:#17233A; }
+  p{ font-size:var(--fs-body); line-height:1.9; color:#3C4A61; margin:0 0 10px; }
+  p:last-child{ margin-bottom:0; }
+  .lede{ font-size:var(--fs-body); color:#3C4A61; margin-top:6px; }
+  ul.list, ol.list{ margin:8px 0 12px; padding-left:1.3em; font-size:var(--fs-body); line-height:1.85; color:#3C4A61; }
+  ul.list li, ol.list li{ margin-bottom:6px; }
+  ul.list li::marker{ color:#5A6B84; }
+
+  .cols2{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+  .box{
+    border:1px solid #DCE3EC; border-radius:10px; padding:14px 16px; background:#FBFCFE;
+  }
+  .box h3.h3{ margin-bottom:6px; }
+  .box p{ font-size:var(--fs-small); }
+  .box.good{ border-color:#1F7A5C; background:#E3F1EA; }
+  .box.stamp{ border-color:#A8332E; background:#F7E6E4; }
+  .box.accent{ border-color:#2857A6; background:#E4ECF7; }
+
+  .tag{
+    display:inline-block; font-size:10.5px; font-weight:700; font-family:var(--font-mono);
+    padding:2px 8px; border-radius:999px; letter-spacing:.02em;
+  }
+  .tag.good{ background:#E3F1EA; color:#1F7A5C; }
+  .tag.warn{ background:#F6ECD9; color:#8A5E13; }
+  .tag.stamp{ background:#F7E6E4; color:#A8332E; }
+  .tag.accent{ background:#E4ECF7; color:#1B3E7C; }
+
+  table{ border-collapse:collapse; width:100%; font-size:var(--fs-table); }
+  th,td{ text-align:left; padding:4.5px 10px; border-bottom:1px solid #E4E8EE; vertical-align:top; line-height:1.5; }
+  th{ font-family:var(--font-mono); font-size:10.5px; text-transform:uppercase; letter-spacing:.04em; color:#5A6B84; font-weight:600; }
+  .tbl-wrap{ border:1px solid #DCE3EC; border-radius:10px; overflow:hidden; margin:8px 0 8px; }
+  .tbl-wrap table{ margin:0; }
+  .tbl-wrap th{ background:#F3F6FA; }
+
+  figure{ margin:8px 0; }
+  figcaption{ font-size:var(--fs-caption); color:#5A6B84; margin-top:3px; }
+  svg text{ font-family:var(--font-body); fill:currentColor; }
+  svg .mono-t{ font-family:var(--font-mono); }
+
+  .refs-grid{ display:grid; grid-template-columns:1fr 1fr; gap:0 24px; }
+  .refs-cat{ font-family:var(--font-mono); font-size:var(--fs-label); text-transform:uppercase; letter-spacing:.06em; color:#2857A6; margin:14px 0 6px; }
+  .refs-cat:first-child{ margin-top:0; }
+  ul.refs{ list-style:none; margin:0 0 4px; padding:0; font-size:12.5px; line-height:1.8; color:#3C4A61; }
+  ul.refs li{ margin-bottom:7px; }
+  ul.refs .refnum{ font-family:var(--font-mono); font-weight:700; color:#2857A6; margin-right:2px; }
+  ul.refs a{ word-break:break-all; }
+
+  .toc-list{ list-style:none; margin:12px 0 0; padding:0; }
+  .toc-list li{
+    display:flex; align-items:baseline; gap:10px;
+    padding:5px 0; border-bottom:1px dashed #DCE3EC;
+    font-size:14px;
+  }
+  .toc-list .tn{ font-family:var(--font-mono); color:#2857A6; font-weight:700; width:24px; flex:none; }
+  .toc-list .tt{ flex:1; font-weight:700; }
+  .toc-list .ts{ color:#5A6B84; font-size:12.5px; font-weight:400; display:block; margin-top:2px; }
+  .toc-list .tp{ font-family:var(--font-mono); color:#5A6B84; font-size:12.5px; }
+
+  .cover-tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:18px; }
+  .summary-box{
+    margin-top:26px; border:1px solid #DCE3EC; border-radius:12px; padding:18px 20px; background:#F8FAFC;
+  }
+  .summary-box h3.h3{ font-size:13px; text-transform:uppercase; letter-spacing:.04em; font-family:var(--font-mono); color:#2857A6; }
+
+  @media print{
+    @page{ size:A4 landscape; margin:0; }
+    body{ background:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+    .toolbar{ display:none !important; }
+    .stack{ padding:0; }
+    .page{ box-shadow:none; margin:0; page-break-after:always; break-after:page; }
+    .page:last-of-type{ page-break-after:auto; break-after:auto; }
+  }
+  @media (max-width:900px){
+    .page{ width:100%; min-height:auto; padding:24px 18px 56px; }
+    .cols2, .refs-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar"><span>プレビュー — 実際の印刷・PDF出力と同じレイアウトで1ページずつ表示しています</span></div>
+
+<div class="stack" id="stack">
+
+  <!-- ============ PAGE 1: COVER ============ -->
+  <section class="page" data-toc="cover">
+    <div class="page-body" style="display:flex; flex-direction:column; justify-content:center; height:100%;">
+      <div class="eyebrow">AIガバナンス実務資料</div>
+      <h1 style="font-size:var(--fs-cover-title); font-weight:800; line-height:1.4;">個人情報×生成AI<br>実務ガイド</h1>
+      <p class="lede" style="font-size:var(--fs-cover-sub); margin-top:14px; max-width:46em;">個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成 — 2026年9月時点の公式一次情報だけで組み立て直す実務資料</p>
+
+      <div class="cover-tags">
+        <span class="tag accent">最終確認 2026-09-22</span>
+        <span class="tag accent">一次情報ベース・出典14件</span>
+        <span class="tag accent">対象：個人情報を扱う全ての組織</span>
+        <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent" style="text-decoration:none;">最新版はこちら ↗</a>
+      </div>
+
+      <div class="summary-box">
+        <h3 class="h3">この資料でわかること</h3>
+        <ul class="list" style="margin-top:10px;">
+          <li>個人情報保護法が課す「2つの独立した義務」の違いと、それぞれの解決手段</li>
+          <li>AIに入れてよい情報のレベルを、3つの質問だけで判定する方法</li>
+          <li>「ISMAP登録済み」という言葉が実際に意味すること・意味しないこと</li>
+          <li>越境移転規制（法28条）が生成AI利用に与える具体的な影響</li>
+          <li>要配慮個人情報を実名で扱うための、現実的な技術構成とコストの根拠</li>
+        </ul>
+      </div>
+
+      <p style="margin-top:22px; font-size:var(--fs-caption); color:#5A6B84; max-width:50em;">対象読者：個人情報・要配慮個人情報を扱いながら生成AIの活用を検討する、福祉施設・自治体・NPO・中小企業等の意思決定者および情報システム担当者。特定のベンダーやサービスの宣伝を目的としたものではありません。本文中の <sup class="mono" style="font-weight:700;">[n]</sup> は巻末「出典一覧」の番号に対応します。</p>
+    </div>
+    <div class="page-footer"><span>個人情報×生成AI 実務ガイド</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 2: TOC ============ -->
+  <section class="page">
+    <div class="page-body">
+      <div class="eyebrow">Contents</div>
+      <h2 class="h2" style="font-size:26px;">目次</h2>
+      <ul class="toc-list" id="toc">
+        <li><span class="tn">00</span><span class="tt">はじめに<span class="ts">なぜこの整理が必要か</span></span><span class="tp" data-toc-target="intro"></span></li>
+        <li><span class="tn">01</span><span class="tt">大原則：個人情報保護法の「2つの壁」<span class="ts">安全管理措置と、適法な取得・利用は独立している</span></span><span class="tp" data-toc-target="pillars"></span></li>
+        <li><span class="tn">02</span><span class="tt">判定フロー：3つの質問<span class="ts">個人特定情報／要配慮個人情報／処理体制の3段階判定</span></span><span class="tp" data-toc-target="flow"></span></li>
+        <li><span class="tn">03</span><span class="tt">越境移転規制（法28条）<span class="ts">「日本国内処理」が必要になる法的根拠</span></span><span class="tp" data-toc-target="crossborder"></span></li>
+        <li><span class="tn">04</span><span class="tt">ISMAP登録の構造と落とし穴<span class="ts">「登録済み」が自動的に意味しないもの</span></span><span class="tp" data-toc-target="ismap"></span></li>
+        <li><span class="tn">05</span><span class="tt">実名データの3段階（Tier A / B / C）<span class="ts">用途別に必要な技術要件を切り分ける</span></span><span class="tp" data-toc-target="tiers"></span></li>
+        <li><span class="tn">06</span><span class="tt">よくある間違いと正しい対応<span class="ts">NG例・OK例で確認する、現場で起きがちなずれ</span></span><span class="tp" data-toc-target="cases"></span></li>
+        <li><span class="tn">07</span><span class="tt">Tier Cの技術構成とその根拠<span class="ts">要配慮個人情報のための現実的なアーキテクチャ</span></span><span class="tp" data-toc-target="tierc"></span></li>
+        <li><span class="tn">08</span><span class="tt">技術を固めても残る法務対応<span class="ts">積み上げれば完了する軸と、終わりのない軸の違い</span></span><span class="tp" data-toc-target="legal"></span></li>
+        <li><span class="tn">09</span><span class="tt">まとめ：今日からできること<span class="ts">できること・まだできないこと・準備すべきこと</span></span><span class="tp" data-toc-target="summary"></span></li>
+        <li><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、14件</span></span><span class="tp" data-toc-target="refs"></span></li>
+      </ul>
+      <p style="margin-top:24px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
+    </div>
+    <div class="page-footer"><span>個人情報×生成AI 実務ガイド</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 3: はじめに ============ -->
+  <section class="page" data-toc="intro">
+    <div class="page-body">
+      <div class="eyebrow">00　はじめに</div>
+      <h2 class="h2">「ISMAPを満たしているから安全」——それ、半分しか合っていません</h2>
+
+      <p style="margin-top:14px;">個人情報を扱う組織が生成AIの導入を検討する際、「ISMAPを満たしているので個人情報を安全に取り扱える」という説明に出会うことがあります。では実際には、どのレベルの情報まで入力してよいのでしょうか。</p>
+
+      <div class="box accent" style="margin-top:6px;">
+        <p style="font-size:14px; color:#17233A;">この質問の背景には、よくある誤解があります。「ISMAP登録済み」「学習に使われない」といった言葉は、<b>安全に“守る”仕組み</b>があるかどうかの話でしかありません。そもそも<b>その情報を扱ってよいか</b>は、まったく別の判断軸です。</p>
+      </div>
+
+      <h3 class="h3" style="margin-top:22px;">この資料の狙い</h3>
+      <p>この資料は、上記のような現場の疑問に対して、2026年9月時点で確認できる公式一次情報だけを根拠に、次の2つを整理し直したものです。</p>
+      <ol class="list">
+        <li><b>判定フロー</b> — 手元のデータをAIに入れてよいかを、3つの質問で判定する方法（第2章）</li>
+        <li><b>技術構成</b> — 要配慮個人情報を実名で扱わざるを得ない場合に、現実的に組める技術構成とその根拠（第7章）</li>
+      </ol>
+
+      <h3 class="h3" style="margin-top:20px;">読み方</h3>
+      <p>本文中の <span class="mono" style="font-weight:700; color:#2857A6;">[n]</span> は、巻末「出典一覧」（p.16）の番号に対応します。日本語OCRの精度比較のみ、社内の非公開実機検証に基づく知見のため、<span class="mono" style="font-weight:700;">[†]</span> で示し公開リンクなしと明記しています。専門的な法律用語には、初出時に簡単な説明を添えています。</p>
+
+      <p style="margin-top:16px; color:#5A6B84; font-size:var(--fs-small);">なお本資料は、特定の福祉施設・自治体・団体名や個別の相談内容には触れていません。個人情報を扱いながら生成AIの活用を検討する組織全般に共通する論点として整理しています。</p>
+    </div>
+    <div class="page-footer"><span>00　はじめに</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 4: 大原則 ============ -->
+  <section class="page" data-toc="pillars">
+    <div class="page-body">
+      <div class="eyebrow">01　大原則</div>
+      <h2 class="h2">「安全に守る」義務と「そもそも使ってよいか」の義務は、独立している</h2>
+      <p style="margin:8px 0 4px; line-height:1.7;">個人情報保護法は、大きく分けて2つの義務を組織に課しています。この2つは監督する条文も、満たす手段もまったく別物であり、<b>片方を満たしても、もう片方の違反は消えません。</b></p>
+
+      <figure style="margin:2px 0;">
+        <svg viewBox="0 0 920 260" role="img" aria-label="安全管理措置と適法な取得・利用は独立した2本の柱であり、両方揃って初めて業務利用に耐えうる図">
+          <defs><marker id="arr1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="currentColor" /></marker></defs>
+          <style>.pillar{ fill:#F3F6FA; stroke:#B9C6D6; stroke-width:1.3; } .lbl{ font-size:16.5px; font-weight:700; } .sub{ font-size:14px; opacity:.8; }</style>
+          <rect x="30" y="30" width="400" height="180" rx="12" class="pillar" />
+          <text x="230" y="58" text-anchor="middle" class="lbl">安全管理措置</text>
+          <text x="230" y="78" text-anchor="middle" class="sub mono-t">法23条</text>
+          <text x="230" y="106" text-anchor="middle" class="sub">＝データを守る仕組み</text>
+          <text x="230" y="130" text-anchor="middle" class="sub">region指定・ISMAP登録済み基盤</text>
+          <text x="230" y="150" text-anchor="middle" class="sub">APIキー不要の認証・監査ログ</text>
+          <text x="230" y="188" text-anchor="middle" style="font-size:15.5px; font-weight:700;">→ アーキテクチャで解決できる</text>
+
+          <rect x="490" y="30" width="400" height="180" rx="12" class="pillar" />
+          <text x="690" y="58" text-anchor="middle" class="lbl">適法な取得・利用</text>
+          <text x="690" y="78" text-anchor="middle" class="sub mono-t">法17・18・20②・21条</text>
+          <text x="690" y="106" text-anchor="middle" class="sub">＝そもそも扱ってよいか</text>
+          <text x="690" y="130" text-anchor="middle" class="sub">利用目的の特定・通知、同意書</text>
+          <text x="690" y="150" text-anchor="middle" class="sub">委託契約・責任分界</text>
+          <text x="690" y="188" text-anchor="middle" style="font-size:15.5px; font-weight:700;">→ 法務・組織対応でしか解決できない</text>
+
+          <line x1="430" y1="120" x2="490" y2="120" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 5" opacity=".55" marker-end="url(#arr1)" />
+          <line x1="490" y1="120" x2="430" y2="120" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 5" opacity=".55" marker-end="url(#arr1)" />
+          <text x="460" y="108" text-anchor="middle" style="font-size:13.5px;" class="mono-t">代替不可</text>
+          <text x="460" y="245" text-anchor="middle" style="font-size:16px; font-weight:700;">「アーキテクチャを固めたから要配慮個人情報も安全」は成立しない</text>
+        </svg>
+        <figcaption>図1. 個人情報保護法が課す2つの独立した義務。片方（技術）を満たしても他方（法務）の代わりにはならない。</figcaption>
+      </figure>
+
+      <h3 class="h3" style="margin-top:4px;">関係する条文の早見表</h3>
+      <div class="tbl-wrap" style="margin:4px 0;">
+        <table>
+          <thead><tr><th>条文</th><th>内容</th><th>区分</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">17条</td><td>利用目的の特定</td><td><span class="tag accent">法務</span></td></tr>
+            <tr><td class="mono">18条</td><td>利用目的による制限（目的外利用の禁止）</td><td><span class="tag accent">法務</span></td></tr>
+            <tr><td class="mono">20条2項</td><td>要配慮個人情報の取得には原則本人同意が必要</td><td><span class="tag accent">法務</span></td></tr>
+            <tr><td class="mono">21条</td><td>取得に際しての利用目的の通知・公表</td><td><span class="tag accent">法務</span></td></tr>
+            <tr><td class="mono">23条</td><td>安全管理措置（データを守る技術・体制）</td><td><span class="tag good">技術</span></td></tr>
+            <tr><td class="mono">25条</td><td>委託先の監督</td><td><span class="tag warn">技術＋法務</span></td></tr>
+            <tr><td class="mono">27条</td><td>第三者提供の制限（原則）</td><td><span class="tag accent">法務</span></td></tr>
+            <tr><td class="mono">28条</td><td>外国にある第三者への提供の制限（越境移転規制）</td><td><span class="tag warn">技術＋法務</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:var(--fs-caption); color:#5A6B84;">条文番号は現行の個人情報保護法（令和2年改正後）に基づく<sup class="cite">[3]</sup>。</p>
+    </div>
+    <div class="page-footer"><span>01　大原則</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 5: 判定フロー ============ -->
+  <section class="page" data-toc="flow">
+    <div class="page-body">
+      <div class="eyebrow">02　判定フロー</div>
+      <h2 class="h2">3つの質問で、入れていいレベルが決まる</h2>
+      <p style="margin-top:10px;">「結局、どのレベルから個人情報を入れてよいのか」という疑問に、3段階の質問で答えます。<b>「はい」を辿るほど要件は厳しくなり、要配慮個人情報は必ず最後の質問まで確認する必要があります。</b></p>
+
+      <figure>
+        <svg viewBox="0 0 900 446" role="img" aria-label="個人を特定できる情報を含むか、要配慮個人情報を含むか、日本国内処理保証と組織対応があるかの3段階判定フロー図">
+          <defs><marker id="arr2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="currentColor" /></marker></defs>
+          <style>.dia{ fill:#F3F6FA; stroke:#B9C6D6; stroke-width:1.3; } .box2{ fill:#F3F6FA; stroke:#B9C6D6; stroke-width:1.3; } .q{ font-size:15.5px; font-weight:700; } .a{ font-size:13.5px; } .edge{ font-size:13.5px; font-weight:700; }</style>
+
+          <polygon points="340,10 490,62 340,114 190,62" class="dia" />
+          <text x="340" y="57" text-anchor="middle" class="q">個人を特定できる</text>
+          <text x="340" y="73" text-anchor="middle" class="q">情報を含むか？</text>
+
+          <line x1="490" y1="62" x2="630" y2="62" stroke="currentColor" opacity=".55" marker-end="url(#arr2)" />
+          <text x="558" y="50" text-anchor="middle" class="edge">いいえ</text>
+          <rect x="630" y="24" width="240" height="76" rx="10" class="box2" />
+          <text x="750" y="48" text-anchor="middle" class="a" style="font-weight:700;">匿名化データ・統計情報</text>
+          <text x="750" y="68" text-anchor="middle" class="a">
+            <tspan x="750" dy="0">組み合わせでの再識別可否を</tspan>
+            <tspan x="750" dy="15">要確認のうえ利用可</tspan>
+          </text>
+
+          <line x1="340" y1="114" x2="340" y2="160" stroke="currentColor" opacity=".55" marker-end="url(#arr2)" />
+          <text x="360" y="142" class="edge">はい</text>
+
+          <polygon points="340,160 500,222 340,284 180,222" class="dia" />
+          <text x="340" y="212" text-anchor="middle" class="q">要配慮個人情報</text>
+          <text x="340" y="228" text-anchor="middle" class="q">（病歴・障害・犯罪歴等）</text>
+          <text x="340" y="244" text-anchor="middle" class="q">を含むか？</text>
+
+          <line x1="500" y1="222" x2="630" y2="222" stroke="currentColor" opacity=".55" marker-end="url(#arr2)" />
+          <text x="565" y="210" text-anchor="middle" class="edge">いいえ</text>
+          <rect x="630" y="184" width="250" height="76" rx="10" class="box2" />
+          <text x="755" y="208" text-anchor="middle" class="a" style="font-weight:700;">通常の個人情報</text>
+          <text x="755" y="226" text-anchor="middle" class="a">ISMAP登録済クラウド＋DPA＋</text>
+          <text x="755" y="242" text-anchor="middle" class="a">同意があれば利用可</text>
+          <text x="755" y="258" text-anchor="middle" class="a">（越境移転規制に注意 → 第3章）</text>
+
+          <line x1="340" y1="284" x2="340" y2="320" stroke="currentColor" opacity=".55" marker-end="url(#arr2)" />
+          <text x="360" y="304" class="edge">はい</text>
+
+          <polygon points="340,320 520,378 340,436 160,378" class="dia" />
+          <text x="340" y="365" text-anchor="middle" class="q">日本国内処理保証＋3省2</text>
+          <text x="340" y="381" text-anchor="middle" class="q">ガイドライン対応済みの</text>
+          <text x="340" y="397" text-anchor="middle" class="q">ツールか？</text>
+
+          <rect x="0" y="344" width="120" height="68" rx="10" fill="#F7E6E4" stroke="#A8332E" />
+          <line x1="158" y1="378" x2="120" y2="378" stroke="currentColor" opacity=".55" marker-end="url(#arr2)" />
+          <text x="140" y="333" text-anchor="middle" class="edge">いいえ</text>
+          <text x="60" y="382" text-anchor="middle" class="a" style="font-weight:700; fill:#A8332E;">利用不可</text>
+
+          <line x1="520" y1="378" x2="650" y2="378" stroke="currentColor" opacity=".55" marker-end="url(#arr2)" />
+          <text x="585" y="366" text-anchor="middle" class="edge">はい</text>
+          <rect x="650" y="344" width="220" height="68" rx="10" fill="#E3F1EA" stroke="#1F7A5C" />
+          <text x="760" y="368" text-anchor="middle" class="a" style="font-weight:700; fill:#1F7A5C;">利用可</text>
+          <text x="760" y="386" text-anchor="middle" class="a">日本ロケーション対応の</text>
+          <text x="760" y="400" text-anchor="middle" class="a">サービス＋組織的措置（→第7章）</text>
+        </svg>
+        <figcaption>図2. 個人情報のレベル別判定フロー。DPA＝データ処理契約（第8章で詳述）。3省2ガイドライン＝厚生労働省・総務省・経済産業省が定める医療情報の安全管理ガイドライン群。</figcaption>
+      </figure>
+    </div>
+    <div class="page-footer"><span>02　判定フロー</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 6: 判定フロー 早見表 ============ -->
+  <section class="page">
+    <div class="page-body">
+      <div class="eyebrow">02　判定フロー（続き）</div>
+      <h2 class="h2">具体例早見表</h2>
+      <p style="margin-top:10px;">実務でよく出てくる入力内容を、上記フローに沿って分類すると次のようになります。</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>入力しようとしている内容の例</th><th>分類</th><th>目安</th></tr></thead>
+          <tbody>
+            <tr><td>一般的な案内文・チラシのひな形（個人名なし）</td><td>匿名化情報</td><td><span class="tag good">問題なし</span></td></tr>
+            <tr><td>研修資料・マニュアルの下書き</td><td>匿名化情報</td><td><span class="tag good">問題なし</span></td></tr>
+            <tr><td>施設名・職員の氏名</td><td>通常の個人情報</td><td><span class="tag warn">条件付きで可</span></td></tr>
+            <tr><td>利用者の氏名・住所・連絡先のみ</td><td>通常の個人情報</td><td><span class="tag warn">条件付きで可</span></td></tr>
+            <tr><td>利用者の病歴・障害の状況</td><td>要配慮個人情報</td><td><span class="tag stamp">非推奨</span></td></tr>
+            <tr><td>逮捕歴・犯罪の経歴</td><td>要配慮個人情報</td><td><span class="tag stamp">非推奨</span></td></tr>
+            <tr><td>ケース記録全般（病歴・生活歴等を含む）</td><td>要配慮個人情報を含む可能性大</td><td><span class="tag stamp">非推奨（個別確認）</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box" style="margin-top:8px;">
+        <h3 class="h3">「匿名化済みだから安全」の落とし穴</h3>
+        <p>氏名等の直接的な識別子を除いても、<b>年代＋地域＋利用施設のように複数の属性を組み合わせると、本人が再識別できてしまう場合があります。</b>「個人を特定できる情報を含まないか」の判定は、単一の項目だけでなく組み合わせの観点でも行う必要があります。判断に迷う場合は、常に「入れない」を選ぶことが原則です。</p>
+      </div>
+
+      <div class="box stamp" style="margin-top:10px;">
+        <h3 class="h3">生活保護受給歴の扱いについての注記</h3>
+        <p>「生活保護の受給歴」そのものは、個人情報保護法が列挙する要配慮個人情報の定義に直接該当するとは限りません<sup class="cite">[3]</sup>。しかし、ケース記録には病歴・障害等の要配慮個人情報が併記されることが多く、実務上は要配慮情報に準じた慎重な取り扱いが妥当です。個別の該当性判断は専門家にご確認ください。</p>
+      </div>
+    </div>
+    <div class="page-footer"><span>02　判定フロー（続き）</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 7: 越境移転 ============ -->
+  <section class="page" data-toc="crossborder">
+    <div class="page-body">
+      <div class="eyebrow">03　見落とされがちな論点</div>
+      <h2 class="h2">「日本国内処理」が必要になる理由 — 個人情報保護法28条</h2>
+      <p style="margin-top:10px;">ISMAP登録の有無（法23条）とは別に、もう一つ重要な論点があります。<b>外国にある第三者への提供の制限（法28条）</b>です。令和2年改正により、この規定は旧24条から現在の28条へ条番号が変更されています<sup class="cite">[3]</sup>。</p>
+
+      <p>多くの生成AIサービスは、データの処理地を「グローバル」「米国」「ヨーロッパ」といった広域リージョンからしか選べず、日本国内に固定できません。法28条は、次のいずれかに該当しない限り、<b>あらかじめ本人の同意を得ること</b>を求めています。</p>
+
+      <figure>
+        <svg viewBox="0 0 900 230" role="img" aria-label="海外での処理は3つの例外いずれかに当てはまらない限り本人の同意が必要という越境移転の判定図">
+          <defs><marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="currentColor" /></marker></defs>
+          <rect x="10" y="75" width="190" height="76" rx="10" fill="#F3F6FA" stroke="#B9C6D6" />
+          <text x="105" y="106" text-anchor="middle" style="font-size:15px; font-weight:700;">海外で処理</text>
+          <text x="105" y="126" text-anchor="middle" style="font-size:13.5px; opacity:.75;">（例：グローバル／米国）</text>
+
+          <line x1="200" y1="113" x2="280" y2="113" stroke="currentColor" opacity=".55" marker-end="url(#arr3)" />
+
+          <rect x="280" y="10" width="290" height="200" rx="10" fill="#F3F6FA" stroke="#B9C6D6" />
+          <text x="425" y="36" text-anchor="middle" style="font-size:15px; font-weight:700;">いずれかに該当？</text>
+          <text x="300" y="68" style="font-size:14.5px;">① 同等水準国（EU・英国）</text>
+          <text x="300" y="98" style="font-size:14.5px;">② 基準適合体制を継続的に整備</text>
+          <text x="300" y="128" style="font-size:14.5px;">③ その他の例外事由</text>
+          <text x="425" y="172" text-anchor="middle" style="font-size:13.5px; opacity:.75;">1つでも該当すれば</text>
+          <text x="425" y="190" text-anchor="middle" style="font-size:13.5px; opacity:.75;">事前同意は不要</text>
+
+          <line x1="570" y1="110" x2="650" y2="70" stroke="currentColor" opacity=".55" marker-end="url(#arr3)" />
+          <text x="612" y="56" text-anchor="middle" style="font-size:13.5px; font-weight:700;">該当</text>
+          <rect x="650" y="34" width="250" height="66" rx="10" fill="#E3F1EA" stroke="#1F7A5C" />
+          <text x="775" y="60" text-anchor="middle" style="font-size:15px; font-weight:700; fill:#1F7A5C;">事前の本人同意なしで提供可</text>
+          <text x="775" y="80" text-anchor="middle" style="font-size:13px; opacity:.85;">（安全管理措置等、他の要件は別途必要）</text>
+
+          <line x1="570" y1="150" x2="650" y2="180" stroke="currentColor" opacity=".55" marker-end="url(#arr3)" />
+          <text x="612" y="175" text-anchor="middle" style="font-size:13.5px; font-weight:700;">非該当</text>
+          <rect x="650" y="144" width="250" height="66" rx="10" fill="#F7E6E4" stroke="#A8332E" />
+          <text x="775" y="168" text-anchor="middle" style="font-size:15px; font-weight:700; fill:#A8332E;">越境移転への本人同意が必要</text>
+          <text x="775" y="188" text-anchor="middle" style="font-size:13px; opacity:.85;">米国は①の同等水準国に該当しない</text>
+        </svg>
+        <figcaption>図3. 個人情報保護法28条の判定構造<sup class="cite">[1]</sup>。ISMAP登録（法23条）はこの論点をクリアする根拠にはならない。</figcaption>
+      </figure>
+
+      <p>個人情報保護委員会は、EU（欧州連合）と英国を「個人の権利利益を保護する上で我が国と同等の水準にあると認められる国」として指定しています<sup class="cite">[1]</sup><sup class="cite">[2]</sup>。米国はこの指定対象に含まれないため、米国リージョンでの処理を伴うサービスでは、②の基準適合体制がない限り、越境移転への本人同意が実務上ほぼ必須になります。</p>
+    </div>
+    <div class="page-footer"><span>03　越境移転規制</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 8: ISMAP ============ -->
+  <section class="page" data-toc="ismap">
+    <div class="page-body">
+      <div class="eyebrow">04　ISMAP登録の落とし穴</div>
+      <h2 class="h2">「基盤の登録」は「上位サービス」に自動継承されない</h2>
+      <p style="margin-top:10px;">ISMAP（政府情報システムのためのセキュリティ評価制度）は、国家サイバー統括室・デジタル庁・総務省・経済産業省が所管し、IPA（情報処理推進機構）が運用支援機関として実務を担う、令和2年6月開始の制度です。評価済のクラウドサービスは、ISMAPクラウドサービスリストに登録番号とともに掲載されます<sup class="cite">[5]</sup>。</p>
+
+      <p>ここで見落とされがちなのが、<b>「登録済みの基盤の上に構築されたサービスが、自動的に同じ扱いになるとは限らない」</b>という原則です。ISMAP公式FAQは次のように明記しています。</p>
+
+      <div class="box accent">
+        <p style="font-size:13px; font-style:italic;">「ISMAP登録済みのIaaS／PaaS上に構築したSaaSは、SaaS自体が別途登録しない限り同等とみなせない」<sup class="cite">[4]</sup></p>
+      </div>
+
+      <figure>
+        <svg viewBox="0 0 900 240" role="img" aria-label="GoogleはGCP・Workspace・Gemini Enterpriseの3つが別々のISMAP登録番号を持つのに対し、AWSはBedrockを含む単一登録である比較図">
+          <text x="20" y="24" style="font-size:15px; font-weight:700; opacity:.75;">Google（3層・別々の登録）</text>
+          <rect x="20" y="38" width="160" height="86" rx="10" fill="#F3F6FA" stroke="#B9C6D6" />
+          <text x="100" y="70" text-anchor="middle" style="font-size:14.5px; font-weight:700;">Google Cloud</text>
+          <text x="100" y="90" text-anchor="middle" class="mono-t" style="font-size:13.5px;">C21-0004-2</text>
+
+          <rect x="200" y="38" width="160" height="86" rx="10" fill="#F3F6FA" stroke="#B9C6D6" />
+          <text x="280" y="70" text-anchor="middle" style="font-size:14.5px; font-weight:700;">Workspace</text>
+          <text x="280" y="90" text-anchor="middle" class="mono-t" style="font-size:13.5px;">C21-0005-2</text>
+
+          <rect x="380" y="38" width="190" height="86" rx="10" fill="#E4ECF7" stroke="#2857A6" />
+          <text x="475" y="70" text-anchor="middle" style="font-size:14.5px; font-weight:700; fill:#1B3E7C;">Gemini Enterprise</text>
+          <text x="475" y="90" text-anchor="middle" class="mono-t" style="font-size:13.5px;">C26-0114-2</text>
+
+          <text x="295" y="158" text-anchor="middle" style="font-size:14.5px; font-weight:700; fill:#A8332E;">基盤の登録は自動継承されない（要個別確認）</text>
+
+          <text x="630" y="24" style="font-size:15px; font-weight:700; opacity:.75;">AWS（単一登録）</text>
+          <rect x="630" y="38" width="260" height="86" rx="10" fill="#E3F1EA" stroke="#1F7A5C" />
+          <text x="760" y="64" text-anchor="middle" style="font-size:14.5px; font-weight:700; fill:#1F7A5C;">AWS（Bedrock明記）</text>
+          <text x="760" y="84" text-anchor="middle" class="mono-t" style="font-size:13.5px;">C21-0008-2</text>
+          <text x="760" y="102" text-anchor="middle" style="font-size:13px; opacity:.75;">除外はBedrock Marketplaceのみ</text>
+
+          <text x="20" y="200" style="font-size:15px;">個々の生成AIモデル（Gemini・Nova・Claude等）自体は、基盤が</text>
+          <text x="20" y="222" style="font-size:15px;">ISMAP登録範囲に含まれていれば別途登録不要——これはISMAP運営主体自身の公式見解。</text>
+        </svg>
+        <figcaption>図4. Google関連は3つの独立した登録番号に分かれる一方、AWSはBedrockを含む単一登録<sup class="cite">[5]</sup><sup class="cite">[7]</sup><sup class="cite">[8]</sup>。個々のモデルは基盤の登録範囲内であれば別途登録不要という点はISMAP運営主体の公式見解<sup class="cite">[6]</sup>。</figcaption>
+      </figure>
+
+      <p style="font-size:var(--fs-small);">実際、Gemini Enterprise（C26-0114-2）はVertex AI Platform（C21-0004-2に含まれる）上に構築されているにもかかわらず、2026年4月28日に別途本登録が必要でした<sup class="cite">[7]</sup>。「基盤がISMAPだから上位のSaaS機能も自動的にISMAP」という推論は成立しません。</p>
+    </div>
+    <div class="page-footer"><span>04　ISMAP登録の構造</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 9: Tier ABC ============ -->
+  <section class="page" data-toc="tiers">
+    <div class="page-body">
+      <div class="eyebrow">05　実名データの3段階</div>
+      <h2 class="h2">Tier A / B / C — 右に行くほど要件が跳ね上がる</h2>
+      <p style="margin-top:10px;">実名データを扱う場合に必要な技術要件は、データの機微度によって3段階に分かれます。</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th style="width:14%;">Tier</th><th style="width:32%;">代表的な用途</th><th>必要な技術要件</th></tr></thead>
+          <tbody>
+            <tr>
+              <td><span class="tag good">A</span><br>匿名化</td>
+              <td>個人が特定されない一般的な文章生成・要約・案内文作成</td>
+              <td>特別な要件なし。一般的なクラウドAIで可</td>
+            </tr>
+            <tr>
+              <td><span class="tag warn">B</span><br>通常の個人情報（実名）</td>
+              <td>施設名・担当者名等を含む議事録・案内文</td>
+              <td>ISMAP登録済みクラウド＋DPA締結＋同意取得。日本リージョン限定は必須ではないが推奨（越境移転規制に注意 → 第3章）</td>
+            </tr>
+            <tr>
+              <td><span class="tag stamp">C</span><br>要配慮個人情報（実名）</td>
+              <td>ケースワーク記録の要約、相談面談音声の議事録、書類のAI OCR化</td>
+              <td>Bの要件に加え、データの保存＋AI処理が日本国内に完全に閉じること、APIキーレス認証、3省2ガイドライン相当の組織的措置</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="h3" style="margin-top:14px;">Tier Bで利用可能な選択肢／避けるべき選択肢</h3>
+      <ul class="list">
+        <li><b>Gemini in Workspace</b> — Google Workspace自体がISMAP登録済みで、Geminiアプリ・Gemini in Workspaceは対象範囲に明記されている<sup class="cite">[5]</sup><sup class="cite">[14]</sup>。日本限定の選択肢はないが、Tier Bでは許容範囲</li>
+        <li><b>Gemini Enterprise</b> — Workspaceとは別契約。日本ロケーション指定が可能、より安全に倒せる選択肢</li>
+        <li><b>Vertex AI（Gemini Enterprise Agent Platform）のAPI</b> — ISMAP登録済み。リージョン問わずTier Bなら利用可</li>
+        <li class="stamp" style="list-style:none; margin-left:-1.3em; padding:8px 12px; background:#F7E6E4; border-radius:8px;">❌ <b>Google AI Studioの素のAPIキー</b>はNG。ISMAP対象外の別製品で、データが世界中どこでも保存されうる<sup class="cite">[13]</sup></li>
+      </ul>
+
+      <div class="box" style="margin-top:6px;">
+        <h3 class="h3">補足：Gemini Enterpriseの無料トライアルに注意</h3>
+        <p>Gemini EnterpriseはBusiness版であれば、IT部門のセットアップや営業への問い合わせなしで30日間の無料トライアルをセルフサーブで開始できます<sup class="cite">[12]</sup>。したがって「管理コンソールでトグルがオンになっている」＝「正式に契約済み」とは限らず、実際の契約状況は別途確認が必要です。</p>
+      </div>
+    </div>
+    <div class="page-footer"><span>05　実名データの3段階</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 9a: よくある間違い（メインケース） ============ -->
+  <section class="page" data-toc="cases">
+    <div class="page-body">
+      <div class="eyebrow">06　よくある間違いと正しい対応</div>
+      <h2 class="h2">同じ「Gemini in Workspace」でも、使い方で明暗が分かれる</h2>
+      <p style="margin-top:10px;">ここまでの判定フローとTier分類を理解していても、現場では「良かれと思って」誤った使い方をしてしまうことがあります。最も多いのが、次のケースです。</p>
+
+      <div class="cols2" style="margin-top:12px;">
+        <div class="box stamp">
+          <h3 class="h3">❌ NG例：相談記録をそのまま要約させている</h3>
+          <p>職員が、利用者の氏名・病歴・生活状況を含む相談記録を、法人契約のGemini in Workspaceに貼り付けて「要約して」と依頼している。ISMAP登録済みだから安全だと考えている。</p>
+          <p style="margin-top:8px;"><b>実態：</b>これは<span class="tag stamp">Tier C</span>のデータを<span class="tag warn">Tier B</span>の環境で処理している状態。ISMAP登録（法23条）は満たしていても、①処理地を日本国内に固定できない（法28条・越境移転）、②要配慮個人情報の取得同意が想定範囲を超えている可能性（法20条2項）<sup class="cite">[3]</sup>という2つの問題が残ったままです。</p>
+        </div>
+        <div class="box good">
+          <h3 class="h3">✅ OK例：用途に応じて仕分けている</h3>
+          <p>同じ相談記録でも、案内文の下書き程度なら氏名等を「A様」に置き換えてから、同じGemini in Workspaceで作成。病歴・生活歴を含む要約作業は、正式なTier C構成（第7章）が整うまで人手で行うと決めている。</p>
+          <p style="margin-top:8px;"><b>ポイント：</b>ツールを変えなくても、「何を入れるか」を仕分けるだけでリスクは大きく下がります。困ったら、まず匿名化してからが原則です。</p>
+        </div>
+      </div>
+
+      <h3 class="h3" style="margin-top:16px;">なぜ組織は気づきにくいのか</h3>
+      <p>「ISMAP登録済み」「大手ベンダーの法人契約」という言葉が、安心感を生みやすいためです。しかし第1章・第4章で見たとおり、ISMAP登録（安全管理措置）と、越境移転規制・同意取得（適法な取得・利用）は<b>独立した別の壁</b>です。片方が万全でも、もう片方はクリアできていない、という状態が最も見落とされやすいパターンです。</p>
+
+      <div class="box accent" style="margin-top:10px;">
+        <h3 class="h3">見分け方：3秒でできるセルフチェック</h3>
+        <p>入力しようとしている文章に、①氏名・住所等の直接的な識別子、②病歴・障害・犯罪歴等の要配慮情報、③年代＋地域＋利用施設のような組み合わせ、のいずれかが残っていないか。1つでも該当するなら、それは<span class="tag stamp">Tier C</span>相当の可能性が高く、通常のGemini in Workspaceでの処理は避けるべきタイミングです（判定フローは第2章）。</p>
+      </div>
+    </div>
+    <div class="page-footer"><span>06　よくある間違いと正しい対応</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 9b: よくある間違い（続き2ケース） ============ -->
+  <section class="page">
+    <div class="page-body">
+      <div class="eyebrow">06　よくある間違いと正しい対応（続き）</div>
+      <h2 class="h2">見落としやすい、もう2つのケース</h2>
+
+      <h3 class="h3" style="margin-top:12px;">ケース2：個人のGoogleアカウント・個人契約のAIを業務で使う</h3>
+      <div class="cols2" style="margin-top:6px;">
+        <div class="box stamp">
+          <p><b>NG：</b>職員が自分のスマホの個人Googleアカウント、または個人契約のChatGPT・Geminiアプリで、隙間時間に相談記録の下書きを作っている。</p>
+          <p style="margin-top:8px;"><b>問題：</b>個人プランは既定で学習対象になりうる設定が多く、監査ログもない。退職時のデータ持ち出しを止められず、そもそも法人としての委託契約（法25条）が存在しません。</p>
+        </div>
+        <div class="box good">
+          <p><b>OK：</b>法人契約（Gemini in Workspace等）に一本化し、内規で個人アカウントの業務利用を明示的に禁止している。</p>
+          <p style="margin-top:8px;"><b>ポイント：</b>「便利だから個人アカウントで」を許容した瞬間、監査ログ・DPA・委託先監督のすべてが空白になります。</p>
+        </div>
+      </div>
+
+      <h3 class="h3" style="margin-top:18px;">ケース3：Google AI StudioのAPIキーで自作した社内ツール</h3>
+      <div class="cols2" style="margin-top:6px;">
+        <div class="box stamp">
+          <p><b>NG：</b>情報システム担当者がGoogle AI Studioで発行した無料のAPIキーを使い、社内向けの文書要約ツールを自作。便利なので現場が要配慮個人情報を含む文書もどんどん投入している。</p>
+          <p style="margin-top:8px;"><b>問題：</b>このAPIキーはISMAP対象外の別製品で、データが世界中どこでも保存されうる仕様です<sup class="cite">[13]</sup>。「自分たちで作ったから安心」という思い込みが、実は最も無防備な経路になっている典型例です。</p>
+        </div>
+        <div class="box good">
+          <p><b>OK：</b>同じ機能をVertex AI（Gemini Enterprise Agent Platform）のAPI経由で作り直す。ISMAP登録済みの環境の範囲内に収まります。</p>
+          <p style="margin-top:8px;"><b>ポイント：</b>「内製・自作だから安全」とは限りません。むしろ管理者の目が届きにくく、リスクが放置されやすい経路です。</p>
+        </div>
+      </div>
+
+      <div class="box accent" style="margin-top:18px;">
+        <p>この3つのケースはいずれも、<b>①扱っているデータの機微度</b>と、<b>②実際に使っているツールの体制</b>がずれていることが原因です。ずれに気づいたら、次章（Tier Cの技術構成）で扱う正式な移行を検討してください。</p>
+      </div>
+    </div>
+    <div class="page-footer"><span>06　よくある間違いと正しい対応（続き）</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 10: Tier C 構成 ============ -->
+  <section class="page" data-toc="tierc">
+    <div class="page-body">
+      <div class="eyebrow">07　Tier Cの技術構成</div>
+      <h2 class="h2">要配慮個人情報を実名で扱う場合の、現実的な最適構成</h2>
+      <p style="margin-top:10px;">2026年9月時点で最も現実的なのは、既存のGoogle Cloudインフラは維持しつつ、テキスト生成・要約・音声文字起こしはAWS Bedrockに任せるハイブリッド構成です。ただし<b>AI OCRだけは例外</b>で、自前ホスティングへ切り出します（理由は次頁）。</p>
+
+      <figure>
+        <svg viewBox="0 0 780 282" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、AI OCRは自前ホスティングPaddleOCR、テキスト生成と音声はAWS Bedrockへ振り分けるアーキテクチャ図">
+          <defs><marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="currentColor" /></marker></defs>
+          <rect x="300" y="10" width="180" height="48" rx="8" fill="#F3F6FA" stroke="#B9C6D6" />
+          <text x="390" y="39" text-anchor="middle" style="font-size:13px; font-weight:700;">利用者</text>
+
+          <line x1="390" y1="58" x2="390" y2="92" stroke="currentColor" opacity=".55" marker-end="url(#arr4)" />
+
+          <rect x="280" y="92" width="220" height="58" rx="8" fill="#E4ECF7" stroke="#2857A6" />
+          <text x="390" y="116" text-anchor="middle" style="font-size:13px; font-weight:700; fill:#1B3E7C;">Cloud Run</text>
+          <text x="390" y="135" text-anchor="middle" style="font-size:11.5px; opacity:.8;">GCP・日本リージョン</text>
+
+          <line x1="320" y1="150" x2="130" y2="202" stroke="currentColor" opacity=".55" marker-end="url(#arr4)" />
+          <text x="210" y="182" text-anchor="middle" style="font-size:11.5px; font-weight:700;">保存</text>
+          <line x1="390" y1="150" x2="390" y2="202" stroke="currentColor" opacity=".55" marker-end="url(#arr4)" />
+          <text x="402" y="180" style="font-size:11.5px; font-weight:700;">AI OCR</text>
+          <line x1="460" y1="150" x2="650" y2="202" stroke="currentColor" opacity=".55" marker-end="url(#arr4)" />
+          <text x="570" y="182" text-anchor="middle" style="font-size:11.5px; font-weight:700;">生成・要約・音声</text>
+
+          <rect x="30" y="202" width="200" height="68" rx="8" fill="#F3F6FA" stroke="#B9C6D6" />
+          <text x="130" y="228" text-anchor="middle" style="font-size:13px; font-weight:700;">Firestore</text>
+          <text x="130" y="246" text-anchor="middle" style="font-size:11.5px; opacity:.8;">GCP・データ保存</text>
+
+          <rect x="280" y="202" width="220" height="68" rx="8" fill="#E3F1EA" stroke="#1F7A5C" />
+          <text x="390" y="228" text-anchor="middle" style="font-size:13px; font-weight:700; fill:#1F7A5C;">PaddleOCR（自前）</text>
+          <text x="390" y="246" text-anchor="middle" style="font-size:11.5px; opacity:.8;">Cloud Run CPU・東京</text>
+
+          <rect x="550" y="202" width="200" height="68" rx="8" fill="#F3F6FA" stroke="#B9C6D6" />
+          <text x="650" y="224" text-anchor="middle" style="font-size:13px; font-weight:700;">AWS Bedrock</text>
+          <text x="650" y="242" text-anchor="middle" style="font-size:11.5px; opacity:.8;">Transcribe（音声）</text>
+          <text x="650" y="258" text-anchor="middle" style="font-size:11.5px; opacity:.8;">東京リージョン</text>
+        </svg>
+        <figcaption>図5. データの保存・AI処理は常に日本国内に閉じる。AI OCRだけを自前ホスティングへ、それ以外の生成AI処理はAWS Bedrockへ。クラウド間はキーレス認証。</figcaption>
+      </figure>
+
+      <div class="cols2" style="margin-top:4px;">
+        <div class="box">
+          <h3 class="h3">技術を固めても残る法務対応</h3>
+          <ul class="list" style="font-size:13px; margin:6px 0 0;">
+            <li>利用者への同意取得・プライバシーポリシー改定</li>
+            <li>クラウド事業者とのDPA（データ処理契約）締結</li>
+            <li>委託先とのNDA（秘密保持契約）・業務委託契約</li>
+            <li>3省2ガイドライン相当の組織的措置</li>
+          </ul>
+        </div>
+        <div class="box accent">
+          <h3 class="h3">この構成が変わりうる条件</h3>
+          <p style="font-size:13px;">各社の料金・対応リージョンは半年単位で変わります。契約更新のタイミングで、出典一覧のリンクから再確認することを推奨します。</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>07　Tier Cの技術構成</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 11: なぜこの構成か ============ -->
+  <section class="page">
+    <div class="page-body">
+      <div class="eyebrow">07　なぜこの構成が現実的か</div>
+      <h2 class="h2">コストと精度、両方の一次情報が同じ結論を指す</h2>
+
+      <h3 class="h3" style="margin-top:12px;">コスト構造</h3>
+      <p>Gemini 3.5 Flashを日本リージョン（asia-northeast1）で使う場合、標準従量課金（Standard PayGo）は非対応です<sup class="cite">[9]</sup>。利用できるのは単一ゾーンのProvisioned Throughputのみで、購入には「Google Cloudアカウント担当者への問い合わせ」が必須の個別契約になります<sup class="cite">[10]</sup>。公式料金ページの試算例では、月額 <span class="mono" style="font-weight:700;">$2,700 × GSU数</span> という水準が示されています<sup class="cite">[11]</sup>。小規模な組織には現実的ではありません。対して、AWS Bedrock（Nova系・Claude系）は固定費なしの従量課金のまま、東京リージョン内で完結します<sup class="cite">[8]</sup>。</p>
+
+      <h3 class="h3" style="margin-top:14px;">日本語OCR精度の実機比較</h3>
+      <p>実際の日本語書類（旧字体異体字・類似漢字・事業所名の紛らわしいペア等）を使った実機検証では、AWS Bedrock（Claude／Nova系）は特定の漢字を再現性ある形で誤読することが確認されました。自前ホスティングのPaddleOCRは、Gemini系とほぼ同水準の精度を達成しています<sup class="cite">[†]</sup>。</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>モデル</th><th>正解率（96判定中）</th><th>備考</th></tr></thead>
+          <tbody>
+            <tr><td>Gemini 2.5 Flash</td><td class="mono">100%</td><td>2026年10月20日一般提供終了・2027年3月31日完全廃止のため除外</td></tr>
+            <tr><td>Gemini 3.5 Flash</td><td class="mono">99%（95/96）</td><td></td></tr>
+            <tr><td><b>PaddleOCR（自前ホスティング）</b></td><td class="mono">98%（94/96）</td><td>Apache 2.0、東京リージョンCloud Run運用可</td></tr>
+            <tr><td>AWS Bedrock Claude Sonnet 4.5</td><td class="mono">約87.5%</td><td></td></tr>
+            <tr><td>AWS Bedrock Claude Haiku 4.5</td><td class="mono">62.5〜75%</td><td>enum制約等の改善後の数値</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size:var(--fs-caption); color:#5A6B84;">評価軸：OCRテキストを既知のマスターリストにfuzzy matchで解決できるかという、実運用に即した基準<sup class="cite">[†]</sup>。いずれのモデルも「誤って別の実在レコードに確定する」危険な誤りは検証全体を通じて0件でした。</p>
+    </div>
+    <div class="page-footer"><span>07　なぜこの構成が現実的か</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 12: 法務対応4軸 ============ -->
+  <section class="page" data-toc="legal">
+    <div class="page-body">
+      <div class="eyebrow">08　技術を固めても残るもの</div>
+      <h2 class="h2">4つの軸——積み上げれば完了するもの、しないもの</h2>
+      <p style="margin-top:10px;">アーキテクチャ（②）・NDA・DPA（③）・同意書（①）・ログ整備（④）を積み上げれば自動的に「合格」になる、というチェックリストではありません。要配慮個人情報を扱う体制は、性質の異なる次の4つの軸に分けて確認する必要があります。</p>
+
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th style="width:5%;">#</th><th style="width:16%;">軸</th><th style="width:20%; white-space:nowrap;">該当条文</th><th>何を見れば確認できるか</th></tr></thead>
+          <tbody>
+            <tr><td class="mono">①</td><td>適法な取得・利用</td><td class="mono" style="white-space:nowrap;">17・18・20②・21条</td><td><b>運営者の契約書・プライバシーポリシー実物のみ</b>。AI・コードからは確認不可能</td></tr>
+            <tr><td class="mono">②</td><td>安全管理措置</td><td class="mono" style="white-space:nowrap;">23条</td><td>アーキテクチャ調査で確認可能</td></tr>
+            <tr><td class="mono">③</td><td>委託先の監督</td><td class="mono" style="white-space:nowrap;">25条</td><td>NDA・DPA等の契約書の有無に加え、監督の実施記録（評価・監査履歴）まで必要</td></tr>
+            <tr><td class="mono">④</td><td>追跡可能性</td><td class="mono" style="white-space:nowrap;">23条（運用面）</td><td>ログ基盤の設定に加え、実際の保持運用の確認まで必要</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box stamp" style="margin-top:8px;">
+        <h3 class="h3">①〜④を全部満たしても、「もう終わり」にはならない</h3>
+        <p><b>②③④は「運営者⇔ベンダー」間の技術・契約対応</b>で、委託先とのNDA・DPA締結（③）、アーキテクチャ整備（②）、ログ基盤の構築（④）という形で一度体制を整えれば、基本的に完了したと言えます。しかし<b>①だけは「運営者⇔本人（サービス利用者）」間の同意</b>で、ベンダーとのNDA・DPA（③）をどれだけ強化しても①の代わりにはなりません。「同意書のひな形を用意した」ことと「既存の利用者全員から実際に同意を取得済みである」ことはまったく別の問題です。<b>つまり、新しい利用者と契約するたびに、その都度本人から同意書を取得する必要がある</b>ということであり、一度整えれば終わる話ではありません。</p>
+      </div>
+
+      <h3 class="h3" style="margin-top:16px;">マルチベンダー構成はコンプライアンス上むしろ改善しうる</h3>
+      <p>「単一の生成AIベンダーに全タスクを寄せる」構成から、「最も機微データ密度が高い処理（例：生文書画像のOCR）だけを自前ホスティングに切り出し、それ以外を用途別に別ベンダーへ振り分ける」構成に変えると、生の機微データに触れる第三者事業者の数はむしろ減る方向に働きます。ベンダーを増やす＝リスク増、という直感は必ずしも正しくありません。ただし、既存の同意書・プライバシーポリシーが新しい委託先を含む処理を許容する記載になっているかは、都度レビューが必要です。</p>
+    </div>
+    <div class="page-footer"><span>08　技術を固めても残る法務対応</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 13: まとめ ============ -->
+  <section class="page" data-toc="summary">
+    <div class="page-body">
+      <div class="eyebrow">09　まとめ</div>
+      <h2 class="h2">今日からできること、正直まだできないこと</h2>
+
+      <div class="cols2" style="margin-top:14px;">
+        <div class="box good">
+          <h3 class="h3">✅ 今日からできる</h3>
+          <p>個人が特定されない一般的な文章生成・要約・案内文は、今使っているツールのままで問題ありません。氏名・住所・生年月日等を仮名（A様、B様等）に置き換えれば、活用の幅はかなり広がります。「困ったら、まず匿名化してから」を職場のルールにするだけで効果があります。</p>
+        </div>
+        <div class="box stamp">
+          <h3 class="h3">❌ 正直、まだできない</h3>
+          <p>利用者の実名と病歴・生活歴等を<b>そのまま</b>一般的なAIツールに入力すること。「今の契約・今のツールのまま」でこれを安全にクリアする方法は、2026年9月時点では存在しません。期待を持たせすぎないよう、はっきりお伝えします。</p>
+        </div>
+      </div>
+
+      <h3 class="h3" style="margin-top:20px;">組織として計画的に準備すべきこと</h3>
+      <p>要配慮個人情報を実名で扱えるようにするには、個人のスマホ設定のように「その場で解決すること」ではなく、<b>システム構築と契約整理を伴う一定規模のプロジェクト</b>として進める必要があります。</p>
+      <ul class="list">
+        <li>Tier C対応の技術基盤の構築（Gemini Enterprise日本ロケーション、またはAWS Bedrock等を用いたハイブリッド構成）</li>
+        <li>費用感の見積もりと予算確保（固定費が発生する構成もあるため事前の比較検討が必要）</li>
+        <li>ISMAP登録範囲の個別確認（前章②）、クラウド事業者とのDPA締結（前章③）</li>
+        <li>3省2ガイドライン相当の組織的措置の整備</li>
+        <li>利用者への同意取得（前章①）・プライバシーポリシーの改定</li>
+      </ul>
+      <p>これらは技術・法務の両面にまたがる専門的な整理が必要で、片手間で進めるのは現実的ではありません。まずは「誰が意思決定者で、いつまでにどの範囲を実現したいか」を組織内で確認するところから始めることをおすすめします。</p>
+    </div>
+    <div class="page-footer"><span>09　まとめ</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 14: 出典一覧 ============ -->
+  <section class="page" data-toc="refs">
+    <div class="page-body">
+      <div class="eyebrow">出典一覧</div>
+      <h2 class="h2" style="font-size:24px;">すべて公式ドキュメント・公式ポータルで直接確認</h2>
+      <p style="margin-top:8px; font-size:var(--fs-small);">本文中の番号 [n] に対応します。いずれも2026年9月時点で内容を直接確認しています。</p>
+
+      <div class="refs-grid" style="margin-top:10px;">
+        <div>
+          <div class="refs-cat">法令・個人情報保護</div>
+          <ul class="refs">
+            <li id="r1"><span class="refnum">1.</span> 個人情報保護法ガイドライン（外国にある第三者への提供編）｜個人情報保護委員会 — <a href="https://www.ppc.go.jp/personalinfo/legal/guidelines_offshore/" target="_blank" rel="noopener noreferrer">ppc.go.jp/personalinfo/legal/guidelines_offshore</a></li>
+            <li id="r2"><span class="refnum">2.</span> 個人情報の保護に関する法律第28条に基づくEU及び英国の指定の見直しに関する報告書｜個人情報保護委員会事務局 — <a href="https://www.ppc.go.jp/files/pdf/20230322_review_report.pdf" target="_blank" rel="noopener noreferrer">ppc.go.jp/files/pdf/20230322_review_report.pdf</a></li>
+            <li id="r3"><span class="refnum">3.</span> 個人情報保護法ガイドライン（通則編）｜個人情報保護委員会 — <a href="https://www.ppc.go.jp/personalinfo/legal/guidelines_tsusoku/" target="_blank" rel="noopener noreferrer">ppc.go.jp/personalinfo/legal/guidelines_tsusoku</a></li>
+          </ul>
+
+          <div class="refs-cat">ISMAP</div>
+          <ul class="refs">
+            <li id="r4"><span class="refnum">4.</span> ISMAPポータル公式KB0010826（IaaS/PaaS上のSaaSは別途登録が必要という原則） — <a href="https://www.ismap.go.jp/csm?id=kb_article_view&sysparm_article=KB0010826" target="_blank" rel="noopener noreferrer">ismap.go.jp（KB0010826）</a></li>
+            <li id="r5"><span class="refnum">5.</span> ISMAPクラウドサービスリスト｜ISMAPポータル公式 — <a href="https://www.ismap.go.jp/csm?id=cloud_service_list" target="_blank" rel="noopener noreferrer">ismap.go.jp/csm?id=cloud_service_list</a></li>
+            <li id="r6"><span class="refnum">6.</span> ISMAPポータル公式KB0011070（生成AIサービスに関する留意点について） — <a href="https://www.ismap.go.jp/csm?id=kb_article_view&sysparm_article=KB0011070" target="_blank" rel="noopener noreferrer">ismap.go.jp（KB0011070）</a></li>
+            <li id="r7"><span class="refnum">7.</span> Gemini Enterprise・NotebookLM Enterprise の ISMAP登録を完了｜Google Cloud公式ブログ — <a href="https://cloud.google.com/blog/ja/products/gcp/completed-ismap-registration-for-gemini-enterprise-and-notebooklm-enterprise" target="_blank" rel="noopener noreferrer">cloud.google.com/blog/ja/...ismap-registration</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="refs-cat">クラウド料金・データ所在地</div>
+          <ul class="refs">
+            <li id="r8"><span class="refnum">8.</span> Amazon Bedrock は ISMAP の言明対象であることについての考え方｜AWS公式ブログ — <a href="https://aws.amazon.com/jp/blogs/news/amazon-bedrock-ismap/" target="_blank" rel="noopener noreferrer">aws.amazon.com/jp/blogs/news/amazon-bedrock-ismap</a></li>
+            <li id="r9"><span class="refnum">9.</span> Gemini 3.5 Flash モデルページ｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-flash" target="_blank" rel="noopener noreferrer">docs.cloud.google.com/.../3-5-flash</a></li>
+            <li id="r10"><span class="refnum">10.</span> プロビジョンド スループットを購入する｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/purchase-provisioned-throughput" target="_blank" rel="noopener noreferrer">docs.cloud.google.com/.../purchase-provisioned-throughput</a></li>
+            <li id="r11"><span class="refnum">11.</span> Agent Platform の料金｜Google Cloud公式 — <a href="https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing" target="_blank" rel="noopener noreferrer">cloud.google.com/.../generative-ai/pricing</a></li>
+            <li id="r12"><span class="refnum">12.</span> Gemini Enterprise app FAQ（30日間無料トライアル）｜Google Cloud公式 — <a href="https://cloud.google.com/gemini-enterprise/faq" target="_blank" rel="noopener noreferrer">cloud.google.com/gemini-enterprise/faq</a></li>
+            <li id="r13"><span class="refnum">13.</span> Gemini API 利用規約｜Google AI for Developers公式 — <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">ai.google.dev/gemini-api/terms</a></li>
+            <li id="r14"><span class="refnum">14.</span> Google Workspace「生成AIに関する情報」開示書（Google LLC提出、ISMAPポータル） — <a href="https://www.ismap.go.jp/sys_attachment.do?sys_id=4fe2e2e52b2107d0f0bbfd69fe91bf04" target="_blank" rel="noopener noreferrer">ismap.go.jp（開示書PDF）</a></li>
+          </ul>
+
+          <div class="refs-cat">非公開の社内検証</div>
+          <p style="font-size:12.5px; color:#5A6B84; margin-top:2px;"><span class="mono" style="font-weight:700;">[†]</span> 日本語OCR精度の比較（p.13）は、実際の業務文書を用いた社内実機検証に基づく知見です。公開されている一次情報へのリンクはありません。数値の再現性は検証環境に依存します。</p>
+        </div>
+      </div>
+
+      <p style="margin-top:20px; font-size:var(--fs-caption); color:#5A6B84; border-top:1px solid #E4E8EE; padding-top:12px;">本資料は2026年9月22日時点で確認できた公式一次情報に基づく技術的整理です。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。</p>
+    </div>
+    <div class="page-footer"><span>出典一覧</span><span class="pn"></span></div>
+  </section>
+
+</div>
+
+<script>
+(function(){
+  var pages = Array.prototype.slice.call(document.querySelectorAll('.page'));
+  pages.forEach(function(p, i){
+    var pn = p.querySelector('.pn');
+    if (pn) pn.textContent = (i+1) + ' / ' + pages.length;
+  });
+  var pageIndexByToc = {};
+  pages.forEach(function(p, i){
+    var key = p.getAttribute('data-toc');
+    if (key) pageIndexByToc[key] = i + 1;
+  });
+  document.querySelectorAll('[data-toc-target]').forEach(function(el){
+    var key = el.getAttribute('data-toc-target');
+    var n = pageIndexByToc[key];
+    el.textContent = n ? ('p.' + n) : '';
+  });
+})();
+</script>
+
+</body>
+</html>

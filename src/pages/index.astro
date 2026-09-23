@@ -3,6 +3,8 @@ import '../styles/theme.css';
 import Report, { frontmatter } from '../content/personal-info-generative-ai.mdx';
 
 const canonical = new URL(Astro.url.pathname, Astro.site).toString();
+const pdfHref = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/downloads/pii-genai-guide.pdf`;
+const deckHref = `${import.meta.env.BASE_URL.replace(/\/+$/, '')}/deck/`;
 ---
 
 <!DOCTYPE html>
@@ -48,8 +50,17 @@ const canonical = new URL(Astro.url.pathname, Astro.site).toString();
           <span class="gp-badge">最終確認 {frontmatter.lastUpdated}</span>
           <span class="gp-badge">一次情報ベース・出典14件</span>
           <span class="gp-badge">対象：個人情報を扱う全ての組織</span>
-          <button type="button" class="gp-print-button" onclick="window.print()">
-            🖨 印刷 / PDF保存
+        </div>
+
+        <div class="mt-4 flex flex-wrap items-center gap-2">
+          <a href={pdfHref} download="個人情報-生成AI-実務ガイド.pdf" class="gp-download-button">
+            📄 PDF版をダウンロード（A4横・16ページ）
+          </a>
+          <a href={deckHref} class="gp-print-link" style="text-decoration:none;">
+            PDFと同じレイアウトで読む ↗
+          </a>
+          <button type="button" class="gp-print-link" onclick="window.print()">
+            🖨 このページを印刷
           </button>
         </div>
 
