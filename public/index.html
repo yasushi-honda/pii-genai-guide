@@ -181,7 +181,7 @@
   ul.refs a{ word-break:break-all; }
 
   ul.ck{ list-style:none; margin:6px 0 0; padding:0; font-size:12.5px; line-height:1.6; }
-  ul.ck li{ position:relative; padding-left:20px; margin-bottom:5px; }
+  ul.ck li{ position:relative; padding-left:20px; margin-bottom:4px; }
   ul.ck li::before{ content:""; position:absolute; left:1px; top:4px; width:10px; height:10px; border:1.5px solid #2857A6; border-radius:2px; background:#fff; }
   .toc-list{ list-style:none; margin:12px 0 0; padding:0; }
   .toc-list li{
@@ -872,17 +872,17 @@
     <div class="page-body">
       <div class="eyebrow">10　チェックリスト</div>
       <h2 class="h2">ここまで整えば、要配慮個人情報を実名で入れてよい前提環境と整理できる</h2>
-      <p style="margin-top:8px; font-size:var(--fs-small);">次の5区分すべてにチェックがつけば、本資料は「要配慮個人情報を実名で入力してよい前提環境が整った」と整理します。これは本資料の推奨水準による整理で、法的な保証ではありません。運用を始める前に、法務・個人情報保護の専門家に確認してください。</p>
+      <p style="margin-top:8px; font-size:var(--fs-small);">民間の個人情報取扱事業者について、次の5区分すべてにチェックがつけば、本資料は「要配慮個人情報を実名で入力してよい前提環境が整った」と整理します（自治体・行政機関等は第5章のため別途整理が必要。第3章の補足）。推奨水準による整理で法的な保証ではなく、運用開始前に専門家へ確認してください。</p>
 
       <div class="cols2" style="margin-top:10px;">
         <div class="box">
           <h3 class="h3" style="font-size:15px;">A　本人・目的・契約（法的な最低線）</h3>
           <ul class="ck">
             <li>利用目的にAI利用を含めて特定し、通知・公表した（法17・21条）。取得済みの記録は、取得時の利用目的の範囲内か確認し、範囲外なら本人の同意等を得た（法18条）</li>
-            <li>要配慮個人情報の取得に本人の同意を得て記録した。判断能力が十分でない方は法定代理人の同意（法20条2項）<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup></li>
-            <li>委託先（AI・クラウド事業者）と、扱いの範囲・目的外利用の禁止・再委託・事故時の連絡を契約で定め、監督の記録を残した（法25条）</li>
+            <li>要配慮個人情報の取得に本人の同意を得て記録した（判断能力が十分でない方は法定代理人の同意）（法20条2項）<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup></li>
+            <li>委託先と、扱いの範囲・目的外利用の禁止・再委託・事故時の連絡を契約で定め、監督の記録を残した（法25条）</li>
             <li>入力が学習等に使われないことを、契約・設定で確認した<sup class="cite"><a href="#r23" title="出典一覧 [23] へ移動">[23]</a></sup></li>
-            <li>国外で処理される場合は、外国名等を示して同意を得た。国内で完結する構成なら、提供先が「外国にある第三者」に当たらない整理を契約等で確認した（法28条）<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup></li>
+            <li>国外処理は外国名等を示して同意を得た。国内完結なら、提供先が「外国にある第三者」に当たらない整理を契約等で確認した（法28条）<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup></li>
           </ul>
         </div>
         <div class="box">
@@ -902,8 +902,8 @@
           <h3 class="h3" style="font-size:15px;">C　運用・体制</h3>
           <ul class="ck">
             <li>組織的・人的・物理的・技術的な安全管理措置を規程にし、実際に運用されていることを点検・教育の記録で確認した（法23条）</li>
-            <li>個人アカウント・無料版・未契約ツールの業務利用を禁止した</li>
-            <li>入力前の仕分けルール（匿名化できるものは匿名化）を定めた</li>
+            <li>3省2ガイドライン相当の組織的措置（第7.0版・第2.0版を参考）を整えた</li>
+            <li>個人アカウント・無料版・未契約ツールの業務利用を禁止し、入力前の仕分けルール（匿名化できるものは匿名化）を定めた</li>
             <li>漏えい等が起きたときの、PPCへの報告と本人への通知の手順を定めた（法26条）</li>
           </ul>
         </div>
