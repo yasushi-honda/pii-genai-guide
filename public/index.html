@@ -401,7 +401,7 @@
           <rect x="630" y="184" width="250" height="76" rx="10" class="box2" />
           <text x="755" y="208" text-anchor="middle" class="a" style="font-weight:700;">通常の個人情報</text>
           <text x="755" y="226" text-anchor="middle" class="a">ISMAP登録済クラウド＋DPA＋</text>
-          <text x="755" y="242" text-anchor="middle" class="a">同意があれば利用可</text>
+          <text x="755" y="242" text-anchor="middle" class="a">必要な場面で同意があれば利用可</text>
           <text x="755" y="258" text-anchor="middle" class="a">（越境移転規制に注意 → 第3章）</text>
 
           <line x1="340" y1="284" x2="340" y2="320" stroke="currentColor" opacity=".55" marker-end="url(#arr2)" />
@@ -424,7 +424,7 @@
           <text x="760" y="386" text-anchor="middle" class="a">日本ロケーション対応の</text>
           <text x="760" y="400" text-anchor="middle" class="a">サービス＋組織的措置（→第7章）</text>
         </svg>
-        <figcaption>図2. 個人情報のレベル別判定フロー。DPA＝データ処理契約（第8章で詳述）。3省2ガイドライン＝厚生労働省・総務省・経済産業省が定める医療情報の安全管理ガイドライン群（第7章補足参照）。第2・第3問の要件は法令の最低要件ではなく、本資料が安全側に整理した推奨水準で、実際には法17〜28条の個別の充足が必要。</figcaption>
+        <figcaption>図2. 個人情報のレベル別判定フロー。DPA＝データ処理契約（第8章で詳述）。3省2ガイドライン＝厚生労働省・総務省・経済産業省が定める医療情報の安全管理ガイドライン群（第3章補足参照）。第2・第3問の要件は法令の最低要件ではなく、本資料が安全側に整理した推奨水準で、実際には法17〜28条の個別の充足が必要。</figcaption>
       </figure>
     </div>
     <div class="page-footer"><span>02　判定フロー</span><span class="pn"></span></div>
@@ -557,7 +557,7 @@
       <p style="margin-top:10px;">ISMAP（政府情報システムのためのセキュリティ評価制度）は、国家サイバー統括室・デジタル庁・総務省・経済産業省が所管し、IPA（情報処理推進機構）が運用支援機関として実務を担う、令和2年1月30日決定の基本的枠組みに基づく制度です<sup class="cite"><a href="#r31" title="出典一覧 [31] へ移動">[31]</a></sup>。評価済のクラウドサービスは、ISMAPクラウドサービスリストに登録番号とともに掲載されます<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。</p>
 
       <div style="margin-top:4px;">
-        <p style="font-size:var(--fs-small);">ISMAPは政府のクラウド調達の制度で、民間事業者に登録サービスの利用を求める規定は個人情報保護法・ガイドライン・Q&amp;Aにありません（本文で確認）。安全管理措置（法23条）の検討では水準の目安の一つです。政府機関等が生成AIを使う場合は、ISMAPとは別のリスク対応が必要です<sup class="cite"><a href="#r6" title="出典一覧 [6] へ移動">[6]</a></sup>。</p>
+        <p style="font-size:var(--fs-small);">ISMAPは政府のクラウド調達の制度で、民間事業者に登録サービスの利用を求める規定は、法令本文・通則編・外国提供編・Q&amp;Aでは確認できませんでした<sup class="cite"><a href="#r27" title="出典一覧 [27] へ移動">[27]</a></sup><sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup><sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。安全管理措置（法23条）の検討では水準の目安の一つです。政府機関等が生成AIを使う場合は、ISMAPとは別のリスク対応が必要です<sup class="cite"><a href="#r6" title="出典一覧 [6] へ移動">[6]</a></sup>。</p>
       </div>
 
 
@@ -747,8 +747,8 @@
           <text x="390" y="246" text-anchor="middle" style="font-size:11.5px; opacity:.8;">Cloud Run CPU・東京</text>
 
           <rect x="550" y="202" width="200" height="68" rx="8" fill="#F3F6FA" stroke="#B9C6D6" />
-          <text x="650" y="224" text-anchor="middle" style="font-size:13px; font-weight:700;">AWS Bedrock</text>
-          <text x="650" y="242" text-anchor="middle" style="font-size:11.5px; opacity:.8;">Transcribe（音声）</text>
+          <text x="650" y="224" text-anchor="middle" style="font-size:13px; font-weight:700;">AWS Bedrock／Transcribe</text>
+          <text x="650" y="242" text-anchor="middle" style="font-size:11.5px; opacity:.8;">生成・要約／音声文字起こし</text>
           <text x="650" y="258" text-anchor="middle" style="font-size:11.5px; opacity:.8;">日本国内に限定して利用</text>
         </svg>
         <figcaption>図5. データの保存・AI処理は常に日本国内に閉じる。AI OCRだけを自前ホスティングへ、それ以外の生成AI処理はAWS Bedrockへ（日本国内限定の推論プロファイルを指定<sup class="cite"><a href="#r21" title="出典一覧 [21] へ移動">[21]</a></sup><sup class="cite"><a href="#r22" title="出典一覧 [22] へ移動">[22]</a></sup>）。クラウド間はキーレス認証。</figcaption>
@@ -917,7 +917,7 @@
           <div class="refs-cat">法令・個人情報保護委員会（追補）</div>
           <ul class="refs">
             <li id="r27"><span class="refnum">27.</span> 個人情報の保護に関する法律（平成15年法律第57号）｜e-Gov法令検索 — <a href="https://laws.e-gov.go.jp/law/415AC0000000057" target="_blank" rel="noopener noreferrer">laws.e-gov.go.jp/law/415AC0000000057</a></li>
-            <li id="r15"><span class="refnum">15.</span> 個人情報保護法 Q&amp;A（Q7-53・Q10-25）｜個人情報保護委員会 — <a href="https://www.ppc.go.jp/personalinfo/faq/APPI_QA/" target="_blank" rel="noopener noreferrer">ppc.go.jp/personalinfo/faq/APPI_QA</a></li>
+            <li id="r15"><span class="refnum">15.</span> 個人情報保護法 Q&amp;A（Q7-53・Q10-25・Q12-3・Q12-4）｜個人情報保護委員会 — <a href="https://www.ppc.go.jp/personalinfo/faq/APPI_QA/" target="_blank" rel="noopener noreferrer">ppc.go.jp/personalinfo/faq/APPI_QA</a></li>
             <li id="r16"><span class="refnum">16.</span> 令和８年 改正個人情報保護法について（令和8年7月17日公布）｜個人情報保護委員会 — <a href="https://www.ppc.go.jp/personalinfo/legal/r8kaiseihogohou/" target="_blank" rel="noopener noreferrer">ppc.go.jp/personalinfo/legal/r8kaiseihogohou</a></li>
             <li id="r23"><span class="refnum">23.</span> 生成AIサービスの利用に関する注意喚起等（令和5年6月2日）｜個人情報保護委員会 — <a href="https://www.ppc.go.jp/files/pdf/230602_alert_generative_AI_service.pdf" target="_blank" rel="noopener noreferrer">ppc.go.jp/files/pdf/230602_alert_generative_AI_service.pdf</a></li>
             <li id="r28"><span class="refnum">28.</span> 医療・介護関係事業者における個人情報の適切な取扱いのためのガイダンス｜個人情報保護委員会（ガイドライン一覧） — <a href="https://www.ppc.go.jp/personalinfo/legal/guidelines/#iryokanren" target="_blank" rel="noopener noreferrer">ppc.go.jp/personalinfo/legal/guidelines</a></li>
