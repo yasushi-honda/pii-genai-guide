@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  元PDF「個人情報×生成AI 実務ガイド」(A4横・19ページ) と同一の固定レイアウトHTML。
+  元PDF「個人情報×生成AI 実務ガイド」(A4横・20ページ) と同一の固定レイアウトHTML。
   サイトのルート(/)としてそのまま配信される単一ソース。
   scripts/generate-pdf.mjs がこのファイルを開いて public/downloads/pii-genai-guide.pdf を生成する。
   本文を更新したら `pnpm generate:pdf` を再実行してPDFを再生成すること。
@@ -191,7 +191,7 @@
   }
   .toc-list .tn{ font-family:var(--font-mono); color:#2857A6; font-weight:700; width:30px; flex:none; }
   .toc-list .tt{ flex:1; font-weight:700; }
-  .toc-list .ts{ color:#5A6B84; font-size:12.5px; font-weight:400; display:block; margin-top:2px; }
+  .toc-list .ts{ color:#5A6B84; font-size:12.5px; font-weight:400; display:block; margin-top:0; }
   .toc-list .tp{ font-family:var(--font-mono); color:#5A6B84; font-size:12.5px; }
   .toc-list a.toc-link{ display:flex; align-items:baseline; gap:10px; flex:1; color:inherit; text-decoration:none; }
   .toc-list a.toc-link:hover .tt, .toc-list a.toc-link:focus-visible .tt{ color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
@@ -277,9 +277,10 @@
         <li><a class="toc-link" href="#sec-legal"><span class="tn">08</span><span class="tt">技術を固めても残る法務対応<span class="ts">積み上げれば完了する軸と、終わりのない軸の違い</span></span><span class="tp" data-toc-target="legal"></span></a></li>
         <li><a class="toc-link" href="#sec-summary"><span class="tn">09</span><span class="tt">まとめ：今日からできること<span class="ts">できること・まだできないこと・準備すべきこと</span></span><span class="tp" data-toc-target="summary"></span></a></li>
         <li><a class="toc-link" href="#sec-checklist"><span class="tn">10</span><span class="tt">入力してよい環境のチェックリスト<span class="ts">ここまで整えば入力してよい前提環境と整理する</span></span><span class="tp" data-toc-target="checklist"></span></a></li>
+        <li><a class="toc-link" href="#sec-sectors"><span class="tn">11</span><span class="tt">福祉の業種別早見表<span class="ts">介護・障害福祉・救護施設など、業種ごとの規律と医療情報の混入</span></span><span class="tp" data-toc-target="sectors"></span></a></li>
         <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、32件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
       </ul>
-      <p style="margin-top:24px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
+      <p style="margin-top:10px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
     </div>
     <div class="page-footer"><span>個人情報×生成AI 実務ガイド</span><span class="pn"></span></div>
   </section>
@@ -879,7 +880,7 @@
     <div class="page-body">
       <div class="eyebrow">10　チェックリスト</div>
       <h2 class="h2">ここまで整えば、要配慮個人情報を実名で入れてよい前提環境と整理できる</h2>
-      <p style="margin-top:8px; font-size:var(--fs-small);">民間の個人情報取扱事業者について、次の5区分すべてにチェックがつくことを、「要配慮個人情報を実名で入力してよい前提環境」の必要条件の整理とします（合格判定や十分条件ではありません。自治体・行政機関等は個人情報保護法の第5章のため別途整理が必要。本資料第3章の補足）。推奨水準による整理で法的な保証ではなく、運用開始前に専門家へ確認してください。</p>
+      <p style="margin-top:8px; font-size:var(--fs-small);">民間の個人情報取扱事業者について、次の5区分すべてのチェックを、「要配慮個人情報を実名で入力してよい前提環境」の必要条件とします（十分条件や法的保証ではありません。自治体・行政機関等は法の第5章のため別途整理。運用前に専門家へ確認してください）。</p>
 
       <div class="cols2" style="margin-top:10px;">
         <div class="box">
@@ -910,7 +911,7 @@
           <ul class="ck">
             <li>組織的・人的・物理的・技術的な安全管理措置を規程にし、実際に運用されていることを点検・教育の記録で確認した（法23条）</li>
             <li>3省2ガイドライン相当の組織的措置（第7.0版・第2.0版を参考）を整えた</li>
-            <li>個人アカウント・無料版・未契約ツールの業務利用を禁止し、入力前の仕分けルール（匿名化できるものは匿名化）を定めた</li>
+            <li>個人アカウント・無料版・未契約ツールの業務利用を禁止し、入力前の仕分けルール（匿名化、居場所等の所在情報は入力しない）を定めた</li>
             <li>漏えい等が起きたときの、PPCへの報告と本人への通知の手順を定めた（法26条）</li>
           </ul>
         </div>
@@ -921,11 +922,44 @@
             <li>法務・個人情報保護の専門家に確認し、結果を記録した</li>
             <li>見直しの契機と担当者を決め、年1回の再確認日を設定した</li>
           </ul>
-          <p style="margin-top:6px; font-size:12.5px;"><b>見直す契機：</b>PPCが生成AIの新しい考え方を示したとき、令和8年改正法の政令・施行日が決まったとき、基盤・契約相手・主要なモデルを変えるとき、事故が起きたとき。</p>
+          <p style="margin-top:6px; font-size:12.5px;"><b>見直す契機：</b>PPCが生成AIの考え方を示したとき、改正法の政令・施行日が決まったとき、基盤・契約相手・主要モデルを変えるとき、事故が起きたとき。</p>
         </div>
       </div>
     </div>
     <div class="page-footer"><span>10　チェックリスト</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 13d: 福祉の業種別早見表 ============ -->
+  <section class="page" id="sec-sectors" data-toc="sectors">
+    <div class="page-body">
+      <div class="eyebrow">11　業種別</div>
+      <h2 class="h2">福祉の業種別早見表：どの規律か、医療情報が混ざるかを確認する</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">運営形態（設置主体）で規律が変わります。民間の事業者は第4章、国の機関・地方公共団体・独立行政法人等は第5章です（法16条2項）<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。表は確認の入口です。</p>
+
+      <div class="tbl-wrap" style="margin:6px 0 4px;">
+        <table style="font-size:12px;">
+          <thead><tr><th style="width:16%;">業種・運営形態</th><th style="width:25%;">個人情報保護法の規律</th><th style="width:27%;">医療情報の混入</th><th>要配慮・注意</th></tr></thead>
+          <tbody>
+            <tr><td>介護（医療職の関与が薄い）</td><td>民間は第4章</td><td>医療従事者の指示に基づく情報を扱わない前提を、契約と項目の仕分けで確認</td><td>病歴・心身の障害に当たる情報は要配慮</td></tr>
+            <tr><td>介護（訪問看護・老健など医療職が関与）</td><td>民間は第4章。医療情報ガイドラインが加わりうる</td><td>混入しやすい。介護事業者のシステムでも、医療従事者の指示に基づく情報を扱えば第2.0版の対象<sup class="cite"><a href="#r25" title="出典一覧 [25] へ移動">[25]</a></sup></td><td>診療・調剤の事実は要配慮（政令2条）</td></tr>
+            <tr><td>障害福祉・児童福祉</td><td>民間は第4章、公立は第5章</td><td>事業所ごとに確認（医療的ケア、服薬記録など）</td><td>障害福祉サービスの利用事実は要配慮<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。未成年は法定代理人の同意</td></tr>
+            <tr><td>救護施設（社会福祉法人など）</td><td>第4章。社会福祉法人・日本赤十字社も設置できる（生活保護法41条）</td><td>入所・入院の経路で医療情報が入りうる。看護職の配置は確認</td><td>対象は著しい障害のある要保護者（同法38条2項）。要配慮前提</td></tr>
+            <tr><td>救護施設（自治体設置・指定管理）</td><td>自治体設置は第5章。指定管理者は公の施設の管理業務に安全管理措置の規律が準用（法66条2項）</td><td>同上</td><td>本資料では参考。所管部門・条例を確認</td></tr>
+            <tr><td>女性支援・暴力被害者の保護</td><td>運営主体により第4章か第5章</td><td>同上</td><td>暴力被害の事実は、刑事手続に着手されたものが要配慮（通則編）。居所の漏えいは安全に直結</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box stamp" style="margin-top:6px;">
+        <h3 class="h3" style="font-size:15px;">所在情報（居所・避難先・連絡先）は、AIに入力する対象から外す</h3>
+        <ul class="list" style="font-size:12.5px; margin:4px 0 0;">
+          <li><b>法令：</b>暴力被害の事実が要配慮に当たるのは刑事手続に着手されたもの（通則編）で、所在情報は別の問題です。配偶者暴力防止法23条は、被害者の保護に職務上関係のある者に、安全の確保と秘密の保持への配慮を求めます（施設への当てはめは個別確認）。</li>
+          <li><b>推奨水準：</b>居所・避難先・連絡先は、匿名化とは別に、AIに入力しない。氏名と所在を同じ環境に置かない。必要なら責任者が目的と範囲を決めて記録する。</li>
+          <li><b>理由：</b>漏えいが被害者の生命・安全に直結しうるため、第2章の区分とは別に判断します。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="page-footer"><span>11　福祉の業種別早見表</span><span class="pn"></span></div>
   </section>
 
   <!-- ============ PAGE 14: 出典一覧 ============ -->
