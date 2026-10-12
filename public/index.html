@@ -475,7 +475,7 @@
       <p>法28条が問題になるのは、個人データの提供先が<b>「外国にある第三者」</b>に当たる場合です。判断の軸はデータセンターの所在地ではなく、提供先の事業者の所在・法人格と実態です。外国法人でも、日本国内で個人情報データベース等を事業の用に供していると認められる場合は該当しません（個別判断）<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup><sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。当たる場合、次のいずれかに該当しない限り、<b>あらかじめ本人の同意を得ること</b>が必要で、委託先への提供も対象です<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。</p>
 
       <figure>
-        <svg viewBox="0 0 900 230" style="max-width:620px;" role="img" aria-label="海外での処理は3つの例外いずれかに当てはまらない限り本人の同意が必要という越境移転の判定図">
+        <svg viewBox="0 0 900 230" style="max-width:620px;" role="img" aria-label="提供先が外国にある第三者に当たる場合、3つの例外いずれかに当てはまらない限り本人の同意が必要という越境移転の判定図">
           <defs><marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="currentColor" /></marker></defs>
           <rect x="10" y="75" width="190" height="76" rx="10" fill="#F3F6FA" stroke="#B9C6D6" />
           <text x="105" y="100" text-anchor="middle" style="font-size:14px; font-weight:700;">提供先が外国に</text><text x="105" y="118" text-anchor="middle" style="font-size:14px; font-weight:700;">ある第三者</text>
@@ -506,7 +506,7 @@
         <figcaption>図3. 個人情報保護法28条の判定構造<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup>。ISMAP登録や安全管理措置（法23条）の充足は、この論点をクリアする根拠にはならない。</figcaption>
       </figure>
 
-      <p>個人情報保護委員会は、EU（欧州連合）と英国を「個人の権利利益を保護する上で我が国と同等の水準にあると認められる国」として指定しています<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup><sup class="cite"><a href="#r2" title="出典一覧 [2] へ移動">[2]</a></sup>。米国は対象外です。生成AIサービスには処理地を米国・グローバル等から選ぶ設計のものが多く、提供先が外国にある第三者に当たるなら、外国名等の情報提供を伴う本人同意が必要です。同意は書面に限られずメールやWeb上の確認欄でも足りますが、判断能力が十分でない方（未成年者・成年被後見人等）は親権者や法定代理人からの同意が必要です<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。</p>
+      <p>個人情報保護委員会は、EU（欧州連合）と英国を「個人の権利利益を保護する上で我が国と同等の水準にあると認められる国」として指定しています<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup><sup class="cite"><a href="#r2" title="出典一覧 [2] へ移動">[2]</a></sup>。米国は対象外です。生成AIサービスには処理地を米国・グローバル等から選ぶ設計のものが多く、提供先が外国にある第三者に当たり、かつ上の例外（基準適合体制など）にも該当しないなら、外国名等の情報提供を伴う本人同意が必要です。同意は書面に限られずメールやWeb上の確認欄でも足りますが、判断能力が十分でない方（未成年者・成年被後見人等）は親権者や法定代理人からの同意が必要です<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。</p>
 
       <p>他方、クラウド事業者が契約上個人データを取り扱わず、アクセス制御も適切な場合は「提供」に当たりません（Q7-53・Q12-3・Q12-4）。この場合も、外国の制度等の把握を含む安全管理措置と、サーバ所在国等の本人への公表は必要です（Q10-25）<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。生成AIが入力を応答の出力のためだけに処理する場合の法28条上の扱いは、2026年10月12日時点でPPCが個別に示していないため、国外処理を伴うときは同意取得を前提に置き、契約条項と運用の実態を専門家に確認してください。</p>
     </div>
@@ -517,33 +517,32 @@
   <section class="page" id="sec-scope" data-toc="scope">
     <div class="page-body">
       <div class="eyebrow">03　見落とされがちな論点（続き）</div>
-      <h2 class="h2">この資料の前提：適用範囲・生成AIへのPPCの考え方・令和8年改正</h2>
+      <h2 class="h2">この資料の前提：適用範囲・生成AI・令和8年改正</h2>
 
       <div class="cols2" style="margin-top:12px;">
         <div class="box">
           <h3 class="h3" style="font-size:15px;">① 適用範囲：民間事業者と行政機関等で条文が違う</h3>
-          <p>本資料の条文番号（法17〜28条等）は、民間の個人情報取扱事業者に適用される第4章の規律です。国の機関・自治体等の「行政機関等」には第5章が適用され、安全管理措置は法66条、利用・提供の制限は法69条、外国にある第三者への提供の制限は法71条（利用目的以外の目的で提供する場合）と、構造が異なります<sup class="cite"><a href="#r27" title="出典一覧 [27] へ移動">[27]</a></sup><sup class="cite"><a href="#r29" title="出典一覧 [29] へ移動">[29]</a></sup>。自治体は条例による追加規定に注意し、生成AIはデジタル庁のガイドライン第2.0版<sup class="cite"><a href="#r26" title="出典一覧 [26] へ移動">[26]</a></sup>も参照してください。</p>
-          <p style="margin-top:6px;">民間の福祉施設・NPO・中小企業は原則として第4章の対象です。独立行政法人等・自治体は設立形態により第5章となるため、所管部門等に確認してください。</p>
+          <p>本資料の条文番号（法17〜28条等）は、民間の個人情報取扱事業者向けの第4章の規律です。国の機関・自治体等の「行政機関等」は第5章で、安全管理は法66条、利用・提供の制限は法69条、外国にある第三者への提供の制限は法71条（目的外提供の場合）と構造が異なります<sup class="cite"><a href="#r27" title="出典一覧 [27] へ移動">[27]</a></sup><sup class="cite"><a href="#r29" title="出典一覧 [29] へ移動">[29]</a></sup>。民間の福祉施設・NPO・中小企業は原則第4章、独立行政法人等・自治体は設立形態により第5章のため、所管部門等に確認してください。自治体は条例と、デジタル庁の生成AIガイドライン第2.0版<sup class="cite"><a href="#r26" title="出典一覧 [26] へ移動">[26]</a></sup>も参照してください。</p>
         </div>
         <div class="box accent">
-          <h3 class="h3" style="font-size:15px;">② 生成AIへのPPC注意喚起（令和5年6月2日。行政機関等にも同旨）<sup class="cite"><a href="#r23" title="出典一覧 [23] へ移動">[23]</a></sup></h3>
+          <h3 class="h3" style="font-size:15px;">② 生成AIへのPPC注意喚起（令和5年6月）<sup class="cite"><a href="#r23" title="出典一覧 [23] へ移動">[23]</a></sup></h3>
           <ul class="list" style="font-size:13px; margin:6px 0 0;">
             <li>個人情報を含むプロンプトを入力するときは、特定した利用目的の達成に必要な範囲内か確認する。</li>
             <li>本人の同意なく個人データを入力し、それが応答出力以外の目的（例：機械学習）で取り扱われる場合、法違反となる可能性がある。事業者が機械学習に利用しないこと等を確認する。</li>
                       </ul>
-          <p style="margin-top:6px;">処理地とは別に、「入力が学習等に使われない」ことの契約・設定上の確認が必要です。</p>
+          <p style="margin-top:6px;">行政機関等にも同旨です。処理地とは別に、「入力が学習等に使われない」ことの契約・設定上の確認が必要です。</p>
         </div>
       </div>
 
-      <div class="cols2" style="margin-top:12px;">
+      <div style="margin-top:12px;">
         <div class="box">
           <h3 class="h3" style="font-size:15px;">③ 令和8年改正法（2026年7月17日公布）は主要部分が未施行<sup class="cite"><a href="#r16" title="出典一覧 [16] へ移動">[16]</a></sup></h3>
-          <p>原則として公布から2年以内に政令で定める日に施行され、一部の規定は公布日または公布から6か月後に施行されます（附則第1条）。2026年10月12日時点で主要部分は未施行のため、本資料は現行法に基づきます。PPC事務局の概要資料は、統計作成等（AI開発等を含む）の同意規制の見直し、委託先への規律（法30条の3等）、16歳未満の個人情報、課徴金制度等を挙げ、法28条は改正事項に含まれていません。施行後に本資料の判定を見直します。</p>
+          <p>原則として公布から2年以内に政令で定める日に施行され、一部は公布日または6か月後に施行されます（附則第1条）。2026年10月12日時点で主要部分は未施行のため、本資料は現行法に基づきます。概要資料は、統計作成等（AI開発等を含む）の同意規制の見直し、委託先への規律（法30条の3等）、16歳未満の個人情報、課徴金制度等を挙げ、法28条は改正事項に含まれていません。</p>
         </div>
-        <div class="box">
+        <div class="box" style="margin-top:8px;">
           <h3 class="h3" style="font-size:15px;">④ 福祉・介護分野と医療情報ガイドラインの位置づけ</h3>
-          <p>PPCの特定分野ガイドライン一覧に福祉分野固有のものはありません。介護事業者等には「医療・介護関係事業者における個人情報の適切な取扱いのためのガイダンス」（令和8年4月改正）があります<sup class="cite"><a href="#r28" title="出典一覧 [28] へ移動">[28]</a></sup>。</p>
-          <p style="margin-top:6px;">「3省2ガイドライン」は、厚生労働省「医療情報システムの安全管理に関するガイドライン」第7.0版（令和8年6月）<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup>と、経産省・総務省「医療情報を取り扱う情報システム・サービスの提供事業者における安全管理ガイドライン」第2.0版（令和7年3月）<sup class="cite"><a href="#r25" title="出典一覧 [25] へ移動">[25]</a></sup>です。主に医療機関等向けで福祉施設へ直接適用されるとは限らず、本資料では参考水準として用います。</p>
+          <p>PPCの特定分野ガイドライン一覧に福祉分野固有のものはなく、介護事業者等向けに「医療・介護関係事業者における個人情報の適切な取扱いのためのガイダンス」（令和8年4月改正）があります<sup class="cite"><a href="#r28" title="出典一覧 [28] へ移動">[28]</a></sup>。</p>
+          <p style="margin-top:6px;">「3省2ガイドライン」は、厚生労働省「医療情報システムの安全管理に関するガイドライン」第7.0版（令和8年6月）<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup>と、経産省・総務省「医療情報を取り扱う情報システム・サービスの提供事業者における安全管理ガイドライン」第2.0版（令和7年3月）<sup class="cite"><a href="#r25" title="出典一覧 [25] へ移動">[25]</a></sup>です。主に医療機関等向けで福祉施設へ直接適用されるとは限らず、本資料では参考水準として用います。企画管理編は外部保存先に、情報機器等が「国内法の適用及び執行の及ぶ範囲」にあることの確保と、設置場所（地域・国）・国外法の適用可能性の確認を求め、確認手段の例にISMAP等を挙げます<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup>。</p>
         </div>
       </div>
     </div>
@@ -635,15 +634,12 @@
       <h3 class="h3" style="margin-top:14px;">Tier Bで利用可能な選択肢／避けるべき選択肢</h3>
       <ul class="list">
         <li><b>Gemini in Workspace</b> — Workspace自体がISMAP登録済みで、Geminiアプリ・Gemini in Workspaceも対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup>。保存地域に日本はない<sup class="cite"><a href="#r19" title="出典一覧 [19] へ移動">[19]</a></sup>が、Tier Bでは許容</li>
-        <li><b>Gemini Enterprise（Standard/Plus）</b> — 別契約。日本で保存・ML処理を固定可（allowlist制）<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
+        <li><b>Gemini Enterprise（Standard/Plus）</b> — 別契約。日本で保存・ML処理を固定可（allowlist制）。日本非対応の機能を管理者が有効化するとグローバル送信<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
         <li><b>Vertex AI（現Gemini Enterprise Agent Platform）のAPI</b> — ISMAP言明書上は「Vertex AI Platform」として対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。Tier Bなら全リージョン可</li>
         <li class="stamp" style="list-style:none; margin-left:-1.3em; padding:4px 12px; background:#F7E6E4; border-radius:8px;">❌ <b>Google AI Studioの素のAPIキー</b>はNG。ISMAPリスト未登録。無料枠は入力が製品改善に使われ、有料でも一時保存・キャッシュが国を問わず行われうる<sup class="cite"><a href="#r13" title="出典一覧 [13] へ移動">[13]</a></sup></li>
       </ul>
 
-      <div class="box" style="margin-top:6px;">
-        <h3 class="h3" style="font-size:15px;">補足：Gemini Enterpriseの無料トライアルに注意</h3>
-        <p>Gemini EnterpriseはBusiness版・Standard/Plus版とも30日間の無料トライアルがあり、Business版はIT設定不要で開始できます<sup class="cite"><a href="#r12" title="出典一覧 [12] へ移動">[12]</a></sup>。「トグルがオン」＝「正式に契約済み」とは限らず、契約状況の確認が必要です。</p>
-      </div>
+      <p style="margin-top:6px; font-size:var(--fs-small);"><b>補足（Gemini Enterpriseの無料トライアル）：</b>30日間の無料トライアルがあり（Business版はIT設定不要）<sup class="cite"><a href="#r12" title="出典一覧 [12] へ移動">[12]</a></sup>、「トグルがオン」＝「正式に契約済み」とは限りません。契約状況を確認してください。</p>
     </div>
     <div class="page-footer"><span>05　実名データの3段階</span><span class="pn"></span></div>
   </section>
@@ -721,7 +717,7 @@
     <div class="page-body">
       <div class="eyebrow">07　Tier Cの技術構成</div>
       <h2 class="h2">要配慮個人情報を実名で扱う場合の、現実的な最適構成</h2>
-      <p style="margin-top:10px;">2026年10月時点で、自社アプリにAI機能を組み込む場合に費用面で最も現実的なのは、Google Cloudインフラを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成です。ただし<b>AI OCRだけは例外</b>で、自前ホスティングへ切り出します（理由は次頁）。Gemini Enterprise（Standard/Plus）の日本ロケーション（allowlist制）も並行する選択肢ですが、最新モデルや一部機能は国内の対象外です<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。</p>
+      <p style="margin-top:10px;">2026年10月時点で、自社アプリにAI機能を組み込む場合に費用面で最も現実的なのは、Google Cloudインフラを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成です。ただし<b>AI OCRだけは例外</b>で、自前ホスティングへ切り出します（理由は次頁）。Gemini Enterprise（Standard/Plus）の日本ロケーション（allowlist制）も並行する選択肢ですが、最新モデルや一部機能は国内の対象外で、管理者が警告に同意して有効化するとグローバルへ送信されます<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。</p>
 
       <figure>
         <svg viewBox="0 0 780 282" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、AI OCRは自前ホスティングPaddleOCR、テキスト生成と音声はAWS Bedrockへ振り分けるアーキテクチャ図">
