@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  元PDF「個人情報×生成AI 実務ガイド」(A4横・17ページ) と同一の固定レイアウトHTML。
+  元PDF「個人情報×生成AI 実務ガイド」(A4横・18ページ) と同一の固定レイアウトHTML。
   サイトのルート(/)としてそのまま配信される単一ソース。
   scripts/generate-pdf.mjs がこのファイルを開いて public/downloads/pii-genai-guide.pdf を生成する。
   本文を更新したら `pnpm generate:pdf` を再実行してPDFを再生成すること。
@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#17233A" />
 <title>個人情報×生成AI 実務ガイド</title>
-<meta name="description" content="個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成。公式一次情報だけで組み立て直す実務資料。" />
+<meta name="description" content="個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成。公式一次情報を根拠に組み立て直す実務資料。" />
 <link rel="canonical" href="https://yasushi-honda.github.io/pii-genai-guide/" />
 <link
   rel="icon"
@@ -20,7 +20,7 @@
 />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="個人情報×生成AI 実務ガイド" />
-<meta property="og:description" content="個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成。公式一次情報だけで組み立て直す実務資料。" />
+<meta property="og:description" content="個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成。公式一次情報を根拠に組み立て直す実務資料。" />
 <meta property="og:url" content="https://yasushi-honda.github.io/pii-genai-guide/" />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary" />
@@ -183,10 +183,10 @@
   .toc-list{ list-style:none; margin:12px 0 0; padding:0; }
   .toc-list li{
     display:flex; align-items:baseline; gap:10px;
-    padding:5px 0; border-bottom:1px dashed #DCE3EC;
+    padding:2px 0; border-bottom:1px dashed #DCE3EC;
     font-size:14px;
   }
-  .toc-list .tn{ font-family:var(--font-mono); color:#2857A6; font-weight:700; width:24px; flex:none; }
+  .toc-list .tn{ font-family:var(--font-mono); color:#2857A6; font-weight:700; width:30px; flex:none; }
   .toc-list .tt{ flex:1; font-weight:700; }
   .toc-list .ts{ color:#5A6B84; font-size:12.5px; font-weight:400; display:block; margin-top:2px; }
   .toc-list .tp{ font-family:var(--font-mono); color:#5A6B84; font-size:12.5px; }
@@ -231,12 +231,12 @@
     <div class="page-body" style="display:flex; flex-direction:column; justify-content:center; height:100%;">
       <div class="eyebrow">AIガバナンス実務資料</div>
       <h1 style="font-size:var(--fs-cover-title); font-weight:800; line-height:1.4;">個人情報×生成AI<br>実務ガイド</h1>
-      <p class="lede" style="font-size:var(--fs-cover-sub); margin-top:14px; max-width:46em;">個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成 — 2026年10月時点の公式一次情報だけで組み立て直す実務資料</p>
+      <p class="lede" style="font-size:var(--fs-cover-sub); margin-top:14px; max-width:46em;">個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成 — 2026年10月時点の公式一次情報を根拠に組み立て直す実務資料（社内検証値は<span class="mono">[†]</span>で明示）</p>
 
       <div class="cover-tags">
         <span class="tag accent">最終確認 2026-10-12</span>
-        <span class="tag accent">一次情報ベース・出典22件</span>
-        <span class="tag accent">対象：個人情報を扱う全ての組織</span>
+        <span class="tag accent">一次情報ベース・出典31件</span>
+        <span class="tag accent">対象：個人情報を扱う組織（民間向けの条文を中心に整理）</span>
         <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
       </div>
 
@@ -265,14 +265,15 @@
         <li><a class="toc-link" href="#sec-intro"><span class="tn">00</span><span class="tt">はじめに<span class="ts">なぜこの整理が必要か</span></span><span class="tp" data-toc-target="intro"></span></a></li>
         <li><a class="toc-link" href="#sec-pillars"><span class="tn">01</span><span class="tt">大原則：個人情報保護法の「2つの壁」<span class="ts">安全管理措置と、適法な取得・利用は独立している</span></span><span class="tp" data-toc-target="pillars"></span></a></li>
         <li><a class="toc-link" href="#sec-flow"><span class="tn">02</span><span class="tt">判定フロー：3つの質問<span class="ts">個人特定情報／要配慮個人情報／処理体制の3段階判定</span></span><span class="tp" data-toc-target="flow"></span></a></li>
-        <li><a class="toc-link" href="#sec-crossborder"><span class="tn">03</span><span class="tt">越境移転規制（法28条）<span class="ts">「日本国内処理」が必要になる法的根拠</span></span><span class="tp" data-toc-target="crossborder"></span></a></li>
+        <li><a class="toc-link" href="#sec-crossborder"><span class="tn">03</span><span class="tt">越境移転規制（法28条）<span class="ts">「日本国内処理」が重視される法的背景</span></span><span class="tp" data-toc-target="crossborder"></span></a></li>
+        <li><a class="toc-link" href="#sec-scope"><span class="tn">03+</span><span class="tt">補足：適用範囲・生成AIの注意喚起・令和8年改正<span class="ts">民間と行政機関等の違い、法改正、医療情報ガイドライン</span></span><span class="tp" data-toc-target="scope"></span></a></li>
         <li><a class="toc-link" href="#sec-ismap"><span class="tn">04</span><span class="tt">ISMAP登録の構造と落とし穴<span class="ts">「登録済み」が自動的に意味しないもの</span></span><span class="tp" data-toc-target="ismap"></span></a></li>
         <li><a class="toc-link" href="#sec-tiers"><span class="tn">05</span><span class="tt">実名データの3段階（Tier A / B / C）<span class="ts">用途別に必要な技術要件を切り分ける</span></span><span class="tp" data-toc-target="tiers"></span></a></li>
         <li><a class="toc-link" href="#sec-cases"><span class="tn">06</span><span class="tt">よくある間違いと正しい対応<span class="ts">NG例・OK例で確認する、現場で起きがちなずれ</span></span><span class="tp" data-toc-target="cases"></span></a></li>
         <li><a class="toc-link" href="#sec-tierc"><span class="tn">07</span><span class="tt">Tier Cの技術構成とその根拠<span class="ts">要配慮個人情報のための現実的なアーキテクチャ</span></span><span class="tp" data-toc-target="tierc"></span></a></li>
         <li><a class="toc-link" href="#sec-legal"><span class="tn">08</span><span class="tt">技術を固めても残る法務対応<span class="ts">積み上げれば完了する軸と、終わりのない軸の違い</span></span><span class="tp" data-toc-target="legal"></span></a></li>
         <li><a class="toc-link" href="#sec-summary"><span class="tn">09</span><span class="tt">まとめ：今日からできること<span class="ts">できること・まだできないこと・準備すべきこと</span></span><span class="tp" data-toc-target="summary"></span></a></li>
-        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、22件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
+        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、31件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
       </ul>
       <p style="margin-top:24px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
     </div>
@@ -292,7 +293,7 @@
       </div>
 
       <h3 class="h3" style="margin-top:22px;">この資料の狙い</h3>
-      <p>この資料は、上記のような現場の疑問に対して、2026年10月12日時点で確認できる公式一次情報だけを根拠に、次の2つを整理し直したものです。</p>
+      <p>この資料は、上記のような現場の疑問に対して、2026年10月12日時点で確認できる公式一次情報を根拠に（社内検証値は<span class="mono">[†]</span>で明示）、次の2つを整理し直したものです。</p>
       <ol class="list">
         <li><b>判定フロー</b> — 手元のデータをAIに入れてよいかを、3つの質問で判定する方法（第2章）</li>
         <li><b>技術構成</b> — 要配慮個人情報を実名で扱わざるを得ない場合に、現実的に組める技術構成とその根拠（第7章）</li>
@@ -322,15 +323,15 @@
           <text x="230" y="78" text-anchor="middle" class="sub mono-t">法23条</text>
           <text x="230" y="106" text-anchor="middle" class="sub">＝データを守る仕組み</text>
           <text x="230" y="130" text-anchor="middle" class="sub">region指定・ISMAP登録済み基盤</text>
-          <text x="230" y="150" text-anchor="middle" class="sub">APIキー不要の認証・監査ログ</text>
-          <text x="230" y="188" text-anchor="middle" style="font-size:15.5px; font-weight:700;">→ アーキテクチャで解決できる</text>
+          <text x="230" y="150" text-anchor="middle" class="sub">認証・監査ログ・委託先監督（法25条）</text>
+          <text x="230" y="188" text-anchor="middle" style="font-size:15.5px; font-weight:700;">→ 技術と体制整備で対応する</text>
 
           <rect x="490" y="30" width="400" height="180" rx="12" class="pillar" />
           <text x="690" y="58" text-anchor="middle" class="lbl">適法な取得・利用</text>
           <text x="690" y="78" text-anchor="middle" class="sub mono-t">法17・18・20②・21条</text>
           <text x="690" y="106" text-anchor="middle" class="sub">＝そもそも扱ってよいか</text>
           <text x="690" y="130" text-anchor="middle" class="sub">利用目的の特定・通知、同意書</text>
-          <text x="690" y="150" text-anchor="middle" class="sub">委託契約・責任分界</text>
+          <text x="690" y="150" text-anchor="middle" class="sub">本人同意（取得・越境提供）</text>
           <text x="690" y="188" text-anchor="middle" style="font-size:15.5px; font-weight:700;">→ 法務・組織対応でしか解決できない</text>
 
           <line x1="430" y1="120" x2="490" y2="120" stroke="currentColor" stroke-width="1.3" stroke-dasharray="4 5" opacity=".55" marker-end="url(#arr1)" />
@@ -352,7 +353,7 @@
             <tr><td class="mono">21条</td><td>取得に際しての利用目的の通知・公表</td><td><span class="tag accent">法務</span></td></tr>
             <tr><td class="mono">23条</td><td>安全管理措置（データを守る技術・体制）</td><td><span class="tag good">技術</span></td></tr>
             <tr><td class="mono">25条</td><td>委託先の監督</td><td><span class="tag warn">技術＋法務</span></td></tr>
-            <tr><td class="mono">27条</td><td>第三者提供の制限（原則）</td><td><span class="tag accent">法務</span></td></tr>
+            <tr><td class="mono">27条</td><td>第三者提供の制限（原則。委託は5項1号で第三者に非該当）</td><td><span class="tag accent">法務</span></td></tr>
             <tr><td class="mono">28条</td><td>外国にある第三者への提供の制限（越境移転規制）</td><td><span class="tag warn">技術＋法務</span></td></tr>
           </tbody>
         </table>
@@ -414,7 +415,7 @@
           <rect x="0" y="344" width="120" height="68" rx="10" fill="#F7E6E4" stroke="#A8332E" />
           <line x1="158" y1="378" x2="120" y2="378" stroke="currentColor" opacity=".55" marker-end="url(#arr2)" />
           <text x="140" y="333" text-anchor="middle" class="edge">いいえ</text>
-          <text x="60" y="382" text-anchor="middle" class="a" style="font-weight:700; fill:#A8332E;">利用不可</text>
+          <text x="60" y="376" text-anchor="middle" class="a" style="font-weight:700; fill:#A8332E;">利用を</text><text x="60" y="394" text-anchor="middle" class="a" style="font-weight:700; fill:#A8332E;">控える</text>
 
           <line x1="520" y1="378" x2="650" y2="378" stroke="currentColor" opacity=".55" marker-end="url(#arr2)" />
           <text x="585" y="366" text-anchor="middle" class="edge">はい</text>
@@ -423,7 +424,7 @@
           <text x="760" y="386" text-anchor="middle" class="a">日本ロケーション対応の</text>
           <text x="760" y="400" text-anchor="middle" class="a">サービス＋組織的措置（→第7章）</text>
         </svg>
-        <figcaption>図2. 個人情報のレベル別判定フロー。DPA＝データ処理契約（第8章で詳述）。3省2ガイドライン＝厚生労働省・総務省・経済産業省が定める医療情報の安全管理ガイドライン群（本資料では要配慮個人情報の参考水準として用いる）。</figcaption>
+        <figcaption>図2. 個人情報のレベル別判定フロー。DPA＝データ処理契約（第8章で詳述）。3省2ガイドライン＝厚生労働省・総務省・経済産業省が定める医療情報の安全管理ガイドライン群（第7章補足参照）。第2・第3問の要件は法令の最低要件ではなく、本資料が安全側に整理した推奨水準で、実際には法17〜28条の個別の充足が必要。</figcaption>
       </figure>
     </div>
     <div class="page-footer"><span>02　判定フロー</span><span class="pn"></span></div>
@@ -444,7 +445,7 @@
             <tr><td>研修資料・マニュアルの下書き</td><td>匿名化情報</td><td><span class="tag good">問題なし</span></td></tr>
             <tr><td>施設名・職員の氏名</td><td>通常の個人情報</td><td><span class="tag warn">条件付きで可</span></td></tr>
             <tr><td>利用者の氏名・住所・連絡先のみ</td><td>通常の個人情報</td><td><span class="tag warn">条件付きで可</span></td></tr>
-            <tr><td>利用者の病歴・障害の状況</td><td>要配慮個人情報</td><td><span class="tag stamp">非推奨</span></td></tr>
+            <tr><td>利用者の病歴・障害の状況・障害福祉サービスの利用事実<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup></td><td>要配慮個人情報</td><td><span class="tag stamp">非推奨</span></td></tr>
             <tr><td>逮捕歴・犯罪の経歴</td><td>要配慮個人情報</td><td><span class="tag stamp">非推奨</span></td></tr>
             <tr><td>ケース記録全般（病歴・生活歴等を含む）</td><td>要配慮個人情報を含む可能性大</td><td><span class="tag stamp">非推奨（個別確認）</span></td></tr>
           </tbody>
@@ -468,17 +469,17 @@
   <section class="page" id="sec-crossborder" data-toc="crossborder">
     <div class="page-body">
       <div class="eyebrow">03　見落とされがちな論点</div>
-      <h2 class="h2">「日本国内処理」が必要になる理由 — 個人情報保護法28条</h2>
-      <p style="margin-top:10px;">ISMAP登録の有無（法23条）とは別に、もう一つ重要な論点があります。<b>外国にある第三者への提供の制限（法28条）</b>です。令和2年改正により、この規定は旧24条から現在の28条へ条番号が変更されています<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。</p>
+      <h2 class="h2">「日本国内処理」が重視される理由 — 個人情報保護法28条</h2>
+      <p style="margin-top:10px;">安全管理措置（法23条）やISMAP登録の有無とは別に、もう一つ重要な論点があります。<b>外国にある第三者への提供の制限（法28条）</b>です。この規定は、令和3年改正法（令和3年法律第37号）を経て、旧24条から現在の28条になっています<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup>。</p>
 
-      <p>多くの生成AIサービスは、データの処理地を「グローバル」「米国」「ヨーロッパ」といった広域リージョンからしか選べず、日本国内に固定できません。法28条は、次のいずれかに該当しない限り、<b>あらかじめ本人の同意を得ること</b>を求めています。</p>
+      <p>法28条が問題になるのは、個人データの提供先が<b>「外国にある第三者」</b>に当たる場合です。判断の軸はデータセンターの所在地ではなく、提供先の事業者の所在・法人格と実態です。外国法人でも、日本国内で個人情報データベース等を事業の用に供していると認められる場合は該当しません（個別判断）<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup><sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。当たる場合、次のいずれかに該当しない限り、<b>あらかじめ本人の同意を得ること</b>が必要で、委託先への提供も対象です<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。</p>
 
       <figure>
         <svg viewBox="0 0 900 230" style="max-width:620px;" role="img" aria-label="海外での処理は3つの例外いずれかに当てはまらない限り本人の同意が必要という越境移転の判定図">
           <defs><marker id="arr3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="currentColor" /></marker></defs>
           <rect x="10" y="75" width="190" height="76" rx="10" fill="#F3F6FA" stroke="#B9C6D6" />
-          <text x="105" y="106" text-anchor="middle" style="font-size:15px; font-weight:700;">海外で処理</text>
-          <text x="105" y="126" text-anchor="middle" style="font-size:13.5px; opacity:.75;">（例：グローバル／米国）</text>
+          <text x="105" y="100" text-anchor="middle" style="font-size:14px; font-weight:700;">提供先が外国に</text><text x="105" y="118" text-anchor="middle" style="font-size:14px; font-weight:700;">ある第三者</text>
+          <text x="105" y="138" text-anchor="middle" style="font-size:12.5px; opacity:.75;">（例：米国の事業者が取扱）</text>
 
           <line x1="200" y1="113" x2="280" y2="113" stroke="currentColor" opacity=".55" marker-end="url(#arr3)" />
 
@@ -502,18 +503,51 @@
           <text x="775" y="168" text-anchor="middle" style="font-size:15px; font-weight:700; fill:#A8332E;">越境移転への本人同意が必要</text>
           <text x="775" y="188" text-anchor="middle" style="font-size:13px; opacity:.85;">米国は①の同等水準国に該当しない</text>
         </svg>
-        <figcaption>図3. 個人情報保護法28条の判定構造<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup>。ISMAP登録（法23条）はこの論点をクリアする根拠にはならない。</figcaption>
+        <figcaption>図3. 個人情報保護法28条の判定構造<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup>。ISMAP登録や安全管理措置（法23条）の充足は、この論点をクリアする根拠にはならない。</figcaption>
       </figure>
 
-      <p>個人情報保護委員会は、EU（欧州連合）と英国を「個人の権利利益を保護する上で我が国と同等の水準にあると認められる国」として指定しています<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup><sup class="cite"><a href="#r2" title="出典一覧 [2] へ移動">[2]</a></sup>。米国は対象外です。事業者が個人データを取り扱う場合（委託を含む）、国外での処理は②がない限り、外国名等の情報提供を伴う本人同意が原則必要です<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup>。</p>
-      <p>ただし個人情報保護委員会Q&amp;Aは、クラウド事業者が契約上個人データを取り扱わず適切にアクセス制御する場合は「提供」に当たらないとします（Q7-53）。その場合も、外国の制度等の把握と、サーバ所在国等の本人への公表は必要です（Q10-25）<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。生成AIがこれに当たるかは契約と運用の実態次第のため、本資料は国外処理なら同意取得を前提とします。</p>
+      <p>個人情報保護委員会は、EU（欧州連合）と英国を「個人の権利利益を保護する上で我が国と同等の水準にあると認められる国」として指定しています<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup><sup class="cite"><a href="#r2" title="出典一覧 [2] へ移動">[2]</a></sup>。米国は対象外です。生成AIサービスには処理地を米国・グローバル等から選ぶ設計のものが多く、提供先が外国にある第三者に当たるなら、外国名等の情報提供を伴う本人同意が必要です。同意は書面に限られずメールやWeb上の確認欄でも足りますが、判断能力が十分でない方（未成年者・成年被後見人等）は親権者や法定代理人からの同意が必要です<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。</p>
 
-      <div class="box accent" style="margin-top:6px;">
-        <h3 class="h3">補足：令和8年改正法（2026年7月17日公布）は未施行</h3>
-        <p>原則として公布から2年以内に政令で定める日に施行され、主要部分は2026年10月12日時点で未施行です。本資料は現行法に基づきます<sup class="cite"><a href="#r16" title="出典一覧 [16] へ移動">[16]</a></sup>。概要資料は統計作成等（AI開発等を含む）の同意規制見直し、委託先への規律（法30条の3等）、16歳未満の個人情報、課徴金制度の導入等を挙げており、法28条は改正事項に挙がっていません。</p>
-      </div>
+      <p>他方、クラウド事業者が契約上個人データを取り扱わず、アクセス制御も適切な場合は「提供」に当たりません（Q7-53・Q12-3・Q12-4）。この場合も、外国の制度等の把握を含む安全管理措置と、サーバ所在国等の本人への公表は必要です（Q10-25）<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。生成AIが入力を応答の出力のためだけに処理する場合の法28条上の扱いは、2026年10月12日時点でPPCが個別に示していないため、国外処理を伴うときは同意取得を前提に置き、契約条項と運用の実態を専門家に確認してください。</p>
     </div>
     <div class="page-footer"><span>03　越境移転規制</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 7b: 適用範囲・生成AI・令和8年改正 ============ -->
+  <section class="page" id="sec-scope" data-toc="scope">
+    <div class="page-body">
+      <div class="eyebrow">03　見落とされがちな論点（続き）</div>
+      <h2 class="h2">この資料の前提：適用範囲・生成AIへのPPCの考え方・令和8年改正</h2>
+
+      <div class="cols2" style="margin-top:12px;">
+        <div class="box">
+          <h3 class="h3" style="font-size:15px;">① 適用範囲：民間事業者と行政機関等で条文が違う</h3>
+          <p>本資料の条文番号（法17〜28条等）は、民間の個人情報取扱事業者に適用される第4章の規律です。国の機関・自治体等の「行政機関等」には第5章が適用され、安全管理措置は法66条、利用・提供の制限は法69条、外国にある第三者への提供の制限は法71条（利用目的以外の目的で提供する場合）と、構造が異なります<sup class="cite"><a href="#r27" title="出典一覧 [27] へ移動">[27]</a></sup><sup class="cite"><a href="#r29" title="出典一覧 [29] へ移動">[29]</a></sup>。自治体は条例による追加規定に注意し、生成AIはデジタル庁のガイドライン第2.0版<sup class="cite"><a href="#r26" title="出典一覧 [26] へ移動">[26]</a></sup>も参照してください。</p>
+          <p style="margin-top:6px;">民間の福祉施設・NPO・中小企業は原則として第4章の対象です。独立行政法人等・自治体は設立形態により第5章となるため、所管部門等に確認してください。</p>
+        </div>
+        <div class="box accent">
+          <h3 class="h3" style="font-size:15px;">② 生成AIへのPPC注意喚起（令和5年6月2日。行政機関等にも同旨）<sup class="cite"><a href="#r23" title="出典一覧 [23] へ移動">[23]</a></sup></h3>
+          <ul class="list" style="font-size:13px; margin:6px 0 0;">
+            <li>個人情報を含むプロンプトを入力するときは、特定した利用目的の達成に必要な範囲内か確認する。</li>
+            <li>本人の同意なく個人データを入力し、それが応答出力以外の目的（例：機械学習）で取り扱われる場合、法違反となる可能性がある。事業者が機械学習に利用しないこと等を確認する。</li>
+                      </ul>
+          <p style="margin-top:6px;">処理地とは別に、「入力が学習等に使われない」ことの契約・設定上の確認が必要です。</p>
+        </div>
+      </div>
+
+      <div class="cols2" style="margin-top:12px;">
+        <div class="box">
+          <h3 class="h3" style="font-size:15px;">③ 令和8年改正法（2026年7月17日公布）は主要部分が未施行<sup class="cite"><a href="#r16" title="出典一覧 [16] へ移動">[16]</a></sup></h3>
+          <p>原則として公布から2年以内に政令で定める日に施行され、一部の規定は公布日または公布から6か月後に施行されます（附則第1条）。2026年10月12日時点で主要部分は未施行のため、本資料は現行法に基づきます。PPC事務局の概要資料は、統計作成等（AI開発等を含む）の同意規制の見直し、委託先への規律（法30条の3等）、16歳未満の個人情報、課徴金制度等を挙げ、法28条は改正事項に含まれていません。施行後に本資料の判定を見直します。</p>
+        </div>
+        <div class="box">
+          <h3 class="h3" style="font-size:15px;">④ 福祉・介護分野と医療情報ガイドラインの位置づけ</h3>
+          <p>PPCの特定分野ガイドライン一覧に福祉分野固有のものはありません。介護事業者等には「医療・介護関係事業者における個人情報の適切な取扱いのためのガイダンス」（令和8年4月改正）があります<sup class="cite"><a href="#r28" title="出典一覧 [28] へ移動">[28]</a></sup>。</p>
+          <p style="margin-top:6px;">「3省2ガイドライン」は、厚生労働省「医療情報システムの安全管理に関するガイドライン」第7.0版（令和8年6月）<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup>と、経産省・総務省「医療情報を取り扱う情報システム・サービスの提供事業者における安全管理ガイドライン」第2.0版（令和7年3月）<sup class="cite"><a href="#r25" title="出典一覧 [25] へ移動">[25]</a></sup>です。主に医療機関等向けで福祉施設へ直接適用されるとは限らず、本資料では参考水準として用います。</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>03　適用範囲・法改正</span><span class="pn"></span></div>
   </section>
 
   <!-- ============ PAGE 8: ISMAP ============ -->
@@ -521,7 +555,12 @@
     <div class="page-body">
       <div class="eyebrow">04　ISMAP登録の落とし穴</div>
       <h2 class="h2">「基盤の登録」は「上位サービス」に自動継承されない</h2>
-      <p style="margin-top:10px;">ISMAP（政府情報システムのためのセキュリティ評価制度）は、国家サイバー統括室・デジタル庁・総務省・経済産業省が所管し、IPA（情報処理推進機構）が運用支援機関として実務を担う、令和2年6月開始の制度です。評価済のクラウドサービスは、ISMAPクラウドサービスリストに登録番号とともに掲載されます<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。</p>
+      <p style="margin-top:10px;">ISMAP（政府情報システムのためのセキュリティ評価制度）は、国家サイバー統括室・デジタル庁・総務省・経済産業省が所管し、IPA（情報処理推進機構）が運用支援機関として実務を担う、令和2年1月30日決定の基本的枠組みに基づく制度です<sup class="cite"><a href="#r31" title="出典一覧 [31] へ移動">[31]</a></sup>。評価済のクラウドサービスは、ISMAPクラウドサービスリストに登録番号とともに掲載されます<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。</p>
+
+      <div style="margin-top:4px;">
+        <p style="font-size:var(--fs-small);">ISMAPは政府のクラウド調達の制度で、民間事業者に登録サービスの利用を求める規定は個人情報保護法・ガイドライン・Q&amp;Aにありません（本文で確認）。安全管理措置（法23条）の検討では水準の目安の一つです。政府機関等が生成AIを使う場合は、ISMAPとは別のリスク対応が必要です<sup class="cite"><a href="#r6" title="出典一覧 [6] へ移動">[6]</a></sup>。</p>
+      </div>
+
 
       <p>ここで見落とされがちなのが、<b>「登録済みの基盤の上に構築されたサービスが、自動的に同じ扱いになるとは限らない」</b>という原則です。ISMAP公式FAQは次のように明記しています。</p>
 
@@ -530,7 +569,7 @@
       </div>
 
       <figure>
-        <svg viewBox="0 0 900 240" role="img" aria-label="GoogleはGCP・Workspace・Gemini Enterpriseの3つが別々のISMAP登録番号を持つのに対し、AWSはBedrockを含む単一登録である比較図">
+        <svg viewBox="0 0 900 240" style="max-width:600px;" role="img" aria-label="GoogleはGCP・Workspace・Gemini Enterpriseの3つが別々のISMAP登録番号を持つのに対し、AWSはBedrockを含む単一登録である比較図">
           <text x="20" y="24" style="font-size:15px; font-weight:700; opacity:.75;">Google（3層・別々の登録）</text>
           <rect x="20" y="38" width="160" height="86" rx="10" fill="#F3F6FA" stroke="#B9C6D6" />
           <text x="100" y="70" text-anchor="middle" style="font-size:14.5px; font-weight:700;">Google Cloud</text>
@@ -558,7 +597,7 @@
         <figcaption>図4. Google関連は3つの独立した登録番号に分かれる一方、AWSはBedrockを含む単一登録<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r7" title="出典一覧 [7] へ移動">[7]</a></sup><sup class="cite"><a href="#r8" title="出典一覧 [8] へ移動">[8]</a></sup>。個々のモデルは基盤の登録範囲内であれば別途登録不要という点はISMAP運営主体の公式見解<sup class="cite"><a href="#r6" title="出典一覧 [6] へ移動">[6]</a></sup>。</figcaption>
       </figure>
 
-      <p style="font-size:var(--fs-small);">実際、Gemini Enterprise（C26-0114-2）はGoogle Cloud（C21-0004-2）のストレージ等を基盤に利用しているにもかかわらず、2026年4月28日に別途本登録が行われました<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r7" title="出典一覧 [7] へ移動">[7]</a></sup>。「基盤がISMAPだから上位のSaaS機能も自動的にISMAP」という推論は成立しません。なお、言明対象範囲の公開資料にはエディション別の記載がなく、Business版が対象に含まれるかは公開情報から確認できません（要確認）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。</p>
+      <p style="font-size:var(--fs-small);">実際、Gemini Enterprise（C26-0114-2）はGoogle Cloud（C21-0004-2）のストレージ等を基盤に利用しているにもかかわらず、2026年4月28日に別途本登録が行われました<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r7" title="出典一覧 [7] へ移動">[7]</a></sup>（SaaSとして提供する生成AIサービスは原則登録が必要とされています<sup class="cite"><a href="#r6" title="出典一覧 [6] へ移動">[6]</a></sup>）。「基盤がISMAPだから上位のSaaS機能も自動的にISMAP」という推論は成立しません。なお、言明対象範囲の公開資料にはエディション別の記載がなく、Business版が対象に含まれるかは公開情報から確認できません（要確認）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。</p>
     </div>
     <div class="page-footer"><span>04　ISMAP登録の構造</span><span class="pn"></span></div>
   </section>
@@ -568,7 +607,7 @@
     <div class="page-body">
       <div class="eyebrow">05　実名データの3段階</div>
       <h2 class="h2">Tier A / B / C — 右に行くほど要件が跳ね上がる</h2>
-      <p style="margin-top:10px;">実名データを扱う場合に必要な技術要件は、データの機微度によって3段階に分かれます。</p>
+      <p style="margin-top:10px;">実名データの技術要件は、機微度によって3段階に分かれます（法令の最低要件ではなく、本資料の推奨水準）。</p>
 
       <div class="tbl-wrap">
         <table>
@@ -582,7 +621,7 @@
             <tr>
               <td><span class="tag warn">B</span><br>通常の個人情報（実名）</td>
               <td>施設名・担当者名等を含む議事録・案内文</td>
-              <td>ISMAP登録済みクラウド＋DPA締結＋同意取得。日本リージョン限定は必須ではないが推奨（越境移転規制に注意 → 第3章）</td>
+              <td>ISMAP登録済みクラウド（目安）＋DPA締結＋法が求める場面での本人同意。日本リージョン限定は必須ではないが推奨（第3章）</td>
             </tr>
             <tr>
               <td><span class="tag stamp">C</span><br>要配慮個人情報（実名）</td>
@@ -597,13 +636,13 @@
       <ul class="list">
         <li><b>Gemini in Workspace</b> — Workspace自体がISMAP登録済みで、Geminiアプリ・Gemini in Workspaceも対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup>。保存地域に日本はない<sup class="cite"><a href="#r19" title="出典一覧 [19] へ移動">[19]</a></sup>が、Tier Bでは許容</li>
         <li><b>Gemini Enterprise（Standard/Plus）</b> — 別契約。日本で保存・ML処理を固定可（allowlist制）<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
-        <li><b>Vertex AI（Gemini Enterprise Agent Platform）のAPI</b> — ISMAP登録済み。リージョン問わずTier Bなら利用可</li>
-        <li class="stamp" style="list-style:none; margin-left:-1.3em; padding:8px 12px; background:#F7E6E4; border-radius:8px;">❌ <b>Google AI Studioの素のAPIキー</b>はNG。ISMAPリスト未登録。無料枠は入力が製品改善に使われ、有料でも一時保存・キャッシュが国を問わず行われうる<sup class="cite"><a href="#r13" title="出典一覧 [13] へ移動">[13]</a></sup></li>
+        <li><b>Vertex AI（現Gemini Enterprise Agent Platform）のAPI</b> — ISMAP言明書上は「Vertex AI Platform」として対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。Tier Bなら全リージョン可</li>
+        <li class="stamp" style="list-style:none; margin-left:-1.3em; padding:4px 12px; background:#F7E6E4; border-radius:8px;">❌ <b>Google AI Studioの素のAPIキー</b>はNG。ISMAPリスト未登録。無料枠は入力が製品改善に使われ、有料でも一時保存・キャッシュが国を問わず行われうる<sup class="cite"><a href="#r13" title="出典一覧 [13] へ移動">[13]</a></sup></li>
       </ul>
 
       <div class="box" style="margin-top:6px;">
-        <h3 class="h3">補足：Gemini Enterpriseの無料トライアルに注意</h3>
-        <p>Gemini EnterpriseはBusiness版・Standard/Plus版とも30日間の無料トライアルがあり、Business版はIT設定不要で始められます<sup class="cite"><a href="#r12" title="出典一覧 [12] へ移動">[12]</a></sup>。したがって「管理コンソールでトグルがオンになっている」＝「正式に契約済み」とは限らず、契約状況は別途確認が必要です。</p>
+        <h3 class="h3" style="font-size:15px;">補足：Gemini Enterpriseの無料トライアルに注意</h3>
+        <p>Gemini EnterpriseはBusiness版・Standard/Plus版とも30日間の無料トライアルがあり、Business版はIT設定不要で開始できます<sup class="cite"><a href="#r12" title="出典一覧 [12] へ移動">[12]</a></sup>。「トグルがオン」＝「正式に契約済み」とは限らず、契約状況の確認が必要です。</p>
       </div>
     </div>
     <div class="page-footer"><span>05　実名データの3段階</span><span class="pn"></span></div>
@@ -620,7 +659,7 @@
         <div class="box stamp">
           <h3 class="h3">❌ NG例：相談記録をそのまま要約させている</h3>
           <p>職員が、利用者の氏名・病歴・生活状況を含む相談記録を、法人契約のGemini in Workspaceに貼り付けて「要約して」と依頼している。ISMAP登録済みだから安全だと考えている。</p>
-          <p style="margin-top:8px;"><b>実態：</b>これは<span class="tag stamp">Tier C</span>のデータを<span class="tag warn">Tier B</span>の環境で処理している状態。ISMAP登録（法23条）は満たしていても、①処理地を日本国内に固定できない（法28条・越境移転）、②要配慮個人情報の取得同意が想定範囲を超えている可能性（法20条2項）<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>という2つの問題が残ったままです。</p>
+          <p style="margin-top:8px;"><b>実態：</b>これは<span class="tag stamp">Tier C</span>のデータを<span class="tag warn">Tier B</span>の環境で処理している状態。ISMAP登録済みで安全管理面の目安は満たしていても、①入力データが応答出力以外（学習等）に使われないか未確認（PPC注意喚起<sup class="cite"><a href="#r23" title="出典一覧 [23] へ移動">[23]</a></sup>）、②提供先が外国にある第三者に当たる場合の同意（法28条）と、利用目的の範囲（法17・18条）<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>の確認が残ったままです。</p>
         </div>
         <div class="box good">
           <h3 class="h3">✅ OK例：用途に応じて仕分けている</h3>
@@ -731,7 +770,7 @@
         </div>
         <div class="box accent">
           <h3 class="h3">この構成が変わりうる条件</h3>
-          <p style="font-size:13px;">各社の料金・対応リージョンは頻繁に変わります（日本ロケーションの対応は2026年7月に追加）。契約更新時に、出典一覧のリンクから再確認してください。</p>
+          <p style="font-size:13px;">各社の料金・対応リージョンは頻繁に変わります。Bedrockは使うモデルごとに日本プロファイル（jp.）と宛先リージョンを GetInferenceProfile で確認してください<sup class="cite"><a href="#r22" title="出典一覧 [22] へ移動">[22]</a></sup><sup class="cite"><a href="#r30" title="出典一覧 [30] へ移動">[30]</a></sup>。契約更新時にも出典一覧から再確認を。</p>
         </div>
       </div>
     </div>
@@ -739,13 +778,13 @@
   </section>
 
   <!-- ============ PAGE 11: なぜこの構成か ============ -->
-  <section class="page">
+  <section class="page" id="sec-cost" data-toc="cost">
     <div class="page-body">
       <div class="eyebrow">07　なぜこの構成が現実的か</div>
       <h2 class="h2">コストと精度、両方の一次情報が同じ結論を指す</h2>
 
       <h3 class="h3" style="margin-top:12px;">コスト構造</h3>
-      <p>Gemini 3.5 Flashを日本リージョン（asia-northeast1）のAPIで使う場合、標準従量課金（Standard PayGo）は非対応です（対応はglobal・us・eu）<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。利用できるのは単一ゾーンのProvisioned Throughputのみで、購入には「Google Cloudアカウント担当者への問い合わせ」が必須の個別契約になります<sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup>。公式料金ページでは、非グローバルのエンドポイントの単価は1か月コミットでGSUあたり約$4.07/時（月730時間換算で約 <span class="mono" style="font-weight:700;">$2,970</span>）と示され、必要なGSU数はモデルと処理量で決まります<sup class="cite"><a href="#r11" title="出典一覧 [11] へ移動">[11]</a></sup>。最新のGemini 3.8 Flashは日本リージョンでは提供されていません<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。小規模な組織には現実的ではありません。対して、AWS Bedrockは固定費なしのオンデマンド利用で、Claude Sonnet 4.5／Haiku 4.5は東京・大阪のみを使う日本国内クロスリージョン推論に対応します<sup class="cite"><a href="#r21" title="出典一覧 [21] へ移動">[21]</a></sup>。APACやグローバルのプロファイルは国外を経由しうるため指定してはいけません<sup class="cite"><a href="#r22" title="出典一覧 [22] へ移動">[22]</a></sup>。ISMAPの対象範囲はBedrockを含みます（Bedrock Marketplaceを除く）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r8" title="出典一覧 [8] へ移動">[8]</a></sup>。</p>
+      <p>Gemini 3.5 Flashを日本リージョン（asia-northeast1）のAPIで使う場合、標準従量課金（Standard PayGo）は非対応です（対応はglobal・us・eu）<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。利用できるのは単一ゾーンのProvisioned Throughputのみで、購入には「Google Cloudアカウント担当者への問い合わせ」が必須の個別契約になります<sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup>。公式料金ページでは、非グローバルのエンドポイントの単価は1か月コミットでGSUあたり約$4.07/時（月730時間換算で約 <span class="mono" style="font-weight:700;">$2,970</span>）と示され、必要なGSU数はモデルと処理量で決まります<sup class="cite"><a href="#r11" title="出典一覧 [11] へ移動">[11]</a></sup>。最新のGemini 3.8 Flashは日本リージョンでは提供されていません<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。小規模な組織には現実的ではありません。対して、AWS Bedrockは固定費なしのオンデマンド利用で、日本国内クロスリージョン推論（jp.）は東京・大阪のみを宛先とし、Claude Sonnet 4.5・Haiku 4.5・Haiku 5.5・Opus 5.5、Nova 2 Liteなどが対応します（Sonnet 5.5はモデルカードに日本プロファイルの記載なし）<sup class="cite"><a href="#r21" title="出典一覧 [21] へ移動">[21]</a></sup><sup class="cite"><a href="#r30" title="出典一覧 [30] へ移動">[30]</a></sup>。APACやグローバルのプロファイルは国外を経由しうるため指定してはいけません<sup class="cite"><a href="#r22" title="出典一覧 [22] へ移動">[22]</a></sup>。ISMAPの対象範囲はBedrockを含みます（Bedrock Marketplaceを除く）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r8" title="出典一覧 [8] へ移動">[8]</a></sup>。</p>
 
       <h3 class="h3" style="margin-top:14px;">日本語OCR精度の実機比較</h3>
       <p>実際の日本語書類（旧字体異体字・類似漢字・事業所名の紛らわしいペア等）を使った実機検証では、AWS Bedrock（Claude／Nova系）は特定の漢字を再現性ある形で誤読することが確認されました。自前ホスティングのPaddleOCRは、Gemini系とほぼ同水準の精度を達成しています<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
@@ -788,7 +827,7 @@
 
       <div class="box stamp" style="margin-top:8px;">
         <h3 class="h3">①〜④を全部満たしても、「もう終わり」にはならない</h3>
-        <p><b>②③④は「運営者⇔ベンダー」間の技術・契約対応</b>で、委託先とのNDA・DPA締結（③）、アーキテクチャ整備（②）、ログ基盤の構築（④）という形で一度体制を整えれば、基本的に完了したと言えます。しかし<b>①だけは「運営者⇔本人（サービス利用者）」間の同意</b>で、ベンダーとのNDA・DPA（③）をどれだけ強化しても①の代わりにはなりません。「同意書のひな形を用意した」ことと「既存の利用者全員から実際に同意を取得済みである」ことはまったく別の問題です。<b>つまり、新しい利用者と契約するたびに、その都度本人から同意書を取得する必要がある</b>ということであり、一度整えれば終わる話ではありません。</p>
+        <p><b>②③④は「運営者⇔ベンダー」間の技術・契約対応</b>で、委託先とのNDA・DPA締結（③）、アーキテクチャ整備（②）、ログ基盤の構築（④）という形で運営者とベンダーの間で整えられ、整備後も継続的な監督・見直しが必要です。しかし<b>①だけは「運営者⇔本人（サービス利用者）」間の同意</b>で、ベンダーとのNDA・DPA（③）をどれだけ強化しても①の代わりにはなりません。「同意書のひな形を用意した」ことと「既存の利用者全員から実際に同意を取得済みである」ことはまったく別の問題です。<b>つまり、利用者ごとに、法が求める場面（国外の第三者への提供、要配慮個人情報の取得など）で本人の同意を得る運用が必要</b>で、一度整えれば終わる話ではありません。同意は書面に限られませんが、取得の記録は残してください<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。</p>
       </div>
 
       <h3 class="h3" style="margin-top:16px;">マルチベンダー構成はコンプライアンス上むしろ改善しうる</h3>
@@ -810,7 +849,7 @@
         </div>
         <div class="box stamp">
           <h3 class="h3">❌ 正直、まだできない</h3>
-          <p>利用者の実名と病歴・生活歴等を<b>そのまま</b>一般的なAIツールに入力すること。「今の契約・今のツールのまま」でこれを安全にクリアする方法は、2026年10月時点では存在しません。期待を持たせすぎないよう、はっきりお伝えします。</p>
+          <p>利用者の実名と病歴・生活歴等を<b>そのまま</b>一般的なAIツールに入力すること。本人同意・委託先監督・越境移転対応・安全管理措置を個別に整えないまま行うのは避けてください。「今の契約・今のツールのまま」でこれらを満たしていると確認できるケースは、本資料が確認した範囲（2026年10月時点）では限られます。</p>
         </div>
       </div>
 
@@ -850,6 +889,7 @@
             <li id="r5"><span class="refnum">5.</span> ISMAPクラウドサービスリスト｜ISMAPポータル公式 — <a href="https://www.ismap.go.jp/csm?id=cloud_service_list" target="_blank" rel="noopener noreferrer">ismap.go.jp/csm?id=cloud_service_list</a></li>
             <li id="r6"><span class="refnum">6.</span> ISMAPポータル公式KB0011070（生成AIサービスに関する留意点について） — <a href="https://www.ismap.go.jp/csm?id=kb_article_view&sysparm_article=KB0011070" target="_blank" rel="noopener noreferrer">ismap.go.jp（KB0011070）</a></li>
             <li id="r7"><span class="refnum">7.</span> Gemini Enterprise・NotebookLM Enterprise の ISMAP登録を完了｜Google Cloud公式ブログ — <a href="https://cloud.google.com/blog/ja/products/gcp/completed-ismap-registration-for-gemini-enterprise-and-notebooklm-enterprise" target="_blank" rel="noopener noreferrer">cloud.google.com/blog/ja/...ismap-registration</a></li>
+            <li id="r31"><span class="refnum">31.</span> ISMAP概要（制度案内）｜ISMAPポータル公式 — <a href="https://www.ismap.go.jp/csm?id=kb_article_view&sysparm_article=KB0010005" target="_blank" rel="noopener noreferrer">ismap.go.jp（KB0010005）</a></li>
           </ul>
         </div>
         <div>
@@ -873,34 +913,47 @@
   <section class="page" id="sec-refs2">
     <div class="page-body">
       <div class="eyebrow">出典一覧（続き）</div>
-      <h2 class="h2" style="font-size:24px;">追補：日本ロケーション・令和8年改正に関する出典</h2>
+      <h2 class="h2" style="font-size:24px;">追補：法令・ガイドライン／日本ロケーション・医療情報</h2>
       <p style="margin-top:8px; font-size:var(--fs-small);">前頁からの続きです。番号は前頁と通しで、2026年10月12日に追加・確認した公式情報を収めています。</p>
 
       <div class="refs-grid" style="margin-top:10px;">
         <div>
-          <div class="refs-cat">法令・個人情報保護（追補）</div>
+          <div class="refs-cat">法令・個人情報保護委員会（追補）</div>
           <ul class="refs">
+            <li id="r27"><span class="refnum">27.</span> 個人情報の保護に関する法律（平成15年法律第57号）｜e-Gov法令検索 — <a href="https://laws.e-gov.go.jp/law/415AC0000000057" target="_blank" rel="noopener noreferrer">laws.e-gov.go.jp/law/415AC0000000057</a></li>
             <li id="r15"><span class="refnum">15.</span> 個人情報保護法 Q&amp;A（Q7-53・Q10-25）｜個人情報保護委員会 — <a href="https://www.ppc.go.jp/personalinfo/faq/APPI_QA/" target="_blank" rel="noopener noreferrer">ppc.go.jp/personalinfo/faq/APPI_QA</a></li>
             <li id="r16"><span class="refnum">16.</span> 令和８年 改正個人情報保護法について（令和8年7月17日公布）｜個人情報保護委員会 — <a href="https://www.ppc.go.jp/personalinfo/legal/r8kaiseihogohou/" target="_blank" rel="noopener noreferrer">ppc.go.jp/personalinfo/legal/r8kaiseihogohou</a></li>
+            <li id="r23"><span class="refnum">23.</span> 生成AIサービスの利用に関する注意喚起等（令和5年6月2日）｜個人情報保護委員会 — <a href="https://www.ppc.go.jp/files/pdf/230602_alert_generative_AI_service.pdf" target="_blank" rel="noopener noreferrer">ppc.go.jp/files/pdf/230602_alert_generative_AI_service.pdf</a></li>
+            <li id="r28"><span class="refnum">28.</span> 医療・介護関係事業者における個人情報の適切な取扱いのためのガイダンス｜個人情報保護委員会（ガイドライン一覧） — <a href="https://www.ppc.go.jp/personalinfo/legal/guidelines/#iryokanren" target="_blank" rel="noopener noreferrer">ppc.go.jp/personalinfo/legal/guidelines</a></li>
+            <li id="r29"><span class="refnum">29.</span> 行政機関等に係るガイドライン等｜個人情報保護委員会 — <a href="https://www.ppc.go.jp/personalinfo/legal/#gyosei_Guide" target="_blank" rel="noopener noreferrer">ppc.go.jp/personalinfo/legal</a></li>
           </ul>
 
-          <div class="refs-cat">AWS（日本国内推論）</div>
+          <div class="refs-cat">医療情報・行政機関向けガイドライン</div>
           <ul class="refs">
-            <li id="r21"><span class="refnum">21.</span> Amazon Bedrock 日本国内クロスリージョン推論｜AWS公式ブログ — <a href="https://aws.amazon.com/jp/blogs/news/amazon-bedrock-now-supports-japan-cross-region-inference" target="_blank" rel="noopener noreferrer">aws.amazon.com/jp/blogs/news/amazon-bedrock-now-supports-japan-cross-region-inference</a></li>
-            <li id="r22"><span class="refnum">22.</span> Cross-Region inference（地域限定とグローバルの違い）｜AWS公式ドキュメント — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html" target="_blank" rel="noopener noreferrer">docs.aws.amazon.com/bedrock/…/cross-region-inference.html</a></li>
+            <li id="r24"><span class="refnum">24.</span> 医療情報システムの安全管理に関するガイドライン 第7.0版（令和8年6月）｜厚生労働省 — <a href="https://www.mhlw.go.jp/stf/shingi/0000516275_00006.html" target="_blank" rel="noopener noreferrer">mhlw.go.jp/stf/shingi/0000516275_00006.html</a></li>
+            <li id="r25"><span class="refnum">25.</span> 医療情報を取り扱う情報システム・サービスの提供事業者における安全管理ガイドライン 第2.0版（令和7年3月）｜経済産業省 — <a href="https://www.meti.go.jp/policy/mono_info_service/healthcare/teikyoujigyousyagl.html" target="_blank" rel="noopener noreferrer">meti.go.jp/…/teikyoujigyousyagl.html</a></li>
+            <li id="r26"><span class="refnum">26.</span> 行政の進化と革新のための生成AIの調達・利活用に係るガイドライン 第2.0版（令和8年6月12日）｜デジタル庁 — <a href="https://www.digital.go.jp/en/news/decb64eb-f26e-41cb-8d37-f3dd173108b8" target="_blank" rel="noopener noreferrer">digital.go.jp/en/news/decb64eb-…</a></li>
           </ul>
+
         </div>
         <div>
           <div class="refs-cat">Google（日本ロケーション・提供終了日）</div>
           <ul class="refs">
-            <li id="r17"><span class="refnum">17.</span> Data residency for Gemini Enterprise Standard and Plus Editions（日本ロケーション）／ リリースノート 2026-07-06｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini/enterprise/docs/locations" target="_blank" rel="noopener noreferrer">…/enterprise/docs/locations</a> ／ <a href="https://docs.cloud.google.com/gemini/enterprise/docs/release-notes" target="_blank" rel="noopener noreferrer">…/release-notes</a></li>
-            <li id="r18"><span class="refnum">18.</span> Security and safety features - Gemini Enterprise（Business edition、地域を制限できない旨）｜Google公式ヘルプ — <a href="https://support.google.com/g/answer/17140632" target="_blank" rel="noopener noreferrer">support.google.com/g/answer/17140632</a></li>
-            <li id="r19"><span class="refnum">19.</span> Choose a geographic location for your data（Workspaceのデータリージョン）｜Google Workspace公式 — <a href="https://knowledge.workspace.google.com/admin/compliance/choose-a-geographic-location-for-your-data" target="_blank" rel="noopener noreferrer">knowledge.workspace.google.com/…/choose-a-geographic-location-for-your-data</a></li>
+            <li id="r17"><span class="refnum">17.</span> Data residency for Gemini Enterprise Standard and Plus（日本ロケーション）／リリースノート 2026-07-06｜Google Cloud — <a href="https://docs.cloud.google.com/gemini/enterprise/docs/locations" target="_blank" rel="noopener noreferrer">…/enterprise/docs/locations</a> ／ <a href="https://docs.cloud.google.com/gemini/enterprise/docs/release-notes" target="_blank" rel="noopener noreferrer">…/release-notes</a></li>
+            <li id="r18"><span class="refnum">18.</span> Security and safety features - Gemini Enterprise（Business edition）｜Google公式ヘルプ — <a href="https://support.google.com/g/answer/17140632" target="_blank" rel="noopener noreferrer">support.google.com/g/answer/17140632</a></li>
+            <li id="r19"><span class="refnum">19.</span> Choose a geographic location for your data（Workspaceのデータリージョン）｜Google Workspace公式 — <a href="https://knowledge.workspace.google.com/admin/compliance/choose-a-geographic-location-for-your-data" target="_blank" rel="noopener noreferrer">knowledge.workspace.google.com/…/choose-a-geographic-location…</a></li>
             <li id="r20"><span class="refnum">20.</span> Model versions（Gemini 2.5系の提供終了日）｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions" target="_blank" rel="noopener noreferrer">…/models/model-versions</a></li>
           </ul>
 
+          <div class="refs-cat">AWS（日本国内推論）</div>
+          <ul class="refs">
+            <li id="r21"><span class="refnum">21.</span> Amazon Bedrock 日本国内クロスリージョン推論｜AWS公式ブログ — <a href="https://aws.amazon.com/jp/blogs/news/amazon-bedrock-now-supports-japan-cross-region-inference" target="_blank" rel="noopener noreferrer">aws.amazon.com/jp/blogs/news/…japan-cross-region-inference</a></li>
+            <li id="r22"><span class="refnum">22.</span> Cross-Region inference（地域限定とグローバルの違い）｜AWS公式ドキュメント — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html" target="_blank" rel="noopener noreferrer">docs.aws.amazon.com/bedrock/…/cross-region-inference.html</a></li>
+            <li id="r30"><span class="refnum">30.</span> Amazon Bedrock モデルカード（jp. プロファイルと宛先）｜AWS公式 — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-4-5.html" target="_blank" rel="noopener noreferrer">Claude Sonnet 4.5</a> ／ <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-2-lite.html" target="_blank" rel="noopener noreferrer">Nova 2 Lite</a></li>
+          </ul>
+
           <div class="refs-cat">非公開の社内検証</div>
-          <p id="r-dagger" style="font-size:12.5px; color:#5A6B84; margin-top:2px;"><span class="mono" style="font-weight:700;">[†]</span> 日本語OCR精度の比較（p.13）は、実際の業務文書を用いた社内実機検証に基づく知見です。公開されている一次情報へのリンクはありません。数値の再現性は検証環境に依存します。</p>
+          <p id="r-dagger" style="font-size:12.5px; color:#5A6B84; margin-top:2px;"><span class="mono" style="font-weight:700;">[†]</span> 日本語OCR精度の比較（<span data-toc-target="cost"></span>）は、実際の業務文書を用いた社内実機検証に基づく知見です。公開されている一次情報へのリンクはありません。数値の再現性は検証環境に依存します。</p>
         </div>
       </div>
 
