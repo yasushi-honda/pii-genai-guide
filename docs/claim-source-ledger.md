@@ -58,7 +58,7 @@
 | I4 | 登録済みIaaS/PaaS上のSaaSは同等とみなせない（p.9 引用文） | ISMAPポータル KB0010826（原文引用、中略は「…」で明示）［出典4］ | 確認済 |
 | I5 | SaaSとして提供する生成AIサービスは原則登録が必要。生成AI開発基盤を言明対象に含めて登録した場合、個々のモデルの別途登録は不要（p.9, 図4） | ISMAPポータル KB0011070「生成AIサービスに関する留意点について」（令和8年1月9日追記）［出典6］ | 確認済 |
 | I6 | 政府機関等が生成AIを使う場合は、ISMAPとは別のリスク対応が必要（p.9） | 同 KB0011070 | 確認済 |
-| I7 | 登録番号 C21-0004-2（Google Cloud）、C21-0005-2（Workspace）、C26-0114-2（Gemini Enterprise）、C21-0008-2（AWS）（p.9, 図4） | ISMAPクラウドサービスリスト（2026-10-12に描画して取得）［出典5］ | 確認済 |
+| I7 | 登録番号 C21-0004-2（Google Cloud）、C21-0005-2（Workspace）、C26-0114-2（Gemini Enterprise）、C21-0008-2（AWS）（p.9, 図4）。リスト上の提供事業者は、Google Cloud・Workspace・Gemini EnterpriseがGoogle LLC、AWSがAmazon Web Services, Inc. | ISMAPクラウドサービスリスト（2026-10-12に描画して取得）［出典5］ | 確認済 |
 | I8 | Gemini Enterprise は2026年4月28日に本登録（p.9） | Google Cloud公式ブログ（2026-04-28）［出典7］／ISMAPクラウドサービスリスト | 確認済 |
 | I9 | AWSはBedrockを含み、除外はBedrock Marketplaceのみ（図4, p.14） | ISMAP言明対象範囲PDF（AWS）に「Amazon Bedrock [Amazon Bedrock Marketplace を除きます]」、AWS公式ブログ［出典8］ | 確認済 |
 | I10 | Gemini Enterprise の言明対象範囲の公開資料にはエディション別の記載がなく、Business版が含まれるかは確認できない（p.9） | ISMAP言明対象範囲PDF（Gemini Enterprise including Agentspace and NotebookLM Enterprise）の本文にエディションの記載なし | 確認済（不存在の確認） |
