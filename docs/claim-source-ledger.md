@@ -11,7 +11,7 @@
 | **確認済** | 一次情報の原文（法令本文・ガイドライン・公式ページ・公式PDF）を2026-10-12に直接読んで照合した |
 | **推奨水準** | 法令の最低要件ではなく、本資料が安全側に整理した運用基準（本文でもそう明記している） |
 | **一部確認** | 一次情報で確認できた範囲と、できていない範囲がある（備考に範囲を記載） |
-| **社内検証** | 公開された一次情報がない（`[†]`。判断の根拠にしない） |
+| **社内検証** | 公開された一次情報がない（`[†]`。法的判断の根拠にはしない。技術的な推奨の参考としてのみ使う） |
 
 照合方法: 法令は e-Gov 法令検索（現行版・令和8年10月1日時点）、PDFは `pdftotext` で本文抽出、JavaScriptで描画されるページ（ISMAPポータル、AWS/Google公式ドキュメント）はブラウザで描画して本文を取得した。要約を介さず原文で照合している。
 
@@ -58,7 +58,7 @@
 | I4 | 登録済みIaaS/PaaS上のSaaSは同等とみなせない（p.9 引用文） | ISMAPポータル KB0010826（原文引用、中略は「…」で明示）［出典4］ | 確認済 |
 | I5 | SaaSとして提供する生成AIサービスは原則登録が必要。生成AI開発基盤を言明対象に含めて登録した場合、個々のモデルの別途登録は不要（p.9, 図4） | ISMAPポータル KB0011070「生成AIサービスに関する留意点について」（令和8年1月9日追記）［出典6］ | 確認済 |
 | I6 | 政府機関等が生成AIを使う場合は、ISMAPとは別のリスク対応が必要（p.9） | 同 KB0011070 | 確認済 |
-| I7 | 登録番号 C21-0004-2（Google Cloud）、C21-0005-2（Workspace）、C26-0114-2（Gemini Enterprise）、C21-0008-2（AWS）（p.9, 図4） | ISMAPクラウドサービスリスト（2026-10-12に描画して取得）［出典5］ | 確認済 |
+| I7 | 登録番号 C21-0004-2（Google Cloud）、C21-0005-2（Workspace）、C26-0114-2（Gemini Enterprise）、C21-0008-2（AWS）（p.9, 図4）。リスト上の提供事業者は、Google Cloud・Workspace・Gemini EnterpriseがGoogle LLC、AWSがAmazon Web Services, Inc. | ISMAPクラウドサービスリスト（2026-10-12に描画して取得）［出典5］ | 確認済 |
 | I8 | Gemini Enterprise は2026年4月28日に本登録（p.9） | Google Cloud公式ブログ（2026-04-28）［出典7］／ISMAPクラウドサービスリスト | 確認済 |
 | I9 | AWSはBedrockを含み、除外はBedrock Marketplaceのみ（図4, p.14） | ISMAP言明対象範囲PDF（AWS）に「Amazon Bedrock [Amazon Bedrock Marketplace を除きます]」、AWS公式ブログ［出典8］ | 確認済 |
 | I10 | Gemini Enterprise の言明対象範囲の公開資料にはエディション別の記載がなく、Business版が含まれるかは確認できない（p.9） | ISMAP言明対象範囲PDF（Gemini Enterprise including Agentspace and NotebookLM Enterprise）の本文にエディションの記載なし | 確認済（不存在の確認） |
@@ -92,6 +92,7 @@
 | M2 | 経産省・総務省「医療情報を取り扱う情報システム・サービスの提供事業者における安全管理ガイドライン」は第2.0版（令和7年3月） | 経産省ページの掲載一覧（第2.0版が最新、2025-03-28公表）［出典25］ | 確認済 |
 | M3 | 第7.0版 企画管理編は、外部保存先に対し、情報機器等が「国内法の適用及び執行の及ぶ範囲」にあることの確保、設置場所（地域・国）と国外法の適用可能性の確認を求め、確認手段の例にISMAP等を挙げる（p.8） | 第7.0版 企画管理編 PDF（外部保存に関する項目：「保存された情報を格納する情報機器等が、国内法の適用及び執行の及ぶ範囲にあることを確実にすること」、委託先選定の確認事項 h「医療情報を保存する情報機器が設置されている場所(地域、国)」・i「委託先事業者に対する国外法の適用可能性」、認証の例にISMAP） | 確認済 |
 | M4 | 上記は主に医療機関等向けで、福祉施設に直接適用とは限らない。本資料では参考水準として用いる（p.8） | 第7.0版は「医療機関等」を対象とする旨の記載（厚労省ページ）。福祉施設への適用有無は本資料の解釈 | 推奨水準 |
+| M5 | 医療機関等が外部保存の委託先を選ぶ際の確認事項に、プライバシーマーク認定またはISMS認証の取得があり、いずれもない場合はISMAP等の別の認証、または外部監査による確認を求める。個人情報保護法本文・通則編・外国提供編にはプライバシーマーク・ISMSの記載がない（論点シート7） | 第7.0版 企画管理編 PDF（委託先選定の確認事項 f・g）。法令本文・通則編・外国提供編の全文で「プライバシーマーク」「ISMS」を検索し出現0件 | 確認済（医療機関向けの要求。不存在の確認） |
 
 ## 6. Google（Gemini Enterprise / Workspace / Agent Platform）
 
@@ -104,7 +105,7 @@
 | G5 | Gemini 3.5 Flash は日本リージョンのAPIで標準従量課金（Standard PayGo）に非対応（対応は global・us・eu）。Gemini 3.8 Flash は日本リージョンで提供されない（p.14） | Gemini 3.5 Flash／3.8 Flash モデルページの「Supported regions」［出典9］ | 確認済 |
 | G6 | 日本リージョンで使えるのは単一ゾーンのProvisioned Throughput。購入はGoogle Cloudアカウント担当者への問い合わせ（p.14） | モデルページの注記、「Purchase Provisioned Throughput」、「Single Zone Provisioned Throughput」［出典10］ | 確認済 |
 | G7 | 非グローバルの1か月コミットは1GSUあたり約$4.07/時（月730時間換算で約$2,970）。必要GSU数はモデルと処理量で決まる（p.14） | Agent Platform の料金ページ（非グローバル単価 $4.068493151／時、1か月コミット）［出典11］。単一ゾーンPTは標準PTと同じGSU・料金・条件（Single Zone PTドキュメント） | 確認済（※7） |
-| G8 | Gemini 2.5 Flash は Google Cloud（Agent Platform）で2026年10月20日に提供終了予定（p.14） | Google Cloud「Model versions」（gemini-2.5-flash の Retirement date: October 20, 2026）［出典20］ | 確認済 |
+| G8 | Gemini 2.5 Flash の Google Cloud（Agent Platform）での提供終了日は2026年10月20日（p.14） | Google Cloud「Model versions」（gemini-2.5-flash の Retirement date: October 20, 2026）［出典20］ | 確認済 |
 | G9 | Gemini Enterprise は30日間の無料トライアルがあり、Business版はIT設定不要（p.10） | Gemini Enterprise FAQ［出典12］ | 確認済 |
 | G10 | Google AI Studio（Gemini API）は、無料枠は入力が製品改善に使われ、有料でも一時保存・キャッシュが国を問わず行われうる。ISMAPリスト未登録（p.10, p.12） | Gemini API Additional Terms of Service（Unpaid Services／Paid Services の記載。「stored transiently or cached in any country」）［出典13］、ISMAPクラウドサービスリスト（描画した全文）に「Gemini API」「AI Studio」の登録がないこと | 確認済 |
 
@@ -158,5 +159,5 @@
 4. **ISMAP言明対象範囲PDF**: GCP・AWSの言明範囲PDFは文字化けを含む。サービスの有無は正規化した本文の検索で確認したが、リージョン別の詳細までは読み切っていない（I12〜I14）。
 5. **製品名の変更**: Vertex AI → Gemini Enterprise Agent Platform の名称変更が、ISMAP言明範囲にどう反映されるかは未確認（I12 ※5）。
 6. **Google公共部門向け発表**: Google Cloud Japan は2026-07-31に、公共部門向けの国内データレジデンシー オプション（申請・選定制）を発表している。本文では担当窓口経由のallowlist制と表記しているが、対象者・審査基準の詳細は公開情報で確認できていない。
-7. **社内検証値**: 日本語OCR精度の比較（O5）と要約用軽量モデルのCPU評価（O8）は再現できる公開情報がない。行政向けの説明では、判断の根拠にしない扱いを推奨する。
+7. **社内検証値**: 日本語OCR精度の比較（O5）と要約用軽量モデルのCPU評価（O8）は再現できる公開情報がない。本文では、OCRを自前ホスティングにする理由など技術的な推奨の参考として使っているが、法的な根拠ではない。行政向けの説明では、外すか、技術判断の参考値と明記して残すかの判断が要る。
 8. **ドキュメントの更新**: 各社ドキュメントは頻繁に更新される。意思決定の直前に、出典一覧のリンクから再確認すること。
