@@ -45,3 +45,7 @@ CIは PDF を生成せず、`public/downloads/pii-genai-guide.pdf.source-sha256`
 PDF自身、両方のSHA-256を記録したマニフェスト）と実ファイルを突き合わせるだけです。
 本文を直したのに再生成を忘れた場合や、PDFだけを誤って削除・置換した場合、
 どちらもビルドが失敗します。
+
+## 検証台帳
+
+資料中の主要な主張と一次情報の対応は [docs/claim-source-ledger.md](docs/claim-source-ledger.md) にまとめています（2026-10-12時点）。本文を更新したら、対応する行も更新してください。
