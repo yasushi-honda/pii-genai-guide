@@ -104,7 +104,7 @@
 | G5 | Gemini 3.5 Flash は日本リージョンのAPIで標準従量課金（Standard PayGo）に非対応（対応は global・us・eu）。Gemini 3.8 Flash は日本リージョンで提供されない（p.14） | Gemini 3.5 Flash／3.8 Flash モデルページの「Supported regions」［出典9］ | 確認済 |
 | G6 | 日本リージョンで使えるのは単一ゾーンのProvisioned Throughput。購入はGoogle Cloudアカウント担当者への問い合わせ（p.14） | モデルページの注記、「Purchase Provisioned Throughput」、「Single Zone Provisioned Throughput」［出典10］ | 確認済 |
 | G7 | 非グローバルの1か月コミットは1GSUあたり約$4.07/時（月730時間換算で約$2,970）。必要GSU数はモデルと処理量で決まる（p.14） | Agent Platform の料金ページ（非グローバル単価 $4.068493151／時、1か月コミット）［出典11］。単一ゾーンPTは標準PTと同じGSU・料金・条件（Single Zone PTドキュメント） | 確認済（※7） |
-| G8 | Gemini 2.5 Flash は Google Cloud（Agent Platform）で2026年10月20日に提供終了予定（p.14） | Google Cloud「Model versions」（gemini-2.5-flash の Retirement date: October 20, 2026）［出典20］ | 確認済 |
+| G8 | Gemini 2.5 Flash の Google Cloud（Agent Platform）での提供終了日は2026年10月20日（p.14）。表記は期限の前後で誤りにならない言い方にしてある | Google Cloud「Model versions」（gemini-2.5-flash の Retirement date: October 20, 2026）［出典20］ | 確認済 |
 | G9 | Gemini Enterprise は30日間の無料トライアルがあり、Business版はIT設定不要（p.10） | Gemini Enterprise FAQ［出典12］ | 確認済 |
 | G10 | Google AI Studio（Gemini API）は、無料枠は入力が製品改善に使われ、有料でも一時保存・キャッシュが国を問わず行われうる。ISMAPリスト未登録（p.10, p.12） | Gemini API Additional Terms of Service（Unpaid Services／Paid Services の記載。「stored transiently or cached in any country」）［出典13］、ISMAPクラウドサービスリスト（描画した全文）に「Gemini API」「AI Studio」の登録がないこと | 確認済 |
 
