@@ -717,10 +717,10 @@
     <div class="page-body">
       <div class="eyebrow">07　Tier Cの技術構成</div>
       <h2 class="h2">要配慮個人情報を実名で扱う場合の、現実的な最適構成</h2>
-      <p style="margin-top:10px;">2026年10月時点で、自社アプリにAI機能を組み込む場合に費用面で最も現実的なのは、Google Cloudインフラを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成です。ただし<b>AI OCRだけは例外</b>で、自前ホスティングへ切り出します（理由は次頁）。要約など限定的な文章生成は、軽量モデル（Sarashina2.2-3B-instruct、MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）をCloud RunのCPU・日本リージョンに置く選択肢もあります。Claude級の性能はありませんが、入力は自前コンテナ内で処理されモデル事業者に渡りません。基盤はGoogle Cloudのままで、国外法の適用可能性などは別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup><sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。Gemini Enterprise（Standard/Plus）の日本ロケーション（allowlist制）も並行する選択肢ですが、最新モデルや一部機能は国内の対象外で、管理者が警告に同意して有効化するとグローバルへ送信されます<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。</p>
+      <p style="margin-top:10px;">2026年10月時点で、自社アプリにAI機能を組み込む場合に費用面で最も現実的なのは、Google Cloudインフラを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成が標準です。ただし<b>AI OCRは例外</b>で、自前ホスティングへ切り出します（理由は次頁）。要約など限定的な文章生成は、軽量モデル（Sarashina2.2-3B-instruct、MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）をCloud RunのCPU・日本リージョンに置く選択肢もあります。性能はClaude級に劣りますが、入力は自前コンテナ内で処理されモデル事業者に渡りません。基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup><sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
 
       <figure>
-        <svg viewBox="0 0 780 282" style="max-width:570px;" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、OCRと限定的な要約は自前ホスティング（PaddleOCRとSarashina）、高度な生成と音声はAWS BedrockとTranscribeへ振り分けるアーキテクチャ図">
+        <svg viewBox="0 0 780 282" style="max-width:730px;" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、OCRと限定的な要約は自前ホスティング（PaddleOCRとSarashina）、高度な生成と音声はAWS BedrockとTranscribeへ振り分けるアーキテクチャ図">
           <defs><marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="currentColor" /></marker></defs>
           <rect x="300" y="10" width="180" height="48" rx="8" fill="#F3F6FA" stroke="#B9C6D6" />
           <text x="390" y="39" text-anchor="middle" style="font-size:13px; font-weight:700;">利用者</text>
