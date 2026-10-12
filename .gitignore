@@ -26,3 +26,6 @@ pnpm-debug.log*
 
 # Playwright MCP scratchpad (verification screenshots)
 .playwright-mcp/
+
+# Serena (local code-intel cache)
+.serena/
