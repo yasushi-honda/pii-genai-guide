@@ -976,17 +976,17 @@
     <div class="page-body">
       <div class="eyebrow">12　Geminiの2つの入口</div>
       <h2 class="h2">「Gemini Enterprise（アプリ）」と「Agent Platform（API）」の違い</h2>
-      <p style="margin-top:6px; font-size:var(--fs-small);">名前が似ていますが、別の製品・別の契約・別のISMAP登録です。「アプリ」は画面で使う入口の通称です。</p>
+      <p style="margin-top:6px; font-size:var(--fs-small);">別の製品・別の契約・別のISMAP登録です。「アプリ」は画面で使う入口の通称です。</p>
 
       <div class="tbl-wrap" style="margin:6px 0 4px;">
         <table style="font-size:11.5px;">
           <thead><tr><th style="width:13%;"></th><th style="width:43%;">Gemini Enterprise（アプリ）</th><th>Gemini Enterprise Agent Platform（API）</th></tr></thead>
           <tbody>
-            <tr><td>正式名・登録</td><td>「Gemini Enterprise」（Standard／Plus／Pay-as-you-go／Frontline）。ISMAP登録名は「Gemini Enterprise (including Agentspace) and Gemini Notebook Enterprise」（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>旧Vertex AI。ISMAP言明書上は「Vertex AI Platform」で、Google Cloud（C21-0004-2）の一部<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td></tr>
+            <tr><td>正式名・登録</td><td>「Gemini Enterprise」（Standard／Plus／Pay-as-you-go／Frontline）。ISMAP登録名は「Gemini Enterprise (including Agentspace) and Gemini Notebook Enterprise」（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>旧Vertex AI。ISMAP言明書上は「Vertex AI Platform」で、Google Cloud（C21-0004-2）の一部（名称変更後の範囲は未確認）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td></tr>
             <tr><td>使い方</td><td>職員が画面で使う（検索、アシスタント、エージェント）。開発は不要</td><td>自社アプリにAIを組み込むAPI。開発と運用が必要</td></tr>
             <tr><td>日本での保存・AI処理</td><td>日本（asia-northeast1）を指定すると、基本機能の保存とAI処理が日本の範囲。ただし「GA with allowlist」で、Googleの担当窓口経由の申請が必要<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>日本のリージョナルエンドポイントを指定。globalエンドポイントは処理地の保証がない<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup>。Gemini 3.5 Flashの日本提供は単一ゾーンのProvisioned Throughput（<span data-toc-target="cost"></span>）<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup><sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup></td></tr>
             <tr><td>日本で完結しないもの</td><td>Gemini 3.8／3.7／3.6 Flash（管理者が警告を承認するとグローバル送信）、Google検索によるグラウンディング、動画生成、AI開発ツールなど<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>Gemini 3.8／3.7／3.6 Flash、3.5 Flash-Liteは日本の対応表にない。globalを指定すると保証なし<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup></td></tr>
-            <tr><td>Tier Cの見立て</td><td><b>条件を満たせば、技術要件（保存とAI処理が日本）を満たしうる</b>。条件：Standard／Plusなど（Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup>）、allowlist申請済み、日本非対応のモデル・機能を使わない。<b>基本機能に限る</b>（他は機能ごとに確認）</td><td><b>条件を満たせば、技術要件を満たしうる</b>。条件：保存先とエンドポイントを日本に指定（保存は選んだロケーションに留まる）、日本対応のモデル（3.5 Flashなど）、globalを使わない</td></tr>
+            <tr><td>Tier Cの見立て（推奨水準）</td><td><b>条件を満たせば、技術要件（保存とAI処理が日本）を満たしうる</b>。条件：Standard／Plus（他の版は未確認。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup>）、allowlistで日本が有効化済み、日本非対応のモデル・機能を使わない。<b>基本機能に限る</b>（他は機能ごとに確認）</td><td><b>条件を満たせば、技術要件を満たしうる</b>。条件：保存先とエンドポイントを日本に指定（保存は選んだロケーションに留まる）、日本対応のモデル（3.5 Flashなど）、globalを使わない</td></tr>
           </tbody>
         </table>
       </div>
@@ -1002,8 +1002,8 @@
         </div>
         <div class="box accent">
           <h3 class="h3" style="font-size:15px;">どちらでも別に必要なこと</h3>
-          <p style="font-size:12px; margin-top:4px;">法が求める場面での本人同意（法28条など）、3省2ガイドライン相当の組織的措置、DPA、ログ設計など、第10章（<span data-toc-target="checklist"></span>）の項目は技術とは別に必要です。この表は本資料の推奨水準で、法的な保証ではありません。</p>
-          <p style="font-size:12px; margin-top:4px;"><b>未確認：</b>日本の約束が全機能（コネクタなど）にどこまで及ぶか。Notebookの機械学習処理の記載にGoogle文書内の食い違いがある。</p>
+          <p style="font-size:12px; margin-top:4px;">法が求める場面での本人同意（法28条など）、3省2ガイドライン相当の組織的措置、DPA、ログ設計など、第10章（<span data-toc-target="checklist"></span>）の項目は技術とは別に必要です。推奨水準であり、法的保証ではありません。</p>
+          <p style="font-size:12px; margin-top:4px;"><b>未確認：</b>日本の約束が、基本機能の外の機能やNotebookにどこまで及ぶか。Notebookの機械学習処理の記載にGoogle文書内の食い違いがある。</p>
         </div>
       </div>
     </div>

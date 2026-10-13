@@ -99,7 +99,7 @@
 
 ### 14. Gemini Enterprise（アプリ）とAgent Platform（API）の当てはめ（優先度: 高）
 
-- **事実**: Gemini Enterprise（Standard／Plusなど）は日本（asia-northeast1）の基本機能で保存とAI処理が日本の範囲だが、GA with allowlist（担当窓口経由の申請）で、日本非対応のモデル・機能は管理者の設定でグローバルに送られる。Business版は日本等の指定設定がない。Agent Platformはglobalエンドポイントの処理地に保証がなく、日本のリージョナルエンドポイントで対応が示されるモデルは限られる（3.5 Flashは日本でProvisioned Throughputのみ）。〔H2〜H9〕
+- **事実**: Gemini Enterprise（Standard／Plusなど）は日本（asia-northeast1）の基本機能で保存とAI処理が日本の範囲だが、GA with allowlist（担当窓口経由の申請）で、日本非対応のモデル・機能は管理者の設定でグローバルに送られる。Business版は日本等の指定設定がない。Agent Platformはglobalエンドポイントの処理地に保証がなく、日本のリージョナルエンドポイントで対応が示されるモデルは限られる（3.5 Flashは日本でProvisioned Throughputのみ）。〔H2〜H9、H12、H13〕
 - **資料の扱い**: 第12章で並べて比較し、Tier Cの技術要件を「条件を満たせば満たしうる」と整理した。同意・組織的措置など第10章の項目は別に必要と明記し、法的な保証ではないとした。日本の約束が全機能に及ぶ範囲は未確認と明記した。〔H10、H11、p.19〕
 - **確認してほしいこと**: 「条件を満たせば満たしうる」という表現の妥当性。実契約（版、allowlistの申請状況、有効化している機能・モデル）に照らした、実名の要配慮個人情報の入力可否の判断。契約書面でのデータ所在の約束の確認。
 
