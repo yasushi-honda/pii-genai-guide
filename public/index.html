@@ -874,7 +874,7 @@
       <h3 class="h3" style="margin-top:20px;">組織として計画的に準備すべきこと</h3>
       <p>要配慮個人情報を実名で扱えるようにするには、個人のスマホ設定のように「その場で解決すること」ではなく、<b>システム構築と契約整理を伴う一定規模のプロジェクト</b>として進める必要があります。</p>
       <ul class="list">
-        <li>Tier C対応の技術基盤の構築（Gemini Enterprise Standard/Plusの日本ロケーション〔allowlist申請〕、またはAWS Bedrock日本国内推論等を用いたハイブリッド構成）</li>
+        <li>Tier C対応の技術基盤の構築（Gemini Enterprise Standard/Plusの日本ロケーション〔allowlist登録〕、またはAWS Bedrock日本国内推論等を用いたハイブリッド構成）</li>
         <li>費用感の見積もりと予算確保（固定費が発生する構成もあるため事前の比較検討が必要）</li>
         <li>ISMAP登録範囲の個別確認（前章②）、クラウド事業者とのDPA締結（前章③）</li>
         <li>3省2ガイドライン相当の組織的措置の整備</li>
@@ -979,14 +979,14 @@
       <p style="margin-top:6px; font-size:var(--fs-small);">名前は似ていますが別の製品です（ISMAP登録も別。契約は書面で確認）。画面で使うGemini Enterpriseを「アプリ」、開発して組み込むAgent Platform（旧Vertex AI）を「開発用」と呼びます。</p>
 
       <div class="tbl-wrap" style="margin:6px 0 4px;">
-        <table style="font-size:12.5px;">
+        <table style="font-size:11.8px;">
           <thead><tr><th style="width:17%;"></th><th style="width:41%;">アプリ（Gemini Enterprise）</th><th>開発用（Gemini Enterprise Agent Platform）</th></tr></thead>
           <tbody>
             <tr><td>ひとことで・向く場面</td><td>職員が画面で使うAIサービス。日常の要約・検索・下書き向け</td><td>自社システムにAIを組み込む部品（開発が必要）。ケース記録システムなど向け</td></tr>
             <tr><td>ISMAP登録</td><td>あり（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td><td>あり（旧名「Vertex AI Platform」でGoogle Cloudの一部、C21-0004-2。名称変更後の範囲は未確認）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td></tr>
             <tr><td>実名の要配慮情報を渡せる環境になりうるか<br><span style="font-size:11px;">（本資料の推奨水準）</span></td><td><span class="tag warn">条件つきで可</span><br>下の条件を満たす<b>基本機能</b>に限る</td><td><span class="tag warn">条件つきで可</span><br>下の条件を満たし、<b>自社で作り込む</b>場合に限る</td></tr>
-            <tr><td>その条件</td><td>①Standard／Plusの契約（他の版は未確認。Business版は不可）<br>②担当窓口経由のallowlist申請で、日本が有効化済み<br>③日本で処理されない機能・モデルを使わない</td><td>①日本のエンドポイントを指定<br>②日本対応のモデルを使う（3.5 Flashは日本では単一ゾーンのProvisioned Throughputのみ）<br>③データを預かる各サービスの保存先も日本に<br>④globalエンドポイントを使わない</td></tr>
-            <tr><td>つまずきやすい点</td><td>管理者の設定ひとつで、日本の外に送られる機能がある</td><td>指定を間違えると、日本の外になる</td></tr>
+            <tr><td>その条件</td><td>①Standard／Plusの契約（他の版は未確認。Business版は不可）<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup><sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup><br>②担当窓口への問い合わせ（allowlist登録）で、日本が有効化済み<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup><br>③日本で処理されない機能・モデルを使わない<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>①日本のエンドポイントを指定<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup><br>②日本対応のモデルを使う（3.5 Flashは日本では単一ゾーンのProvisioned Throughputのみ（購入は担当者へ問い合わせ））<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup><sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup><br>③データを預かる各サービスの保存先も日本に<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup><br>④globalエンドポイントを使わない<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup></td></tr>
+            <tr><td>つまずきやすい点</td><td>管理者の設定ひとつで、日本の外に送られる機能がある<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>指定を間違えると、日本の外になる<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup></td></tr>
             <tr><td>どちらでも別に必要</td><td colspan="2">①法が求める場面での本人同意（法28条など）　②DPA：Standard／Plusの契約でCloud DPAが適用されるかは契約書面で確認（Business版は別規約）<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup>　③組織的措置（3省2ガイドライン相当）　④ログ設計。製品の機能では満たせません</td></tr>
           </tbody>
         </table>
@@ -1018,7 +1018,7 @@
           <thead><tr><th style="width:13%;"></th><th style="width:43%;">Gemini Enterprise（アプリ）</th><th>Gemini Enterprise Agent Platform（開発用）</th></tr></thead>
           <tbody>
             <tr><td>正式名・登録</td><td>ISMAP登録名は「Gemini Enterprise (including Agentspace) and Gemini Notebook Enterprise」（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>旧Vertex AI。ISMAP言明書上は「Vertex AI Platform」で、Google Cloud（C21-0004-2）の一部（名称変更後の範囲は未確認）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td></tr>
-            <tr><td>日本での保存・AI処理</td><td>日本（asia-northeast1）を指定すると、アプリが預かるデータの保存とAI処理が、基本機能では日本の範囲。ただし「GA with allowlist」で、Googleの担当窓口経由の申請が必要<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>AI処理：日本のリージョナルエンドポイントを指定（globalは保証なし）。保存：Agent Platformが預かるデータは選んだロケーションに留まる。自社アプリのDB等（他のGCPサービス）は別<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup>。Gemini 3.5 Flashの日本提供は単一ゾーンのProvisioned Throughput（<span data-toc-target="cost"></span>）<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup><sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup></td></tr>
+            <tr><td>日本での保存・AI処理</td><td>日本（asia-northeast1）を指定すると、アプリが預かるデータの保存とAI処理が、基本機能では日本の範囲。ただし「GA with allowlist」で、Googleの担当窓口への問い合わせが必要<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>AI処理：日本のリージョナルエンドポイントを指定（globalは保証なし）。保存：Agent Platformが預かるデータは選んだロケーションに留まる。自社アプリのDB等（他のGCPサービス）は別<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup>。Gemini 3.5 Flashの日本提供は単一ゾーンのProvisioned Throughput（<span data-toc-target="cost"></span>）<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup><sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup></td></tr>
             <tr><td>日本で完結しないもの</td><td>Gemini 3.8／3.7／3.6 Flash（管理者が警告を承認するとグローバル送信）、Google検索によるグラウンディング、動画生成、AI開発ツールなど<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>Gemini 3.8／3.7／3.6 Flash、3.5 Flash-Liteは日本の対応表にない。globalを指定すると保証なし<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup></td></tr>
             <tr><td>Tier Cの見立て（推奨水準）</td><td><b>条件を満たせば、技術要件（保存とAI処理が日本）を満たしうる</b>。条件：Standard／Plus（他の版は未確認。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup>）、allowlistで日本が有効化済み、日本非対応のモデル・機能を使わない。<b>基本機能に限る</b>（他は機能ごとに確認）</td><td><b>条件を満たせば、技術要件を満たしうる</b>。条件：エンドポイントを日本に指定、日本対応のモデル（3.5 Flashなど）、globalを使わない。データを預かる各サービスの保存先も日本に指定</td></tr>
           </tbody>
