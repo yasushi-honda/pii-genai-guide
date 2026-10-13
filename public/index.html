@@ -976,7 +976,7 @@
     <div class="page-body">
       <div class="eyebrow">12　Geminiの2つの入口（かんたん対照表）</div>
       <h2 class="h2">どちらも「Gemini」ですが別物です：実名の要配慮情報を渡してよいのはどちら？</h2>
-      <p style="margin-top:6px; font-size:var(--fs-small);">名前は似ていますが、製品・契約・ISMAP登録とも別です。以下、画面で使うGemini Enterpriseを「アプリ」、開発して組み込むGemini Enterprise Agent Platform（旧Vertex AI）を「API」と呼びます。</p>
+      <p style="margin-top:6px; font-size:var(--fs-small);">名前は似ていますが、製品・契約・ISMAP登録とも別です。画面で使うGemini Enterpriseを「アプリ」、開発して組み込むAgent Platform（旧Vertex AI）を「API」と呼びます。</p>
 
       <div class="tbl-wrap" style="margin:6px 0 4px;">
         <table style="font-size:12.5px;">
@@ -984,9 +984,9 @@
           <tbody>
             <tr><td>ひとことで</td><td>職員が画面で使うAIサービス（検索、アシスタント、エージェント）</td><td>自社のシステムにAIを組み込む部品。開発が必要</td></tr>
             <tr><td>向く場面</td><td>職員が日常業務で、文書の要約・検索・下書きに使う</td><td>自社のケース記録システムなどに、AI機能を組み込む</td></tr>
-            <tr><td>ISMAP登録</td><td>あり（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td><td>あり（Google Cloudの一部、C21-0004-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td></tr>
+            <tr><td>ISMAP登録</td><td>あり（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td><td>あり（旧名「Vertex AI Platform」でGoogle Cloudの一部、C21-0004-2。名称変更後の範囲は未確認）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td></tr>
             <tr><td>実名の要配慮情報を渡してよい水準か<br><span style="font-size:11px;">（本資料の推奨水準）</span></td><td><span class="tag warn">条件つきで可</span><br>下の条件を満たす<b>基本機能</b>に限る</td><td><span class="tag warn">条件つきで可</span><br>下の条件を満たし、<b>自社で作り込む</b>場合に限る</td></tr>
-            <tr><td>その条件</td><td>①Standard／Plusの契約（Business版は不可）<br>②日本ロケーションが有効化済み<br>③日本で処理されない機能・モデルを使わない</td><td>①日本のエンドポイントを指定<br>②日本対応のモデルを使う（3.5 Flashなど）<br>③データを預かる各サービスの保存先も日本に<br>④globalエンドポイントを使わない</td></tr>
+            <tr><td>その条件</td><td>①Standard／Plusの契約（Business版は不可）<br>②日本ロケーションが有効化済み<br>③日本で処理されない機能・モデルを使わない</td><td>①日本のエンドポイントを指定<br>②日本対応のモデルを使う（3.5 Flashは日本では単一ゾーンのProvisioned Throughputのみ）<br>③データを預かる各サービスの保存先も日本に<br>④globalエンドポイントを使わない</td></tr>
             <tr><td>つまずきやすい点</td><td>管理者の設定ひとつで、日本の外に送られる機能がある</td><td>エンドポイントや保存先の指定を間違えると、日本の外になる</td></tr>
             <tr><td>どちらでも別に必要</td><td colspan="2">①法が求める場面での本人同意（法28条など）　②DPA：契約に組み込まれる仕組みだが、実際の契約書面で確認<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup>　③組織的措置（3省2ガイドライン相当）　④ログ設計。製品の機能では満たせません</td></tr>
           </tbody>
@@ -1078,7 +1078,7 @@
             <li id="r10"><span class="refnum">10.</span> プロビジョンド スループットを購入する｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/purchase-provisioned-throughput" target="_blank" rel="noopener noreferrer">docs.cloud.google.com/.../purchase-provisioned-throughput</a></li>
             <li id="r11"><span class="refnum">11.</span> Agent Platform の料金｜Google Cloud公式 — <a href="https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing" target="_blank" rel="noopener noreferrer">cloud.google.com/.../generative-ai/pricing</a></li>
             <li id="r33"><span class="refnum">33.</span> Data residency（Agent Platform）｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/data-residency" target="_blank" rel="noopener noreferrer">…/resources/data-residency</a></li>
-            <li id="r34"><span class="refnum">34.</span> Service Specific Terms／Cloud Data Processing Addendum｜Google Cloud — <a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank" rel="noopener noreferrer">cloud.google.com/terms/data-processing-addendum</a></li>
+            <li id="r34"><span class="refnum">34.</span> Service Specific Terms／Cloud Data Processing Addendum｜Google Cloud — <a href="https://cloud.google.com/terms/service-terms" target="_blank" rel="noopener noreferrer">…/terms/service-terms</a>、<a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank" rel="noopener noreferrer">…/data-processing-addendum</a></li>
             <li id="r12"><span class="refnum">12.</span> Gemini Enterprise app FAQ（30日間無料トライアル）｜Google Cloud公式 — <a href="https://cloud.google.com/gemini-enterprise/faq" target="_blank" rel="noopener noreferrer">cloud.google.com/gemini-enterprise/faq</a></li>
             <li id="r13"><span class="refnum">13.</span> Gemini API 利用規約｜Google AI for Developers公式 — <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">ai.google.dev/gemini-api/terms</a></li>
             <li id="r14"><span class="refnum">14.</span> Google Workspace「生成AIに関する情報」開示書（Google LLC提出、ISMAPポータル） — <a href="https://www.ismap.go.jp/sys_attachment.do?sys_id=4fe2e2e52b2107d0f0bbfd69fe91bf04" target="_blank" rel="noopener noreferrer">ismap.go.jp（開示書PDF）</a></li>
