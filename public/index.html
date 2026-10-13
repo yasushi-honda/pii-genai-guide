@@ -306,7 +306,7 @@
       </ol>
 
       <h3 class="h3" style="margin-top:20px;">読み方</h3>
-      <p>本文中の <span class="mono" style="font-weight:700; color:#2857A6;">[n]</span> は、巻末「<a href="#sec-refs">出典一覧</a>」（<span data-toc-target="refs"></span>）の番号に対応します。日本語OCRの精度比較のみ、社内の非公開実機検証に基づく知見のため、<span class="mono" style="font-weight:700;">[†]</span> で示し公開リンクなしと明記しています。</p>
+      <p>本文中の <span class="mono" style="font-weight:700; color:#2857A6;">[n]</span> は、巻末「<a href="#sec-refs">出典一覧</a>」（<span data-toc-target="refs"></span>）の番号に対応します。日本語OCRの精度比較などは、社内の非公開の検証に基づく知見のため、<span class="mono" style="font-weight:700;">[†]</span> で示し公開リンクなしと明記しています。</p>
 
       <div class="box" style="margin-top:10px;">
         <h3 class="h3" style="font-size:15px;">この資料の方針</h3>
@@ -731,7 +731,7 @@
     <div class="page-body">
       <div class="eyebrow">07　Tier Cの技術構成</div>
       <h2 class="h2">要配慮個人情報を実名で扱う場合の、現実的な最適構成</h2>
-      <p style="margin-top:10px;">自社アプリにAIを組み込む場合に費用面で最も現実的なのは、Google Cloudインフラを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成が標準です。ただし<b>AI OCRは例外</b>で、自前ホスティングです（理由は次頁）。要約など限定的な生成は、軽量モデル（Sarashina2.2-3B-instruct、MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）をCloud RunのCPU・日本リージョンに置く選択肢もあります。性能はClaude級に劣りますが、入力は自前コンテナ内で処理されモデル事業者に渡りません。音声はWhisper（MIT<sup class="cite"><a href="#r35" title="出典一覧 [35] へ移動">[35]</a></sup>）の自前運用も候補ですが、CPUでの速度・精度は未検証です。基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup><sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
+      <p style="margin-top:10px;">自社アプリにAIを組み込む場合に費用面で最も現実的なのは、Google Cloudを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成が標準です。<b>AI OCRのみ例外</b>で自前ホスティングです。要約などは、軽量モデル（Sarashina2.2-3B-instruct、MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）をCloud RunのCPU・日本リージョンに置く選択肢もあります。性能はClaude級に劣るが、入力は自前コンテナ内で処理され、モデル事業者に渡りません。音声はWhisper（MIT<sup class="cite"><a href="#r35" title="出典一覧 [35] へ移動">[35]</a></sup>）の自前運用も候補で、合成音声の検証では60分音声を約17〜30分（8vCPU）。人名・社名は人が確認します<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup><sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
 
       <figure>
         <svg viewBox="0 0 780 282" style="max-width:730px;" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、OCRと限定的な要約は自前ホスティング（PaddleOCRとSarashina）、高度な生成と音声はAWS BedrockとTranscribeへ振り分けるアーキテクチャ図">
@@ -1134,7 +1134,7 @@
           </ul>
 
           <div class="refs-cat">非公開の社内検証</div>
-          <p id="r-dagger" style="font-size:12.5px; color:#5A6B84; margin-top:2px;"><span class="mono" style="font-weight:700;">[†]</span> 日本語OCR精度の比較と要約用軽量モデルのCPU評価（<span data-toc-target="cost"></span>）は、実際の業務文書を用いた社内実機検証に基づく知見です。公開されている一次情報へのリンクはありません。数値の再現性は検証環境に依存します。</p>
+          <p id="r-dagger" style="font-size:12.5px; color:#5A6B84; margin-top:2px;"><span class="mono" style="font-weight:700;">[†]</span> 日本語OCR精度の比較と要約用軽量モデルのCPU評価（<span data-toc-target="cost"></span>）は実際の業務文書、Whisperの文字起こし評価は合成音声による社内検証です。一次情報へのリンクはなく、数値は検証環境に依存します。</p>
         </div>
       </div>
 

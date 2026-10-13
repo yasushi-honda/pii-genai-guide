@@ -145,7 +145,8 @@
 | O6 | Sarashina2.2-3B-instruct はMITライセンス（p.13） | Hugging Face モデルカード・LICENSE（SB Intuitions、MIT、`license: mit`）［出典32］ | 確認済 |
 | O7 | 要約用の軽量モデルをCloud RunのCPU・日本リージョンに置く選択肢がある。Claude級の性能はない。基盤はGoogle Cloudのままで、国外法の適用可能性などは別途確認が必要（p.13） | 構成の選択肢の整理は本資料の判断。Cloud Run の東京リージョン対応はO4。基盤事業者の位置づけはQ&A Q12-3, Q10-25とM3（医療情報GL 第7.0版）による | 推奨水準 |
 | O8 | Sarashina2.2-3B-instruct は Q8_0量子化ならCPUで要約に実用レベル。Q4_K_Mは情報が欠けた正式書式の書類で実在しない事業所名を捏造した（p.13, p.14） | 実際の業務文書を用いた社内検証（2026-09）。公開された一次情報なし | **社内検証** |
-| O9 | 音声の文字起こしに、Whisperの自前運用も候補（p.13）。Whisperのコードとモデルの重みはMITライセンス。CPUでの速度・精度は未検証 | openai/whisper の README「License」（「Whisper's code and model weights are released under the MIT License」）と LICENSE（2026-10-13取得）［出典35］。第三者の実測（Zenn記事、Apple M4・mlx-whisper）は環境が異なるため、本文には引用していない | 確認済（ライセンスのみ）。CPU性能は未検証で、本文にも未検証と明記 |
+| O9 | 音声の文字起こしに、Whisperの自前運用も候補（p.13）。Whisperのコードとモデルの重みはMITライセンス。CPUでの速度・精度は、合成音声での社内検証値（O10） | openai/whisper の README「License」（「Whisper's code and model weights are released under the MIT License」）と LICENSE（2026-10-13取得）［出典35］。第三者の実測（Zenn記事、Apple M4・mlx-whisper）は環境が異なるため、本文には引用していない | 確認済（ライセンスのみ）。CPU性能はO10 |
+| O10 | 音声文字起こしのWhisper（faster-whisper large-v3-turbo、int8）は、Cloud Run Job（日本リージョン）の8vCPU・16GiBで、60分の合成音声を約17〜30分で処理できた。人名・社名は人の確認が前提。CPU世代により処理時間（最大1.75倍）と文字起こし結果（CER 3.5%の差）が変わりうる（p.13） | 別セッションでの社内検証（合成音声のみ、実在の個人情報なし。2回実行、費用は約$1.50）。公開された一次情報はない。条件の詳細は検証報告書（非公開） | 社内検証[†]（合成音声での値。実際の面談は、言い淀み・重なり・雑音・方言で、これより悪くなる前提） |
 
 ## 9. 入力してよい環境のチェックリスト（第10章、p.17）
 
