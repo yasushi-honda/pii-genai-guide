@@ -1,6 +1,6 @@
 # 主張と出典の対応表（検証台帳）
 
-対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全20ページ、最終確認 2026-10-12）
+対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全21ページ、最終確認 2026-10-12）
 
 目的: 資料中の主要な主張が、どの一次情報のどの箇所に基づくかを一覧化し、行政・法務担当者が追跡できるようにする。
 
@@ -195,6 +195,25 @@
 
 ---
 
+## 11. Geminiの2つの入口（第12章、p.19）
+
+Google文書は2026-10-13に生HTMLを取得して照合した（要約を介さない。Gemini Enterprise文書の最終更新2026-10-09、Agent Platform文書の最終更新2026-10-09）。Agent Platform文書の対応表のチェック記号はHTMLの該当セルを機械的に読み取った。
+
+| # | 主張 | 根拠 | 区分 |
+|---|---|---|---|
+| H1 | ISMAP登録名は「Gemini Enterprise (including Agentspace) and Gemini Notebook Enterprise」（C26-0114-2、Google LLC） | ISMAPクラウドサービスリスト［出典5］ | 確認済 |
+| H2 | Gemini Enterpriseの文書はStandard、Plus、Pay-as-you-go、Frontlineを対象とし、Business版は別のヘルプセンター | 「Data residency for Gemini Enterprise Standard and Plus Editions and Gemini Notebook Enterprise」冒頭の注記［出典17］ | 確認済 |
+| H3 | 「Gemini Enterprise app」は正式名の定義が確認できず、本資料では「アプリ」を通称として扱う | 同文書の本文には「Gemini Enterprise app」の表記があるが、製品名としての定義はない | 一部確認（通称としての使用は本資料の整理） |
+| H4 | 日本（asia-northeast1）は「GA with allowlist」（Googleの担当窓口に問い合わせ）。基本機能は保存（at-rest DRZ）とAI処理（MLP）の両方が日本の範囲 | 同文書「In-country regions」「Gemini Enterprise limitations」の基本機能の行［出典17］ | 確認済 |
+| H5 | 日本で完結しないもの：Gemini 3.8／3.7／3.6 Flash（日本非対応で、警告を承認するとグローバルへ）、Google検索によるグラウンディング、動画生成、Web Grounding for Enterprise（日本のDRZ・MLPとも非対応）、AI開発ツール（同） | 同文書の機能別制限表［出典17］ | 確認済 |
+| H6 | Agent Platformのglobalエンドポイントは処理地の保証がない。ロケーション指定のエンドポイントはML処理がその国・地域の範囲 | 「Data residency」（Agent Platform）［出典33］ | 確認済 |
+| H7 | Agent Platformの日本列で対応が示されるGoogleモデルのうち、Gemini 3.8／3.7／3.6 Flash、3.5 Flash-Liteは日本に印がなく、3.5 Flashには印がある | 同文書のGoogle models表（日本列）［出典33］ | 確認済（印の読み取りはHTMLの該当セルで確認） |
+| H8 | Gemini 3.5 Flashの日本提供は単一ゾーンのProvisioned Throughputのみ（購入はGoogleの担当経由） | G5、G6［出典9、10］ | 確認済 |
+| H9 | Gemini 2.5 Proは日本（とカナダ）で2026年10月20日までで、以降は提供されない | Gemini Enterprise文書の機能別制限表［出典17］ | 確認済 |
+| H10 | 管理者の設定（モデルのトグル、警告の承認）によって、日本の外にトラフィックが出る | 同文書の「administrators must turn on the toggle」「you must confirm the warning dialog to route traffic to the global endpoint」［出典17］ | 確認済 |
+| H11 | 表のTier Cの見立て（条件を満たせば保存とAI処理が日本に閉じうる）と、同意・組織的措置など第10章の項目が別に必要という整理 | 本資料の推奨水準（法令の要件ではない。法的な保証ではない） | 推奨水準 |
+| H12 | 日本の約束が全機能（コネクタ、エージェント実行など）にどこまで及ぶか。Notebookの機械学習処理は、文書の注記（「in-country regionsでは非対応」）と表（基本機能は日本でMLP対応）が食い違う | 同文書［出典17］ | 未確認（本文では「未確認」と明記） |
+
 ## 本資料が「法的要件」ではなく「推奨水準」としている事項
 
 | 事項 | 資料での位置づけ |
@@ -214,3 +233,4 @@
 7. **社内検証値**: 日本語OCR精度の比較（O5）と要約用軽量モデルのCPU評価（O8）は再現できる公開情報がない。本文では、OCRを自前ホスティングにする理由など技術的な推奨の参考として使っているが、法的な根拠ではない。行政向けの説明では、外すか、技術判断の参考値と明記して残すかの判断が要る。
 8. **ドキュメントの更新**: 各社ドキュメントは頻繁に更新される。意思決定の直前に、出典一覧のリンクから再確認すること。
 9. **福祉分野の個別法の守秘義務**: 資格法（社会福祉士・介護福祉士等）や各福祉法の秘密保持規定は、本資料の範囲外とした（p.3に明記）。個人情報保護法とは別に効く規律だが、調査していない。顧客や行政から問われたとき、または専門家の確認で指摘されたときに、問われた範囲を確認する。
+9. **Gemini Enterpriseの範囲**: 日本のデータ保存・AI処理の約束が、基本機能以外の機能（コネクタ、エージェント実行、Notebook等）にどこまで及ぶかは未確認（H12）。使う機能ごとに、出典17の機能別制限表と契約書面で確認すること。
