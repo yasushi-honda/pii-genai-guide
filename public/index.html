@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  元PDF「個人情報×生成AI 実務ガイド」(A4横・21ページ) と同一の固定レイアウトHTML。
+  元PDF「個人情報×生成AI 実務ガイド」(A4横・22ページ) と同一の固定レイアウトHTML。
   サイトのルート(/)としてそのまま配信される単一ソース。
   scripts/generate-pdf.mjs がこのファイルを開いて public/downloads/pii-genai-guide.pdf を生成する。
   本文を更新したら `pnpm generate:pdf` を再実行してPDFを再生成すること。
@@ -238,7 +238,7 @@
 
       <div class="cover-tags">
         <span class="tag accent">最終確認 2026-10-12</span>
-        <span class="tag accent">一次情報ベース・出典33件</span>
+        <span class="tag accent">一次情報ベース・出典34件</span>
         <span class="tag accent">対象：主に介護・福祉分野の民間事業者（医療は別枠、行政機関等は別途確認）</span>
         <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
       </div>
@@ -279,7 +279,7 @@
         <li><a class="toc-link" href="#sec-checklist"><span class="tn">10</span><span class="tt">入力してよい環境のチェックリスト<span class="ts">ここまで整えば入力してよい前提環境と整理する</span></span><span class="tp" data-toc-target="checklist"></span></a></li>
         <li><a class="toc-link" href="#sec-sectors"><span class="tn">11</span><span class="tt">福祉の業種別早見表<span class="ts">介護・障害福祉・救護施設など、業種ごとの規律と医療情報の混入</span></span><span class="tp" data-toc-target="sectors"></span></a></li>
         <li><a class="toc-link" href="#sec-geminicmp"><span class="tn">12</span><span class="tt">Geminiの2つの入口<span class="ts">Gemini Enterprise（アプリ）とAgent Platform（API）の違い</span></span><span class="tp" data-toc-target="geminicmp"></span></a></li>
-        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、33件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
+        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、34件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
       </ul>
       <p style="margin-top:10px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
     </div>
@@ -971,11 +971,47 @@
     <div class="page-footer"><span>11　福祉の業種別早見表</span><span class="pn"></span></div>
   </section>
 
-  <!-- ============ PAGE 13b: Geminiの2つの入口 ============ -->
+  <!-- ============ PAGE 13a: Geminiの2つの入口（かんたん対照表） ============ -->
   <section class="page" id="sec-geminicmp" data-toc="geminicmp">
     <div class="page-body">
-      <div class="eyebrow">12　Geminiの2つの入口</div>
-      <h2 class="h2">「Gemini Enterprise（アプリ）」と「Agent Platform（API）」の違い</h2>
+      <div class="eyebrow">12　Geminiの2つの入口（かんたん対照表）</div>
+      <h2 class="h2">どちらも「Gemini」ですが別物です：実名の要配慮情報を渡してよいのはどちら？</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">名前は似ていますが、製品・契約・ISMAP登録とも別です。以下、画面で使うGemini Enterpriseを「アプリ」、開発して組み込むGemini Enterprise Agent Platform（旧Vertex AI）を「API」と呼びます。</p>
+
+      <div class="tbl-wrap" style="margin:6px 0 4px;">
+        <table style="font-size:12.5px;">
+          <thead><tr><th style="width:17%;"></th><th style="width:41%;">アプリ（Gemini Enterprise）</th><th>API（Gemini Enterprise Agent Platform）</th></tr></thead>
+          <tbody>
+            <tr><td>ひとことで</td><td>職員が画面で使うAIサービス（検索、アシスタント、エージェント）</td><td>自社のシステムにAIを組み込む部品。開発が必要</td></tr>
+            <tr><td>向く場面</td><td>職員が日常業務で、文書の要約・検索・下書きに使う</td><td>自社のケース記録システムなどに、AI機能を組み込む</td></tr>
+            <tr><td>ISMAP登録</td><td>あり（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td><td>あり（Google Cloudの一部、C21-0004-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td></tr>
+            <tr><td>実名の要配慮情報を渡してよい水準か<br><span style="font-size:11px;">（本資料の推奨水準）</span></td><td><span class="tag warn">条件つきで可</span><br>下の条件を満たす<b>基本機能</b>に限る</td><td><span class="tag warn">条件つきで可</span><br>下の条件を満たし、<b>自社で作り込む</b>場合に限る</td></tr>
+            <tr><td>その条件</td><td>①Standard／Plusの契約（Business版は不可）<br>②日本ロケーションが有効化済み<br>③日本で処理されない機能・モデルを使わない</td><td>①日本のエンドポイントを指定<br>②日本対応のモデルを使う（3.5 Flashなど）<br>③データを預かる各サービスの保存先も日本に<br>④globalエンドポイントを使わない</td></tr>
+            <tr><td>つまずきやすい点</td><td>管理者の設定ひとつで、日本の外に送られる機能がある</td><td>エンドポイントや保存先の指定を間違えると、日本の外になる</td></tr>
+            <tr><td>どちらでも別に必要</td><td colspan="2">①法が求める場面での本人同意（法28条など）　②DPA：契約に組み込まれる仕組みだが、実際の契約書面で確認<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup>　③組織的措置（3省2ガイドライン相当）　④ログ設計。製品の機能では満たせません</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cols2" style="margin-top:6px;">
+        <div class="box stamp">
+          <h3 class="h3" style="font-size:15px;">お客様からよくある質問</h3>
+          <p style="font-size:12.5px; margin-top:4px;"><b>「日本リージョンなら、実名の要配慮情報を入れてOKですよね？」</b><br>日本リージョンを選ぶだけではOKとは言えません。上の条件に加え、日本のサーバでも提供先が外国の事業者なら同意が必要になることがあります（<span data-toc-target="crossborder"></span>）。</p>
+        </div>
+        <div class="box accent">
+          <h3 class="h3" style="font-size:15px;">この表の位置づけ</h3>
+          <p style="font-size:12.5px; margin-top:4px;">法令の最低要件ではなく、本資料の推奨水準です。法的な保証ではありません。根拠と、確認できていない点は、次頁（<span data-toc-target="geminidetail"></span>）にあります。</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>12　Geminiの2つの入口（かんたん対照表）</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 13b: Geminiの2つの入口 ============ -->
+  <section class="page" id="sec-geminidetail" data-toc="geminidetail">
+    <div class="page-body">
+      <div class="eyebrow">12　Geminiの2つの入口（根拠と条件の詳細）</div>
+      <h2 class="h2">アプリとAPIの違い：根拠と条件の詳細</h2>
       <p style="margin-top:6px; font-size:var(--fs-small);">名前は似ていますが別物です（製品・契約・ISMAP登録とも別）。画面で使う Gemini Enterprise を「アプリ」、開発して組み込む Agent Platform を「API」と呼びます。</p>
 
       <div class="tbl-wrap" style="margin:6px 0 4px;">
@@ -1006,7 +1042,7 @@
         </div>
       </div>
     </div>
-    <div class="page-footer"><span>12　Geminiの2つの入口</span><span class="pn"></span></div>
+    <div class="page-footer"><span>12　Geminiの2つの入口（詳細）</span><span class="pn"></span></div>
   </section>
 
   <!-- ============ PAGE 14: 出典一覧 ============ -->
@@ -1042,6 +1078,7 @@
             <li id="r10"><span class="refnum">10.</span> プロビジョンド スループットを購入する｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/purchase-provisioned-throughput" target="_blank" rel="noopener noreferrer">docs.cloud.google.com/.../purchase-provisioned-throughput</a></li>
             <li id="r11"><span class="refnum">11.</span> Agent Platform の料金｜Google Cloud公式 — <a href="https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing" target="_blank" rel="noopener noreferrer">cloud.google.com/.../generative-ai/pricing</a></li>
             <li id="r33"><span class="refnum">33.</span> Data residency（Agent Platform）｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/data-residency" target="_blank" rel="noopener noreferrer">…/resources/data-residency</a></li>
+            <li id="r34"><span class="refnum">34.</span> Service Specific Terms／Cloud Data Processing Addendum｜Google Cloud — <a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank" rel="noopener noreferrer">cloud.google.com/terms/data-processing-addendum</a></li>
             <li id="r12"><span class="refnum">12.</span> Gemini Enterprise app FAQ（30日間無料トライアル）｜Google Cloud公式 — <a href="https://cloud.google.com/gemini-enterprise/faq" target="_blank" rel="noopener noreferrer">cloud.google.com/gemini-enterprise/faq</a></li>
             <li id="r13"><span class="refnum">13.</span> Gemini API 利用規約｜Google AI for Developers公式 — <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">ai.google.dev/gemini-api/terms</a></li>
             <li id="r14"><span class="refnum">14.</span> Google Workspace「生成AIに関する情報」開示書（Google LLC提出、ISMAPポータル） — <a href="https://www.ismap.go.jp/sys_attachment.do?sys_id=4fe2e2e52b2107d0f0bbfd69fe91bf04" target="_blank" rel="noopener noreferrer">ismap.go.jp（開示書PDF）</a></li>
