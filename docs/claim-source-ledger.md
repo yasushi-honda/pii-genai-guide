@@ -206,7 +206,7 @@ Google文書は2026-10-13に生HTMLを取得して照合した（要約を介さ
 | H3 | 「Gemini Enterprise app」は正式名の定義が確認できず、本資料では「アプリ」を通称として扱う | 同文書の本文には「Gemini Enterprise app」の表記があるが、製品名としての定義はない | 一部確認（通称としての使用は本資料の整理） |
 | H4 | 日本（asia-northeast1）は「GA with allowlist」（Googleの担当窓口に問い合わせ）。基本機能は保存（at-rest DRZ）とAI処理（MLP）の両方が日本の範囲 | 同文書「In-country regions」「Gemini Enterprise limitations」の基本機能の行［出典17］ | 確認済 |
 | H5 | 日本で完結しないもの：Gemini 3.8／3.7／3.6 Flash（日本非対応で、警告を承認するとグローバルへ）、Google検索によるグラウンディング、動画生成、Web Grounding for Enterprise（日本のDRZ・MLPとも非対応）、AI開発ツール（同） | 同文書の機能別制限表［出典17］ | 確認済 |
-| H6 | Agent Platformのglobalエンドポイントは処理地の保証がない。ロケーション指定のエンドポイントはML処理がその国・地域の範囲。保存データは、選んだロケーションに留まる（呼び出すエンドポイントによらない） | 「Data residency」（Agent Platform）冒頭（「Data stored at rest in the customer selected location remains at rest in that location」）と「Where your data lives and is processed」［出典33］ | 確認済（保存先の約束は、使うサービスごとの記載を別途確認する必要がある） |
+| H6 | Agent Platformのglobalエンドポイントは処理地の保証がない。ロケーション指定のエンドポイントはML処理がその国・地域の範囲。Agent Platformが預かるデータ（モデルの重み、メタデータなど）は、選んだロケーションに留まる（呼び出すエンドポイントによらない）。自社アプリが使うDB等、Agent Platform以外のGCPサービスの保存先はこの文書の対象外（p.19は「別に確認」と記載） | 「Data residency」（Agent Platform）冒頭（「Data stored at rest in the customer selected location remains at rest in that location」）と「Where your data lives and is processed」［出典33］ | 確認済（保存先の約束は、使うサービスごとの記載を別途確認する必要がある） |
 | H7 | Agent Platformの日本列で対応が示されるGoogleモデルのうち、Gemini 3.8／3.7／3.6 Flash、3.5 Flash-Liteは日本に印がなく、3.5 Flashには印がある | 同文書のGoogle models表（日本列）［出典33］ | 確認済（印の読み取りはHTMLの該当セルで確認） |
 | H8 | Gemini 3.5 Flashの日本提供は単一ゾーンのProvisioned Throughputのみ（購入はGoogleの担当経由） | G5、G6［出典9、10］ | 確認済 |
 | H9 | 管理者の設定（モデルのトグル、警告の承認）によって、日本の外にトラフィックが出る | 同文書の「administrators must turn on the toggle」「you must confirm the warning dialog to route traffic to the global endpoint」［出典17］ | 確認済 |
