@@ -278,7 +278,7 @@
         <li><a class="toc-link" href="#sec-summary"><span class="tn">09</span><span class="tt">まとめ：今日からできること<span class="ts">できること・まだできないこと・準備すべきこと</span></span><span class="tp" data-toc-target="summary"></span></a></li>
         <li><a class="toc-link" href="#sec-checklist"><span class="tn">10</span><span class="tt">入力してよい環境のチェックリスト<span class="ts">ここまで整えば入力してよい前提環境と整理する</span></span><span class="tp" data-toc-target="checklist"></span></a></li>
         <li><a class="toc-link" href="#sec-sectors"><span class="tn">11</span><span class="tt">福祉の業種別早見表<span class="ts">介護・障害福祉・救護施設など、業種ごとの規律と医療情報の混入</span></span><span class="tp" data-toc-target="sectors"></span></a></li>
-        <li><a class="toc-link" href="#sec-geminicmp"><span class="tn">12</span><span class="tt">Geminiの2つの入口<span class="ts">Gemini Enterprise（アプリ）とAgent Platform（API）の違い</span></span><span class="tp" data-toc-target="geminicmp"></span></a></li>
+        <li><a class="toc-link" href="#sec-geminicmp"><span class="tn">12</span><span class="tt">Geminiの2つの入口<span class="ts">Gemini Enterprise（アプリ）とAgent Platform（開発用）の違い</span></span><span class="tp" data-toc-target="geminicmp"></span></a></li>
         <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、34件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
       </ul>
       <p style="margin-top:10px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
@@ -648,7 +648,7 @@
       <h3 class="h3" style="margin-top:14px;">Tier Bで利用可能な選択肢／避けるべき選択肢</h3>
       <ul class="list">
         <li><b>Gemini in Workspace</b> — Workspace自体がISMAP登録済みで、Geminiアプリ・Gemini in Workspaceも対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup>。保存地域に日本はない<sup class="cite"><a href="#r19" title="出典一覧 [19] へ移動">[19]</a></sup>が、Tier Bでは許容</li>
-        <li><b>Gemini Enterprise（Standard/Plus）</b> — 別契約。日本で保存・ML処理を固定可（allowlist制）。日本非対応の機能を管理者が有効化するとグローバル送信<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
+        <li><b>Gemini Enterprise（Standard/Plus）</b> — 別製品（ISMAPも別登録）。契約の種類は契約書面で確認。日本で保存・ML処理を固定可（allowlist制）。日本非対応の機能を管理者が有効化するとグローバル送信<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
         <li><b>Vertex AI（現Gemini Enterprise Agent Platform）のAPI</b> — ISMAP言明書上は「Vertex AI Platform」として対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。Tier Bなら全リージョン可</li>
         <li class="stamp" style="list-style:none; margin-left:-1.3em; padding:4px 12px; background:#F7E6E4; border-radius:8px;">❌ <b>Google AI Studioの素のAPIキー</b>はNG。ISMAPリスト未登録。無料枠は入力が製品改善に使われ、有料でも一時保存・キャッシュが国を問わず行われうる<sup class="cite"><a href="#r13" title="出典一覧 [13] へ移動">[13]</a></sup></li>
       </ul>
@@ -976,11 +976,11 @@
     <div class="page-body">
       <div class="eyebrow">12　Geminiの2つの入口（かんたん対照表）</div>
       <h2 class="h2">どちらも「Gemini」ですが別物です：実名の要配慮情報を渡せる環境になりうるのはどちら？</h2>
-      <p style="margin-top:6px; font-size:var(--fs-small);">名前は似ていますが、製品・契約・ISMAP登録とも別です。画面で使うGemini Enterpriseを「アプリ」、開発して組み込むAgent Platform（旧Vertex AI）を「API」と呼びます。</p>
+      <p style="margin-top:6px; font-size:var(--fs-small);">名前は似ていますが別の製品です（ISMAP登録も別。契約は書面で確認）。画面で使うGemini Enterpriseを「アプリ」、開発して組み込むAgent Platform（旧Vertex AI）を「開発用」と呼びます。</p>
 
       <div class="tbl-wrap" style="margin:6px 0 4px;">
         <table style="font-size:12.5px;">
-          <thead><tr><th style="width:17%;"></th><th style="width:41%;">アプリ（Gemini Enterprise）</th><th>API（Gemini Enterprise Agent Platform）</th></tr></thead>
+          <thead><tr><th style="width:17%;"></th><th style="width:41%;">アプリ（Gemini Enterprise）</th><th>開発用（Gemini Enterprise Agent Platform）</th></tr></thead>
           <tbody>
             <tr><td>ひとことで・向く場面</td><td>職員が画面で使うAIサービス。日常の要約・検索・下書き向け</td><td>自社システムにAIを組み込む部品（開発が必要）。ケース記録システムなど向け</td></tr>
             <tr><td>ISMAP登録</td><td>あり（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td><td>あり（旧名「Vertex AI Platform」でGoogle Cloudの一部、C21-0004-2。名称変更後の範囲は未確認）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td></tr>
@@ -1010,12 +1010,12 @@
   <section class="page" id="sec-geminidetail" data-toc="geminidetail">
     <div class="page-body">
       <div class="eyebrow">12　Geminiの2つの入口（根拠と条件の詳細）</div>
-      <h2 class="h2">アプリとAPIの違い：根拠と条件の詳細</h2>
-      <p style="margin-top:6px; font-size:var(--fs-small);">名前は似ていますが別物です（製品・契約・ISMAP登録とも別）。画面で使う Gemini Enterprise を「アプリ」、開発して組み込む Agent Platform を「API」と呼びます。</p>
+      <h2 class="h2">アプリと開発用の違い：根拠と条件の詳細</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">名前は似ていますが別の製品です（ISMAP登録も別。契約は書面で確認）。画面で使う Gemini Enterprise を「アプリ」、開発して組み込む Agent Platform を「開発用」と呼びます。</p>
 
       <div class="tbl-wrap" style="margin:6px 0 4px;">
         <table style="font-size:11.5px;">
-          <thead><tr><th style="width:13%;"></th><th style="width:43%;">Gemini Enterprise（アプリ）</th><th>Gemini Enterprise Agent Platform（API）</th></tr></thead>
+          <thead><tr><th style="width:13%;"></th><th style="width:43%;">Gemini Enterprise（アプリ）</th><th>Gemini Enterprise Agent Platform（開発用）</th></tr></thead>
           <tbody>
             <tr><td>正式名・登録</td><td>ISMAP登録名は「Gemini Enterprise (including Agentspace) and Gemini Notebook Enterprise」（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>旧Vertex AI。ISMAP言明書上は「Vertex AI Platform」で、Google Cloud（C21-0004-2）の一部（名称変更後の範囲は未確認）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td></tr>
             <tr><td>日本での保存・AI処理</td><td>日本（asia-northeast1）を指定すると、アプリが預かるデータの保存とAI処理が、基本機能では日本の範囲。ただし「GA with allowlist」で、Googleの担当窓口経由の申請が必要<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>AI処理：日本のリージョナルエンドポイントを指定（globalは保証なし）。保存：Agent Platformが預かるデータは選んだロケーションに留まる。自社アプリのDB等（他のGCPサービス）は別<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup>。Gemini 3.5 Flashの日本提供は単一ゾーンのProvisioned Throughput（<span data-toc-target="cost"></span>）<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup><sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup></td></tr>

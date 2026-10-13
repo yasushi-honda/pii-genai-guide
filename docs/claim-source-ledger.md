@@ -205,7 +205,7 @@ Google文書は2026-10-13に生HTMLを取得して照合した（要約を介さ
 |---|---|---|---|
 | H1 | ISMAP登録名は「Gemini Enterprise (including Agentspace) and Gemini Notebook Enterprise」（C26-0114-2、Google LLC） | ISMAPクラウドサービスリスト［出典5］ | 確認済 |
 | H2 | Gemini Enterpriseの文書はStandard、Plus、Pay-as-you-go、Frontlineを対象とし、Business版は別のヘルプセンター | 「Data residency for Gemini Enterprise Standard and Plus Editions and Gemini Notebook Enterprise」冒頭の注記［出典17］ | 確認済 |
-| H3 | 「Gemini Enterprise app」は正式名の定義が確認できず、本資料では「アプリ」を通称として扱う | 同文書の本文には「Gemini Enterprise app」の表記があるが、製品名としての定義はない | 一部確認（通称としての使用は本資料の整理） |
+| H3 | 「Gemini Enterprise app」は正式名の定義が確認できず、本資料では「アプリ」を通称として扱う（Agent Platformは「開発用」と呼ぶ。「API」は、APIキーと混同されるため使わない） | 同文書の本文には「Gemini Enterprise app」の表記があるが、製品名としての定義はない | 一部確認（通称としての使用は本資料の整理） |
 | H4 | 日本（asia-northeast1）は「GA with allowlist」（Googleの担当窓口に問い合わせ）。基本機能は保存（at-rest DRZ）とAI処理（MLP）の両方が日本の範囲 | 同文書「In-country regions」「Gemini Enterprise limitations」の基本機能の行［出典17］ | 確認済 |
 | H5 | 日本で完結しないもの：Gemini 3.8／3.7／3.6 Flash（日本非対応で、警告を承認するとグローバルへ）、Google検索によるグラウンディング、動画生成、Web Grounding for Enterprise（日本のDRZ・MLPとも非対応）、AI開発ツール（同） | 同文書の機能別制限表［出典17］ | 確認済 |
 | H6 | Agent Platformのglobalエンドポイントは処理地の保証がない。ロケーション指定のエンドポイントはML処理がその国・地域の範囲。Agent Platformが預かるデータ（モデルの重み、メタデータなど）は、選んだロケーションに留まる（呼び出すエンドポイントによらない）。自社アプリが使うDB等、Agent Platform以外のGCPサービスの保存先はこの文書の対象外（p.19は「別に確認」と記載） | 「Data residency」（Agent Platform）冒頭（「Data stored at rest in the customer selected location remains at rest in that location」）と「Where your data lives and is processed」［出典33］ | 確認済（保存先の約束は、使うサービスごとの記載を別途確認する必要がある） |
@@ -217,7 +217,7 @@ Google文書は2026-10-13に生HTMLを取得して照合した（要約を介さ
 | H12 | Agent Platformは旧Vertex AIで、ISMAP言明書上は「Vertex AI Platform」としてGoogle Cloud（C21-0004-2）の一部 | I12、「確認できていない点」5［出典5］ | 一部確認（名称変更後も同じ範囲かは未確認。p.19にも記載） |
 | H13 | Business版は日本等の指定設定がなく、Tier Cの対象外 | G3［出典18］ | 確認済 |
 | H14 | Cloud Data Processing Addendumは、Googleとお客様のAgreementに組み込まれ（incorporated）、発効日は承諾日または合意日。Gemini Enterpriseは、サービス固有条項（最終更新2026-10-12）に条項（第21条・第33条）がある。Pre-GAの機能にはDPAが適用されない | 「Cloud Data Processing Addendum」冒頭、「Service Specific Terms」［出典34］ | 一部確認（Standard／Plusの実際の契約が、Cloud DPAを含むAgreementの下にあるかは契約書面で確認が必要。Business版は別規約で「Google Data Processing Addendum」） |
-| H15 | p.19の対照表の「条件つきで可」「その条件」「つまずきやすい点」は、H4〜H10、H13の要約。APIの「自社で作り込む場合に限る」は本資料の整理 | H4〜H10、H13 | 推奨水準 |
+| H15 | p.19の対照表の「条件つきで可」「その条件」「つまずきやすい点」は、H4〜H10、H13の要約。開発用の「自社で作り込む場合に限る」は本資料の整理 | H4〜H10、H13 | 推奨水準 |
 
 ## 本資料が「法的要件」ではなく「推奨水準」としている事項
 
