@@ -145,6 +145,7 @@
 | O6 | Sarashina2.2-3B-instruct はMITライセンス（p.13） | Hugging Face モデルカード・LICENSE（SB Intuitions、MIT、`license: mit`）［出典32］ | 確認済 |
 | O7 | 要約用の軽量モデルをCloud RunのCPU・日本リージョンに置く選択肢がある。Claude級の性能はない。基盤はGoogle Cloudのままで、国外法の適用可能性などは別途確認が必要（p.13） | 構成の選択肢の整理は本資料の判断。Cloud Run の東京リージョン対応はO4。基盤事業者の位置づけはQ&A Q12-3, Q10-25とM3（医療情報GL 第7.0版）による | 推奨水準 |
 | O8 | Sarashina2.2-3B-instruct は Q8_0量子化ならCPUで要約に実用レベル。Q4_K_Mは情報が欠けた正式書式の書類で実在しない事業所名を捏造した（p.13, p.14） | 実際の業務文書を用いた社内検証（2026-09）。公開された一次情報なし | **社内検証** |
+| O9 | 音声の文字起こしに、Whisperの自前運用も候補（p.13）。Whisperのコードとモデルの重みはMITライセンス。CPUでの速度・精度は未検証 | openai/whisper の README「License」（「Whisper's code and model weights are released under the MIT License」）と LICENSE（2026-10-13取得）［出典35］。第三者の実測（Zenn記事、Apple M4・mlx-whisper）は環境が異なるため、本文には引用していない | 確認済（ライセンスのみ）。CPU性能は未検証で、本文にも未検証と明記 |
 
 ## 9. 入力してよい環境のチェックリスト（第10章、p.17）
 

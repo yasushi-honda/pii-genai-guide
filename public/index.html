@@ -238,7 +238,7 @@
 
       <div class="cover-tags">
         <span class="tag accent">最終確認 2026-10-12</span>
-        <span class="tag accent">一次情報ベース・出典34件</span>
+        <span class="tag accent">一次情報ベース・出典35件</span>
         <span class="tag accent">対象：主に介護・福祉分野の民間事業者（医療は別枠、行政機関等は別途確認）</span>
         <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
       </div>
@@ -279,7 +279,7 @@
         <li><a class="toc-link" href="#sec-checklist"><span class="tn">10</span><span class="tt">入力してよい環境のチェックリスト<span class="ts">ここまで整えば入力してよい前提環境と整理する</span></span><span class="tp" data-toc-target="checklist"></span></a></li>
         <li><a class="toc-link" href="#sec-sectors"><span class="tn">11</span><span class="tt">福祉の業種別早見表<span class="ts">介護・障害福祉・救護施設など、業種ごとの規律と医療情報の混入</span></span><span class="tp" data-toc-target="sectors"></span></a></li>
         <li><a class="toc-link" href="#sec-geminicmp"><span class="tn">12</span><span class="tt">Geminiの2つの入口<span class="ts">Gemini Enterprise（アプリ）とAgent Platform（開発用）の違い</span></span><span class="tp" data-toc-target="geminicmp"></span></a></li>
-        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、34件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
+        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、35件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
       </ul>
       <p style="margin-top:10px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
     </div>
@@ -731,7 +731,7 @@
     <div class="page-body">
       <div class="eyebrow">07　Tier Cの技術構成</div>
       <h2 class="h2">要配慮個人情報を実名で扱う場合の、現実的な最適構成</h2>
-      <p style="margin-top:10px;">2026年10月時点で、自社アプリにAI機能を組み込む場合に費用面で最も現実的なのは、Google Cloudインフラを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成が標準です。ただし<b>AI OCRは例外</b>で、自前ホスティングへ切り出します（理由は次頁）。要約など限定的な文章生成は、軽量モデル（Sarashina2.2-3B-instruct、MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）をCloud RunのCPU・日本リージョンに置く選択肢もあります。性能はClaude級に劣りますが、入力は自前コンテナ内で処理されモデル事業者に渡りません。基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup><sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
+      <p style="margin-top:10px;">自社アプリにAIを組み込む場合に費用面で最も現実的なのは、Google Cloudインフラを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成が標準です。ただし<b>AI OCRは例外</b>で、自前ホスティングです（理由は次頁）。要約など限定的な生成は、軽量モデル（Sarashina2.2-3B-instruct、MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）をCloud RunのCPU・日本リージョンに置く選択肢もあります。性能はClaude級に劣りますが、入力は自前コンテナ内で処理されモデル事業者に渡りません。音声はWhisper（MIT<sup class="cite"><a href="#r35" title="出典一覧 [35] へ移動">[35]</a></sup>）の自前運用も候補ですが、CPUでの速度・精度は未検証です。基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup><sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
 
       <figure>
         <svg viewBox="0 0 780 282" style="max-width:730px;" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、OCRと限定的な要約は自前ホスティング（PaddleOCRとSarashina）、高度な生成と音声はAWS BedrockとTranscribeへ振り分けるアーキテクチャ図">
@@ -1082,6 +1082,7 @@
             <li id="r13"><span class="refnum">13.</span> Gemini API 利用規約｜Google AI for Developers公式 — <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">ai.google.dev/gemini-api/terms</a></li>
             <li id="r14"><span class="refnum">14.</span> Google Workspace「生成AIに関する情報」開示書（Google LLC提出、ISMAPポータル） — <a href="https://www.ismap.go.jp/sys_attachment.do?sys_id=4fe2e2e52b2107d0f0bbfd69fe91bf04" target="_blank" rel="noopener noreferrer">ismap.go.jp（開示書PDF）</a></li>
             <li id="r32"><span class="refnum">32.</span> sarashina2.2-3b-instruct-v0.1（モデルカード・MITライセンス）｜SB Intuitions（Hugging Face） — <a href="https://huggingface.co/sbintuitions/sarashina2.2-3b-instruct-v0.1" target="_blank" rel="noopener noreferrer">huggingface.co/sbintuitions/sarashina2.2-3b-instruct-v0.1</a></li>
+            <li id="r35"><span class="refnum">35.</span> openai/whisper（README・LICENSE。コードとモデルの重みはMIT）｜GitHub — <a href="https://github.com/openai/whisper" target="_blank" rel="noopener noreferrer">github.com/openai/whisper</a></li>
           </ul>
         </div>
       </div>
