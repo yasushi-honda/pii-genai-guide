@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  元PDF「個人情報×生成AI 実務ガイド」(A4横・20ページ) と同一の固定レイアウトHTML。
+  元PDF「個人情報×生成AI 実務ガイド」(A4横・21ページ) と同一の固定レイアウトHTML。
   サイトのルート(/)としてそのまま配信される単一ソース。
   scripts/generate-pdf.mjs がこのファイルを開いて public/downloads/pii-genai-guide.pdf を生成する。
   本文を更新したら `pnpm generate:pdf` を再実行してPDFを再生成すること。
@@ -186,12 +186,12 @@
   .toc-list{ list-style:none; margin:12px 0 0; padding:0; }
   .toc-list li{
     display:flex; align-items:baseline; gap:10px;
-    padding:1px 0; border-bottom:1px dashed #DCE3EC;
-    font-size:13.5px;
+    padding:0; border-bottom:1px dashed #DCE3EC;
+    font-size:13px;
   }
   .toc-list .tn{ font-family:var(--font-mono); color:#2857A6; font-weight:700; width:30px; flex:none; }
   .toc-list .tt{ flex:1; font-weight:700; }
-  .toc-list .ts{ color:#5A6B84; font-size:12.5px; font-weight:400; display:block; margin-top:0; }
+  .toc-list .ts{ color:#5A6B84; font-size:11.5px; font-weight:400; display:block; margin-top:0; }
   .toc-list .tp{ font-family:var(--font-mono); color:#5A6B84; font-size:12.5px; }
   .toc-list a.toc-link{ display:flex; align-items:baseline; gap:10px; flex:1; color:inherit; text-decoration:none; }
   .toc-list a.toc-link:hover .tt, .toc-list a.toc-link:focus-visible .tt{ color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
@@ -238,7 +238,7 @@
 
       <div class="cover-tags">
         <span class="tag accent">最終確認 2026-10-12</span>
-        <span class="tag accent">一次情報ベース・出典32件</span>
+        <span class="tag accent">一次情報ベース・出典33件</span>
         <span class="tag accent">対象：主に介護・福祉分野の民間事業者（医療は別枠、行政機関等は別途確認）</span>
         <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
       </div>
@@ -278,7 +278,8 @@
         <li><a class="toc-link" href="#sec-summary"><span class="tn">09</span><span class="tt">まとめ：今日からできること<span class="ts">できること・まだできないこと・準備すべきこと</span></span><span class="tp" data-toc-target="summary"></span></a></li>
         <li><a class="toc-link" href="#sec-checklist"><span class="tn">10</span><span class="tt">入力してよい環境のチェックリスト<span class="ts">ここまで整えば入力してよい前提環境と整理する</span></span><span class="tp" data-toc-target="checklist"></span></a></li>
         <li><a class="toc-link" href="#sec-sectors"><span class="tn">11</span><span class="tt">福祉の業種別早見表<span class="ts">介護・障害福祉・救護施設など、業種ごとの規律と医療情報の混入</span></span><span class="tp" data-toc-target="sectors"></span></a></li>
-        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、32件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
+        <li><a class="toc-link" href="#sec-geminicmp"><span class="tn">12</span><span class="tt">Geminiの2つの入口<span class="ts">Gemini Enterprise（アプリ）とAgent Platform（API）の違い</span></span><span class="tp" data-toc-target="geminicmp"></span></a></li>
+        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、33件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
       </ul>
       <p style="margin-top:10px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
     </div>
@@ -970,6 +971,45 @@
     <div class="page-footer"><span>11　福祉の業種別早見表</span><span class="pn"></span></div>
   </section>
 
+  <!-- ============ PAGE 13b: Geminiの2つの入口 ============ -->
+  <section class="page" id="sec-geminicmp" data-toc="geminicmp">
+    <div class="page-body">
+      <div class="eyebrow">12　Geminiの2つの入口</div>
+      <h2 class="h2">「Gemini Enterprise（アプリ）」と「Agent Platform（API）」の違い</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">別の製品・別の契約・別のISMAP登録です。「アプリ」は画面で使う入口の通称です。</p>
+
+      <div class="tbl-wrap" style="margin:6px 0 4px;">
+        <table style="font-size:11.5px;">
+          <thead><tr><th style="width:13%;"></th><th style="width:43%;">Gemini Enterprise（アプリ）</th><th>Gemini Enterprise Agent Platform（API）</th></tr></thead>
+          <tbody>
+            <tr><td>正式名・登録</td><td>「Gemini Enterprise」（Standard／Plus／Pay-as-you-go／Frontline）。ISMAP登録名は「Gemini Enterprise (including Agentspace) and Gemini Notebook Enterprise」（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>旧Vertex AI。ISMAP言明書上は「Vertex AI Platform」で、Google Cloud（C21-0004-2）の一部（名称変更後の範囲は未確認）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td></tr>
+            <tr><td>使い方</td><td>職員が画面で使う（検索、アシスタント、エージェント）。開発は不要</td><td>自社アプリにAIを組み込むAPI。開発と運用が必要</td></tr>
+            <tr><td>日本での保存・AI処理</td><td>日本（asia-northeast1）を指定すると、基本機能の保存とAI処理が日本の範囲。ただし「GA with allowlist」で、Googleの担当窓口経由の申請が必要<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>日本のリージョナルエンドポイントを指定。globalエンドポイントは処理地の保証がない<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup>。Gemini 3.5 Flashの日本提供は単一ゾーンのProvisioned Throughput（<span data-toc-target="cost"></span>）<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup><sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup></td></tr>
+            <tr><td>日本で完結しないもの</td><td>Gemini 3.8／3.7／3.6 Flash（管理者が警告を承認するとグローバル送信）、Google検索によるグラウンディング、動画生成、AI開発ツールなど<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>Gemini 3.8／3.7／3.6 Flash、3.5 Flash-Liteは日本の対応表にない。globalを指定すると保証なし<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup></td></tr>
+            <tr><td>Tier Cの見立て（推奨水準）</td><td><b>条件を満たせば、技術要件（保存とAI処理が日本）を満たしうる</b>。条件：Standard／Plus（他の版は未確認。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup>）、allowlistで日本が有効化済み、日本非対応のモデル・機能を使わない。<b>基本機能に限る</b>（他は機能ごとに確認）</td><td><b>条件を満たせば、技術要件を満たしうる</b>。条件：保存先とエンドポイントを日本に指定（保存は選んだロケーションに留まる）、日本対応のモデル（3.5 Flashなど）、globalを使わない</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cols2" style="margin-top:6px;">
+        <div class="box stamp">
+          <h3 class="h3" style="font-size:15px;">誤解されやすい点</h3>
+          <ul class="list" style="font-size:12px; margin:4px 0 0;">
+            <li><b>日本リージョン＝何をしても日本で完結、ではありません。</b>モデル・機能ごとに違い、管理者の設定ひとつで日本の外に出ます。</li>
+            <li><b>ISMAP登録＝日本完結の証明、でもありません。</b>登録と処理地は別の話です（<span data-toc-target="ismap"></span>）。</li>
+            <li><b>トライアルの「オン」＝契約済み、ではありません。</b>契約の種類と版を確認してください。</li>
+          </ul>
+        </div>
+        <div class="box accent">
+          <h3 class="h3" style="font-size:15px;">どちらでも別に必要なこと</h3>
+          <p style="font-size:12px; margin-top:4px;">法が求める場面での本人同意（法28条など）、3省2ガイドライン相当の組織的措置、DPA、ログ設計など、第10章（<span data-toc-target="checklist"></span>）の項目は技術とは別に必要です。推奨水準であり、法的保証ではありません。</p>
+          <p style="font-size:12px; margin-top:4px;"><b>未確認：</b>日本の約束が、基本機能の外の機能やNotebookにどこまで及ぶか。Notebookの機械学習処理の記載にGoogle文書内の食い違いがある。</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>12　Geminiの2つの入口</span><span class="pn"></span></div>
+  </section>
+
   <!-- ============ PAGE 14: 出典一覧 ============ -->
   <section class="page" id="sec-refs" data-toc="refs">
     <div class="page-body">
@@ -1002,6 +1042,7 @@
             <li id="r9"><span class="refnum">9.</span> Gemini 3.5 Flash／3.8 Flash モデルページ｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-flash" target="_blank" rel="noopener noreferrer">…/3-5-flash</a> ／ <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-8-flash" target="_blank" rel="noopener noreferrer">…/3-8-flash</a></li>
             <li id="r10"><span class="refnum">10.</span> プロビジョンド スループットを購入する｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/purchase-provisioned-throughput" target="_blank" rel="noopener noreferrer">docs.cloud.google.com/.../purchase-provisioned-throughput</a></li>
             <li id="r11"><span class="refnum">11.</span> Agent Platform の料金｜Google Cloud公式 — <a href="https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing" target="_blank" rel="noopener noreferrer">cloud.google.com/.../generative-ai/pricing</a></li>
+            <li id="r33"><span class="refnum">33.</span> Data residency（Agent Platform）｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/data-residency" target="_blank" rel="noopener noreferrer">…/resources/data-residency</a></li>
             <li id="r12"><span class="refnum">12.</span> Gemini Enterprise app FAQ（30日間無料トライアル）｜Google Cloud公式 — <a href="https://cloud.google.com/gemini-enterprise/faq" target="_blank" rel="noopener noreferrer">cloud.google.com/gemini-enterprise/faq</a></li>
             <li id="r13"><span class="refnum">13.</span> Gemini API 利用規約｜Google AI for Developers公式 — <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">ai.google.dev/gemini-api/terms</a></li>
             <li id="r14"><span class="refnum">14.</span> Google Workspace「生成AIに関する情報」開示書（Google LLC提出、ISMAPポータル） — <a href="https://www.ismap.go.jp/sys_attachment.do?sys_id=4fe2e2e52b2107d0f0bbfd69fe91bf04" target="_blank" rel="noopener noreferrer">ismap.go.jp（開示書PDF）</a></li>
@@ -1043,7 +1084,7 @@
         <div>
           <div class="refs-cat">Google（日本ロケーション・提供終了日）</div>
           <ul class="refs">
-            <li id="r17"><span class="refnum">17.</span> Data residency for Gemini Enterprise Standard and Plus（日本ロケーション）／リリースノート 2026-07-06｜Google Cloud — <a href="https://docs.cloud.google.com/gemini/enterprise/docs/locations" target="_blank" rel="noopener noreferrer">…/enterprise/docs/locations</a> ／ <a href="https://docs.cloud.google.com/gemini/enterprise/docs/release-notes" target="_blank" rel="noopener noreferrer">…/release-notes</a></li>
+            <li id="r17"><span class="refnum">17.</span> Data residency for Gemini Enterprise（Standard/Plus・Notebook Enterprise、日本ロケーション）／リリースノート 2026-07-06｜Google Cloud — <a href="https://docs.cloud.google.com/gemini/enterprise/docs/locations" target="_blank" rel="noopener noreferrer">…/enterprise/docs/locations</a> ／ <a href="https://docs.cloud.google.com/gemini/enterprise/docs/release-notes" target="_blank" rel="noopener noreferrer">…/release-notes</a></li>
             <li id="r18"><span class="refnum">18.</span> Security and safety features - Gemini Enterprise（Business edition）｜Google公式ヘルプ — <a href="https://support.google.com/g/answer/17140632" target="_blank" rel="noopener noreferrer">support.google.com/g/answer/17140632</a></li>
             <li id="r19"><span class="refnum">19.</span> Choose a geographic location for your data（Workspaceのデータリージョン）｜Google Workspace公式 — <a href="https://knowledge.workspace.google.com/admin/compliance/choose-a-geographic-location-for-your-data" target="_blank" rel="noopener noreferrer">knowledge.workspace.google.com/…/choose-a-geographic-location…</a></li>
             <li id="r20"><span class="refnum">20.</span> Model versions（Gemini 2.5系の提供終了日）｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/model-versions" target="_blank" rel="noopener noreferrer">…/models/model-versions</a></li>
