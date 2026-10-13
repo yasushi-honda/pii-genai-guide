@@ -1,6 +1,6 @@
 # 主張と出典の対応表（検証台帳）
 
-対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全21ページ、最終確認 2026-10-12）
+対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全22ページ、最終確認 2026-10-12）
 
 目的: 資料中の主要な主張が、どの一次情報のどの箇所に基づくかを一覧化し、行政・法務担当者が追跡できるようにする。
 
@@ -195,7 +195,9 @@
 
 ---
 
-## 11. Geminiの2つの入口（第12章、p.19）
+## 11. Geminiの2つの入口（第12章、p.19〜20）
+
+p.19は平易な対照表（結論と条件の要約）、p.20は根拠と条件の詳細。
 
 Google文書は2026-10-13に生HTMLを取得して照合した（要約を介さない。Gemini Enterprise文書の最終更新2026-10-09、Agent Platform文書の最終更新2026-10-09）。Agent Platform文書の対応表のチェック記号はHTMLの該当セルを機械的に読み取った。
 
@@ -214,6 +216,8 @@ Google文書は2026-10-13に生HTMLを取得して照合した（要約を介さ
 | H11 | 日本の約束が、基本機能の外の機能やNotebookにどこまで及ぶか（基本機能の行には、取り込み型・連携型コネクタ、カスタムエージェント等が含まれると原文にあり、日本はDRZ・MLP対応）。Notebookの機械学習処理は、文書の注記（「in-country regionsでは非対応」）と表（基本機能は日本でMLP対応）が食い違う | 同文書［出典17］ | 未確認（本文では「未確認」と明記） |
 | H12 | Agent Platformは旧Vertex AIで、ISMAP言明書上は「Vertex AI Platform」としてGoogle Cloud（C21-0004-2）の一部 | I12、「確認できていない点」5［出典5］ | 一部確認（名称変更後も同じ範囲かは未確認。p.19にも記載） |
 | H13 | Business版は日本等の指定設定がなく、Tier Cの対象外 | G3［出典18］ | 確認済 |
+| H14 | Cloud Data Processing Addendumは、Googleとお客様のAgreementに組み込まれ（incorporated）、発効日は承諾日または合意日。Gemini Enterpriseは、サービス固有条項（最終更新2026-10-12）に条項（第21条・第33条）がある。Pre-GAの機能にはDPAが適用されない | 「Cloud Data Processing Addendum」冒頭、「Service Specific Terms」［出典34］ | 一部確認（Standard／Plusの実際の契約が、Cloud DPAを含むAgreementの下にあるかは契約書面で確認が必要。Business版は別規約で「Google Data Processing Addendum」） |
+| H15 | p.19の対照表の「条件つきで可」「その条件」「つまずきやすい点」は、H4〜H10、H13の要約。APIの「自社で作り込む場合に限る」は本資料の整理 | H4〜H10、H13 | 推奨水準 |
 
 ## 本資料が「法的要件」ではなく「推奨水準」としている事項
 
