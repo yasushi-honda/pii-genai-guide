@@ -831,9 +831,9 @@
       <div class="cols2" style="margin-top:6px;">
         <div class="vcard">
           <div class="vcard-head"><h3 class="h3">Gemini 3.5 Flash</h3><div class="tags"><span class="tag stamp">日本リージョン（asia-northeast1）のAPI</span></div></div>
-          <div class="vrow n"><span class="lab">課金方式</span><span>標準従量課金（Standard PayGo）は非対応（対応はglobal・us・eu）<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。使えるのは単一ゾーンのProvisioned Throughputのみで、購入は「Google Cloudアカウント担当者への問い合わせ」が必須の個別契約<sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup></span></div>
-          <div class="vrow n"><span class="lab">目安</span><span>1か月コミットでGSUあたり約$4.07/時（月730時間換算で約 <span class="mono" style="font-weight:700;">$2,970</span>＝<b>約47万円</b>。1ドル158円換算、2026年10月16日時点）。必要なGSU数はモデルと処理量で決まる<sup class="cite"><a href="#r11" title="出典一覧 [11] へ移動">[11]</a></sup></span></div>
-          <div class="vrow ng"><span class="lab">注意</span><span>最新のGemini 3.8 Flashは日本リージョンでは提供されていません<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。小規模な組織には現実的ではありません</span></div>
+          <div class="vrow n"><span class="lab">課金方式</span><span>標準従量課金（Standard PayGo）は非対応（対応はglobal・us・eu）<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。使えるのは単一ゾーンのProvisioned Throughputのみで、購入は「Google Cloudアカウント担当者への問い合わせ」が必須<sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup></span></div>
+          <div class="vrow n"><span class="lab">目安</span><span>1か月コミットでGSUあたり約$4.07/時（月730時間で約 <span class="mono" style="font-weight:700;">$2,970</span>＝<b>約47万円</b>。1ドル158円、2026年10月16日時点）<sup class="cite"><a href="#r11" title="出典一覧 [11] へ移動">[11]</a></sup>。1GSU＝毎秒675トークン（出力は6倍）<sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup>。入力3,000＋出力500トークンの要約は1GSUで約9秒に1件（筆者概算）</span></div>
+          <div class="vrow ng"><span class="lab">注意</span><span>3.8 Flashは日本未提供<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。小規模組織には不向き</span></div>
         </div>
         <div class="vcard">
           <div class="vcard-head"><h3 class="h3">AWS Bedrock</h3><div class="tags"><span class="tag good">日本国内クロスリージョン推論（jp.）</span></div></div>
@@ -844,7 +844,7 @@
       </div>
 
       <h3 class="h3" style="margin-top:8px;">日本語OCR精度の実機比較</h3>
-      <p>実際の日本語書類（旧字体異体字・類似漢字・事業所名の紛らわしいペア等）を使った実機検証では、AWS Bedrock（Claude／Nova系）は特定の漢字を再現性ある形で誤読することが確認されました。自前ホスティングのPaddleOCRは、Gemini系とほぼ同水準の精度を達成しています<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
+      <p>実際の日本語書類（旧字体異体字・類似漢字・事業所名の紛らわしいペア等）を使った実機検証では、AWS Bedrock（Claude／Nova系）は特定の漢字を再現性ある形で誤読しました。自前ホスティングのPaddleOCRは、Gemini系とほぼ同水準です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
 
       <div class="tbl-wrap tight">
         <table>
@@ -858,7 +858,7 @@
           </tbody>
         </table>
       </div>
-      <p style="font-size:var(--fs-caption); color:#5A6B84;">評価軸：OCRテキストを既知のマスターリストにfuzzy matchで解決できるかという、実運用に即した基準<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。「誤って別の実在レコードに確定する」危険な誤りは、いずれのモデルも0件でした。要約・長文の下書き・音声文字起こしの自前運用の結果は、<span data-toc-target="localai"></span>にまとめています。</p>
+      <p style="font-size:var(--fs-caption); color:#5A6B84;">評価軸：OCRテキストを既知のマスターリストにfuzzy matchで解決できるか<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。「誤って別の実在レコードに確定する」危険な誤りは、いずれも0件でした。要約・長文の下書き・音声文字起こしの自前運用の結果は、<span data-toc-target="localai"></span>にまとめています。</p>
     </div>
     <div class="page-footer"><span>07　なぜこの構成が現実的か</span><span class="pn"></span></div>
   </section>
@@ -1192,7 +1192,7 @@
           <ul class="refs">
             <li id="r8"><span class="refnum">8.</span> Amazon Bedrock は ISMAP の言明対象であることについての考え方｜AWS公式ブログ — <a href="https://aws.amazon.com/jp/blogs/news/amazon-bedrock-ismap/" target="_blank" rel="noopener noreferrer">aws.amazon.com/jp/blogs/news/amazon-bedrock-ismap</a></li>
             <li id="r9"><span class="refnum">9.</span> Gemini 3.5 Flash／3.8 Flash モデルページ｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-5-flash" target="_blank" rel="noopener noreferrer">…/3-5-flash</a> ／ <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/3-8-flash" target="_blank" rel="noopener noreferrer">…/3-8-flash</a></li>
-            <li id="r10"><span class="refnum">10.</span> プロビジョンド スループットを購入する｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/purchase-provisioned-throughput" target="_blank" rel="noopener noreferrer">docs.cloud.google.com/.../purchase-provisioned-throughput</a></li>
+            <li id="r10"><span class="refnum">10.</span> プロビジョンド スループットの購入・対応モデル｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/provisioned-throughput/purchase-provisioned-throughput" target="_blank" rel="noopener noreferrer">購入ページ</a> ／ <a href="https://docs.cloud.google.com/vertex-ai/generative-ai/docs/provisioned-throughput/supported-models" target="_blank" rel="noopener noreferrer">対応モデル表</a></li>
             <li id="r11"><span class="refnum">11.</span> Agent Platform の料金｜Google Cloud公式 — <a href="https://cloud.google.com/gemini-enterprise-agent-platform/generative-ai/pricing" target="_blank" rel="noopener noreferrer">cloud.google.com/.../generative-ai/pricing</a></li>
             <li id="r33"><span class="refnum">33.</span> Data residency（Agent Platform）｜Google Cloud公式 — <a href="https://docs.cloud.google.com/gemini-enterprise-agent-platform/resources/data-residency" target="_blank" rel="noopener noreferrer">…/resources/data-residency</a></li>
             <li id="r34"><span class="refnum">34.</span> Service Specific Terms／Cloud Data Processing Addendum｜Google Cloud — <a href="https://cloud.google.com/terms/service-terms" target="_blank" rel="noopener noreferrer">…/terms/service-terms</a>、<a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank" rel="noopener noreferrer">…/data-processing-addendum</a></li>
