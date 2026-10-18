@@ -234,11 +234,11 @@
     <div class="page-body" style="display:flex; flex-direction:column; justify-content:center; height:100%;">
       <div class="eyebrow">AIガバナンス実務資料</div>
       <h1 style="font-size:var(--fs-cover-title); font-weight:800; line-height:1.4;">個人情報×生成AI<br>実務ガイド</h1>
-      <p class="lede" style="font-size:var(--fs-cover-sub); margin-top:14px; max-width:46em;">個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成 — 2026年10月時点の公式一次情報を根拠に組み立て直す実務資料（社内検証値は<span class="mono">[†]</span>で明示）</p>
+      <p class="lede" style="font-size:var(--fs-cover-sub); margin-top:14px; max-width:46em;">個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成 — 2026年10月時点の公式一次情報を根拠に組み立て直す実務資料（筆者の検証値は<span class="mono">[†]</span>で明示）</p>
 
       <div class="cover-tags">
         <span class="tag accent">最終確認 2026-10-12</span>
-        <span class="tag accent">一次情報ベース・出典35件</span>
+        <span class="tag accent">一次情報ベース・出典36件</span>
         <span class="tag accent">対象：主に介護・福祉分野の民間事業者（医療は別枠、行政機関等は別途確認）</span>
         <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
       </div>
@@ -279,7 +279,7 @@
         <li><a class="toc-link" href="#sec-checklist"><span class="tn">10</span><span class="tt">入力してよい環境のチェックリスト<span class="ts">ここまで整えば入力してよい前提環境と整理する</span></span><span class="tp" data-toc-target="checklist"></span></a></li>
         <li><a class="toc-link" href="#sec-sectors"><span class="tn">11</span><span class="tt">福祉の業種別早見表<span class="ts">介護・障害福祉・救護施設など、業種ごとの規律と医療情報の混入</span></span><span class="tp" data-toc-target="sectors"></span></a></li>
         <li><a class="toc-link" href="#sec-geminicmp"><span class="tn">12</span><span class="tt">Geminiの2つの入口<span class="ts">Gemini Enterprise（アプリ）とAgent Platform（開発用）の違い</span></span><span class="tp" data-toc-target="geminicmp"></span></a></li>
-        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、35件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
+        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、36件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
       </ul>
       <p style="margin-top:10px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
     </div>
@@ -299,14 +299,14 @@
       </div>
 
       <h3 class="h3" style="margin-top:22px;">この資料の狙い</h3>
-      <p>この資料は、上記のような現場の疑問に対して、2026年10月12日時点で確認できる公式一次情報を根拠に（社内検証値は<span class="mono">[†]</span>で明示）、次の2つを整理し直したものです。</p>
+      <p>この資料は、上記のような現場の疑問に対して、2026年10月12日時点で確認できる公式一次情報を根拠に（筆者の検証値は<span class="mono">[†]</span>で明示）、次の2つを整理し直したものです。</p>
       <ol class="list">
         <li><b>判定フロー</b> — 手元のデータをAIに入れてよいかを、3つの質問で判定する方法（第2章）</li>
         <li><b>技術構成</b> — 要配慮個人情報を実名で扱わざるを得ない場合に、現実的に組める技術構成とその根拠（第7章）</li>
       </ol>
 
       <h3 class="h3" style="margin-top:20px;">読み方</h3>
-      <p>本文中の <span class="mono" style="font-weight:700; color:#2857A6;">[n]</span> は、巻末「<a href="#sec-refs">出典一覧</a>」（<span data-toc-target="refs"></span>）の番号に対応します。日本語OCRの精度比較などは、社内の非公開の検証に基づく知見のため、<span class="mono" style="font-weight:700;">[†]</span> で示し公開リンクなしと明記しています。</p>
+      <p>本文中の <span class="mono" style="font-weight:700; color:#2857A6;">[n]</span> は、巻末「<a href="#sec-refs">出典一覧</a>」（<span data-toc-target="refs"></span>）の番号に対応します。日本語OCRの精度比較などは、筆者による非公開の検証に基づく知見のため、<span class="mono" style="font-weight:700;">[†]</span> で示し公開リンクなしと明記しています。</p>
 
       <div class="box" style="margin-top:10px;">
         <h3 class="h3" style="font-size:15px;">この資料の方針</h3>
@@ -731,10 +731,10 @@
     <div class="page-body">
       <div class="eyebrow">07　Tier Cの技術構成</div>
       <h2 class="h2">要配慮個人情報を実名で扱う場合の、現実的な最適構成</h2>
-      <p style="margin-top:10px;">自社アプリにAIを組み込む場合に費用面で最も現実的なのは、Google Cloudを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成が標準です。<b>AI OCRのみ例外</b>で自前ホスティングです。要約などは、軽量モデル（Sarashina2.2-3B-instruct、MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）をCloud RunのCPU・日本リージョンに置く選択肢もあります。性能はClaude級に劣るが、入力は自前コンテナ内で処理され、モデル事業者に渡りません。音声はWhisper（MIT<sup class="cite"><a href="#r35" title="出典一覧 [35] へ移動">[35]</a></sup>）の自前運用も候補で、合成音声の検証では60分音声を約17〜30分（8vCPU）。人名・社名は人が確認します<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup><sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
+      <p style="margin-top:10px;">自社アプリにAIを組み込む場合に費用面で最も現実的なのは、Google Cloudを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成が標準です。<b>AI OCRのみ例外</b>で自前ホスティングです。自前でCloud RunのCPU・日本リージョンに置く選択肢もあります。要約はSarashina2.2-3B-instruct（MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）、長文の下書きはGemma 4 26B A4B（Apache 2.0<sup class="cite"><a href="#r36" title="出典一覧 [36] へ移動">[36]</a></sup>）で、入力はモデル事業者に渡りません。人の確認が前提です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。音声はWhisper（MIT<sup class="cite"><a href="#r35" title="出典一覧 [35] へ移動">[35]</a></sup>）の自前運用も候補で、合成音声の検証では60分音声を約17〜30分（8vCPU）。人名・社名は人が確認します<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup><sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
 
       <figure>
-        <svg viewBox="0 0 780 282" style="max-width:730px;" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、OCRと限定的な要約は自前ホスティング（PaddleOCRとSarashina）、高度な生成と音声はAWS BedrockとTranscribeへ振り分けるアーキテクチャ図">
+        <svg viewBox="0 0 780 282" style="max-width:730px;" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、OCRと要約（任意で長文の下書き）は自前ホスティング（PaddleOCR・Sarashina・Gemma）、高度な生成と音声はAWS BedrockとTranscribeへ振り分けるアーキテクチャ図">
           <defs><marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="currentColor" /></marker></defs>
           <rect x="300" y="10" width="180" height="48" rx="8" fill="#F3F6FA" stroke="#B9C6D6" />
           <text x="390" y="39" text-anchor="middle" style="font-size:13px; font-weight:700;">利用者</text>
@@ -748,7 +748,7 @@
           <line x1="320" y1="150" x2="130" y2="202" stroke="currentColor" opacity=".55" marker-end="url(#arr4)" />
           <text x="210" y="182" text-anchor="middle" style="font-size:11.5px; font-weight:700;">保存</text>
           <line x1="390" y1="150" x2="390" y2="202" stroke="currentColor" opacity=".55" marker-end="url(#arr4)" />
-          <text x="402" y="180" style="font-size:11.5px; font-weight:700;">OCR・要約</text>
+          <text x="402" y="180" style="font-size:11.5px; font-weight:700;">OCR・要約・下書き</text>
           <line x1="460" y1="150" x2="650" y2="202" stroke="currentColor" opacity=".55" marker-end="url(#arr4)" />
           <text x="570" y="182" text-anchor="middle" style="font-size:11.5px; font-weight:700;">高度な生成・音声</text>
 
@@ -757,15 +757,15 @@
           <text x="130" y="246" text-anchor="middle" style="font-size:11.5px; opacity:.8;">GCP・データ保存</text>
 
           <rect x="280" y="202" width="220" height="68" rx="8" fill="#E3F1EA" stroke="#1F7A5C" />
-          <text x="390" y="222" text-anchor="middle" style="font-size:13px; font-weight:700; fill:#1F7A5C;">自前（Cloud Run CPU・東京）</text>
-          <text x="390" y="241" text-anchor="middle" style="font-size:11.5px; opacity:.85;">OCR：PaddleOCR</text><text x="390" y="258" text-anchor="middle" style="font-size:11.5px; opacity:.85;">要約：Sarashina2.2-3B</text>
+          <text x="390" y="218" text-anchor="middle" style="font-size:13px; font-weight:700; fill:#1F7A5C;">自前（Cloud Run CPU・東京）</text>
+          <text x="390" y="234" text-anchor="middle" style="font-size:11.5px; opacity:.85;">OCR：PaddleOCR</text><text x="390" y="249" text-anchor="middle" style="font-size:11.5px; opacity:.85;">要約：Sarashina2.2-3B</text><text x="390" y="264" text-anchor="middle" style="font-size:11.5px; opacity:.85;">長文の下書き：Gemma 4 26B（任意）</text>
 
           <rect x="550" y="202" width="200" height="68" rx="8" fill="#F3F6FA" stroke="#B9C6D6" />
           <text x="650" y="224" text-anchor="middle" style="font-size:13px; font-weight:700;">AWS Bedrock／Transcribe</text>
           <text x="650" y="242" text-anchor="middle" style="font-size:11.5px; opacity:.8;">高度な生成／音声文字起こし</text>
           <text x="650" y="258" text-anchor="middle" style="font-size:11.5px; opacity:.8;">日本国内に限定して利用</text>
         </svg>
-        <figcaption>図5. データの保存・AI処理は常に日本国内に閉じる。OCRと限定的な要約は自前ホスティングへ、高度な生成と音声はAWS Bedrockへ（日本国内限定の推論プロファイルを指定<sup class="cite"><a href="#r21" title="出典一覧 [21] へ移動">[21]</a></sup><sup class="cite"><a href="#r22" title="出典一覧 [22] へ移動">[22]</a></sup>）。クラウド間はキーレス認証。</figcaption>
+        <figcaption>図5. データの保存・AI処理は常に日本国内に閉じる。OCR・要約（と任意で長文の下書き）は自前ホスティングへ、高度な生成と音声はAWS Bedrockへ（日本国内限定の推論プロファイルを指定<sup class="cite"><a href="#r21" title="出典一覧 [21] へ移動">[21]</a></sup><sup class="cite"><a href="#r22" title="出典一覧 [22] へ移動">[22]</a></sup>）。クラウド間はキーレス認証。</figcaption>
       </figure>
 
       <div class="cols2" style="margin-top:4px;">
@@ -811,7 +811,7 @@
           </tbody>
         </table>
       </div>
-      <p style="font-size:var(--fs-caption); color:#5A6B84;">評価軸：OCRテキストを既知のマスターリストにfuzzy matchで解決できるかという、実運用に即した基準<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。いずれのモデルも「誤って別の実在レコードに確定する」危険な誤りは検証全体を通じて0件でした。要約用のSarashina2.2-3B-instructは、Q8_0量子化ならCPUで実用レベルでした。Q4_K_Mでは、情報が欠けた正式書式の書類で実在しない事業所名を捏造したため、避けてください<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
+      <p style="font-size:var(--fs-caption); color:#5A6B84;">評価軸：OCRテキストを既知のマスターリストにfuzzy matchで解決できるかという、実運用に即した基準<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。「誤って別の実在レコードに確定する」危険な誤りは、いずれのモデルも0件でした。要約用のSarashina2.2-3B-instructは、Q8_0量子化ならCPUで実用レベルでした。Q4_K_Mでは、情報が欠けた正式書式の書類で実在しない事業所名を捏造したため、避けてください。長文の下書きでは入力にない機関名を作る例があり、Sarashinaは要約限定です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
     </div>
     <div class="page-footer"><span>07　なぜこの構成が現実的か</span><span class="pn"></span></div>
   </section>
@@ -1082,6 +1082,7 @@
             <li id="r13"><span class="refnum">13.</span> Gemini API 利用規約｜Google AI for Developers公式 — <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">ai.google.dev/gemini-api/terms</a></li>
             <li id="r14"><span class="refnum">14.</span> Google Workspace「生成AIに関する情報」開示書（Google LLC提出、ISMAPポータル） — <a href="https://www.ismap.go.jp/sys_attachment.do?sys_id=4fe2e2e52b2107d0f0bbfd69fe91bf04" target="_blank" rel="noopener noreferrer">ismap.go.jp（開示書PDF）</a></li>
             <li id="r32"><span class="refnum">32.</span> sarashina2.2-3b-instruct-v0.1（モデルカード・MITライセンス）｜SB Intuitions（Hugging Face） — <a href="https://huggingface.co/sbintuitions/sarashina2.2-3b-instruct-v0.1" target="_blank" rel="noopener noreferrer">huggingface.co/sbintuitions/sarashina2.2-3b-instruct-v0.1</a></li>
+            <li id="r36"><span class="refnum">36.</span> gemma-4-26B-A4B-it（モデルカード・Apache 2.0）｜Google（Hugging Face） — <a href="https://huggingface.co/google/gemma-4-26B-A4B-it" target="_blank" rel="noopener noreferrer">huggingface.co/google/gemma-4-26B-A4B-it</a></li>
             <li id="r35"><span class="refnum">35.</span> openai/whisper（README・LICENSE。コードとモデルの重みはMIT）｜GitHub — <a href="https://github.com/openai/whisper" target="_blank" rel="noopener noreferrer">github.com/openai/whisper</a></li>
           </ul>
         </div>
@@ -1133,8 +1134,8 @@
             <li id="r30"><span class="refnum">30.</span> Amazon Bedrock モデルカード（jp. プロファイルと宛先）｜AWS公式 — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-4-5.html" target="_blank" rel="noopener noreferrer">Claude Sonnet 4.5</a> ／ <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-2-lite.html" target="_blank" rel="noopener noreferrer">Nova 2 Lite</a></li>
           </ul>
 
-          <div class="refs-cat">非公開の社内検証</div>
-          <p id="r-dagger" style="font-size:12.5px; color:#5A6B84; margin-top:2px;"><span class="mono" style="font-weight:700;">[†]</span> 日本語OCR精度の比較と要約用軽量モデルのCPU評価（<span data-toc-target="cost"></span>）は実際の業務文書、Whisperの文字起こし評価は合成音声による社内検証です。一次情報へのリンクはなく、数値は検証環境に依存します。</p>
+          <div class="refs-cat">非公開の筆者による検証</div>
+          <p id="r-dagger" style="font-size:12.5px; color:#5A6B84; margin-top:2px;"><span class="mono" style="font-weight:700;">[†]</span> 日本語OCR精度の比較と要約用軽量モデルのCPU評価（<span data-toc-target="cost"></span>）は実際の業務文書、WhisperとGemmaの評価は合成データによる筆者の検証です。第三者の再現は未実施で、数値は検証環境に依存します。</p>
         </div>
       </div>
 
