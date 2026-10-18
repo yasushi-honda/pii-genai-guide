@@ -11,7 +11,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <meta name="theme-color" content="#17233A" />
 <title>個人情報×生成AI 実務ガイド</title>
-<meta name="description" content="個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成。公式一次情報を根拠に組み立て直す実務資料。" />
+<meta name="description" content="介護・福祉分野の民間事業者向けに、生成AIに個人情報を入れてよいかの判定フローと、要配慮個人情報を実名で扱う場合の技術構成を整理した実務資料。公式一次情報に基づく推奨水準で、法的助言ではありません。" />
 <link rel="canonical" href="https://yasushi-honda.github.io/pii-genai-guide/" />
 <link
   rel="icon"
@@ -20,7 +20,7 @@
 />
 <meta property="og:type" content="article" />
 <meta property="og:title" content="個人情報×生成AI 実務ガイド" />
-<meta property="og:description" content="個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成。公式一次情報を根拠に組み立て直す実務資料。" />
+<meta property="og:description" content="介護・福祉分野の民間事業者向けに、生成AIに個人情報を入れてよいかの判定フローと、要配慮個人情報を実名で扱う場合の技術構成を整理した実務資料。公式一次情報に基づく推奨水準で、法的助言ではありません。" />
 <meta property="og:url" content="https://yasushi-honda.github.io/pii-genai-guide/" />
 <meta property="og:locale" content="ja_JP" />
 <meta name="twitter:card" content="summary" />
@@ -269,7 +269,7 @@
 
       <div class="cover-tags">
         <span class="tag accent">最終確認 2026-10-18</span>
-        <span class="tag accent">一次情報ベース・出典36件</span>
+        <span class="tag accent">一次情報ベース・出典37件</span>
         <span class="tag accent">対象：主に介護・福祉分野の民間事業者（医療は別枠、行政機関等は別途確認）</span>
         <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
       </div>
@@ -311,7 +311,7 @@
         <li><a class="toc-link" href="#sec-checklist"><span class="tn">10</span><span class="tt">入力してよい環境のチェックリスト<span class="ts">ここまで整えば入力してよい前提環境と整理する</span></span><span class="tp" data-toc-target="checklist"></span></a></li>
         <li><a class="toc-link" href="#sec-sectors"><span class="tn">11</span><span class="tt">福祉の業種別早見表<span class="ts">介護・障害福祉・救護施設など、業種ごとの規律と医療情報の混入</span></span><span class="tp" data-toc-target="sectors"></span></a></li>
         <li><a class="toc-link" href="#sec-geminicmp"><span class="tn">12</span><span class="tt">Geminiの2つの入口<span class="ts">Gemini Enterprise（アプリ）とAgent Platform（開発用）の違い</span></span><span class="tp" data-toc-target="geminicmp"></span></a></li>
-        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、36件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
+        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、37件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
       </ul>
       <p style="margin-top:10px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
     </div>
@@ -414,7 +414,7 @@
   <section class="page" id="sec-flow" data-toc="flow">
     <div class="page-body">
       <div class="eyebrow">02　判定フロー</div>
-      <h2 class="h2">3つの質問で、入れていいレベルが決まる</h2>
+      <h2 class="h2">3つの質問で、入れていいレベルの目安が決まる</h2>
       <p style="margin-top:10px;">「結局、どのレベルから個人情報を入れてよいのか」という疑問に、3段階の質問で答えます。<b>「はい」を辿るほど要件は厳しくなり、要配慮個人情報は必ず最後の質問まで確認する必要があります。</b></p>
 
       <figure>
@@ -467,9 +467,9 @@
           <line x1="520" y1="378" x2="650" y2="378" stroke="currentColor" opacity=".55" marker-end="url(#arr2)" />
           <text x="585" y="366" text-anchor="middle" class="edge">はい</text>
           <rect x="650" y="344" width="220" height="68" rx="10" fill="#E3F1EA" stroke="#1F7A5C" />
-          <text x="760" y="368" text-anchor="middle" class="a" style="font-weight:700; fill:#1F7A5C;">利用可</text>
-          <text x="760" y="386" text-anchor="middle" class="a">日本ロケーション対応の</text>
-          <text x="760" y="400" text-anchor="middle" class="a">サービス＋組織的措置（→第7章）</text>
+          <text x="760" y="368" text-anchor="middle" class="a" style="font-weight:700; fill:#1F7A5C;">条件つきで利用可</text>
+          <text x="760" y="386" text-anchor="middle" class="a">日本ロケーション対応サービス</text>
+          <text x="760" y="400" text-anchor="middle" class="a">＋組織的措置（→第7・10章）</text>
         </svg>
         <figcaption>図2. 個人情報のレベル別判定フロー。DPA＝データ処理契約（第8章で詳述）。3省2ガイドライン＝厚生労働省・総務省・経済産業省が定める医療情報の安全管理ガイドライン群（第3章補足参照）。第2・第3問の要件は法令の最低要件ではなく、本資料が安全側に整理した推奨水準で、実際には法17〜28条の個別の充足が必要。</figcaption>
       </figure>
@@ -703,11 +703,11 @@
         <div class="box stamp">
           <h3 class="h3">❌ NG例：相談記録をそのまま要約させている</h3>
           <p>職員が、利用者の氏名・病歴・生活状況を含む相談記録を、法人契約のGemini in Workspaceに貼り付けて「要約して」と依頼している。ISMAP登録済みだから安全だと考えている。</p>
-          <p style="margin-top:8px;"><b>実態：</b>これは<span class="tag stamp">Tier C</span>のデータを<span class="tag warn">Tier B</span>の環境で処理している状態。ISMAP登録済みで安全管理面の目安は満たしていても、①入力データが応答出力以外（学習等）に使われないか未確認（PPC注意喚起<sup class="cite"><a href="#r23" title="出典一覧 [23] へ移動">[23]</a></sup>）、②提供先が外国にある第三者に当たる場合の同意（法28条）と、利用目的の範囲（法17・18条）<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>の確認が残ったままです。</p>
+          <p style="margin-top:8px;"><b>実態：</b>これは<span class="tag stamp">Tier C</span>のデータを<span class="tag warn">Tier B</span>の環境で処理している状態。ISMAP登録済みで安全管理面の目安は満たしていても、①学習等への利用はGoogleの公開説明で制限される<sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup>が、自組織の版・契約への適用や応答出力以外の目的の確認（PPC注意喚起<sup class="cite"><a href="#r23" title="出典一覧 [23] へ移動">[23]</a></sup>）、②提供先が外国にある第三者に当たる場合の同意（法28条）と、利用目的の範囲（法17・18条）<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>の確認が残ります。</p>
         </div>
         <div class="box good">
           <h3 class="h3">✅ OK例：用途に応じて仕分けている</h3>
-          <p>同じ相談記録でも、案内文の下書き程度なら氏名等を「A様」に置き換えてから、同じGemini in Workspaceで作成。病歴・生活歴を含む要約作業は、正式なTier C構成（第7章）が整うまで人手で行うと決めている。</p>
+          <p>同じ相談記録でも、案内文の下書き程度なら氏名等を「A様」に置き換え、本人が分かる経緯・施設名も除いてから、同じGemini in Workspaceで作成。病歴・生活歴を含む要約作業は、正式なTier C構成（第7章）が整うまで人手で行うと決めている。</p>
           <p style="margin-top:8px;"><b>ポイント：</b>ツールを変えなくても、「何を入れるか」を仕分けるだけでリスクは大きく下がります。困ったら、まず匿名化してからが原則です。</p>
         </div>
       </div>
@@ -748,7 +748,7 @@
           <p style="margin-top:8px;"><b>問題：</b>このAPIキーはISMAPリスト未登録の別製品で、無料枠は入力が製品改善に使われうる仕様です<sup class="cite"><a href="#r13" title="出典一覧 [13] へ移動">[13]</a></sup>。「自分たちで作ったから安心」という思い込みが、実は最も無防備な経路になっている典型例です。</p>
         </div>
         <div class="box good">
-          <p><b>OK：</b>同じ機能をVertex AI（Gemini Enterprise Agent Platform）のAPI経由で作り直す。ISMAP登録済みの環境の範囲内に収まります。</p>
+          <p><b>OK：</b>同じ機能をVertex AI（Gemini Enterprise Agent Platform）のAPIで作り直す。ISMAP登録のある基盤ですが、日本のエンドポイント・対応モデル・保存先の指定など、第7章とp.20の条件を満たしてから、要配慮情報を扱います。</p>
           <p style="margin-top:8px;"><b>ポイント：</b>「内製・自作だから安全」とは限りません。むしろ管理者の目が届きにくく、リスクが放置されやすい経路です。</p>
         </div>
       </div>
@@ -764,11 +764,11 @@
   <section class="page" id="sec-tierc" data-toc="tierc">
     <div class="page-body">
       <div class="eyebrow">07　Tier Cの技術構成</div>
-      <h2 class="h2">要配慮個人情報を実名で扱う場合の、現実的な最適構成</h2>
+      <h2 class="h2">要配慮個人情報を実名で扱う場合の、現実的な構成</h2>
       <p style="margin-top:10px;">自社アプリにAIを組み込む場合に費用面で最も現実的なのは、Google Cloudを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成が標準です。<b>AI OCRのみ例外</b>で自前ホスティングです。要約・長文の下書き・音声文字起こしも、Cloud RunのCPU・日本リージョンで自前運用する選択肢があります（検証結果は<span data-toc-target="localai"></span>）。入力はモデル事業者に渡らず、人の確認が前提です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup><sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
 
       <figure>
-        <svg viewBox="0 0 780 298" style="max-width:760px;" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、OCRは自前ホスティング（PaddleOCR）、生成・要約・音声は標準ではAWS BedrockとTranscribe、要約・音声文字起こし・長文の下書きの自前運用（Sarashina・Whisper・Gemma）は任意、と振り分けるアーキテクチャ図">
+        <svg viewBox="0 0 780 298" style="max-width:700px;" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、OCRは自前ホスティング（PaddleOCR）、生成・要約・音声は標準ではAWS BedrockとTranscribe、要約・音声文字起こし・長文の下書きの自前運用（Sarashina・Whisper・Gemma）は任意、と振り分けるアーキテクチャ図">
           <defs><marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="currentColor" /></marker></defs>
           <rect x="300" y="10" width="180" height="48" rx="8" fill="#F3F6FA" stroke="#B9C6D6" />
           <text x="390" y="39" text-anchor="middle" style="font-size:13px; font-weight:700;">利用者</text>
@@ -799,7 +799,7 @@
           <text x="650" y="242" text-anchor="middle" style="font-size:11.5px; opacity:.8;">生成・要約／音声（標準）</text>
           <text x="650" y="258" text-anchor="middle" style="font-size:11.5px; opacity:.8;">日本国内に限定して利用</text>
         </svg>
-        <figcaption>図5. データの保存・AI処理は常に日本国内に閉じる。OCRは自前ホスティング（要約・音声文字起こし・長文の下書きの自前運用は任意）、生成・要約はAWS Bedrock（日本国内限定の推論プロファイルを指定<sup class="cite"><a href="#r21" title="出典一覧 [21] へ移動">[21]</a></sup><sup class="cite"><a href="#r22" title="出典一覧 [22] へ移動">[22]</a></sup>）、音声はAWS Transcribe（日本のリージョンを指定）が標準。クラウド間はキーレス認証。</figcaption>
+        <figcaption>図5. データの保存・AI処理は常に日本国内に閉じる。OCRは自前ホスティング（要約・音声文字起こし・長文の下書きの自前運用は任意）、生成・要約はAWS Bedrock（日本国内限定の推論プロファイルを指定<sup class="cite"><a href="#r21" title="出典一覧 [21] へ移動">[21]</a></sup><sup class="cite"><a href="#r22" title="出典一覧 [22] へ移動">[22]</a></sup>）、音声はAWS Transcribe（日本のリージョンを指定）が標準。一括処理は入力用S3が要り、出力先未指定だとAWS管理のバケットに最大90日残る<sup class="cite"><a href="#r37" title="出典一覧 [37] へ移動">[37]</a></sup>ため、S3も東京に置く。クラウド間はキーレス認証。</figcaption>
       </figure>
 
       <div class="cols2" style="margin-top:4px;">
@@ -825,7 +825,7 @@
   <section class="page" id="sec-cost" data-toc="cost">
     <div class="page-body">
       <div class="eyebrow">07　なぜこの構成が現実的か</div>
-      <h2 class="h2">コストと精度、両方の一次情報が同じ結論を指す</h2>
+      <h2 class="h2">コストは公式情報、精度は筆者の検証：両面でこの構成が現実的</h2>
 
       <h3 class="h3" style="margin-top:8px;">コスト構造</h3>
       <div class="cols2" style="margin-top:6px;">
@@ -957,7 +957,7 @@
       <div class="cols2" style="margin-top:14px;">
         <div class="box good">
           <h3 class="h3">✅ 今日からできる</h3>
-          <p>個人が特定されない一般的な文章生成・要約・案内文は、今使っているツールのままで問題ありません。氏名・住所・生年月日等を仮名（A様、B様等）に置き換えれば、活用の幅はかなり広がります。「困ったら、まず匿名化してから」を職場のルールにするだけで効果があります。</p>
+          <p>個人が特定されない一般的な文章生成・要約・案内文は、今使っているツールのままで問題ありません。氏名・住所・生年月日等を仮名（A様、B様等）に置き換え、本人が分かる経緯も除けば、活用の幅はかなり広がります。「困ったら、まず匿名化してから」を職場のルールにするだけで効果があります。</p>
         </div>
         <div class="box stamp">
           <h3 class="h3">❌ 正直、まだできない</h3>
@@ -992,7 +992,7 @@
           <h3 class="h3" style="font-size:15px;">A　本人・目的・契約（法令上の根拠が中心）</h3>
           <ul class="ck">
             <li>利用目的にAI利用を含めて特定し、通知・公表した（法17・21条）。取得済みの記録は、取得時の利用目的の範囲内か確認し、範囲外なら本人の同意等を得た（法18条）</li>
-            <li>要配慮個人情報の取得に本人の同意を得て記録した（判断能力が十分でない方は法定代理人の同意）（法20条2項）<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup></li>
+            <li>要配慮情報の取得に本人の同意を得て記録した（判断能力が不十分な方は法定代理人の同意。例外あり）（法20条2項）<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup><sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup></li>
             <li>委託先と、扱いの範囲・目的外利用の禁止・再委託・事故時の連絡を契約で定め、監督の記録を残した（法25条）</li>
             <li>入力が学習等に使われないことを、契約・設定で確認した<sup class="cite"><a href="#r23" title="出典一覧 [23] へ移動">[23]</a></sup></li>
             <li>国外処理は外国名等を示して同意を得た。提供先が「外国にある第三者」に当たるか、または提供に当たらない整理を契約等で確認した。国内処理だけを根拠にしない（法28条）<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup></li>
@@ -1050,7 +1050,7 @@
             <tr><td>障害福祉・児童福祉</td><td>民間は法4章。公立は原則法5章（所管部門に確認）</td><td>事業所ごとに確認（医療的ケア、服薬記録など）</td><td>障害福祉サービスの利用事実は要配慮<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。判断能力が十分でない方は法定代理人の同意</td></tr>
             <tr><td>救護施設（社会福祉法人など）</td><td>法4章。社会福祉法人・日本赤十字社も設置できる（生活保護法41条）</td><td>入所・入院の経路で医療情報が入りうる。看護職の配置は確認</td><td>対象は著しい障害のある要保護者（同法38条2項）。要配慮に当たる情報を多く含みうる</td></tr>
             <tr><td>救護施設（自治体設置・指定管理）</td><td>自治体は原則法5章。民間の指定管理者は法4章に加え、公の施設の管理業務に安全管理措置の規律が準用（法66条2項）</td><td>同上</td><td>本資料では参考。所管部門・条例を確認</td></tr>
-            <tr><td>女性支援・暴力被害者の保護</td><td>運営主体により法4章か法5章</td><td>同上</td><td>暴力被害の事実は、この区分では刑事手続に着手されたものが要配慮（通則編）。居所の漏えいは安全に直結</td></tr>
+            <tr><td>女性支援・暴力被害者の保護</td><td>運営主体により法4章か法5章</td><td>事業所・扱う記録ごとに確認</td><td>暴力被害の事実は、この区分では刑事手続に着手されたものが要配慮（通則編）。居所の漏えいは安全に直結</td></tr>
           </tbody>
         </table>
       </div>
@@ -1182,6 +1182,10 @@
             <li id="r7"><span class="refnum">7.</span> Gemini Enterprise・NotebookLM Enterprise の ISMAP登録を完了｜Google Cloud公式ブログ — <a href="https://cloud.google.com/blog/ja/products/gcp/completed-ismap-registration-for-gemini-enterprise-and-notebooklm-enterprise" target="_blank" rel="noopener noreferrer">cloud.google.com/blog/ja/...ismap-registration</a></li>
             <li id="r31"><span class="refnum">31.</span> ISMAP概要（制度案内）｜ISMAPポータル公式 — <a href="https://www.ismap.go.jp/csm?id=kb_article_view&sysparm_article=KB0010005" target="_blank" rel="noopener noreferrer">ismap.go.jp（KB0010005）</a></li>
           </ul>
+          <div class="refs-cat">AWS（音声文字起こし）</div>
+          <ul class="refs">
+            <li id="r37"><span class="refnum">37.</span> Amazon Transcribe 入門（入力S3と出力先）｜AWS公式ドキュメント — <a href="https://docs.aws.amazon.com/transcribe/latest/dg/getting-started.html" target="_blank" rel="noopener noreferrer">docs.aws.amazon.com/transcribe/…/getting-started.html</a></li>
+          </ul>
         </div>
         <div>
           <div class="refs-cat">クラウド料金・データ所在地</div>
@@ -1194,7 +1198,7 @@
             <li id="r34"><span class="refnum">34.</span> Service Specific Terms／Cloud Data Processing Addendum｜Google Cloud — <a href="https://cloud.google.com/terms/service-terms" target="_blank" rel="noopener noreferrer">…/terms/service-terms</a>、<a href="https://cloud.google.com/terms/data-processing-addendum" target="_blank" rel="noopener noreferrer">…/data-processing-addendum</a></li>
             <li id="r12"><span class="refnum">12.</span> Gemini Enterprise app FAQ（30日間無料トライアル）｜Google Cloud公式 — <a href="https://cloud.google.com/gemini-enterprise/faq" target="_blank" rel="noopener noreferrer">cloud.google.com/gemini-enterprise/faq</a></li>
             <li id="r13"><span class="refnum">13.</span> Gemini API 利用規約｜Google AI for Developers公式 — <a href="https://ai.google.dev/gemini-api/terms" target="_blank" rel="noopener noreferrer">ai.google.dev/gemini-api/terms</a></li>
-            <li id="r14"><span class="refnum">14.</span> Google Workspace「生成AIに関する情報」開示書（Google LLC提出、ISMAPポータル） — <a href="https://www.ismap.go.jp/sys_attachment.do?sys_id=4fe2e2e52b2107d0f0bbfd69fe91bf04" target="_blank" rel="noopener noreferrer">ismap.go.jp（開示書PDF）</a></li>
+            <li id="r14"><span class="refnum">14.</span> Google Workspace「生成AIに関する情報」開示書（ISMAPポータル）／プライバシー説明 — <a href="https://www.ismap.go.jp/sys_attachment.do?sys_id=4fe2e2e52b2107d0f0bbfd69fe91bf04" target="_blank" rel="noopener noreferrer">ismap.go.jp（PDF）</a> ／ <a href="https://knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub" target="_blank" rel="noopener noreferrer">Privacy Hub</a></li>
             <li id="r32"><span class="refnum">32.</span> sarashina2.2-3b-instruct-v0.1（モデルカード・MITライセンス）｜SB Intuitions（Hugging Face） — <a href="https://huggingface.co/sbintuitions/sarashina2.2-3b-instruct-v0.1" target="_blank" rel="noopener noreferrer">huggingface.co/sbintuitions/sarashina2.2-3b-instruct-v0.1</a></li>
             <li id="r36"><span class="refnum">36.</span> gemma-4-26B-A4B-it（モデルカード・Apache 2.0）｜Google（Hugging Face） — <a href="https://huggingface.co/google/gemma-4-26B-A4B-it" target="_blank" rel="noopener noreferrer">huggingface.co/google/gemma-4-26B-A4B-it</a></li>
             <li id="r35"><span class="refnum">35.</span> openai/whisper（README・LICENSE。コードとモデルの重みはMIT）｜GitHub — <a href="https://github.com/openai/whisper" target="_blank" rel="noopener noreferrer">github.com/openai/whisper</a></li>
