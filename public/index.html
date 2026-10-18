@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  元PDF「個人情報×生成AI 実務ガイド」(A4横・22ページ) と同一の固定レイアウトHTML。
+  元PDF「個人情報×生成AI 実務ガイド」(A4横・23ページ) と同一の固定レイアウトHTML。
   サイトのルート(/)としてそのまま配信される単一ソース。
   scripts/generate-pdf.mjs がこのファイルを開いて public/downloads/pii-genai-guide.pdf を生成する。
   本文を更新したら `pnpm generate:pdf` を再実行してPDFを再生成すること。
@@ -274,6 +274,7 @@
         <li><a class="toc-link" href="#sec-tiers"><span class="tn">05</span><span class="tt">実名データの3段階（Tier A / B / C）<span class="ts">用途別に必要な技術要件を切り分ける</span></span><span class="tp" data-toc-target="tiers"></span></a></li>
         <li><a class="toc-link" href="#sec-cases"><span class="tn">06</span><span class="tt">よくある間違いと正しい対応<span class="ts">NG例・OK例で確認する、現場で起きがちなずれ</span></span><span class="tp" data-toc-target="cases"></span></a></li>
         <li><a class="toc-link" href="#sec-tierc"><span class="tn">07</span><span class="tt">Tier Cの技術構成とその根拠<span class="ts">要配慮個人情報のための現実的なアーキテクチャ</span></span><span class="tp" data-toc-target="tierc"></span></a></li>
+        <li><a class="toc-link" href="#sec-localai"><span class="tn">07+</span><span class="tt">補足：自前運用の検証結果<span class="ts">Cloud Run（CPU・日本リージョン）で試したAIの確認できたことと注意</span></span><span class="tp" data-toc-target="localai"></span></a></li>
         <li><a class="toc-link" href="#sec-legal"><span class="tn">08</span><span class="tt">技術を固めても残る法務対応<span class="ts">積み上げれば完了する軸と、終わりのない軸の違い</span></span><span class="tp" data-toc-target="legal"></span></a></li>
         <li><a class="toc-link" href="#sec-summary"><span class="tn">09</span><span class="tt">まとめ：今日からできること<span class="ts">できること・まだできないこと・準備すべきこと</span></span><span class="tp" data-toc-target="summary"></span></a></li>
         <li><a class="toc-link" href="#sec-checklist"><span class="tn">10</span><span class="tt">入力してよい環境のチェックリスト<span class="ts">ここまで整えば入力してよい前提環境と整理する</span></span><span class="tp" data-toc-target="checklist"></span></a></li>
@@ -814,6 +815,38 @@
       <p style="font-size:var(--fs-caption); color:#5A6B84;">評価軸：OCRテキストを既知のマスターリストにfuzzy matchで解決できるかという、実運用に即した基準<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。「誤って別の実在レコードに確定する」危険な誤りは、いずれのモデルも0件でした。要約用のSarashina2.2-3B-instructは、Q8_0量子化ならCPUで実用レベルでした。Q4_K_Mでは、情報が欠けた正式書式の書類で実在しない事業所名を捏造したため、避けてください。長文の下書きでは入力にない機関名を作る例があり、Sarashinaは要約限定です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
     </div>
     <div class="page-footer"><span>07　なぜこの構成が現実的か</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 11b: 自前運用の検証結果 ============ -->
+  <section class="page" id="sec-localai" data-toc="localai">
+    <div class="page-body">
+      <div class="eyebrow">07　自前運用の検証結果</div>
+      <h2 class="h2">Cloud Run（CPU・日本リージョン）で自前運用できるAI：確認できたことと注意</h2>
+      <p style="margin-top:10px;">標準の構成は、OCRのみ自前、生成・要約・音声文字起こしはAWSです。これに対し、要約・長文の下書き・音声文字起こしも、Cloud RunのCPU・日本リージョンで自前運用する選択肢があります。入力は自前のコンテナ内で処理され、モデル事業者に渡りません。ただし基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup>。下の表の内容は、hayamimi（未検証）を除き、筆者による検証の結果で、人の確認が前提です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
+
+      <div class="tbl-wrap" style="margin-top:12px;">
+        <table>
+          <thead><tr><th style="width:13%; white-space:nowrap;">用途</th><th style="width:18%;">モデル（ライセンス）</th><th style="width:25%;">確認できたこと</th><th style="width:31%;">注意</th><th style="width:13%; white-space:nowrap;">検証データ</th></tr></thead>
+          <tbody>
+            <tr><td style="white-space:nowrap;">OCR</td><td><b>PaddleOCR</b>（Apache 2.0）</td><td>正解率98%（94/96）。Gemini 3.5 Flashは99%（<span data-toc-target="cost"></span>の比較表）</td><td>「誤って別の実在レコードに確定する」危険な誤りは0件</td><td style="white-space:nowrap;">実際の業務文書</td></tr>
+            <tr><td style="white-space:nowrap;">要約</td><td><b>Sarashina2.2-3B-instruct</b>（MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）</td><td>Q8_0量子化ならCPUで実用レベル</td><td>Q4_K_Mは、情報が欠けた正式書式の書類で実在しない事業所名を捏造。長文の下書きでも入力にない機関名を作る例があり、要約に限る</td><td>実際の業務文書（要約）／合成データ（長文の下書き）</td></tr>
+            <tr><td style="white-space:nowrap;">長文の下書き</td><td><b>Gemma 4 26B A4B</b>（Apache 2.0<sup class="cite"><a href="#r36" title="出典一覧 [36] へ移動">[36]</a></sup>）</td><td>1件あたり約1.5〜3.5分（8vCPU・32GiB）。起動に約25分（最小インスタンス0の場合）</td><td>記録にない内容の創作が残る。起動待ちがあるため非同期処理が前提</td><td style="white-space:nowrap;">合成データ</td></tr>
+            <tr><td style="white-space:nowrap;">音声文字起こし</td><td><b>Whisper</b>（MIT<sup class="cite"><a href="#r35" title="出典一覧 [35] へ移動">[35]</a></sup>）</td><td>60分の音声を約17〜30分（8vCPU・16GiB）</td><td>CPUの世代で処理時間（最大1.75倍）と結果（CER 3.5%の差）が変わる。人名・社名は人が確認</td><td style="white-space:nowrap;">合成音声</td></tr>
+            <tr><td style="white-space:nowrap;">音声文字起こし</td><td><b>hayamimi</b></td><td>未検証</td><td>取得するモデルごとのライセンスは未確認。作者の公表値は筆者未検証</td><td style="white-space:nowrap;">—</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="box accent" style="margin-top:14px;">
+        <h3 class="h3">この表の読み方</h3>
+        <ul class="list" style="font-size:13px; margin:6px 0 0;">
+          <li>検証データが行ごとに異なる（実際の業務文書／合成データ／合成音声）ため、行どうしの数値は比較できません。</li>
+          <li>実際の個人情報での検証と、職員による評価はしていません。どのモデルも、出力は人が確認する前提です。</li>
+          <li>数値は検証した環境（CPUの世代・メモリ・設定）で変わります。導入時は、自組織の書類や音声で確かめてください。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="page-footer"><span>07　自前運用の検証結果</span><span class="pn"></span></div>
   </section>
 
   <!-- ============ PAGE 12: 法務対応4軸 ============ -->
