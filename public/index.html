@@ -205,6 +205,29 @@
   }
   .summary-box h3.h3{ font-size:13px; text-transform:uppercase; letter-spacing:.04em; font-family:var(--font-mono); color:#2857A6; }
 
+  /* ---- visual refresh: cards / bars / relation diagram ---- */
+  .vcard{ border:1px solid #DCE3EC; border-radius:10px; padding:9px 14px 10px; background:#FBFCFE; display:flex; flex-direction:column; }
+  .vcard-head{ display:flex; justify-content:space-between; align-items:center; gap:8px; margin-bottom:2px; }
+  .vcard-head h3.h3{ margin:0; }
+  .vcard-head .tags{ display:flex; gap:4px; flex-wrap:wrap; justify-content:flex-end; }
+  .vcard .model{ font-size:13px; line-height:1.5; margin:0 0 4px; color:#17233A; }
+  .vrow{ display:flex; gap:8px; font-size:12px; line-height:1.5; color:#3C4A61; padding:3px 8px; border-radius:6px; margin-top:3px; }
+  .vrow .lab{ flex:none; width:4.6em; font-weight:700; }
+  .vrow .lab.wide{ width:7.3em; }
+  .vrow.ok{ background:#E3F1EA; } .vrow.ok .lab{ color:#1F7A5C; }
+  .vrow.n{ background:#F3F6FA; } .vrow.n .lab{ color:#1B3E7C; }
+  .vrow.w{ background:rgba(255,255,255,.72); } .vrow.w .lab{ color:#1B3E7C; }
+  .vrow.ng{ background:#F6ECD9; } .vrow.ng .lab{ color:#8A5E13; }
+  .vband{ display:flex; align-items:baseline; gap:10px; border:1px dashed #B9C6D6; border-radius:8px; padding:6px 12px; margin-top:12px; font-size:12.5px; line-height:1.55; color:#3C4A61; }
+  .tbl-wrap.tight td{ padding-top:3px; padding-bottom:3px; }
+  .box.compact ul.list li{ margin-bottom:2px; }
+  .tag.gray{ background:#EEF1F5; color:#5A6B84; }
+  .bar{ display:flex; align-items:center; gap:8px; }
+  .bar-track{ flex:none; width:96px; height:8px; border-radius:4px; background:#EEF2F7; overflow:hidden; }
+  .bar-fill{ display:block; height:100%; border-radius:0 4px 4px 0; background:linear-gradient(90deg,var(--c,#8A99B0) 0 calc(var(--lo)/var(--v)*100%), var(--cl,#C9D2DF) calc(var(--lo)/var(--v)*100%) 100%); width:calc(var(--v)*1%); }
+  .bar-fill.hl{ --c:#1F7A5C; --cl:#9ACBB8; }
+  .bar-fill.mute{ --c:#C9D2DF; --cl:#C9D2DF; }
+
   @media print{
     @page{ size:A4 landscape; margin:0; }
     body{ background:#fff !important; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
@@ -732,10 +755,10 @@
     <div class="page-body">
       <div class="eyebrow">07　Tier Cの技術構成</div>
       <h2 class="h2">要配慮個人情報を実名で扱う場合の、現実的な最適構成</h2>
-      <p style="margin-top:10px;">自社アプリにAIを組み込む場合に費用面で最も現実的なのは、Google Cloudを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成が標準です。<b>AI OCRのみ例外</b>で自前ホスティングです。自前でCloud RunのCPU・日本リージョンに置く選択肢もあります。要約はSarashina2.2-3B-instruct（MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）、長文の下書きはGemma 4 26B A4B（Apache 2.0<sup class="cite"><a href="#r36" title="出典一覧 [36] へ移動">[36]</a></sup>）で、入力はモデル事業者に渡りません。人の確認が前提です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。音声はWhisper（MIT<sup class="cite"><a href="#r35" title="出典一覧 [35] へ移動">[35]</a></sup>）の自前運用も候補で、合成音声の検証では60分音声を約17〜30分（8vCPU）。人名・社名は人が確認します<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup><sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
+      <p style="margin-top:10px;">自社アプリにAIを組み込む場合に費用面で最も現実的なのは、Google Cloudを維持しつつ、生成・要約・音声文字起こしをAWS Bedrockに任せるハイブリッド構成が標準です。<b>AI OCRのみ例外</b>で自前ホスティングです。要約・長文の下書き・音声文字起こしも、Cloud RunのCPU・日本リージョンで自前運用する選択肢があります（検証結果は<span data-toc-target="localai"></span>）。入力はモデル事業者に渡らず、人の確認が前提です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup><sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
 
       <figure>
-        <svg viewBox="0 0 780 298" style="max-width:690px;" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、OCRは自前ホスティング（PaddleOCR）、生成・要約・音声は標準ではAWS BedrockとTranscribe、要約・音声文字起こし・長文の下書きの自前運用（Sarashina・Whisper・Gemma）は任意、と振り分けるアーキテクチャ図">
+        <svg viewBox="0 0 780 298" style="max-width:760px;" role="img" aria-label="利用者からCloud Runで受け付け、保存はFirestore、OCRは自前ホスティング（PaddleOCR）、生成・要約・音声は標準ではAWS BedrockとTranscribe、要約・音声文字起こし・長文の下書きの自前運用（Sarashina・Whisper・Gemma）は任意、と振り分けるアーキテクチャ図">
           <defs><marker id="arr4" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><polygon points="0,0 8,4 0,8" fill="currentColor" /></marker></defs>
           <rect x="300" y="10" width="180" height="48" rx="8" fill="#F3F6FA" stroke="#B9C6D6" />
           <text x="390" y="39" text-anchor="middle" style="font-size:13px; font-weight:700;">利用者</text>
@@ -794,25 +817,38 @@
       <div class="eyebrow">07　なぜこの構成が現実的か</div>
       <h2 class="h2">コストと精度、両方の一次情報が同じ結論を指す</h2>
 
-      <h3 class="h3" style="margin-top:12px;">コスト構造</h3>
-      <p>Gemini 3.5 Flashを日本リージョン（asia-northeast1）のAPIで使う場合、標準従量課金（Standard PayGo）は非対応です（対応はglobal・us・eu）<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。利用できるのは単一ゾーンのProvisioned Throughputのみで、購入には「Google Cloudアカウント担当者への問い合わせ」が必須の個別契約になります<sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup>。公式料金ページでは、非グローバルのエンドポイントの単価は1か月コミットでGSUあたり約$4.07/時（月730時間換算で約 <span class="mono" style="font-weight:700;">$2,970</span>）と示され、必要なGSU数はモデルと処理量で決まります<sup class="cite"><a href="#r11" title="出典一覧 [11] へ移動">[11]</a></sup>。最新のGemini 3.8 Flashは日本リージョンでは提供されていません<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。小規模な組織には現実的ではありません。対して、AWS Bedrockは固定費なしのオンデマンド利用で、日本国内クロスリージョン推論（jp.）は東京・大阪のみを宛先とし、Claude Sonnet 4.5・Haiku 4.5・Haiku 5.5・Opus 5.5、Nova 2 Liteなどが対応します（Sonnet 5.5はモデルカードに日本プロファイルの記載なし）<sup class="cite"><a href="#r21" title="出典一覧 [21] へ移動">[21]</a></sup><sup class="cite"><a href="#r30" title="出典一覧 [30] へ移動">[30]</a></sup>。APACやグローバルのプロファイルは国外を経由しうるため指定してはいけません<sup class="cite"><a href="#r22" title="出典一覧 [22] へ移動">[22]</a></sup>。ISMAPの対象範囲はBedrockを含みます（Bedrock Marketplaceを除く）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r8" title="出典一覧 [8] へ移動">[8]</a></sup>。</p>
+      <h3 class="h3" style="margin-top:8px;">コスト構造</h3>
+      <div class="cols2" style="margin-top:6px;">
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">Gemini 3.5 Flash</h3><div class="tags"><span class="tag stamp">日本リージョン（asia-northeast1）のAPI</span></div></div>
+          <div class="vrow n"><span class="lab">課金方式</span><span>標準従量課金（Standard PayGo）は非対応（対応はglobal・us・eu）<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。使えるのは単一ゾーンのProvisioned Throughputのみで、購入は「Google Cloudアカウント担当者への問い合わせ」が必須の個別契約<sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup></span></div>
+          <div class="vrow n"><span class="lab">目安</span><span>1か月コミットでGSUあたり約$4.07/時（月730時間換算で約 <span class="mono" style="font-weight:700;">$2,970</span>）。必要なGSU数はモデルと処理量で決まる<sup class="cite"><a href="#r11" title="出典一覧 [11] へ移動">[11]</a></sup></span></div>
+          <div class="vrow ng"><span class="lab">注意</span><span>最新のGemini 3.8 Flashは日本リージョンでは提供されていません<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup>。小規模な組織には現実的ではありません</span></div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">AWS Bedrock</h3><div class="tags"><span class="tag good">日本国内クロスリージョン推論（jp.）</span></div></div>
+          <div class="vrow n"><span class="lab">課金方式</span><span>固定費なしのオンデマンド利用</span></div>
+          <div class="vrow n"><span class="lab">宛先</span><span>東京・大阪のみ。Claude Sonnet 4.5・Haiku 4.5・Haiku 5.5・Opus 5.5、Nova 2 Liteなどが対応（Sonnet 5.5はモデルカードに日本プロファイルの記載なし）<sup class="cite"><a href="#r21" title="出典一覧 [21] へ移動">[21]</a></sup><sup class="cite"><a href="#r30" title="出典一覧 [30] へ移動">[30]</a></sup></span></div>
+          <div class="vrow ng"><span class="lab">注意</span><span>APACやグローバルのプロファイルは国外を経由しうるため、指定してはいけません<sup class="cite"><a href="#r22" title="出典一覧 [22] へ移動">[22]</a></sup>。ISMAPの対象範囲はBedrockを含みます（Bedrock Marketplaceを除く）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r8" title="出典一覧 [8] へ移動">[8]</a></sup></span></div>
+        </div>
+      </div>
 
-      <h3 class="h3" style="margin-top:14px;">日本語OCR精度の実機比較</h3>
+      <h3 class="h3" style="margin-top:8px;">日本語OCR精度の実機比較</h3>
       <p>実際の日本語書類（旧字体異体字・類似漢字・事業所名の紛らわしいペア等）を使った実機検証では、AWS Bedrock（Claude／Nova系）は特定の漢字を再現性ある形で誤読することが確認されました。自前ホスティングのPaddleOCRは、Gemini系とほぼ同水準の精度を達成しています<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
 
-      <div class="tbl-wrap">
+      <div class="tbl-wrap tight">
         <table>
-          <thead><tr><th>モデル</th><th>正解率（96判定中）</th><th>備考</th></tr></thead>
+          <thead><tr><th style="width:34%;">モデル</th><th style="width:30%;">正解率（96判定中）</th><th>備考</th></tr></thead>
           <tbody>
-            <tr><td>Gemini 2.5 Flash</td><td class="mono">100%</td><td>Google Cloud（Agent Platform）の提供終了日が2026年10月20日のため除外<sup class="cite"><a href="#r20" title="出典一覧 [20] へ移動">[20]</a></sup></td></tr>
-            <tr><td>Gemini 3.5 Flash</td><td class="mono">99%（95/96）</td><td></td></tr>
-            <tr><td><b>PaddleOCR（自前ホスティング）</b></td><td class="mono">98%（94/96）</td><td>Apache 2.0、東京リージョンCloud Run運用可</td></tr>
-            <tr><td>AWS Bedrock Claude Sonnet 4.5</td><td class="mono">約87.5%</td><td></td></tr>
-            <tr><td>AWS Bedrock Claude Haiku 4.5</td><td class="mono">62.5〜75%</td><td>enum制約等の改善後の数値</td></tr>
+            <tr><td>Gemini 2.5 Flash</td><td><div class="bar"><span class="mono" style="min-width:7.6em;">100%</span><span class="bar-track"><i class="bar-fill mute" style="--v:100;--lo:100;"></i></span></div></td><td>Google Cloud（Agent Platform）の提供終了日が2026年10月20日のため除外<sup class="cite"><a href="#r20" title="出典一覧 [20] へ移動">[20]</a></sup></td></tr>
+            <tr><td>Gemini 3.5 Flash</td><td><div class="bar"><span class="mono" style="min-width:7.6em;">99%（95/96）</span><span class="bar-track"><i class="bar-fill " style="--v:99;--lo:99;"></i></span></div></td><td></td></tr>
+            <tr><td><b>PaddleOCR（自前ホスティング）</b></td><td><div class="bar"><span class="mono" style="min-width:7.6em;">98%（94/96）</span><span class="bar-track"><i class="bar-fill hl" style="--v:98;--lo:98;"></i></span></div></td><td>Apache 2.0、東京リージョンCloud Run運用可</td></tr>
+            <tr><td>AWS Bedrock Claude Sonnet 4.5</td><td><div class="bar"><span class="mono" style="min-width:7.6em;">約87.5%</span><span class="bar-track"><i class="bar-fill " style="--v:87.5;--lo:87.5;"></i></span></div></td><td></td></tr>
+            <tr><td>AWS Bedrock Claude Haiku 4.5</td><td><div class="bar"><span class="mono" style="min-width:7.6em;">62.5〜75%</span><span class="bar-track"><i class="bar-fill " style="--v:75;--lo:62.5;"></i></span></div></td><td>enum制約等の改善後の数値</td></tr>
           </tbody>
         </table>
       </div>
-      <p style="font-size:var(--fs-caption); color:#5A6B84;">評価軸：OCRテキストを既知のマスターリストにfuzzy matchで解決できるかという、実運用に即した基準<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。「誤って別の実在レコードに確定する」危険な誤りは、いずれのモデルも0件でした。要約用のSarashina2.2-3B-instructは、Q8_0量子化ならCPUで実用レベルでした。Q4_K_Mでは、情報が欠けた正式書式の書類で実在しない事業所名を捏造したため、避けてください。長文の下書きでは入力にない機関名を作る例があり、Sarashinaは要約限定です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
+      <p style="font-size:var(--fs-caption); color:#5A6B84;">評価軸：OCRテキストを既知のマスターリストにfuzzy matchで解決できるかという、実運用に即した基準<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。「誤って別の実在レコードに確定する」危険な誤りは、いずれのモデルも0件でした。要約・長文の下書き・音声文字起こしの自前運用の結果は、<span data-toc-target="localai"></span>にまとめています。</p>
     </div>
     <div class="page-footer"><span>07　なぜこの構成が現実的か</span><span class="pn"></span></div>
   </section>
@@ -822,25 +858,40 @@
     <div class="page-body">
       <div class="eyebrow">07　自前運用の検証結果</div>
       <h2 class="h2">Cloud Run（CPU・日本リージョン）で自前運用できるAI：確認できたことと注意</h2>
-      <p style="margin-top:10px;">標準の構成は、OCRのみ自前、生成・要約・音声文字起こしはAWSです。これに対し、要約・長文の下書き・音声文字起こしも、Cloud RunのCPU・日本リージョンで自前運用する選択肢があります。入力は自前のコンテナ内で処理され、モデル事業者に渡りません。ただし基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup>。下の表の内容は、hayamimi（未検証）を除き、筆者による検証の結果で、人の確認が前提です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
+      <p style="margin-top:10px;">標準の構成は、OCRのみ自前、生成・要約・音声文字起こしはAWSです。これに対し、要約・長文の下書き・音声文字起こしも、Cloud RunのCPU・日本リージョンで自前運用する選択肢があります。入力は自前のコンテナ内で処理され、モデル事業者に渡りません。ただし基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup>。下のカードの内容は、hayamimi（未検証）を除き、筆者による検証の結果で、人の確認が前提です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
 
-      <div class="tbl-wrap" style="margin-top:12px;">
-        <table>
-          <thead><tr><th style="width:13%; white-space:nowrap;">用途</th><th style="width:18%;">モデル（ライセンス）</th><th style="width:25%;">確認できたこと</th><th style="width:31%;">注意</th><th style="width:13%; white-space:nowrap;">検証データ</th></tr></thead>
-          <tbody>
-            <tr><td style="white-space:nowrap;">OCR</td><td><b>PaddleOCR</b>（Apache 2.0）</td><td>正解率98%（94/96）。Gemini 3.5 Flashは99%（<span data-toc-target="cost"></span>の比較表）</td><td>「誤って別の実在レコードに確定する」危険な誤りは0件</td><td style="white-space:nowrap;">実際の業務文書</td></tr>
-            <tr><td style="white-space:nowrap;">要約</td><td><b>Sarashina2.2-3B-instruct</b>（MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）</td><td>Q8_0量子化ならCPUで実用レベル</td><td>Q4_K_Mは、情報が欠けた正式書式の書類で実在しない事業所名を捏造。長文の下書きでも入力にない機関名を作る例があり、要約に限る</td><td>実際の業務文書（要約）／合成データ（長文の下書き）</td></tr>
-            <tr><td style="white-space:nowrap;">長文の下書き</td><td><b>Gemma 4 26B A4B</b>（Apache 2.0<sup class="cite"><a href="#r36" title="出典一覧 [36] へ移動">[36]</a></sup>）</td><td>1件あたり約1.5〜3.5分（8vCPU・32GiB）。起動に約25分（最小インスタンス0の場合）</td><td>記録にない内容の創作が残る。起動待ちがあるため非同期処理が前提</td><td style="white-space:nowrap;">合成データ</td></tr>
-            <tr><td style="white-space:nowrap;">音声文字起こし</td><td><b>Whisper</b>（MIT<sup class="cite"><a href="#r35" title="出典一覧 [35] へ移動">[35]</a></sup>）</td><td>60分の音声を約17〜30分（8vCPU・16GiB）</td><td>CPUの世代で処理時間（最大1.75倍）と結果（CER 3.5%の差）が変わる。人名・社名は人が確認</td><td style="white-space:nowrap;">合成音声</td></tr>
-            <tr><td style="white-space:nowrap;">音声文字起こし</td><td><b>hayamimi</b></td><td>未検証</td><td>取得するモデルごとのライセンスは未確認。作者の公表値は筆者未検証</td><td style="white-space:nowrap;">—</td></tr>
-          </tbody>
-        </table>
+      <div class="cols2" style="margin-top:12px;">
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">OCR</h3><div class="tags"><span class="tag accent">実際の業務文書</span></div></div>
+          <p class="model"><b>PaddleOCR</b>（Apache 2.0）</p>
+          <div class="vrow ok"><span class="lab wide">確認できたこと</span><span>正解率98%（94/96）。Gemini 3.5 Flashは99%（<span data-toc-target="cost"></span>の比較表）</span></div>
+          <div class="vrow ok"><span class="lab wide">注意</span><span>「誤って別の実在レコードに確定する」危険な誤りは0件</span></div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">要約</h3><div class="tags"><span class="tag accent">実際の業務文書</span><span class="tag warn">合成データ（長文の下書き）</span></div></div>
+          <p class="model"><b>Sarashina2.2-3B-instruct</b>（MIT<sup class="cite"><a href="#r32" title="出典一覧 [32] へ移動">[32]</a></sup>）</p>
+          <div class="vrow ok"><span class="lab wide">確認できたこと</span><span>Q8_0量子化ならCPUで実用レベル</span></div>
+          <div class="vrow ng"><span class="lab wide">注意</span><span>Q4_K_Mは、情報が欠けた正式書式の書類で実在しない事業所名を捏造。長文の下書きでも入力にない機関名を作る例があり、要約に限る</span></div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">長文の下書き</h3><div class="tags"><span class="tag warn">合成データ</span></div></div>
+          <p class="model"><b>Gemma 4 26B A4B</b>（Apache 2.0<sup class="cite"><a href="#r36" title="出典一覧 [36] へ移動">[36]</a></sup>）</p>
+          <div class="vrow ok"><span class="lab wide">確認できたこと</span><span>1件あたり約1.5〜3.5分（8vCPU・32GiB）。起動に約25分（最小インスタンス0の場合）</span></div>
+          <div class="vrow ng"><span class="lab wide">注意</span><span>記録にない内容の創作が残る。起動待ちがあるため非同期処理が前提</span></div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">音声文字起こし</h3><div class="tags"><span class="tag warn">合成音声</span></div></div>
+          <p class="model"><b>Whisper</b>（MIT<sup class="cite"><a href="#r35" title="出典一覧 [35] へ移動">[35]</a></sup>）</p>
+          <div class="vrow ok"><span class="lab wide">確認できたこと</span><span>60分の音声を約17〜30分（8vCPU・16GiB）</span></div>
+          <div class="vrow ng"><span class="lab wide">注意</span><span>CPUの世代で処理時間（最大1.75倍）と結果（CER 3.5%の差）が変わる。人名・社名は人が確認</span></div>
+        </div>
       </div>
+      <div class="vband" style="margin-top:8px;"><span class="tag gray">未検証</span><span><b>音声文字起こし：hayamimi</b>　取得するモデルごとのライセンスは未確認。作者の公表値は筆者未検証</span></div>
 
-      <div class="box accent" style="margin-top:14px;">
-        <h3 class="h3">この表の読み方</h3>
-        <ul class="list" style="font-size:13px; margin:6px 0 0;">
-          <li>検証データが行ごとに異なる（実際の業務文書／合成データ／合成音声）ため、行どうしの数値は比較できません。</li>
+      <div class="box accent compact" style="margin-top:10px; padding:10px 16px;">
+        <h3 class="h3" style="margin-bottom:2px;">このページの読み方</h3>
+        <ul class="list" style="font-size:12.5px; line-height:1.6; margin:4px 0 0;">
+          <li>検証データが用途ごとに異なる（実際の業務文書／合成データ／合成音声）ため、用途どうしの数値は比較できません。</li>
           <li>実際の個人情報での検証と、職員による評価はしていません。どのモデルも、出力は人が確認する前提です。</li>
           <li>数値は検証した環境（CPUの世代・メモリ・設定）で変わります。導入時は、自組織の書類や音声で確かめてください。</li>
         </ul>
@@ -856,16 +907,21 @@
       <h2 class="h2">4つの軸——積み上げれば完了するもの、しないもの</h2>
       <p style="margin-top:10px;">アーキテクチャ（②）・NDA・DPA（③）・同意書（①）・ログ整備（④）を積み上げれば自動的に「合格」になる、というチェックリストではありません。要配慮個人情報を扱う体制は、性質の異なる次の4つの軸に分けて確認する必要があります。</p>
 
-      <div class="tbl-wrap">
-        <table>
-          <thead><tr><th style="width:5%;">#</th><th style="width:16%;">軸</th><th style="width:20%; white-space:nowrap;">該当条文</th><th>何を見れば確認できるか</th></tr></thead>
-          <tbody>
-            <tr><td class="mono">①</td><td>適法な取得・利用</td><td class="mono" style="white-space:nowrap;">17・18・20②・21条</td><td><b>運営者の契約書・プライバシーポリシー実物のみ</b>。AI・コードからは確認不可能</td></tr>
-            <tr><td class="mono">②</td><td>安全管理措置</td><td class="mono" style="white-space:nowrap;">23条</td><td>アーキテクチャ調査で確認可能</td></tr>
-            <tr><td class="mono">③</td><td>委託先の監督</td><td class="mono" style="white-space:nowrap;">25条</td><td>NDA・DPA等の契約書の有無に加え、監督の実施記録（評価・監査履歴）まで必要</td></tr>
-            <tr><td class="mono">④</td><td>追跡可能性</td><td class="mono" style="white-space:nowrap;">23条（運用面）</td><td>ログ基盤の設定に加え、保持運用の確認まで必要（ログ設計は下の囲み）</td></tr>
-          </tbody>
-        </table>
+      <h3 class="h3" style="margin-top:12px;">①〜④を全部満たしても、「もう終わり」にはならない</h3>
+      <div class="cols2" style="margin-top:6px;">
+        <div class="vcard" style="border-color:#A8332E; background:#F7E6E4;">
+          <div class="vcard-head"><h3 class="h3">① 本人（利用者）と運営者の間</h3><div class="tags"><span class="tag stamp">同意</span></div></div>
+          <div class="vrow w"><span class="lab" style="width:4.4em;">軸</span><span>適法な取得・利用（<span class="mono">17・18・20②・21条</span>）</span></div>
+          <div class="vrow w"><span class="lab" style="width:4.4em;">確認方法</span><span><b>運営者の契約書・プライバシーポリシー実物のみ</b>。AI・コードからは確認不可能</span></div>
+          <p style="font-size:12.5px; line-height:1.7; margin:8px 0 0;"><b>①は運営者と本人（利用者）の間の同意</b>で、NDA・DPA（③）をどれだけ強化しても代わりになりません。「同意書のひな形を用意した」ことと「既存の利用者全員から同意を取得済み」であることは別です。<b>法が求める場面（国外の第三者への提供、要配慮個人情報の取得など）で、利用者ごとに同意を得る運用</b>が必要です。同意は書面に限られませんが、取得の記録は残してください<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。</p>
+        </div>
+        <div class="vcard" style="border-color:#2857A6; background:#E4ECF7;">
+          <div class="vcard-head"><h3 class="h3">②③④ 運営者とベンダーの間</h3><div class="tags"><span class="tag accent">技術・契約対応</span></div></div>
+          <div class="vrow w"><span class="lab" style="width:7.6em;">② 安全管理措置</span><span><span class="mono">23条</span>　アーキテクチャ調査で確認可能</span></div>
+          <div class="vrow w"><span class="lab" style="width:7.6em;">③ 委託先の監督</span><span><span class="mono">25条</span>　NDA・DPA等の契約書の有無に加え、監督の実施記録（評価・監査履歴）まで必要</span></div>
+          <div class="vrow w"><span class="lab" style="width:7.6em;">④ 追跡可能性</span><span><span class="mono">23条（運用面）</span>　ログ基盤の設定に加え、保持運用の確認まで必要（ログ設計は下の囲み）</span></div>
+          <p style="font-size:12.5px; line-height:1.7; margin:8px 0 0;"><b>②③④は運営者とベンダーの間で整える技術・契約対応</b>で、整備後も継続的な監督・見直しが必要です。</p>
+        </div>
       </div>
 
       <div class="box" style="margin-top:4px;">
@@ -876,10 +932,6 @@
         </ul>
       </div>
 
-      <div class="box stamp" style="margin-top:4px;">
-        <h3 class="h3">①〜④を全部満たしても、「もう終わり」にはならない</h3>
-        <p><b>②③④は運営者とベンダーの間で整える技術・契約対応</b>で、整備後も継続的な監督・見直しが必要です。しかし<b>①は運営者と本人（利用者）の間の同意</b>で、NDA・DPA（③）をどれだけ強化しても代わりになりません。「同意書のひな形を用意した」ことと「既存の利用者全員から同意を取得済み」であることは別です。<b>法が求める場面（国外の第三者への提供、要配慮個人情報の取得など）で、利用者ごとに同意を得る運用</b>が必要です。同意は書面に限られませんが、取得の記録は残してください<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。</p>
-      </div>
 
       <h3 class="h3" style="margin-top:16px;">マルチベンダー構成はコンプライアンス上むしろ改善しうる</h3>
       <p>最も機微な処理（例：OCR）を自前に切り出し、各ベンダーへ渡すデータを絞れば、生の機微データに触れる第三者は減りえます。評価は各ベンダーが受け取るデータで行い、同意書・プライバシーポリシーが新しい委託先を許容するか都度確認します。</p>
