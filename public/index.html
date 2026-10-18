@@ -221,6 +221,14 @@
   .vband{ display:flex; align-items:baseline; gap:10px; border:1px dashed #B9C6D6; border-radius:8px; padding:6px 12px; margin-top:12px; font-size:12.5px; line-height:1.55; color:#3C4A61; }
   .tbl-wrap.tight td{ padding-top:3px; padding-bottom:3px; }
   .box.compact ul.list li{ margin-bottom:2px; }
+  .steps{ margin:10px 0 0; padding:0; list-style:none; position:relative; }
+  .steps::before{ content:""; position:absolute; left:13px; top:14px; bottom:14px; width:2px; background:#DCE3EC; }
+  .step{ position:relative; display:flex; gap:12px; align-items:flex-start; padding:5px 0; font-size:13.5px; line-height:1.7; color:#3C4A61; }
+  .step .no{ position:relative; flex:none; width:28px; height:28px; border-radius:50%; background:#E4ECF7; color:#1B3E7C; border:2px solid #fff; box-shadow:0 0 0 1px #B9C6D6; font-family:var(--font-mono); font-weight:700; font-size:12.5px; display:flex; align-items:center; justify-content:center; }
+  .step.start .no{ background:#2857A6; color:#fff; box-shadow:0 0 0 1px #2857A6; }
+  .step.start{ color:#17233A; }
+  .step .tag{ margin-right:6px; }
+  .vcard ul.ck{ line-height:1.5; } .vcard ul.ck li{ margin-bottom:2px; }
   .tag.gray{ background:#EEF1F5; color:#5A6B84; }
   .bar{ display:flex; align-items:center; gap:8px; }
   .bar-track{ flex:none; width:96px; height:8px; border-radius:4px; background:#EEF2F7; overflow:hidden; }
@@ -316,25 +324,27 @@
       <div class="eyebrow">00　はじめに</div>
       <h2 class="h2">「ISMAPを満たしているから安全」——それ、半分しか合っていません</h2>
 
-      <p style="margin-top:14px;">個人情報を扱う組織が生成AIの導入を検討する際、「ISMAPを満たしているので個人情報を安全に取り扱える」という説明に出会うことがあります。では実際には、どのレベルの情報まで入力してよいのでしょうか。</p>
+      <p style="margin-top:8px;">個人情報を扱う組織が生成AIの導入を検討する際、「ISMAPを満たしているので個人情報を安全に取り扱える」という説明に出会うことがあります。では実際には、どのレベルの情報まで入力してよいのでしょうか。</p>
 
       <div class="box accent" style="margin-top:6px;">
         <p style="font-size:14px; color:#17233A;">この質問の背景には、よくある誤解があります。「ISMAP登録済み」「学習に使われない」といった言葉は、<b>安全に“守る”仕組み</b>があるかどうかの話でしかありません。そもそも<b>その情報を扱ってよいか</b>は、まったく別の判断軸です。</p>
       </div>
 
-      <h3 class="h3" style="margin-top:22px;">この資料の狙い</h3>
+      <h3 class="h3" style="margin-top:12px;">この資料の狙い</h3>
       <p>この資料は、上記のような現場の疑問に対して、2026年10月12日時点で確認できる公式一次情報を根拠に（筆者の検証値は<span class="mono">[†]</span>で明示）、次の2つを整理し直したものです。</p>
-      <ol class="list">
-        <li><b>判定フロー</b> — 手元のデータをAIに入れてよいかを、3つの質問で判定する方法（第2章）</li>
-        <li><b>技術構成</b> — 要配慮個人情報を実名で扱わざるを得ない場合に、現実的に組める技術構成とその根拠（第7章）</li>
-      </ol>
+      <div class="guide" style="margin:0 0 6px;">
+        <div class="vrow n"><span class="lab" style="width:7.2em;">第2章 <span class="mono" data-toc-target="flow"></span></span><span><b>判定フロー</b> — 手元のデータをAIに入れてよいかを、3つの質問で判定する方法</span></div>
+        <div class="vrow n"><span class="lab" style="width:7.2em;">第7章 <span class="mono" data-toc-target="tierc"></span></span><span><b>技術構成</b> — 要配慮個人情報を実名で扱わざるを得ない場合に、現実的に組める技術構成とその根拠</span></div>
+        <div class="vrow n"><span class="lab" style="width:7.2em;">第11章 <span class="mono" data-toc-target="sectors"></span></span><span><b>福祉の業種別早見表</b> — 業種ごとの規律と、医療情報の混入　<span class="tag gray">補足</span></span></div>
+        <div class="vrow n"><span class="lab" style="width:7.2em;">第12章 <span class="mono" data-toc-target="geminicmp"></span></span><span><b>Geminiの2つの入口</b> — Gemini Enterprise（アプリ）とAgent Platform（開発用）の違い　<span class="tag gray">補足</span></span></div>
+      </div>
 
-      <h3 class="h3" style="margin-top:20px;">読み方</h3>
+      <h3 class="h3" style="margin-top:10px;">読み方</h3>
       <p>本文中の <span class="mono" style="font-weight:700; color:#2857A6;">[n]</span> は、巻末「<a href="#sec-refs">出典一覧</a>」（<span data-toc-target="refs"></span>）の番号に対応します。日本語OCRの精度比較などは、筆者による非公開の検証に基づく知見のため、<span class="mono" style="font-weight:700;">[†]</span> で示し公開リンクなしと明記しています。</p>
 
-      <div class="box" style="margin-top:10px;">
-        <h3 class="h3" style="font-size:15px;">この資料の方針</h3>
-        <ul class="list" style="font-size:13px; margin:6px 0 0;">
+      <div class="box compact" style="margin-top:8px; padding:10px 16px;">
+        <h3 class="h3" style="font-size:15px; margin-bottom:2px;">この資料の方針</h3>
+        <ul class="list" style="font-size:12.5px; line-height:1.7; margin:4px 0 0;">
           <li><b>対象</b>：主に介護・福祉分野の民間事業者（福祉施設・介護事業所等）。自治体・行政機関等は法の第5章で規律が異なるため参考情報にとどめます（<a href="#sec-scope">補足</a>）。</li>
           <li><b>医療情報</b>：医療機関等が関与する情報は別枠で、医療情報ガイドラインの要件が加わります。要点のみ示し、網羅はしません（<a href="#sec-scope">補足</a>）。</li>
           <li><b>位置づけ</b>：2026年10月12日時点の公式一次情報に基づく整理と推奨水準です。法令の最低要件とは区別して示し、法的助言ではありません。福祉分野の個別法の守秘義務は範囲外です。運用前に専門家へ確認してください。</li>
@@ -958,14 +968,15 @@
 
       <h3 class="h3" style="margin-top:20px;">組織として計画的に準備すべきこと</h3>
       <p>要配慮個人情報を実名で扱えるようにするには、個人のスマホ設定のように「その場で解決すること」ではなく、<b>システム構築と契約整理を伴う一定規模のプロジェクト</b>として進める必要があります。</p>
-      <ul class="list">
-        <li>Tier C対応の技術基盤の構築（Gemini Enterprise Standard/Plusの日本ロケーション〔allowlist登録〕、またはAWS Bedrock日本国内推論等を用いたハイブリッド構成）</li>
-        <li>費用感の見積もりと予算確保（固定費が発生する構成もあるため事前の比較検討が必要）</li>
-        <li>ISMAP登録範囲の個別確認（前章②）、クラウド事業者とのDPA締結（前章③）</li>
-        <li>3省2ガイドライン相当の組織的措置の整備</li>
-        <li>利用者への同意取得（前章①）・プライバシーポリシーの改定</li>
-      </ul>
-      <p>「どこまで整えれば入力してよい環境と言えるか」は、第10章のチェックリストにまとめています。これらは技術・法務の両面にまたがる専門的な整理が必要で、片手間で進めるのは現実的ではありません。まずは「誰が意思決定者で、いつまでにどの範囲を実現したいか」を組織内で確認するところから始めることをおすすめします。</p>
+      <ol class="steps">
+        <li class="step start"><span class="no">0</span><span><span class="tag accent">まず</span><b>誰が意思決定者で、いつまでにどの範囲を実現したいか</b>を組織内で確認する</span></li>
+        <li class="step"><span class="no">1</span><span>Tier C対応の技術基盤の構築（Gemini Enterprise Standard/Plusの日本ロケーション〔allowlist登録〕、またはAWS Bedrock日本国内推論等を用いたハイブリッド構成）</span></li>
+        <li class="step"><span class="no">2</span><span>費用感の見積もりと予算確保（固定費が発生する構成もあるため事前の比較検討が必要）</span></li>
+        <li class="step"><span class="no">3</span><span>ISMAP登録範囲の個別確認（前章②）、クラウド事業者とのDPA締結（前章③）</span></li>
+        <li class="step"><span class="no">4</span><span>3省2ガイドライン相当の組織的措置の整備</span></li>
+        <li class="step"><span class="no">5</span><span>利用者への同意取得（前章①）・プライバシーポリシーの改定</span></li>
+      </ol>
+      <p style="margin-top:12px;">「どこまで整えれば入力してよい環境と言えるか」は、第10章のチェックリストにまとめています。これらは技術・法務の両面にまたがる専門的な整理が必要で、片手間で進めるのは現実的ではありません。</p>
     </div>
     <div class="page-footer"><span>09　まとめ</span><span class="pn"></span></div>
   </section>
@@ -1063,28 +1074,47 @@
       <h2 class="h2">どちらも「Gemini」ですが別物です：実名の要配慮情報を渡せる環境になりうるのはどちら？</h2>
       <p style="margin-top:6px; font-size:var(--fs-small);">名前は似ていますが別の製品です（ISMAP登録も別。契約は書面で確認）。画面で使うGemini Enterpriseを「アプリ」、開発して組み込むAgent Platform（旧Vertex AI）を「開発用」と呼びます。</p>
 
-      <div class="tbl-wrap" style="margin:6px 0 4px;">
-        <table style="font-size:11.8px;">
-          <thead><tr><th style="width:17%;"></th><th style="width:41%;">アプリ（Gemini Enterprise）</th><th>開発用（Gemini Enterprise Agent Platform）</th></tr></thead>
-          <tbody>
-            <tr><td>ひとことで・向く場面</td><td>職員が画面で使うAIサービス。日常の要約・検索・下書き向け</td><td>自社システムにAIを組み込む部品（開発が必要）。ケース記録システムなど向け</td></tr>
-            <tr><td>ISMAP登録</td><td>あり（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td><td>あり（旧名「Vertex AI Platform」でGoogle Cloudの一部、C21-0004-2。名称変更後の範囲は未確認）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></td></tr>
-            <tr><td>実名の要配慮情報を渡せる環境になりうるか<br><span style="font-size:11px;">（本資料の推奨水準）</span></td><td><span class="tag warn">条件つきで可</span><br>下の条件を満たす<b>基本機能</b>に限る</td><td><span class="tag warn">条件つきで可</span><br>下の条件を満たし、<b>自社で作り込む</b>場合に限る</td></tr>
-            <tr><td>その条件</td><td>①Standard／Plusの契約（他の版は未確認。Business版は不可）<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup><sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup><br>②担当窓口への問い合わせ（allowlist登録）で、日本が有効化済み<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup><br>③日本で処理されない機能・モデルを使わない<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>①日本のエンドポイントを指定<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup><br>②日本対応のモデルを使う（3.5 Flashは日本では単一ゾーンのProvisioned Throughputのみ（購入は担当者へ問い合わせ））<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup><sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup><br>③データを預かる各サービスの保存先も日本に<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup><br>④globalエンドポイントを使わない<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup></td></tr>
-            <tr><td>つまずきやすい点</td><td>管理者の設定ひとつで、日本の外に送られる機能がある<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td>指定を間違えると、日本の外になる<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup></td></tr>
-            <tr><td>どちらでも別に必要</td><td colspan="2">①法が求める場面での本人同意（法28条など）　②DPA：Standard／Plusの契約でCloud DPAが適用されるかは契約書面で確認（Business版は別規約）<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup>　③組織的措置（3省2ガイドライン相当）　④ログ設計。製品の機能では満たせません</td></tr>
-          </tbody>
-        </table>
+      <div class="cols2" style="margin-top:4px;">
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">アプリ</h3><div class="tags"><span class="tag accent">Gemini Enterprise</span></div></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>職員が画面で使うAIサービス。日常の要約・検索・下書き向け</span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ISMAP登録</span><span>あり（C26-0114-2）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></span></div>
+          <p class="model" style="margin:6px 0 1px; font-size:12px;">実名の要配慮情報を渡せる環境になりうるか（本資料の推奨水準）</p>
+          <div style="font-size:12.5px; line-height:1.6;"><span class="tag warn">条件つきで可</span>　下の条件を満たす<b>基本機能</b>に限る</div>
+          <div style="font-size:12px; font-weight:700; margin-top:5px; color:#1B3E7C;">その条件</div>
+          <ul class="ck" style="font-size:12px; margin-top:3px;">
+            <li>Standard／Plusの契約（他の版は未確認。Business版は不可）<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup><sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
+            <li>担当窓口への問い合わせ（allowlist登録）で、日本が有効化済み<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></li>
+            <li>日本で処理されない機能・モデルを使わない<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></li>
+          </ul>
+          <div class="vrow ng" style="margin-top:5px;"><span class="lab" style="width:8.4em;">つまずきやすい点</span><span>管理者の設定ひとつで、日本の外に送られる機能がある<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></span></div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">開発用</h3><div class="tags"><span class="tag accent">Gemini Enterprise Agent Platform</span></div></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>自社システムにAIを組み込む部品（開発が必要）。ケース記録システムなど向け</span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ISMAP登録</span><span>あり（旧名「Vertex AI Platform」でGoogle Cloudの一部、C21-0004-2。名称変更後の範囲は未確認）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></span></div>
+          <p class="model" style="margin:6px 0 1px; font-size:12px;">実名の要配慮情報を渡せる環境になりうるか（本資料の推奨水準）</p>
+          <div style="font-size:12.5px; line-height:1.6;"><span class="tag warn">条件つきで可</span>　下の条件を満たし、<b>自社で作り込む</b>場合に限る</div>
+          <div style="font-size:12px; font-weight:700; margin-top:5px; color:#1B3E7C;">その条件</div>
+          <ul class="ck" style="font-size:12px; margin-top:3px;">
+            <li>日本のエンドポイントを指定<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup></li>
+            <li>日本対応のモデルを使う（3.5 Flashは日本では単一ゾーンのProvisioned Throughputのみ（購入は担当者へ問い合わせ））<sup class="cite"><a href="#r9" title="出典一覧 [9] へ移動">[9]</a></sup><sup class="cite"><a href="#r10" title="出典一覧 [10] へ移動">[10]</a></sup></li>
+            <li>データを預かる各サービスの保存先も日本に<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup></li>
+            <li>globalエンドポイントを使わない<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup></li>
+          </ul>
+          <div class="vrow ng" style="margin-top:5px;"><span class="lab" style="width:8.4em;">つまずきやすい点</span><span>指定を間違えると、日本の外になる<sup class="cite"><a href="#r33" title="出典一覧 [33] へ移動">[33]</a></sup></span></div>
+        </div>
       </div>
+      <div class="vband" style="margin-top:6px; align-items:flex-start;"><span class="tag accent" style="flex:none;">どちらでも別に必要</span><span style="font-size:12px;">①法が求める場面での本人同意（法28条など）　②DPA：Standard／Plusの契約でCloud DPAが適用されるかは契約書面で確認（Business版は別規約）<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup>　③組織的措置（3省2ガイドライン相当）　④ログ設計。製品の機能では満たせません</span></div>
 
       <div class="cols2" style="margin-top:6px;">
-        <div class="box stamp">
-          <h3 class="h3" style="font-size:15px;">お客様からよくある質問</h3>
-          <p style="font-size:12.5px; margin-top:4px;"><b>「日本リージョンなら、実名の要配慮情報を入れてOKですよね？」</b><br>日本リージョンを選ぶだけではOKとは言えません。上の条件に加え、日本のサーバでも提供先が外国の事業者なら同意が必要になることがあります（<span data-toc-target="crossborder"></span>）。</p>
+        <div class="box stamp" style="padding:10px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">お客様からよくある質問</h3>
+          <p style="font-size:12px; line-height:1.55; margin-top:2px;"><b>「日本リージョンなら、実名の要配慮情報を入れてOKですよね？」</b><br>日本リージョンを選ぶだけではOKとは言えません。上の条件に加え、日本のサーバでも提供先が外国の事業者なら同意が必要になることがあります（<span data-toc-target="crossborder"></span>）。</p>
         </div>
-        <div class="box accent">
-          <h3 class="h3" style="font-size:15px;">この表の位置づけ</h3>
-          <p style="font-size:12.5px; margin-top:4px;">法令の最低要件ではなく、本資料の推奨水準です。法的な保証ではありません。根拠と、確認できていない点は、次頁（<span data-toc-target="geminidetail"></span>）にあります。</p>
+        <div class="box accent" style="padding:10px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">この比較の位置づけ</h3>
+          <p style="font-size:12px; line-height:1.55; margin-top:2px;">法令の最低要件ではなく、本資料の推奨水準です。法的な保証ではありません。根拠と、確認できていない点は、次頁（<span data-toc-target="geminidetail"></span>）にあります。</p>
         </div>
       </div>
     </div>
@@ -1096,7 +1126,7 @@
     <div class="page-body">
       <div class="eyebrow">12　Geminiの2つの入口（根拠と条件の詳細）</div>
       <h2 class="h2">アプリと開発用の違い：根拠と条件の詳細</h2>
-      <p style="margin-top:6px; font-size:var(--fs-small);">名前は似ていますが別の製品です（ISMAP登録も別。契約は書面で確認）。画面で使う Gemini Enterprise を「アプリ」、開発して組み込む Agent Platform を「開発用」と呼びます。</p>
+      <p style="margin-top:6px; font-size:var(--fs-small);">前頁（<span data-toc-target="geminicmp"></span>）の比較の根拠と条件の詳細です。「アプリ」は Gemini Enterprise、「開発用」は Agent Platform を指します。</p>
 
       <div class="tbl-wrap" style="margin:6px 0 4px;">
         <table style="font-size:11.5px;">

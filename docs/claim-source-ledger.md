@@ -203,7 +203,7 @@
 
 ## 11. Geminiの2つの入口（第12章、p.20〜21）
 
-p.20は平易な対照表（結論と条件の要約）、p.21は根拠と条件の詳細。
+p.20は平易な比較カード（結論と条件の要約）、p.21は根拠と条件の詳細。
 
 Google文書は2026-10-13に生HTMLを取得して照合した（要約を介さない。Gemini Enterprise文書の最終更新2026-10-09、Agent Platform文書の最終更新2026-10-09）。Agent Platform文書の対応表のチェック記号はHTMLの該当セルを機械的に読み取った。
 
@@ -223,7 +223,7 @@ Google文書は2026-10-13に生HTMLを取得して照合した（要約を介さ
 | H12 | Agent Platformは旧Vertex AIで、ISMAP言明書上は「Vertex AI Platform」としてGoogle Cloud（C21-0004-2）の一部 | I12、「確認できていない点」5［出典5］ | 一部確認（名称変更後も同じ範囲かは未確認。p.20にも記載） |
 | H13 | Business版は日本等の指定設定がなく、Tier Cの対象外 | G3［出典18］ | 確認済 |
 | H14 | Cloud Data Processing Addendumは、Googleとお客様のAgreementに組み込まれ（incorporated）、発効日は承諾日または合意日。Gemini Enterpriseは、サービス固有条項（最終更新2026-10-12）に条項（第21条・第33条）がある。Pre-GAの機能にはDPAが適用されない | 「Cloud Data Processing Addendum」冒頭、「Service Specific Terms」［出典34］ | 一部確認（Standard／Plusの実際の契約が、Cloud DPAを含むAgreementの下にあるかは契約書面で確認が必要。Business版は別規約で「Google Data Processing Addendum」） |
-| H15 | p.20の対照表の「条件つきで可」「その条件」「つまずきやすい点」は、H4〜H10、H13の要約。開発用の「自社で作り込む場合に限る」は本資料の整理 | H4〜H10、H13 | 推奨水準 |
+| H15 | p.20の比較カードの「条件つきで可」「その条件」「つまずきやすい点」は、H4〜H10、H13の要約。開発用の「自社で作り込む場合に限る」は本資料の整理 | H4〜H10、H13 | 推奨水準 |
 
 ## 本資料が「法的要件」ではなく「推奨水準」としている事項
 
