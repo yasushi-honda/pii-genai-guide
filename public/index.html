@@ -556,7 +556,7 @@
 
       <p>個人情報保護委員会は、EEA（EU加盟国等）と英国を、我が国と同等の水準にあると認められる国として指定しています（GDPR等に服する提供先に限る）<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup><sup class="cite"><a href="#r2" title="出典一覧 [2] へ移動">[2]</a></sup>。米国は対象外です。生成AIサービスは処理地を米国・グローバル等から選ぶ設計が多く、提供先が外国にある第三者に当たり、かつ上の例外（基準適合体制など）にも該当しないなら、外国名等を示した本人同意が必要です。同意は書面に限られませんが、判断能力が十分でない方（未成年者等）は親権者・法定代理人の同意が必要です<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。</p>
 
-      <p>他方、クラウド事業者が契約上個人データを取り扱わず、アクセス制御も適切な場合は「提供」に当たりません（Q7-53・Q12-3・Q12-4）。この場合も、外国の制度等の把握を含む安全管理措置と、サーバ所在国等の本人への公表は必要です（Q10-25）<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。生成AIが入力を応答の出力のためだけに処理する場合の法28条上の扱いは、2026年10月18日時点でPPCが個別に示していないため、国外処理を伴うときは同意取得を前提に置き、契約条項と運用の実態を専門家に確認してください。</p>
+      <p>他方、クラウド事業者が契約上個人データを取り扱わず、アクセス制御も適切なら「提供」に当たりません（Q7-53・Q12-3・Q12-4）。この場合も、外国の制度等の把握を含む安全管理措置と、サーバ所在国等を本人の知り得る状態に置くことが必要です（Q10-25）<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。生成AIが入力を応答出力のためだけに処理する場合の法28条上の扱いは、2026年10月18日時点でPPCの通則編・外国提供編・Q&A・注意喚起に見当たらないため、国外処理を伴うなら同意取得を前提とし、契約条項と運用実態を専門家に確認してください。</p>
     </div>
     <div class="page-footer"><span>03　越境移転規制</span><span class="pn"></span></div>
   </section>
@@ -585,7 +585,7 @@
       <div style="margin-top:12px;">
         <div class="box">
           <h3 class="h3" style="font-size:15px;">③ 令和8年改正法（2026年7月17日公布）は主要部分が未施行<sup class="cite"><a href="#r16" title="出典一覧 [16] へ移動">[16]</a></sup></h3>
-          <p>原則として公布から2年以内に政令で定める日に施行され、一部は公布日または6か月後に施行されます。PPCは2028年ごろと見込みます。主要部分は2026年10月18日時点で未施行のため、現行法に基づきます。概要資料は、統計作成等の同意規制の見直し、委託先への規律、16歳未満の個人情報、課徴金制度を挙げます。法28条1項も用語整理の改正対象で、27条の見直しと併せ影響しうるため、政令公表後に確認します。</p>
+          <p>原則として公布から2年以内に政令で定める日に施行され、一部は公布日や6か月後などに施行されます。PPCは2028年ごろと見込みます。主要部分は2026年10月18日時点で未施行のため、現行法に基づきます。概要資料は、統計作成等の同意規制の見直し、委託先への規律、16歳未満の個人情報、課徴金制度を挙げます。法28条1項も用語整理の改正対象で、27条の見直しと併せ影響しうるため、政令公表後に確認します。</p>
         </div>
         <div class="box" style="margin-top:8px;">
           <h3 class="h3" style="font-size:15px;">④ 福祉・介護分野と医療情報ガイドラインの位置づけ</h3>
@@ -682,7 +682,7 @@
       <h3 class="h3" style="margin-top:14px;">Tier Bで利用可能な選択肢／避けるべき選択肢</h3>
       <ul class="list">
         <li><b>Gemini in Workspace</b> — Workspace自体がISMAP登録済みで、Geminiアプリ・Gemini in Workspaceも対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup>。保存地域に日本はない<sup class="cite"><a href="#r19" title="出典一覧 [19] へ移動">[19]</a></sup>が、Tier Bでは許容</li>
-        <li><b>Gemini Enterprise（Standard/Plus）</b> — 別製品（ISMAPも別登録）。契約の種類は契約書面で確認。日本で保存・ML処理を固定可（allowlist制）。日本非対応の機能を管理者が有効化するとグローバル送信<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
+        <li><b>Gemini Enterprise（Standard/Plus）</b> — 別製品（ISMAPも別登録）。契約の種類は契約書面で確認。日本で保存・ML処理を固定可（allowlist制）。日本非対応の機能は、管理者が警告を承認して有効化するとグローバル送信<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
         <li><b>Vertex AI（現Gemini Enterprise Agent Platform）のAPI</b> — ISMAP言明書上は「Vertex AI Platform」として対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。Tier Bなら全リージョン可</li>
         <li class="stamp" style="list-style:none; margin-left:-1.3em; padding:4px 12px; background:#F7E6E4; border-radius:8px;">❌ <b>Google AI Studioの素のAPIキー</b>はNG。ISMAPリスト未登録。無料枠は入力が製品改善に使われ、有料でも一時保存・キャッシュが国を問わず行われうる<sup class="cite"><a href="#r13" title="出典一覧 [13] へ移動">[13]</a></sup></li>
       </ul>
