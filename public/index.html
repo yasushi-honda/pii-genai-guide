@@ -868,7 +868,7 @@
     <div class="page-body">
       <div class="eyebrow">07　自前運用の検証結果</div>
       <h2 class="h2">Cloud Run（CPU・日本リージョン）で自前運用できるAI：確認できたことと注意</h2>
-      <p style="margin-top:10px;">標準の構成は、OCRのみ自前、生成・要約・音声文字起こしはAWSです。これに対し、要約・長文の下書き・音声文字起こしも、Cloud RunのCPU・日本リージョンで自前運用する選択肢があります。入力は自前のコンテナ内で処理され、モデル事業者に渡りません。ただし基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup>。下のカードの内容は、hayamimi（未検証）を除き、筆者による検証の結果で、人の確認が前提です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
+      <p style="margin-top:10px;">標準の構成は、OCRのみ自前、生成・要約・音声文字起こしはAWSです。これに対し、要約・長文の下書き・音声文字起こしも、Cloud RunのCPU・日本リージョンで自前運用する選択肢があります。入力は自前のコンテナ内で処理され、モデル事業者に渡りません。ただし基盤はGoogle Cloudのままで、国外法の適用可能性等は別途確認します<sup class="cite"><a href="#r24" title="出典一覧 [24] へ移動">[24]</a></sup>。下のカードの内容は、筆者による検証の結果で、人の確認が前提です<sup class="cite"><a href="#r-dagger" title="出典一覧 [†] へ移動">[†]</a></sup>。</p>
 
       <div class="cols2" style="margin-top:12px;">
         <div class="vcard">
@@ -892,11 +892,10 @@
         <div class="vcard">
           <div class="vcard-head"><h3 class="h3">音声文字起こし</h3><div class="tags"><span class="tag warn">合成音声</span></div></div>
           <p class="model"><b>Whisper</b>（MIT<sup class="cite"><a href="#r35" title="出典一覧 [35] へ移動">[35]</a></sup>）</p>
-          <div class="vrow ok"><span class="lab wide">確認できたこと</span><span>60分の音声を約17〜30分（8vCPU・16GiB）</span></div>
-          <div class="vrow ng"><span class="lab wide">注意</span><span>CPUの世代で処理時間（最大1.75倍）と結果（CER 3.5%の差）が変わる。人名・社名は人が確認</span></div>
+          <div class="vrow ok"><span class="lab wide">確認できたこと</span><span>60分の音声を約17〜30分（8vCPU・16GiB）。文字起こしの誤り率（CER）は約5.6〜5.8%。メモリは6GiBで動き、4GiBでは停止</span></div>
+          <div class="vrow ng"><span class="lab wide">注意</span><span>CPUの世代で処理時間（最大1.75倍）と結果（CER 3.5%の差）が変わる。人名の一致は約6割（43〜46/74）で、人名・社名は人が確認</span></div>
         </div>
       </div>
-      <div class="vband" style="margin-top:8px;"><span class="tag gray">未検証</span><span><b>音声文字起こし：hayamimi</b>　取得するモデルごとのライセンスは未確認。作者の公表値は筆者未検証</span></div>
 
       <div class="box accent compact" style="margin-top:10px; padding:10px 16px;">
         <h3 class="h3" style="margin-bottom:2px;">このページの読み方</h3>
