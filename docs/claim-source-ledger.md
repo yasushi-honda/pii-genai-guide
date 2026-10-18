@@ -114,7 +114,7 @@
 | G9 | Gemini Enterprise は30日間の無料トライアルがあり、Business版はIT設定不要（p.10） | Gemini Enterprise FAQ［出典12］ | 確認済 |
 | G10 | Google AI Studio（Gemini API）は、無料枠は入力が製品改善に使われ、有料でも一時保存・キャッシュが国を問わず行われうる。ISMAPリスト未登録（p.10, p.12） | Gemini API Additional Terms of Service（Unpaid Services／Paid Services の記載。「stored transiently or cached in any country」）［出典13］、ISMAPクラウドサービスリスト（描画した全文）に「Gemini API」「AI Studio」の登録がないこと | 確認済 |
 
-※7 円換算は行っていない。為替により変動する。
+※7 円換算は、欧州中央銀行の参考レート（2026-10-16、1ドル＝158.02円）による筆者の計算（約47万円）。公式の円建て価格ではなく、為替により変動する。2026-10-18は日曜で、10-16が直近の営業日のレート。
 
 ## 7. AWS（Bedrock）
 
