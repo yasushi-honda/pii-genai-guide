@@ -268,7 +268,7 @@
       <p class="lede" style="font-size:var(--fs-cover-sub); margin-top:14px; max-width:46em;">個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成 — 2026年10月時点の公式一次情報を根拠に組み立て直す実務資料（筆者の検証値は<span class="mono">[†]</span>で明示）</p>
 
       <div class="cover-tags">
-        <span class="tag accent">最終確認 2026-10-12</span>
+        <span class="tag accent">最終確認 2026-10-18</span>
         <span class="tag accent">一次情報ベース・出典36件</span>
         <span class="tag accent">対象：主に介護・福祉分野の民間事業者（医療は別枠、行政機関等は別途確認）</span>
         <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
@@ -331,7 +331,7 @@
       </div>
 
       <h3 class="h3" style="margin-top:12px;">この資料の狙い</h3>
-      <p>この資料は、上記のような現場の疑問に対して、2026年10月12日時点で確認できる公式一次情報を根拠に（筆者の検証値は<span class="mono">[†]</span>で明示）、次の2つを整理し直したものです。</p>
+      <p>この資料は、上記のような現場の疑問に対して、2026年10月18日時点で確認できる公式一次情報を根拠に（筆者の検証値は<span class="mono">[†]</span>で明示）、次の2つを整理し直したものです。</p>
       <div class="guide" style="margin:0 0 6px;">
         <div class="vrow n"><span class="lab" style="width:7.2em;">第2章 <span class="mono" data-toc-target="flow"></span></span><span><b>判定フロー</b> — 手元のデータをAIに入れてよいかを、3つの質問で判定する方法</span></div>
         <div class="vrow n"><span class="lab" style="width:7.2em;">第7章 <span class="mono" data-toc-target="tierc"></span></span><span><b>技術構成</b> — 要配慮個人情報を実名で扱わざるを得ない場合に、現実的に組める技術構成とその根拠</span></div>
@@ -347,7 +347,7 @@
         <ul class="list" style="font-size:12.5px; line-height:1.7; margin:4px 0 0;">
           <li><b>対象</b>：主に介護・福祉分野の民間事業者（福祉施設・介護事業所等）。自治体・行政機関等は法の第5章で規律が異なるため参考情報にとどめます（<a href="#sec-scope">補足</a>）。</li>
           <li><b>医療情報</b>：医療機関等が関与する情報は別枠で、医療情報ガイドラインの要件が加わります。要点のみ示し、網羅はしません（<a href="#sec-scope">補足</a>）。</li>
-          <li><b>位置づけ</b>：2026年10月12日時点の公式一次情報に基づく整理と推奨水準です。法令の最低要件とは区別して示し、法的助言ではありません。福祉分野の個別法の守秘義務は範囲外です。運用前に専門家へ確認してください。</li>
+          <li><b>位置づけ</b>：2026年10月18日時点の公式一次情報に基づく整理と推奨水準です。法令の最低要件とは区別して示し、法的助言ではありません。福祉分野の個別法の守秘義務は範囲外です。運用前に専門家へ確認してください。</li>
         </ul>
       </div>
     </div>
@@ -405,7 +405,7 @@
           </tbody>
         </table>
       </div>
-      <p style="font-size:var(--fs-caption); color:#5A6B84;">条文番号は2026年10月12日時点で施行中の法に基づく<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。令和8年改正は未施行<sup class="cite"><a href="#r16" title="出典一覧 [16] へ移動">[16]</a></sup>。</p>
+      <p style="font-size:var(--fs-caption); color:#5A6B84;">条文番号は2026年10月18日時点で施行中の法に基づく<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。令和8年改正は未施行<sup class="cite"><a href="#r16" title="出典一覧 [16] へ移動">[16]</a></sup>。</p>
     </div>
     <div class="page-footer"><span>01　大原則</span><span class="pn"></span></div>
   </section>
@@ -556,7 +556,7 @@
 
       <p>個人情報保護委員会は、EEA（EU加盟国等）と英国を、我が国と同等の水準にあると認められる国として指定しています（GDPR等に服する提供先に限る）<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup><sup class="cite"><a href="#r2" title="出典一覧 [2] へ移動">[2]</a></sup>。米国は対象外です。生成AIサービスは処理地を米国・グローバル等から選ぶ設計が多く、提供先が外国にある第三者に当たり、かつ上の例外（基準適合体制など）にも該当しないなら、外国名等を示した本人同意が必要です。同意は書面に限られませんが、判断能力が十分でない方（未成年者等）は親権者・法定代理人の同意が必要です<sup class="cite"><a href="#r3" title="出典一覧 [3] へ移動">[3]</a></sup>。</p>
 
-      <p>他方、クラウド事業者が契約上個人データを取り扱わず、アクセス制御も適切な場合は「提供」に当たりません（Q7-53・Q12-3・Q12-4）。この場合も、外国の制度等の把握を含む安全管理措置と、サーバ所在国等の本人への公表は必要です（Q10-25）<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。生成AIが入力を応答の出力のためだけに処理する場合の法28条上の扱いは、2026年10月12日時点でPPCが個別に示していないため、国外処理を伴うときは同意取得を前提に置き、契約条項と運用の実態を専門家に確認してください。</p>
+      <p>他方、クラウド事業者が契約上個人データを取り扱わず、アクセス制御も適切な場合は「提供」に当たりません（Q7-53・Q12-3・Q12-4）。この場合も、外国の制度等の把握を含む安全管理措置と、サーバ所在国等の本人への公表は必要です（Q10-25）<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。生成AIが入力を応答の出力のためだけに処理する場合の法28条上の扱いは、2026年10月18日時点でPPCが個別に示していないため、国外処理を伴うときは同意取得を前提に置き、契約条項と運用の実態を専門家に確認してください。</p>
     </div>
     <div class="page-footer"><span>03　越境移転規制</span><span class="pn"></span></div>
   </section>
@@ -585,7 +585,7 @@
       <div style="margin-top:12px;">
         <div class="box">
           <h3 class="h3" style="font-size:15px;">③ 令和8年改正法（2026年7月17日公布）は主要部分が未施行<sup class="cite"><a href="#r16" title="出典一覧 [16] へ移動">[16]</a></sup></h3>
-          <p>原則として公布から2年以内に政令で定める日に施行され、一部は公布日または6か月後に施行されます。PPCは2028年ごろと見込みます。主要部分は2026年10月12日時点で未施行のため、現行法に基づきます。概要資料は、統計作成等の同意規制の見直し、委託先への規律、16歳未満の個人情報、課徴金制度を挙げます。法28条1項も用語整理の改正対象で、27条の見直しと併せ影響しうるため、政令公表後に確認します。</p>
+          <p>原則として公布から2年以内に政令で定める日に施行され、一部は公布日または6か月後に施行されます。PPCは2028年ごろと見込みます。主要部分は2026年10月18日時点で未施行のため、現行法に基づきます。概要資料は、統計作成等の同意規制の見直し、委託先への規律、16歳未満の個人情報、課徴金制度を挙げます。法28条1項も用語整理の改正対象で、27条の見直しと併せ影響しうるため、政令公表後に確認します。</p>
         </div>
         <div class="box" style="margin-top:8px;">
           <h3 class="h3" style="font-size:15px;">④ 福祉・介護分野と医療情報ガイドラインの位置づけ</h3>
@@ -1164,7 +1164,7 @@
     <div class="page-body">
       <div class="eyebrow">出典一覧</div>
       <h2 class="h2" style="font-size:24px;">すべて公式ドキュメント・公式ポータルで直接確認</h2>
-      <p style="margin-top:8px; font-size:var(--fs-small);">本文中の番号 [n] に対応します。いずれも2026年10月12日時点で内容を直接確認しています（[17]の再確認と[33]〜[35]は10月13日）。</p>
+      <p style="margin-top:8px; font-size:var(--fs-small);">本文中の番号 [n] に対応します。いずれも2026年10月18日に再確認しています（範囲は台帳§13。初回は10月12日、[17][33]〜[35]は10月13日にも）。</p>
 
       <div class="refs-grid" style="margin-top:10px;">
         <div>
@@ -1211,7 +1211,7 @@
     <div class="page-body">
       <div class="eyebrow">出典一覧（続き）</div>
       <h2 class="h2" style="font-size:24px;">追補：法令・ガイドライン／日本ロケーション・医療情報</h2>
-      <p style="margin-top:8px; font-size:var(--fs-small);">前頁からの続きです。番号は前頁と通しで、2026年10月12日に追加・確認した公式情報を収めています。</p>
+      <p style="margin-top:8px; font-size:var(--fs-small);">前頁からの続きです。番号は前頁と通しで、2026年10月12日に追加し、10月18日に再確認した公式情報を収めています。</p>
 
       <div class="refs-grid" style="margin-top:10px;">
         <div>
@@ -1245,7 +1245,7 @@
           <div class="refs-cat">AWS（日本国内推論）</div>
           <ul class="refs">
             <li id="r21"><span class="refnum">21.</span> Amazon Bedrock 日本国内クロスリージョン推論｜AWS公式ブログ — <a href="https://aws.amazon.com/jp/blogs/news/amazon-bedrock-now-supports-japan-cross-region-inference" target="_blank" rel="noopener noreferrer">aws.amazon.com/jp/blogs/news/…japan-cross-region-inference</a></li>
-            <li id="r22"><span class="refnum">22.</span> Cross-Region inference（地域限定とグローバルの違い）｜AWS公式ドキュメント — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html" target="_blank" rel="noopener noreferrer">docs.aws.amazon.com/bedrock/…/cross-region-inference.html</a></li>
+            <li id="r22"><span class="refnum">22.</span> Cross-Region inference（地域限定とグローバルの違い）｜AWS公式 — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/cross-region-inference.html" target="_blank" rel="noopener noreferrer">…/cross-region-inference.html</a> ／ <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/inference-profiles-support.html" target="_blank" rel="noopener noreferrer">…/inference-profiles-support.html</a></li>
             <li id="r30"><span class="refnum">30.</span> Amazon Bedrock モデルカード（jp. プロファイルと宛先）｜AWS公式 — <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-anthropic-claude-sonnet-4-5.html" target="_blank" rel="noopener noreferrer">Claude Sonnet 4.5</a> ／ <a href="https://docs.aws.amazon.com/bedrock/latest/userguide/model-card-amazon-nova-2-lite.html" target="_blank" rel="noopener noreferrer">Nova 2 Lite</a></li>
           </ul>
 
@@ -1254,7 +1254,7 @@
         </div>
       </div>
 
-      <p style="margin-top:20px; font-size:var(--fs-caption); color:#5A6B84; border-top:1px solid #E4E8EE; padding-top:12px;">本資料は2026年10月12日時点で確認できた公式一次情報に基づく技術的整理です。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。</p>
+      <p style="margin-top:20px; font-size:var(--fs-caption); color:#5A6B84; border-top:1px solid #E4E8EE; padding-top:12px;">本資料は2026年10月18日時点で確認できた公式一次情報に基づく技術的整理です。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。</p>
     </div>
     <div class="page-footer"><span>出典一覧（続き）</span><span class="pn"></span></div>
   </section>
