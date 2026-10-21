@@ -457,7 +457,7 @@ G11・A7は、本文の追加に伴って新設した行（§1〜§11の121行�
 
 ## 16. Gemini Notebook（旧NotebookLM）の3つの版（第13章、p.22〜23、2026-10-21）
 
-p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版の日本での使える範囲と未確認事項。出典は38〜41を新設（p.26）。
+p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版の日本での使える範囲と未確認事項。出典は38〜45を新設（p.26）。
 
 照合方法: Google公式ページは2026-10-21に生HTMLを取得し、本文を抽出して該当文を検索した（要約を介さない）。ISMAPポータルのPDFは本文を抽出して確認した。Workspace Data Regionsは最終更新2026-10-20（UTC）。
 
@@ -465,21 +465,40 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 |---|---|---|---|
 | N1 | NotebookLM Enterpriseは2026-07-16にGemini Notebook Enterpriseへ改称。機能・APIは同じ | リリースノート「NotebookLM Enterprise renamed to Gemini Notebook Enterprise」［出典17］ | 確認済 |
 | N2 | 個人アカウント版はGoogle利用規約。フィードバックしない限り学習に使わない。フィードバック時は質問・資料・回答を含む文脈を確認しうる | Gemini Notebook ヘルプ（"not used to train Gemini Notebook unless you provide feedback"、"we may review the full context of that interaction"）［出典39］。フィードバックページ［出典40］ | 確認済 |
-| N3 | Workspace版・Education版はアップロード・質問・回答を人がレビューせず、学習に使わない。サムズアップ/ダウンのフィードバック時もレビューしない | ヘルプ（"will not be reviewed by human reviewers, and will not be used to train AI models"）［出典39］。フィードバックページ（"even when you provide thumbs up or down feedback"）［出典40］ | 確認済。**コアサービスの版に限る**。Business Base・Essentials Starter・Workspace Individual・G Suite・Cloud Identity等は「追加サービス」扱いで、規約はGoogle利用規約（個人版と同じ文言）。evaluator指摘で本文に反映（p.22） |
-| N4 | Workspace版はGoogle Cloud利用規約（Workspace editions）。Education版は別規約 | ヘルプの版別の規約表［出典39］ | 確認済。Googleの文書間で表記が割れている（「Google Cloud利用規約」: 版別表・フィードバックページ／「Google Workspace利用規約」: プライバシーのページ）。DPAがどの契約で適用されるかは契約書面の確認（H14と同じ留意） |
+| N3 | Workspace版・Education版はアップロード・質問・回答を人がレビューせず、学習に使わない。サムズアップ/ダウンのフィードバック時もレビューしない | ヘルプ（"will not be reviewed by human reviewers, and will not be used to train AI models"）［出典39］。フィードバックページ（"even when you provide thumbs up or down feedback"）［出典40］ | 確認済。版別表の「追加サービス」扱いの版（Business Base・Essentials Starter・Workspace Individual・G Suite・Cloud Identity等）は、規約がGoogle利用規約で「エンタープライズ級」の記載がない（個人版と同じ文言）。Codexは「core service or an add-on」の記述との不整合を指摘したが、「追加サービス」と「アドオン」は版別表で別の列と判断し、本文は「Business Base等は対象外」とした（2026-10-21） |
+| N4 | Workspace版はGoogle Cloud利用規約（Workspace editions）。Education版は別規約 | ヘルプの版別の規約表［出典39］ | 確認済。文書間の表記差は、Google Workspace利用規約がGoogle Cloud利用規約に統合されたため（規約ページ［出典45］に「統合され」と明記、最終更新2026-06-01）。既存契約への適用時期とDPAは契約書面で確認（H14と同じ留意） |
 | N5 | Workspaceの生成AI開示書（2025-12-24）の言明対象に「NotebookLM」が含まれる | ISMAP様式3別添8（Google LLC）［出典14］。名称は当時の旧名。同書§2に「上記の製品は全てVertex AI Platform（C21-0004-2）を利用し、Workspaceの言明の対象外」と併記（本文p.22に反映） | 確認済 |
-| N6 | Workspaceのデータリージョンは、Gemini Notebook（旧NotebookLM）を対象外とする。組織部門にポリシーを適用しても対象外 | Workspace Data Regions対象範囲「Data Regions is not supported for … Gemini Notebook (formerly NotebookLM)」［出典41］ | 確認済 |
-| N7 | Enterprise版は自社Google Cloudプロジェクト内で管理され、公開共有できない。VPC-SC・CMEK・データレジデンシー・監査ログ等に対応。単体購入またはGemini Enterpriseの一部 | Enterprise概要（"Notebooks can't be shared publicly"、購入形態）［出典38］ | 確認済 |
+| N6 | Workspaceのデータリージョンは、Gemini Notebook（旧NotebookLM）を対象外とする。組織部門にポリシーを適用しても対象外 | Workspace Data Regions対象範囲「Data Regions is not supported for … Gemini Notebook (formerly NotebookLM)」［出典41］ | 確認済。Workspaceのデータリージョンの指定先は米国・EUで日本はない（G4）ため、本文は「データリージョン設定」と表記 |
+| N7 | Enterprise版は自社Google Cloudプロジェクト内で管理され、公開共有できない。VPC-SC・CMEK・データレジデンシー・監査ログ等に対応。単体購入またはGemini Enterpriseの一部 | Enterprise概要（"Notebooks can't be shared publicly"、購入形態）［出典38］ | 確認済。共有は同一プロジェクト内。監査ログは専用の設定手順がある（設定が必要） |
 | N8 | ISMAP C26-0114-2の登録名にGemini Notebook Enterpriseを含む（Workspace版のC21-0005-2とは別登録） | ISMAPクラウドサービスリスト［出典5］（I7、R3と同じ） | 確認済 |
 | N9 | Enterprise版の日本（asia-northeast1）はGA with allowlist。基本機能は保存（at-rest DRZ）・AI処理（MLP）とも表で対応 | locations「Gemini Notebook Enterprise limitations」表［出典17］ | 確認済（MLPは下のN12の食い違いあり） |
 | N10 | 日本（国内リージョン）ではContent Studio（音声解説・スライド・インフォグラフィック・動画解説）は提供なし。米国・EUでは保存は対応、MLPは非対応 | 同表［出典17］ | 確認済 |
-| N11 | Discover Sourcesは全ての場所で保存・AI処理とも対応外。Google検索グラウンディングで顧客データを一時記録 | 同表［出典17］ | 確認済 |
+| N11 | Discover Sourcesは表の全ての場所で、保存・AI処理とも地域保証の対象外（機能自体を提供しない意味ではない）。Google検索グラウンディングで顧客データを一時記録 | 同表［出典17］ | 確認済 |
 | N12 | **食い違い2件**: ①MLPの注記は「米国・EUの基本機能のみ、国内リージョンは非対応」だが、表は日本の基本機能で対応。②概要ページは「データは米国またはEUのマルチリージョンに保存」と書き、日本の対応表との関係が書かれていない | locations［出典17］、Enterprise概要［出典38］ | 未確認（本文p.23で「未確認」と明記、担当窓口へ書面確認を推奨） |
 | N13 | 各版のTier判断（個人：Bまで不可／Workspace：Bは条件つき、Cは日本固定不可で不可／Enterprise：Cは条件つき） | N2〜N12からの本資料の整理 | 推奨水準（p.23のTier Cチェックリストは、N7・N9〜N12と出典38の「専用権限が必要」から導いた運用項目） |
+| N14 | Gemini Enterprise – Business版にもGemini Notebook（Enterprise）が含まれる（利用ガイドあり、1ノートブック300ソース） | Business版ヘルプ「Use Gemini Notebook Enterprise」［出典42］、Business版の製品ページ（"Includes Gemini Notebook"）［出典43］ | 確認済 |
+| N15 | Business版はデータの保存・処理を地域に制限する管理設定・リージョナルエンドポイントを提供せず、必要なら（Standard等の）Gemini Enterpriseへの切替を案内。学習には許可なく使わない | Business版ヘルプ「Security and safety features」（最終更新2026-09-28、"It doesn't provide administrative settings or regional endpoints"）［出典42］ | 確認済（地域設定なし）。ただしBusiness版の申込手順（2026-10-08更新）には「データ所在のマルチリージョンを請求国で自動割当」とあり、同じ版の説明が食い違う（日本固定とは読めない）。規約はGoogle利用規約＋Business版の追加規約で、データはGoogle DPAに従い処理［出典44］。人のレビューの扱いは記載なし（未確認） |
+| N16 | Business版は$21/席/月から（製品ページ表示）。Standard・Plusは価格を公開せず営業へ問い合わせ。Notebook Enterprise単体の価格は公式で確認できず | Business版の製品ページ［出典43］。2026-10-21の検索で、Standard・Plus・Notebook単体の公開価格は見つからなかった | 一部確認（価格は変わりうる。本文には書いていない）。Standard・Plus・Notebook単体は「公開価格を確認できなかった」（公開されていないとは断定しない） |
 
 確認できていない点（第13章）:
-- Gemini Enterprise Business版にGemini Notebook（Enterprise版）が含まれるか、Business版の保存地・規約（Business版は別のヘルプセンター。2026-10-21の検索では公式の該当ページに到達できなかった）。
+- Business版のNotebookの人のレビューの扱い（N15。Business版の文書に記載なし）と、Business版の地域説明の食い違い（N15）の解消。
 - Workspaceの版ごとの「データ保存地」（データリージョン非対応のため、保存地を日本に固定できないという点までは確認。実際の処理地は未確認）。
-- Gemini Notebook Enterpriseの単体価格・ライセンス体系（公式の価格ページを確認できなかったため、本文では書いていない）。
-- Gemini Enterprise Business版のGemini Notebookの扱いは、本文p.22にも「未記載」と明記した。
+- Standard・Plus・Notebook Enterprise単体の価格（今回確認できず。本文には書いていない。N16）。
 - Workspace版のGemini Notebookが、ISMAP登録時点の言明範囲にいまも同じ名称・範囲で含まれるか（開示書は2025-12-24付で旧名のまま）。
+
+### §16 別系統の二次確認（Codex、Web検索あり、読み取り専用、2026-10-21）
+
+台帳§16（N1〜N16）と第13章を、Codexに公式Webページで独立に照合してもらった。指摘ごとに、私が原文（生HTML・PDF）で再確認してから判定した。
+
+| 指摘 | 判定 | 対応 |
+|---|---|---|
+| Workspace規約はCloud規約に統合され、文書間の表記差の原因はこれ | 妥当（規約ページに「統合され」と確認。Codexの挙げた10/12付は未確認、ページ記載は2026-06-01） | p.22の規約欄を「旧Workspace規約を統合」、N4を更新、出典45 |
+| Business版の申込手順に「データ所在のマルチリージョンを請求国で自動割当」とあり、セキュリティ頁の「地域指定なし」と食い違う／追加規約とGoogle DPAがある | 妥当（原文で確認） | N15を更新、出典44、本文は「日本に固定できずTier C不可」を維持 |
+| 「Workspaceの日本データリージョン設定」は不正確（指定先は米国・EU） | 妥当 | 「データリージョン設定」に修正 |
+| Discover Sourcesの「対応外」は地域保証の対象外の意味 | 妥当 | N11・p.23を修正 |
+| 価格は「公開されていない」と断定しない | 妥当 | N16を修正 |
+| 同意は「法が求める場面で」と限定／Tierは資料独自の運用基準 | 妥当（本文は元々「推奨水準」）。表現を限定 | p.22・p.23の同意の書き方を修正 |
+| Enterpriseの共有は同一プロジェクト内、監査ログは要設定 | 妥当 | p.22を修正、N7を更新 |
+| 追加サービス扱いの版を「対象外」とするのは、「core service or an add-on」の記述と合わない | 一部不採用（「追加サービス」と「アドオン」は別。版別表の列で、追加サービス扱いの版はGoogle利用規約・エンタープライズ級の記載なし） | 本文は「Business Base等は対象外（個人版と同じ）」とし、AIアドオンの版には触れない |
+| N5（ISMAP開示書）・N8（ISMAPリスト）は取得できず確認不能 | 事実（Codexの環境でPDF・JS描画が取得できなかった）。N5は私が2026-10-21にPDF本文を抽出して確認済み、N8は2026-10-12・10-18の描画取得（10-21の再取得はしていない） | 変更なし。N8は次回の改訂時に再取得 |
+| ISMAPの範囲を断定しすぎ（個人版カードの「登録済みなのは法人契約の版」） | 妥当 | 範囲を絞った表現は紙面の都合で見送り、次回の改訂で検討（現状の文は登録名＝Workspace・Gemini Enterpriseに基づく） |
