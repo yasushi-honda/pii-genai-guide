@@ -484,5 +484,4 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 - Gemini Enterprise Business版にGemini Notebook（Enterprise版）が含まれるか、Business版の保存地・規約（Business版は別のヘルプセンター。2026-10-21の検索では公式の該当ページに到達できなかった）。
 - Workspaceの版ごとの「データ保存地」（データリージョン非対応のため、保存地を日本に固定できないという点までは確認。実際の処理地は未確認）。
 - Standard・Plus・Notebook Enterprise単体の価格（公開されていない。本文には書いていない。N16）。
-- Gemini Enterprise Business版のGemini Notebookの扱いは、本文p.22にも「未記載」と明記した。
 - Workspace版のGemini Notebookが、ISMAP登録時点の言明範囲にいまも同じ名称・範囲で含まれるか（開示書は2025-12-24付で旧名のまま）。
