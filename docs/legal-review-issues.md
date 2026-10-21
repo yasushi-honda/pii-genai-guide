@@ -105,7 +105,7 @@
 
 ### 15. Gemini Notebook（旧NotebookLM）の版ごとのTier当てはめ（優先度: 高）
 
-- **事実**: 個人アカウント版はGoogle利用規約でフィードバック時に内容を人が確認しうる。Workspace版はGoogle Cloud利用規約で、資料・質問・回答は人のレビューなし・学習に使わない（フィードバック時も）が、Workspaceのデータリージョン機能の対象外で日本に固定できない。Enterprise版は日本（allowlist）の基本機能で保存・AI処理が日本の範囲だが、Content Studioは日本で提供なし、Discover Sourcesは対象外、Google文書内にMLPと保存先の食い違いが2件ある。〔N2〜N12〕
+- **事実**: 個人アカウント版はGoogle利用規約でフィードバック時に内容を人が確認しうる。Workspace版（コアサービスの版）はGoogle Cloud利用規約（文書により「Workspace利用規約」の表記もある）で、資料・質問・回答は人のレビューなし・学習に使わない（フィードバック時も）が、Workspaceのデータリージョン機能の対象外で日本に固定できない。追加サービス扱いの版（Business Base等）は個人版と同じ扱い。Workspaceの生成AI開示書は、生成AIの基盤をVertex AI Platform（Workspace言明の対象外）と併記している。Enterprise版は日本（allowlist）の基本機能で保存・AI処理が日本の範囲だが、Content Studioは日本で提供なし、Discover Sourcesは対象外、Google文書内にMLPと保存先の食い違いが2件ある。〔N2〜N12〕
 - **資料の扱い**: 第13章で版ごとのTierを整理した（個人：Aのみ／Workspace：Bは条件つき・C不可／Enterprise：Cは条件つき）。同意・組織的措置など第10章の項目は別に必要と明記し、食い違いは「未確認」として担当窓口への書面確認を推奨した。〔N13、p.22〜23〕
 - **確認してほしいこと**: Workspace版を、実名の通常の個人情報（Tier B）に使う判断の妥当性（自組織の契約でのCloud利用規約・DPAの適用、法28条の「提供」に当たるか、利用目的の範囲）。個人アカウントで職場の資料を扱わせない運用ルールの明文化。Enterprise版でTier Cを扱う前に、食い違い2件（MLP・保存先）の書面確認で足りるか。
 

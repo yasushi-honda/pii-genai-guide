@@ -465,9 +465,9 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 |---|---|---|---|
 | N1 | NotebookLM Enterpriseは2026-07-16にGemini Notebook Enterpriseへ改称。機能・APIは同じ | リリースノート「NotebookLM Enterprise renamed to Gemini Notebook Enterprise」［出典17］ | 確認済 |
 | N2 | 個人アカウント版はGoogle利用規約。フィードバックしない限り学習に使わない。フィードバック時は質問・資料・回答を含む文脈を確認しうる | Gemini Notebook ヘルプ（"not used to train Gemini Notebook unless you provide feedback"、"we may review the full context of that interaction"）［出典39］。フィードバックページ［出典40］ | 確認済 |
-| N3 | Workspace版・Education版はアップロード・質問・回答を人がレビューせず、学習に使わない。サムズアップ/ダウンのフィードバック時もレビューしない | ヘルプ（"will not be reviewed by human reviewers, and will not be used to train AI models"）［出典39］。フィードバックページ（"even when you provide thumbs up or down feedback"）［出典40］ | 確認済 |
-| N4 | Workspace版はGoogle Cloud利用規約（Workspace editions）。Education版は別規約 | ヘルプの版別の規約表［出典39］ | 確認済。DPAがどの契約で適用されるかは契約書面の確認（H14と同じ留意） |
-| N5 | Workspaceの生成AI開示書（2025-12-24）の言明対象に「NotebookLM」が含まれる | ISMAP様式3別添8（Google LLC）［出典14］。名称は当時の旧名 | 確認済 |
+| N3 | Workspace版・Education版はアップロード・質問・回答を人がレビューせず、学習に使わない。サムズアップ/ダウンのフィードバック時もレビューしない | ヘルプ（"will not be reviewed by human reviewers, and will not be used to train AI models"）［出典39］。フィードバックページ（"even when you provide thumbs up or down feedback"）［出典40］ | 確認済。**コアサービスの版に限る**。Business Base・Essentials Starter・Workspace Individual・G Suite・Cloud Identity等は「追加サービス」扱いで、規約はGoogle利用規約（個人版と同じ文言）。evaluator指摘で本文に反映（p.22） |
+| N4 | Workspace版はGoogle Cloud利用規約（Workspace editions）。Education版は別規約 | ヘルプの版別の規約表［出典39］ | 確認済。Googleの文書間で表記が割れている（「Google Cloud利用規約」: 版別表・フィードバックページ／「Google Workspace利用規約」: プライバシーのページ）。DPAがどの契約で適用されるかは契約書面の確認（H14と同じ留意） |
+| N5 | Workspaceの生成AI開示書（2025-12-24）の言明対象に「NotebookLM」が含まれる | ISMAP様式3別添8（Google LLC）［出典14］。名称は当時の旧名。同書§2に「上記の製品は全てVertex AI Platform（C21-0004-2）を利用し、Workspaceの言明の対象外」と併記（本文p.22に反映） | 確認済 |
 | N6 | Workspaceのデータリージョンは、Gemini Notebook（旧NotebookLM）を対象外とする。組織部門にポリシーを適用しても対象外 | Workspace Data Regions対象範囲「Data Regions is not supported for … Gemini Notebook (formerly NotebookLM)」［出典41］ | 確認済 |
 | N7 | Enterprise版は自社Google Cloudプロジェクト内で管理され、公開共有できない。VPC-SC・CMEK・データレジデンシー・監査ログ等に対応。単体購入またはGemini Enterpriseの一部 | Enterprise概要（"Notebooks can't be shared publicly"、購入形態）［出典38］ | 確認済 |
 | N8 | ISMAP C26-0114-2の登録名にGemini Notebook Enterpriseを含む（Workspace版のC21-0005-2とは別登録） | ISMAPクラウドサービスリスト［出典5］（I7、R3と同じ） | 確認済 |
@@ -481,4 +481,5 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 - Gemini Enterprise Business版にGemini Notebook（Enterprise版）が含まれるか、Business版の保存地・規約（Business版は別のヘルプセンター。2026-10-21の検索では公式の該当ページに到達できなかった）。
 - Workspaceの版ごとの「データ保存地」（データリージョン非対応のため、保存地を日本に固定できないという点までは確認。実際の処理地は未確認）。
 - Gemini Notebook Enterpriseの単体価格・ライセンス体系（公式の価格ページを確認できなかったため、本文では書いていない）。
+- Gemini Enterprise Business版のGemini Notebookの扱いは、本文p.22にも「未記載」と明記した。
 - Workspace版のGemini Notebookが、ISMAP登録時点の言明範囲にいまも同じ名称・範囲で含まれるか（開示書は2025-12-24付で旧名のまま）。
