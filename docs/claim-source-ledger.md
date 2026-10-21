@@ -1,6 +1,6 @@
 # 主張と出典の対応表（検証台帳）
 
-対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全26ページ、最終確認 2026-10-18（第13章は2026-10-21）。全行の再確認は§13、時間経過項目の追加確認は§12、第13章（Gemini Notebook）は§16・2026-10-21）
+対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全27ページ、最終確認 2026-10-18（第13章は2026-10-21）。全行の再確認は§13、時間経過項目の追加確認は§12、第13章（Gemini Notebook）は§16・2026-10-21）
 
 目的: 資料中の主要な主張が、どの一次情報のどの箇所に基づくかを一覧化し、行政・法務担当者が追跡できるようにする。
 
@@ -455,9 +455,9 @@ G11・A7は、本文の追加に伴って新設した行（§1〜§11の121行�
 
 ---
 
-## 16. Gemini Notebook（旧NotebookLM）の3つの版（第13章、p.22〜23、2026-10-21）
+## 16. Gemini Notebook（旧NotebookLM）の3つの版とプラン別一覧（第13章、p.22〜24、2026-10-21）
 
-p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版の日本での使える範囲と未確認事項。出典は38〜45を新設（p.26）。
+p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版の日本での使える範囲と未確認事項、p.24はプラン別一覧（N17〜N22）。出典は38〜47を新設（p.27）。
 
 照合方法: Google公式ページは2026-10-21に生HTMLを取得し、本文を抽出して該当文を検索した（要約を介さない）。ISMAPポータルのPDFは本文を抽出して確認した。Workspace Data Regionsは最終更新2026-10-20（UTC）。
 
@@ -466,7 +466,7 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 | N1 | NotebookLM Enterpriseは2026-07-16にGemini Notebook Enterpriseへ改称。機能・APIは同じ | リリースノート「NotebookLM Enterprise renamed to Gemini Notebook Enterprise」［出典17］ | 確認済 |
 | N2 | 個人アカウント版はGoogle利用規約。フィードバックしない限り学習に使わない。フィードバック時は質問・資料・回答を含む文脈を確認しうる | Gemini Notebook ヘルプ（"not used to train Gemini Notebook unless you provide feedback"、"we may review the full context of that interaction"）［出典39］。フィードバックページ［出典40］ | 確認済 |
 | N3 | Workspace版・Education版はアップロード・質問・回答を人がレビューせず、学習に使わない。サムズアップ/ダウンのフィードバック時もレビューしない | ヘルプ（"will not be reviewed by human reviewers, and will not be used to train AI models"）［出典39］。フィードバックページ（"even when you provide thumbs up or down feedback"）［出典40］ | 確認済。版別表の「追加サービス」扱いの版（Business Base・Essentials Starter・Workspace Individual・G Suite・Cloud Identity等）は、規約がGoogle利用規約で「エンタープライズ級」の記載がない（個人版と同じ文言）。Codexは「core service or an add-on」の記述との不整合を指摘したが、「追加サービス」と「アドオン」は版別表で別の列と判断し、本文は「Business Base等は対象外」とした（2026-10-21） |
-| N4 | Workspace版はGoogle Cloud利用規約（Workspace editions）。Education版は別規約 | ヘルプの版別の規約表［出典39］ | 確認済。文書間の表記差は、Google Workspace利用規約がGoogle Cloud利用規約に統合されたため（規約ページ［出典45］に「統合され」と明記、最終更新2026-06-01）。既存契約への適用時期とDPAは契約書面で確認（H14と同じ留意） |
+| N4 | Workspace版はGoogle Cloud利用規約（Workspace editions）。Education版は別規約 | ヘルプの版別の規約表［出典39］ | 確認済。文書間の表記差は、Google Workspace利用規約がGoogle Cloud利用規約に統合されたため（規約ページ［出典45］の英語版は最終更新2026-10-12で、"will go into effect upon your next renewal"＝既存契約は次回更新時から適用。日本語ページのキャッシュは最終更新2026-06-01の表示で、取得経路により異なる）。既存契約への適用時期とDPAは契約書面で確認（H14と同じ留意） |
 | N5 | Workspaceの生成AI開示書（2025-12-24）の言明対象に「NotebookLM」が含まれる | ISMAP様式3別添8（Google LLC）［出典14］。名称は当時の旧名。同書§2に「上記の製品は全てVertex AI Platform（C21-0004-2）を利用し、Workspaceの言明の対象外」と併記（本文p.22に反映） | 確認済 |
 | N6 | Workspaceのデータリージョンは、Gemini Notebook（旧NotebookLM）を対象外とする。組織部門にポリシーを適用しても対象外 | Workspace Data Regions対象範囲「Data Regions is not supported for … Gemini Notebook (formerly NotebookLM)」［出典41］ | 確認済。Workspaceのデータリージョンの指定先は米国・EUで日本はない（G4）ため、本文は「データリージョン設定」と表記 |
 | N7 | Enterprise版は自社Google Cloudプロジェクト内で管理され、公開共有できない。VPC-SC・CMEK・データレジデンシー・監査ログ等に対応。単体購入またはGemini Enterpriseの一部 | Enterprise概要（"Notebooks can't be shared publicly"、購入形態）［出典38］ | 確認済。共有は同一プロジェクト内。監査ログは専用の設定手順がある（設定が必要） |
@@ -479,8 +479,15 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 | N14 | Gemini Enterprise – Business版にもGemini Notebook（Enterprise）が含まれる（利用ガイドあり、1ノートブック300ソース） | Business版ヘルプ「Use Gemini Notebook Enterprise」［出典42］、Business版の製品ページ（"Includes Gemini Notebook"）［出典43］ | 確認済 |
 | N15 | Business版はデータの保存・処理を地域に制限する管理設定・リージョナルエンドポイントを提供せず、必要なら（Standard等の）Gemini Enterpriseへの切替を案内。学習には許可なく使わない | Business版ヘルプ「Security and safety features」（最終更新2026-09-28、"It doesn't provide administrative settings or regional endpoints"）［出典42］ | 確認済（地域設定なし）。ただしBusiness版の申込手順（2026-10-08更新）には「データ所在のマルチリージョンを請求国で自動割当」とあり、同じ版の説明が食い違う（日本固定とは読めない）。規約はGoogle利用規約＋Business版の追加規約で、データはGoogle DPAに従い処理［出典44］。人のレビューの扱いは記載なし（未確認） |
 | N16 | Business版は$21/席/月から（製品ページ表示）。Standard・Plusは価格を公開せず営業へ問い合わせ。Notebook Enterprise単体の価格は公式で確認できず | Business版の製品ページ［出典43］。2026-10-21の検索で、Standard・Plus・Notebook単体の公開価格は見つからなかった | 一部確認（価格は変わりうる。本文には書いていない）。Standard・Plus・Notebook単体は「公開価格を確認できなかった」（公開されていないとは断定しない） |
+| N17 | 個人の有料プラン（Google AI Plus・Pro・Ultra）も、データの扱いは無料と同じ（フィードバックしない限り学習に使わない。フィードバック時は全体を人が見うる）。有料プランの特典は上限（ノートブック数・ソース数・生成回数）や機能など | Gemini Notebookのプランのヘルプ（Standard／Plus／Pro／Ultra各列の「Data Handling」は共通の1文）［出典46］。公式はデータ扱いを有料プラン別に分けて書いていない | 確認済（専用アプリの範囲。「有料でも同じ」は、公式がプラン別に分けていないことからの読み取り。別サービスへ共有したデータは共有先の条件に従う［出典40］） |
+| N18 | Workspaceの版は、「追加サービス」扱い（Business Base、Essentials Starter、Workspace Individual、G Suite、Cloud Identity、Chrome Enterprise、Android Enterprise）、「コアサービス」（Business Starter／Standard／Plus、Enterprise Essentials／Standard／Plus、Frontline各版、Nonprofits、Education各版等）、AIアドオン（AI Expanded Access・AI Ultra Access）に分かれる | Gemini Notebookの職場・学校アカウントのヘルプの版別表［出典39］（2026-10-21に生HTMLで取得） | 確認済。版別表は6列で、各列の規約の対応は表の並びの読み取りになるため、本文はグループ単位の記述に留めた |
+| N19 | 追加サービス扱いの版の規約はGoogle利用規約。コアサービス・AIアドオンの職場アカウントはGoogle Cloud利用規約。Education系はWorkspace for Education利用規約 | 同ヘルプの規約の行［出典39］、フィードバックページ［出典40］（"core service or an add-on"→Cloud利用規約） | 確認済 |
+| N20 | 上限は版で5段階（Standard／More／Higher／Expanded／Highest）。本文には数値を書いていない（変わりうるため） | 同ヘルプの「Usage Limits Breakdown」［出典39］、プランのヘルプ［出典46］ | 確認済（数値は本文に不掲載） |
+| N21 | Geminiアプリ内の「ノートブック」（個人アカウント）では、チャットはKeep Activity設定に従い保存され、人のレビューを含むGemini改善に使われうる。ソースに追加したファイルは直接は学習に使われない | Gemini Apps Privacy Hub「Notebooks」の項［出典47］ | 確認済（Notebook専用アプリの扱いとは別）。Workspaceアカウントでのこの機能の提供条件・データの扱いは公式で確認できず（個人向けの説明をそのまま適用しない） |
+| N22 | Gemini Notebook EnterpriseはGoogle Cloud管理者が付与するGemini Enterprise Standard／Plus／Frontline、または単体購入で利用できる | プランのヘルプ「Upgrading via Google Cloud」［出典46］ | 確認済。日本の対応表（出典17）の対象はStandard・Plusの文書。Frontline・従量課金の日本対応は未確認 |
 
 確認できていない点（第13章）:
+- Workspaceの版別表の列ごとの規約・上限の厳密な対応（表の並びからの読み取りに限る）。個人の有料プランが法人利用を想定した契約でないことの明示（公式の記載なし）。Frontline・従量課金のNotebook Enterpriseの日本対応。
 - Business版のNotebookの人のレビューの扱い（N15。Business版の文書に記載なし）と、Business版の地域説明の食い違い（N15）の解消。
 - Workspaceの版ごとの「データ保存地」（データリージョン非対応のため、保存地を日本に固定できないという点までは確認。実際の処理地は未確認）。
 - Standard・Plus・Notebook Enterprise単体の価格（今回確認できず。本文には書いていない。N16）。
@@ -502,3 +509,15 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 | 追加サービス扱いの版を「対象外」とするのは、「core service or an add-on」の記述と合わない | 一部不採用（「追加サービス」と「アドオン」は別。版別表の列で、追加サービス扱いの版はGoogle利用規約・エンタープライズ級の記載なし） | 本文は「Business Base等は対象外（個人版と同じ）」とし、AIアドオンの版には触れない |
 | N5（ISMAP開示書）・N8（ISMAPリスト）は取得できず確認不能 | 事実（Codexの環境でPDF・JS描画が取得できなかった）。N5は私が2026-10-21にPDF本文を抽出して確認済み、N8は2026-10-12・10-18の描画取得（10-21の再取得はしていない） | 変更なし。N8は次回の改訂時に再取得 |
 | ISMAPの範囲を断定しすぎ（個人版カードの「登録済みなのは法人契約の版」） | 妥当 | 範囲を絞った表現は紙面の都合で見送り、次回の改訂で検討（現状の文は登録名＝Workspace・Gemini Enterpriseに基づく） |
+
+### p.24（N17〜N22）の別系統の二次確認（Codex、Web検索あり、2026-10-21）
+
+| 指摘 | 判定 | 対応 |
+|---|---|---|
+| Cloud規約は既存契約では次回更新時から適用。英語ページの最終更新は2026-10-12 | 妥当（英語ページで原文確認。台帳の「2026-06-01」は日本語ページの表示で、訂正） | p.24の規約欄に「既存契約は次回更新時から」を追記、N4を訂正 |
+| EnterpriseのBにも条件（DPA等）を表示 | 妥当 | p.24を「B 条件つき」、p.22のTier Bの条件をWorkspace版・Enterprise版に |
+| EnterpriseのCは「適合未確認」にすべき | 一部採用（本文は既に「条件つき」で、条件に食い違い①②の書面確認を含めているため表示は維持。p.23のチェックリストで担保） | 変更なし |
+| 個人の有料版の「無料と同じ」を専用アプリの範囲に限定 | 妥当 | N17・p.24を修正 |
+| 「Enterprise各版」を公式掲載の版名に | 妥当 | Essentials／Essentials Plus／Standard／Plusに修正 |
+| WorkspaceでのGemini内ノートブックは確認不能と明記 | 妥当 | N21に追記 |
+| Educationは独立した分類ではなく規約を分ける属性 | 妥当（本文は規約の違いとして扱っており問題なし） | 変更なし |
