@@ -488,6 +488,7 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 | N22 | Gemini Notebook EnterpriseはGoogle Cloud管理者が付与するGemini Enterprise Standard／Plus／Frontline、または単体購入で利用できる | プランのヘルプ「Upgrading via Google Cloud」［出典46］ | 確認済。日本の対応表（出典17）の対象はStandard・Plusの文書。Frontline・従量課金の日本対応は未確認 |
 
 確認できていない点（第13章）:
+- 【問い合わせ状況】2026-10-21にGoogle Cloudの問い合わせフォーム（セールス スペシャリスト宛）から、下記の未確認点（Enterprise版の保存先・AI処理地の食い違い、Frontline・従量課金の日本対応、Business版の保存地域と人のレビュー、日本allowlistの手順、ISMAPの範囲）を問い合わせ済み。返答待ち。公式にはメールの宛先がなく、フォーム経由のみ。返答があれば、本節と§17・第13章（p.22〜24）を更新する。
 - Workspaceの版別表の列ごとの規約・上限の厳密な対応（表の並びからの読み取りに限る）。個人の有料プランが法人利用を想定した契約でないことの明示（公式の記載なし）。Frontline・従量課金のNotebook Enterpriseの日本対応。
 - Business版のNotebookの人のレビューの扱い（N15。Business版の文書に記載なし）と、Business版の地域説明の食い違い（N15）の解消。
 - Workspaceの版ごとの「データ保存地」（データリージョン非対応のため、保存地を日本に固定できないという点までは確認。実際の処理地は未確認）。
