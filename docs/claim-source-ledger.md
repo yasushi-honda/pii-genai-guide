@@ -470,7 +470,8 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 | N5 | Workspaceの生成AI開示書（2025-12-24）の言明対象に「NotebookLM」が含まれる | ISMAP様式3別添8（Google LLC）［出典14］。名称は当時の旧名。同書§2に「上記の製品は全てVertex AI Platform（C21-0004-2）を利用し、Workspaceの言明の対象外」と併記（本文p.22に反映） | 確認済 |
 | N6 | Workspaceのデータリージョンは、Gemini Notebook（旧NotebookLM）を対象外とする。組織部門にポリシーを適用しても対象外 | Workspace Data Regions対象範囲「Data Regions is not supported for … Gemini Notebook (formerly NotebookLM)」［出典41］ | 確認済。Workspaceのデータリージョンの指定先は米国・EUで日本はない（G4）ため、本文は「データリージョン設定」と表記 |
 | N7 | Enterprise版は自社Google Cloudプロジェクト内で管理され、公開共有できない。VPC-SC・CMEK・データレジデンシー・監査ログ等に対応。単体購入またはGemini Enterpriseの一部 | Enterprise概要（"Notebooks can't be shared publicly"、購入形態）［出典38］ | 確認済。共有は同一プロジェクト内。監査ログは専用の設定手順がある（設定が必要） |
-| N8 | ISMAP C26-0114-2の登録名にGemini Notebook Enterpriseを含む（Workspace版のC21-0005-2とは別登録） | ISMAPクラウドサービスリスト［出典5］（I7、R3と同じ） | 確認済 |
+| N8 | ISMAP C26-0114-2の登録名にGemini Notebook Enterpriseを含む（Workspace版のC21-0005-2とは別登録） | ISMAPクラウドサービスリスト［出典5］（I7、R3と同じ）。**2026-10-21にPlaywrightで描画して再取得**し、C26-0114-2の名称「Gemini Enterprise (including Agentspace) and Gemini Notebook Enterprise」（2026/08/28に名称・特記事項を変更）、C21-0005-2（最終変更2026/08/28）、C21-0004-2（変更履歴2025/11/04・2026/03/02・2026/06/26）がR3の記録と一致することを確認。言明対象範囲・生成AI情報のPDFの題名は旧名「NotebookLM Enterprise」のまま | 確認済（2026-10-21再取得） |
+| N23 | ISMAPの言明範囲に、Workspace（C21-0005-2）の言明範囲PDFと、Gemini Enterprise（C26-0114-2）の生成AI情報（2025-09-23付）の両方に、NotebookLM（Enterprise）が含まれる。Gemini Enterprise側の言明範囲PDFにエディション（Business・Standard等）の記載はない。同PDFには、利用者データはGCPのストレージ（Cloud Storage・Spanner・BigQuery）に保管され、GCP（C21-0004-2）は当該言明書の対象外、とある | ISMAPポータルのPDF（2026-10-21にpdftotextで本文抽出）［出典5・14］。Workspace側は言明対象範囲PDFにNotebookLMの記載（備考「特になし」）、生成AI情報PDFは2025-12-24付で前回と同一ファイル | 確認済。Business版がC26-0114-2の範囲かは、PDFにエディションの記載がなく確認できない（I10と同じ） |
 | N9 | Enterprise版の日本（asia-northeast1）はGA with allowlist。基本機能は保存（at-rest DRZ）・AI処理（MLP）とも表で対応 | locations「Gemini Notebook Enterprise limitations」表［出典17］ | 確認済（MLPは下のN12の食い違いあり） |
 | N10 | 日本（国内リージョン）ではContent Studio（音声解説・スライド・インフォグラフィック・動画解説）は提供なし。米国・EUでは保存は対応、MLPは非対応 | 同表［出典17］ | 確認済 |
 | N11 | Discover Sourcesは表の全ての場所で、保存・AI処理とも地域保証の対象外（機能自体を提供しない意味ではない）。Google検索グラウンディングで顧客データを一時記録 | 同表［出典17］ | 確認済 |
@@ -491,7 +492,7 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 - Business版のNotebookの人のレビューの扱い（N15。Business版の文書に記載なし）と、Business版の地域説明の食い違い（N15）の解消。
 - Workspaceの版ごとの「データ保存地」（データリージョン非対応のため、保存地を日本に固定できないという点までは確認。実際の処理地は未確認）。
 - Standard・Plus・Notebook Enterprise単体の価格（今回確認できず。本文には書いていない。N16）。
-- Workspace版のGemini Notebookが、ISMAP登録時点の言明範囲にいまも同じ名称・範囲で含まれるか（開示書は2025-12-24付で旧名のまま）。
+- ISMAPのPDF（言明対象範囲・生成AI情報）の題名は旧名のままで、いつ更新されるかは未確認。Business版がC26-0114-2の言明範囲に含まれるかは、PDFにエディションの記載がなく確認できない。
 
 ### §16 別系統の二次確認（Codex、Web検索あり、読み取り専用、2026-10-21）
 
@@ -507,7 +508,7 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 | 同意は「法が求める場面で」と限定／Tierは資料独自の運用基準 | 妥当（本文は元々「推奨水準」）。表現を限定 | p.22・p.23の同意の書き方を修正 |
 | Enterpriseの共有は同一プロジェクト内、監査ログは要設定 | 妥当 | p.22を修正、N7を更新 |
 | 追加サービス扱いの版を「対象外」とするのは、「core service or an add-on」の記述と合わない | 一部不採用（「追加サービス」と「アドオン」は別。版別表の列で、追加サービス扱いの版はGoogle利用規約・エンタープライズ級の記載なし） | 本文は「Business Base等は対象外（個人版と同じ）」とし、AIアドオンの版には触れない |
-| N5（ISMAP開示書）・N8（ISMAPリスト）は取得できず確認不能 | 事実（Codexの環境でPDF・JS描画が取得できなかった）。N5は私が2026-10-21にPDF本文を抽出して確認済み、N8は2026-10-12・10-18の描画取得（10-21の再取得はしていない） | 変更なし。N8は次回の改訂時に再取得 |
+| N5（ISMAP開示書）・N8（ISMAPリスト）は取得できず確認不能 | 事実（Codexの環境でPDF・JS描画が取得できなかった）。N5は私が2026-10-21にPDF本文を抽出して確認済み、N8は2026-10-12・10-18の描画取得に加え、2026-10-21にPlaywrightで再取得して記録と一致を確認（N8・N23） | 変更なし（再取得済み） |
 | ISMAPの範囲を断定しすぎ（個人版カードの「登録済みなのは法人契約の版」） | 妥当 | 範囲を絞った表現は紙面の都合で見送り、次回の改訂で検討（現状の文は登録名＝Workspace・Gemini Enterpriseに基づく） |
 
 ### p.24（N17〜N22）の別系統の二次確認（Codex、Web検索あり、2026-10-21）
