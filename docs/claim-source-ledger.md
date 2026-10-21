@@ -457,7 +457,7 @@ G11・A7は、本文の追加に伴って新設した行（§1〜§11の121行�
 
 ## 16. Gemini Notebook（旧NotebookLM）の3つの版（第13章、p.22〜23、2026-10-21）
 
-p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版の日本での使える範囲と未確認事項。出典は38〜41を新設（p.26）。
+p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版の日本での使える範囲と未確認事項。出典は38〜43を新設（p.26）。
 
 照合方法: Google公式ページは2026-10-21に生HTMLを取得し、本文を抽出して該当文を検索した（要約を介さない）。ISMAPポータルのPDFは本文を抽出して確認した。Workspace Data Regionsは最終更新2026-10-20（UTC）。
 
@@ -476,10 +476,13 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 | N11 | Discover Sourcesは全ての場所で保存・AI処理とも対応外。Google検索グラウンディングで顧客データを一時記録 | 同表［出典17］ | 確認済 |
 | N12 | **食い違い2件**: ①MLPの注記は「米国・EUの基本機能のみ、国内リージョンは非対応」だが、表は日本の基本機能で対応。②概要ページは「データは米国またはEUのマルチリージョンに保存」と書き、日本の対応表との関係が書かれていない | locations［出典17］、Enterprise概要［出典38］ | 未確認（本文p.23で「未確認」と明記、担当窓口へ書面確認を推奨） |
 | N13 | 各版のTier判断（個人：Bまで不可／Workspace：Bは条件つき、Cは日本固定不可で不可／Enterprise：Cは条件つき） | N2〜N12からの本資料の整理 | 推奨水準（p.23のTier Cチェックリストは、N7・N9〜N12と出典38の「専用権限が必要」から導いた運用項目） |
+| N14 | Gemini Enterprise – Business版にもGemini Notebook（Enterprise）が含まれる（利用ガイドあり、1ノートブック300ソース） | Business版ヘルプ「Use Gemini Notebook Enterprise」［出典42］、Business版の製品ページ（"Includes Gemini Notebook"）［出典43］ | 確認済 |
+| N15 | Business版はデータの保存・処理を地域に制限する管理設定・リージョナルエンドポイントを提供せず、必要なら（Standard等の）Gemini Enterpriseへの切替を案内。学習には許可なく使わない | Business版ヘルプ「Security and safety features」（最終更新2026-09-28、"It doesn't provide administrative settings or regional endpoints"）［出典42］ | 確認済。人のレビューの扱い、適用される規約・DPAは当該ページに記載なし（未確認） |
+| N16 | Business版は$21/席/月から（製品ページ表示）。Standard・Plusは価格を公開せず営業へ問い合わせ。Notebook Enterprise単体の価格は公式で確認できず | Business版の製品ページ［出典43］。2026-10-21の検索で、Standard・Plus・Notebook単体の公開価格は見つからなかった | 一部確認（価格は変わりうる。本文には書いていない） |
 
 確認できていない点（第13章）:
 - Gemini Enterprise Business版にGemini Notebook（Enterprise版）が含まれるか、Business版の保存地・規約（Business版は別のヘルプセンター。2026-10-21の検索では公式の該当ページに到達できなかった）。
 - Workspaceの版ごとの「データ保存地」（データリージョン非対応のため、保存地を日本に固定できないという点までは確認。実際の処理地は未確認）。
-- Gemini Notebook Enterpriseの単体価格・ライセンス体系（公式の価格ページを確認できなかったため、本文では書いていない）。
+- Standard・Plus・Notebook Enterprise単体の価格（公開されていない。本文には書いていない。N16）。
 - Gemini Enterprise Business版のGemini Notebookの扱いは、本文p.22にも「未記載」と明記した。
 - Workspace版のGemini Notebookが、ISMAP登録時点の言明範囲にいまも同じ名称・範囲で含まれるか（開示書は2025-12-24付で旧名のまま）。
