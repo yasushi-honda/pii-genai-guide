@@ -1,6 +1,6 @@
 # 主張と出典の対応表（検証台帳）
 
-対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全26ページ、最終確認 2026-10-18（第13章は2026-10-21）。全行の再確認は§13、時間経過項目の追加確認は§12、第13章（Gemini Notebook）は§16・2026-10-21）
+対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全27ページ、最終確認 2026-10-18（第13章は2026-10-21）。全行の再確認は§13、時間経過項目の追加確認は§12、第13章（Gemini Notebook）は§16・2026-10-21）
 
 目的: 資料中の主要な主張が、どの一次情報のどの箇所に基づくかを一覧化し、行政・法務担当者が追跡できるようにする。
 
@@ -455,9 +455,9 @@ G11・A7は、本文の追加に伴って新設した行（§1〜§11の121行�
 
 ---
 
-## 16. Gemini Notebook（旧NotebookLM）の3つの版（第13章、p.22〜23、2026-10-21）
+## 16. Gemini Notebook（旧NotebookLM）の3つの版とプラン別一覧（第13章、p.22〜24、2026-10-21）
 
-p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版の日本での使える範囲と未確認事項。出典は38〜45を新設（p.26）。
+p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版の日本での使える範囲と未確認事項、p.24はプラン別一覧（N17〜N22）。出典は38〜47を新設（p.27）。
 
 照合方法: Google公式ページは2026-10-21に生HTMLを取得し、本文を抽出して該当文を検索した（要約を介さない）。ISMAPポータルのPDFは本文を抽出して確認した。Workspace Data Regionsは最終更新2026-10-20（UTC）。
 
@@ -479,8 +479,15 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 | N14 | Gemini Enterprise – Business版にもGemini Notebook（Enterprise）が含まれる（利用ガイドあり、1ノートブック300ソース） | Business版ヘルプ「Use Gemini Notebook Enterprise」［出典42］、Business版の製品ページ（"Includes Gemini Notebook"）［出典43］ | 確認済 |
 | N15 | Business版はデータの保存・処理を地域に制限する管理設定・リージョナルエンドポイントを提供せず、必要なら（Standard等の）Gemini Enterpriseへの切替を案内。学習には許可なく使わない | Business版ヘルプ「Security and safety features」（最終更新2026-09-28、"It doesn't provide administrative settings or regional endpoints"）［出典42］ | 確認済（地域設定なし）。ただしBusiness版の申込手順（2026-10-08更新）には「データ所在のマルチリージョンを請求国で自動割当」とあり、同じ版の説明が食い違う（日本固定とは読めない）。規約はGoogle利用規約＋Business版の追加規約で、データはGoogle DPAに従い処理［出典44］。人のレビューの扱いは記載なし（未確認） |
 | N16 | Business版は$21/席/月から（製品ページ表示）。Standard・Plusは価格を公開せず営業へ問い合わせ。Notebook Enterprise単体の価格は公式で確認できず | Business版の製品ページ［出典43］。2026-10-21の検索で、Standard・Plus・Notebook単体の公開価格は見つからなかった | 一部確認（価格は変わりうる。本文には書いていない）。Standard・Plus・Notebook単体は「公開価格を確認できなかった」（公開されていないとは断定しない） |
+| N17 | 個人の有料プラン（Google AI Plus・Pro・Ultra）も、データの扱いは無料と同じ（フィードバックしない限り学習に使わない。フィードバック時は全体を人が見うる）。違いは上限（ノートブック数・ソース数・生成回数）と機能のみ | Gemini Notebookのプランのヘルプ（Standard／Plus／Pro／Ultra各列の「Data Handling」は共通の1文）［出典46］。公式はデータ扱いを有料プラン別に分けて書いていない | 確認済（「有料でも同じ」は、公式がプラン別に分けていないことからの読み取り） |
+| N18 | Workspaceの版は、「追加サービス」扱い（Business Base、Essentials Starter、Workspace Individual、G Suite、Cloud Identity、Chrome Enterprise、Android Enterprise）、「コアサービス」（Business Starter／Standard／Plus、Enterprise Essentials／Standard／Plus、Frontline各版、Nonprofits、Education各版等）、AIアドオン（AI Expanded Access・AI Ultra Access）に分かれる | Gemini Notebookの職場・学校アカウントのヘルプの版別表［出典39］（2026-10-21に生HTMLで取得） | 確認済。版別表は6列で、各列の規約の対応は表の並びの読み取りになるため、本文はグループ単位の記述に留めた |
+| N19 | 追加サービス扱いの版の規約はGoogle利用規約。コアサービス・AIアドオンの職場アカウントはGoogle Cloud利用規約。Education系はWorkspace for Education利用規約 | 同ヘルプの規約の行［出典39］、フィードバックページ［出典40］（"core service or an add-on"→Cloud利用規約） | 確認済 |
+| N20 | 上限は版で5段階（Standard／More／Higher／Expanded／Highest）。本文には数値を書いていない（変わりうるため） | 同ヘルプの「Usage Limits Breakdown」［出典39］、プランのヘルプ［出典46］ | 確認済（数値は本文に不掲載） |
+| N21 | Geminiアプリ内の「ノートブック」（個人アカウント）では、チャットはKeep Activity設定に従い保存され、人のレビューを含むGemini改善に使われうる。ソースに追加したファイルは直接は学習に使われない | Gemini Apps Privacy Hub「Notebooks」の項［出典47］ | 確認済（Notebook専用アプリの扱いとは別） |
+| N22 | Gemini Notebook EnterpriseはGoogle Cloud管理者が付与するGemini Enterprise Standard／Plus／Frontline、または単体購入で利用できる | プランのヘルプ「Upgrading via Google Cloud」［出典46］ | 確認済。日本の対応表（出典17）の対象はStandard・Plusの文書。Frontline・従量課金の日本対応は未確認 |
 
 確認できていない点（第13章）:
+- Workspaceの版別表の列ごとの規約・上限の厳密な対応（表の並びからの読み取りに限る）。個人の有料プランが法人利用を想定した契約でないことの明示（公式の記載なし）。Frontline・従量課金のNotebook Enterpriseの日本対応。
 - Business版のNotebookの人のレビューの扱い（N15。Business版の文書に記載なし）と、Business版の地域説明の食い違い（N15）の解消。
 - Workspaceの版ごとの「データ保存地」（データリージョン非対応のため、保存地を日本に固定できないという点までは確認。実際の処理地は未確認）。
 - Standard・Plus・Notebook Enterprise単体の価格（今回確認できず。本文には書いていない。N16）。
