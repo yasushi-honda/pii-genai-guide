@@ -1,6 +1,6 @@
 # 主張と出典の対応表（検証台帳）
 
-対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全23ページ、最終確認 2026-10-18。全行の再確認は§13、時間経過項目の追加確認は§12）
+対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全26ページ、最終確認 2026-10-18。全行の再確認は§13、時間経過項目の追加確認は§12、第13章（Gemini Notebook）は§16・2026-10-21）
 
 目的: 資料中の主要な主張が、どの一次情報のどの箇所に基づくかを一覧化し、行政・法務担当者が追跡できるようにする。
 
@@ -222,7 +222,7 @@ Google文書は2026-10-13に生HTMLを取得して照合した（要約を介さ
 | H8 | Gemini 3.5 Flashの日本提供は単一ゾーンのProvisioned Throughputのみ（購入はGoogleの担当経由） | G5、G6［出典9、10］ | 確認済 |
 | H9 | 管理者の設定（モデルのトグル、警告の承認）によって、日本の外にトラフィックが出る | 同文書の「administrators must turn on the toggle」「you must confirm the warning dialog to route traffic to the global endpoint」［出典17］ | 確認済 |
 | H10 | 表のTier Cの見立て（条件を満たせば保存とAI処理が日本に閉じうる。アプリ側は基本機能に限定）と、同意・組織的措置など第10章の項目が別に必要という整理 | 本資料の推奨水準（法令の要件ではない。法的な保証ではない） | 推奨水準 |
-| H11 | 日本の約束が、基本機能の外の機能やNotebookにどこまで及ぶか（基本機能の行には、取り込み型・連携型コネクタ、カスタムエージェント等が含まれると原文にあり、日本はDRZ・MLP対応）。Notebookの機械学習処理は、文書の注記（「in-country regionsでは非対応」）と表（基本機能は日本でMLP対応）が食い違う | 同文書［出典17］ | 未確認（本文では「未確認」と明記） |
+| H11 | 日本の約束が、基本機能の外の機能やNotebookにどこまで及ぶか（基本機能の行には、取り込み型・連携型コネクタ、カスタムエージェント等が含まれると原文にあり、日本はDRZ・MLP対応）。Notebookの機械学習処理は、文書の注記（「in-country regionsでは非対応」）と表（基本機能は日本でMLP対応）が食い違う | 同文書［出典17］ | 未確認（本文では「未確認」と明記。Notebookの扱いは第13章・§16で整理） |
 | H12 | Agent Platformは旧Vertex AIで、ISMAP言明書上は「Vertex AI Platform」としてGoogle Cloud（C21-0004-2）の一部 | I12、「確認できていない点」5［出典5］ | 一部確認（名称変更後も同じ範囲かは未確認。p.20にも記載） |
 | H13 | Business版は日本等の指定設定がなく、Tier Cの対象外 | G3［出典18］ | 確認済 |
 | H14 | Cloud Data Processing Addendumは、Googleとお客様のAgreementに組み込まれ（incorporated）、発効日は承諾日または合意日。Gemini Enterpriseは、サービス固有条項（最終更新2026-10-12）に条項（第21条・第33条）がある。Pre-GAの機能には、書面通知またはGoogleのドキュメントで別段の明示がない限り、DPAを含むデータ処理条項が適用されない（サービス固有条項のPre-GA条項（d）。DPA本文には記載なし。2026-10-18に原文で確認し、例外を追記） | 「Cloud Data Processing Addendum」冒頭、「Service Specific Terms」［出典34］ | 一部確認（Standard／Plusの実際の契約が、Cloud DPAを含むAgreementの下にあるかは契約書面で確認が必要。Business版は別規約で「Google Data Processing Addendum」） |
@@ -453,3 +453,33 @@ Google文書は2026-10-13に生HTMLを取得して照合した（要約を介さ
 
 G11・A7は、本文の追加に伴って新設した行（§1〜§11の121行とは別）。どちらも2026-10-18に原文（Privacy Hub、AWSドキュメント）を取得して確認した。
 
+---
+
+## 16. Gemini Notebook（旧NotebookLM）の3つの版（第13章、p.22〜23、2026-10-21）
+
+p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版の日本での使える範囲と未確認事項。出典は38〜41を新設（p.26）。
+
+照合方法: Google公式ページは2026-10-21に生HTMLを取得し、本文を抽出して該当文を検索した（要約を介さない）。ISMAPポータルのPDFは本文を抽出して確認した。Workspace Data Regionsは最終更新2026-10-20（UTC）。
+
+| # | 主張 | 根拠（原文の要旨） | 区分 |
+|---|---|---|---|
+| N1 | NotebookLM Enterpriseは2026-07-16にGemini Notebook Enterpriseへ改称。機能・APIは同じ | リリースノート「NotebookLM Enterprise renamed to Gemini Notebook Enterprise」［出典17］ | 確認済 |
+| N2 | 個人アカウント版はGoogle利用規約。フィードバックしない限り学習に使わない。フィードバック時は質問・資料・回答を含む文脈を確認しうる | Gemini Notebook ヘルプ（"not used to train Gemini Notebook unless you provide feedback"、"we may review the full context of that interaction"）［出典39］。フィードバックページ［出典40］ | 確認済 |
+| N3 | Workspace版・Education版はアップロード・質問・回答を人がレビューせず、学習に使わない。サムズアップ/ダウンのフィードバック時もレビューしない | ヘルプ（"will not be reviewed by human reviewers, and will not be used to train AI models"）［出典39］。フィードバックページ（"even when you provide thumbs up or down feedback"）［出典40］ | 確認済。**コアサービスの版に限る**。Business Base・Essentials Starter・Workspace Individual・G Suite・Cloud Identity等は「追加サービス」扱いで、規約はGoogle利用規約（個人版と同じ文言）。evaluator指摘で本文に反映（p.22） |
+| N4 | Workspace版はGoogle Cloud利用規約（Workspace editions）。Education版は別規約 | ヘルプの版別の規約表［出典39］ | 確認済。Googleの文書間で表記が割れている（「Google Cloud利用規約」: 版別表・フィードバックページ／「Google Workspace利用規約」: プライバシーのページ）。DPAがどの契約で適用されるかは契約書面の確認（H14と同じ留意） |
+| N5 | Workspaceの生成AI開示書（2025-12-24）の言明対象に「NotebookLM」が含まれる | ISMAP様式3別添8（Google LLC）［出典14］。名称は当時の旧名。同書§2に「上記の製品は全てVertex AI Platform（C21-0004-2）を利用し、Workspaceの言明の対象外」と併記（本文p.22に反映） | 確認済 |
+| N6 | Workspaceのデータリージョンは、Gemini Notebook（旧NotebookLM）を対象外とする。組織部門にポリシーを適用しても対象外 | Workspace Data Regions対象範囲「Data Regions is not supported for … Gemini Notebook (formerly NotebookLM)」［出典41］ | 確認済 |
+| N7 | Enterprise版は自社Google Cloudプロジェクト内で管理され、公開共有できない。VPC-SC・CMEK・データレジデンシー・監査ログ等に対応。単体購入またはGemini Enterpriseの一部 | Enterprise概要（"Notebooks can't be shared publicly"、購入形態）［出典38］ | 確認済 |
+| N8 | ISMAP C26-0114-2の登録名にGemini Notebook Enterpriseを含む（Workspace版のC21-0005-2とは別登録） | ISMAPクラウドサービスリスト［出典5］（I7、R3と同じ） | 確認済 |
+| N9 | Enterprise版の日本（asia-northeast1）はGA with allowlist。基本機能は保存（at-rest DRZ）・AI処理（MLP）とも表で対応 | locations「Gemini Notebook Enterprise limitations」表［出典17］ | 確認済（MLPは下のN12の食い違いあり） |
+| N10 | 日本（国内リージョン）ではContent Studio（音声解説・スライド・インフォグラフィック・動画解説）は提供なし。米国・EUでは保存は対応、MLPは非対応 | 同表［出典17］ | 確認済 |
+| N11 | Discover Sourcesは全ての場所で保存・AI処理とも対応外。Google検索グラウンディングで顧客データを一時記録 | 同表［出典17］ | 確認済 |
+| N12 | **食い違い2件**: ①MLPの注記は「米国・EUの基本機能のみ、国内リージョンは非対応」だが、表は日本の基本機能で対応。②概要ページは「データは米国またはEUのマルチリージョンに保存」と書き、日本の対応表との関係が書かれていない | locations［出典17］、Enterprise概要［出典38］ | 未確認（本文p.23で「未確認」と明記、担当窓口へ書面確認を推奨） |
+| N13 | 各版のTier判断（個人：Bまで不可／Workspace：Bは条件つき、Cは日本固定不可で不可／Enterprise：Cは条件つき） | N2〜N12からの本資料の整理 | 推奨水準 |
+
+確認できていない点（第13章）:
+- Gemini Enterprise Business版にGemini Notebook（Enterprise版）が含まれるか、Business版の保存地・規約（Business版は別のヘルプセンター。2026-10-21の検索では公式の該当ページに到達できなかった）。
+- Workspaceの版ごとの「データ保存地」（データリージョン非対応のため、保存地を日本に固定できないという点までは確認。実際の処理地は未確認）。
+- Gemini Notebook Enterpriseの単体価格・ライセンス体系（公式の価格ページを確認できなかったため、本文では書いていない）。
+- Gemini Enterprise Business版のGemini Notebookの扱いは、本文p.22にも「未記載」と明記した。
+- Workspace版のGemini Notebookが、ISMAP登録時点の言明範囲にいまも同じ名称・範囲で含まれるか（開示書は2025-12-24付で旧名のまま）。

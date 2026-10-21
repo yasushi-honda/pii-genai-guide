@@ -1,5 +1,5 @@
 // public/index.html（サイトのルート、元PDF「個人情報×生成AI 実務ガイド」(A4横・
-// 23ページ) と同一の固定レイアウトHTML）をPDF化し、public/downloads/ へ出力する。
+// 26ページ) と同一の固定レイアウトHTML）をPDF化し、public/downloads/ へ出力する。
 //
 // このスクリプトは macOS ローカルでの実行を前提にしている。元PDFは macOS 上で
 // レンダリングされており、デッキHTML内の日本語等幅テキスト(.page-footer 等)は
@@ -19,7 +19,7 @@ const outDir = new URL('public/downloads/', root);
 const outPdfPath = new URL('pii-genai-guide.pdf', outDir);
 const outHashPath = new URL('pii-genai-guide.pdf.source-sha256', outDir);
 
-const EXPECTED_PAGE_COUNT = 23;
+const EXPECTED_PAGE_COUNT = 26;
 const PAGE_WIDTH_MM = 297;
 const PAGE_HEIGHT_MM = 210;
 const MM_TOLERANCE = 0.05;

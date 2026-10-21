@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  元PDF「個人情報×生成AI 実務ガイド」(A4横・23ページ) と同一の固定レイアウトHTML。
+  元PDF「個人情報×生成AI 実務ガイド」(A4横・26ページ) と同一の固定レイアウトHTML。
   サイトのルート(/)としてそのまま配信される単一ソース。
   scripts/generate-pdf.mjs がこのファイルを開いて public/downloads/pii-genai-guide.pdf を生成する。
   本文を更新したら `pnpm generate:pdf` を再実行してPDFを再生成すること。
@@ -269,7 +269,7 @@
 
       <div class="cover-tags">
         <span class="tag accent">最終確認 2026-10-18</span>
-        <span class="tag accent">一次情報ベース・出典37件</span>
+        <span class="tag accent">一次情報ベース・出典41件</span>
         <span class="tag accent">対象：主に介護・福祉分野の民間事業者（医療は別枠、行政機関等は別途確認）</span>
         <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
       </div>
@@ -291,11 +291,11 @@
   </section>
 
   <!-- ============ PAGE 2: TOC ============ -->
-  <section class="page">
+  <section class="page" style="padding-top:10mm;">
     <div class="page-body">
       <div class="eyebrow">Contents</div>
       <h2 class="h2" style="font-size:26px;">目次</h2>
-      <ul class="toc-list" id="toc">
+      <ul class="toc-list" id="toc" style="margin-top:2px;">
         <li><a class="toc-link" href="#sec-intro"><span class="tn">00</span><span class="tt">はじめに<span class="ts">なぜこの整理が必要か</span></span><span class="tp" data-toc-target="intro"></span></a></li>
         <li><a class="toc-link" href="#sec-pillars"><span class="tn">01</span><span class="tt">大原則：個人情報保護法の「2つの壁」<span class="ts">安全管理措置と、適法な取得・利用は独立している</span></span><span class="tp" data-toc-target="pillars"></span></a></li>
         <li><a class="toc-link" href="#sec-flow"><span class="tn">02</span><span class="tt">判定フロー：3つの質問<span class="ts">個人特定情報／要配慮個人情報／処理体制の3段階判定</span></span><span class="tp" data-toc-target="flow"></span></a></li>
@@ -311,7 +311,8 @@
         <li><a class="toc-link" href="#sec-checklist"><span class="tn">10</span><span class="tt">入力してよい環境のチェックリスト<span class="ts">ここまで整えば入力してよい前提環境と整理する</span></span><span class="tp" data-toc-target="checklist"></span></a></li>
         <li><a class="toc-link" href="#sec-sectors"><span class="tn">11</span><span class="tt">福祉の業種別早見表<span class="ts">介護・障害福祉・救護施設など、業種ごとの規律と医療情報の混入</span></span><span class="tp" data-toc-target="sectors"></span></a></li>
         <li><a class="toc-link" href="#sec-geminicmp"><span class="tn">12</span><span class="tt">Geminiの2つの入口<span class="ts">Gemini Enterprise（アプリ）とAgent Platform（開発用）の違い</span></span><span class="tp" data-toc-target="geminicmp"></span></a></li>
-        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、37件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
+        <li><a class="toc-link" href="#sec-notebookcmp"><span class="tn">13</span><span class="tt">Gemini Notebook（旧NotebookLM）の3つの版<span class="ts">個人・Workspace・Enterpriseで、Tier A/B/Cの使える範囲が変わる</span></span><span class="tp" data-toc-target="notebookcmp"></span></a></li>
+        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、41件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
       </ul>
       <p style="margin-top:10px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
     </div>
@@ -319,7 +320,7 @@
   </section>
 
   <!-- ============ PAGE 3: はじめに ============ -->
-  <section class="page" id="sec-intro" data-toc="intro">
+  <section class="page" id="sec-intro" data-toc="intro" style="padding-top:10mm;">
     <div class="page-body">
       <div class="eyebrow">00　はじめに</div>
       <h2 class="h2">「ISMAPを満たしているから安全」——それ、半分しか合っていません</h2>
@@ -336,13 +337,13 @@
         <div class="vrow n"><span class="lab" style="width:7.2em;">第2章 <span class="mono" data-toc-target="flow"></span></span><span><b>判定フロー</b> — 手元のデータをAIに入れてよいかを、3つの質問で判定する方法</span></div>
         <div class="vrow n"><span class="lab" style="width:7.2em;">第7章 <span class="mono" data-toc-target="tierc"></span></span><span><b>技術構成</b> — 要配慮個人情報を実名で扱わざるを得ない場合に、現実的に組める技術構成とその根拠</span></div>
         <div class="vrow n"><span class="lab" style="width:7.2em;">第11章 <span class="mono" data-toc-target="sectors"></span></span><span><b>福祉の業種別早見表</b> — 業種ごとの規律と、医療情報の混入　<span class="tag gray">補足</span></span></div>
-        <div class="vrow n"><span class="lab" style="width:7.2em;">第12章 <span class="mono" data-toc-target="geminicmp"></span></span><span><b>Geminiの2つの入口</b> — Gemini Enterprise（アプリ）とAgent Platform（開発用）の違い　<span class="tag gray">補足</span></span></div>
+        <div class="vrow n"><span class="lab" style="width:7.2em;">第12・13章 <span class="mono" data-toc-target="geminicmp"></span></span><span><b>Geminiの入口とNotebookの版</b> — Gemini Enterprise／Agent Platformの違い、Gemini Notebook（旧NotebookLM）の3つの版　<span class="tag gray">補足</span></span></div>
       </div>
 
-      <h3 class="h3" style="margin-top:10px;">読み方</h3>
+      <h3 class="h3" style="margin-top:6px;">読み方</h3>
       <p>本文中の <span class="mono" style="font-weight:700; color:#2857A6;">[n]</span> は、巻末「<a href="#sec-refs">出典一覧</a>」（<span data-toc-target="refs"></span>）の番号に対応します。日本語OCRの精度比較などは、筆者による非公開の検証に基づく知見のため、<span class="mono" style="font-weight:700;">[†]</span> で示し公開リンクなしと明記しています。</p>
 
-      <div class="box compact" style="margin-top:8px; padding:10px 16px;">
+      <div class="box compact" style="margin-top:4px; padding:10px 16px;">
         <h3 class="h3" style="font-size:15px; margin-bottom:2px;">この資料の方針</h3>
         <ul class="list" style="font-size:12.5px; line-height:1.7; margin:4px 0 0;">
           <li><b>対象</b>：主に介護・福祉分野の民間事業者（福祉施設・介護事業所等）。自治体・行政機関等は法の第5章で規律が異なるため参考情報にとどめます（<a href="#sec-scope">補足</a>）。</li>
@@ -650,7 +651,7 @@
   </section>
 
   <!-- ============ PAGE 9: Tier ABC ============ -->
-  <section class="page" id="sec-tiers" data-toc="tiers">
+  <section class="page" id="sec-tiers" data-toc="tiers" style="padding-top:10mm;">
     <div class="page-body">
       <div class="eyebrow">05　実名データの3段階</div>
       <h2 class="h2">Tier A / B / C — 右に行くほど要件が跳ね上がる</h2>
@@ -679,11 +680,12 @@
         </table>
       </div>
 
-      <h3 class="h3" style="margin-top:14px;">Tier Bで利用可能な選択肢／避けるべき選択肢</h3>
+      <h3 class="h3" style="margin-top:8px;">Tier Bで利用可能な選択肢／避けるべき選択肢</h3>
       <ul class="list">
         <li><b>Gemini in Workspace</b> — Workspace自体がISMAP登録済みで、Geminiアプリ・Gemini in Workspaceも対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup>。保存地域に日本はない<sup class="cite"><a href="#r19" title="出典一覧 [19] へ移動">[19]</a></sup>が、Tier Bでは許容</li>
         <li><b>Gemini Enterprise（Standard/Plus）</b> — 別製品（ISMAPも別登録）。契約の種類は契約書面で確認。日本で保存・ML処理を固定可（allowlist制）。日本非対応の機能は、管理者が警告を承認して有効化するとグローバル送信<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
         <li><b>Vertex AI（現Gemini Enterprise Agent Platform）のAPI</b> — ISMAP言明書上は「Vertex AI Platform」として対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。Tier Bなら全リージョン可</li>
+        <li><b>Gemini Notebook（旧NotebookLM）</b> — 個人版は不可、Workspace版・Enterprise版は条件つきで可（第13章 <span data-toc-target="notebookcmp"></span>）</li>
         <li class="stamp" style="list-style:none; margin-left:-1.3em; padding:4px 12px; background:#F7E6E4; border-radius:8px;">❌ <b>Google AI Studioの素のAPIキー</b>はNG。ISMAPリスト未登録。無料枠は入力が製品改善に使われ、有料でも一時保存・キャッシュが国を問わず行われうる<sup class="cite"><a href="#r13" title="出典一覧 [13] へ移動">[13]</a></sup></li>
       </ul>
 
@@ -1151,11 +1153,103 @@
         <div class="box accent">
           <h3 class="h3" style="font-size:15px;">どちらでも別に必要なこと</h3>
           <p style="font-size:12px; margin-top:4px;">法が求める場面での本人同意（法28条など）、3省2ガイドライン相当の組織的措置、DPA、ログ設計など、第10章（<span data-toc-target="checklist"></span>）の項目は技術とは別に必要です。推奨水準であり、法的保証ではありません。</p>
-          <p style="font-size:12px; margin-top:4px;"><b>未確認：</b>日本の約束が、基本機能の外の機能やNotebookにどこまで及ぶか。Notebookの機械学習処理の記載にGoogle文書内の食い違いがある。</p>
+          <p style="font-size:12px; margin-top:4px;"><b>未確認：</b>日本の約束が、基本機能の外の機能にどこまで及ぶか。Notebookの扱いは第13章（<span data-toc-target="notebookdetail"></span>）に整理しました（機械学習処理の記載にGoogle文書内の食い違いがあり、担当窓口への確認が必要）。</p>
         </div>
       </div>
     </div>
     <div class="page-footer"><span>12　Geminiの2つの入口（詳細）</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 13e: Gemini Notebookの3つの版（かんたん対照表） ============ -->
+  <section class="page" id="sec-notebookcmp" data-toc="notebookcmp" style="padding-top:10mm;">
+    <div class="page-body">
+      <div class="eyebrow">13　Gemini Notebook（旧NotebookLM）の3つの版（かんたん対照表）</div>
+      <h2 class="h2">同じ名前でも版で別物：Tier A / B / C のどこまで使えるか</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">資料を読み込ませて質問・要約できるGoogleのAIノートです。2026年にNotebookLMから「Gemini Notebook」へ改称（Enterprise版は7月16日）<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。<b>アカウントの種類</b>で規約・保存・人の目の扱いが変わります（2026年10月21日時点、本資料の推奨水準）。</p>
+
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-top:6px;">
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3" style="font-size:15px;">個人アカウント版</h3></div>
+          <div class="vrow n"><span class="lab" style="width:5.2em;">規約</span><span>Google利用規約<sup class="cite"><a href="#r39" title="出典一覧 [39] へ移動">[39]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:5.2em;">学習・人の目</span><span>フィードバックしない限り学習に使わない。<b>フィードバック時は、質問・資料・回答の全体を人が見うる</b><sup class="cite"><a href="#r40" title="出典一覧 [40] へ移動">[40]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:5.2em;">ISMAP</span><span>登録済みなのは法人契約の版（Workspace・Enterprise）</span></div>
+          <div class="vrow n"><span class="lab" style="width:5.2em;">保存地</span><span>選べない<sup class="cite"><a href="#r38" title="出典一覧 [38] へ移動">[38]</a></sup></span></div>
+          <div style="font-size:12px; font-weight:700; margin-top:6px; color:#1B3E7C;">使えるTier</div>
+          <div style="font-size:12.5px; line-height:1.9;"><span class="tag good">A</span> 匿名化した文章のみ　<span class="tag stamp">B 不可</span>　<span class="tag stamp">C 不可</span></div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3" style="font-size:15px;">Workspace版</h3></div>
+          <div class="vrow n"><span class="lab" style="width:5.2em;">規約</span><span>Google Cloud利用規約（文書により表記差あり）。DPAは契約書面で確認<sup class="cite"><a href="#r39" title="出典一覧 [39] へ移動">[39]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:5.2em;">学習・人の目</span><span>内容は<b>人のレビューなし・学習に使わない</b>（フィードバック時も）。<b>コアサービスの版のみ</b>。Business Base等は個人版と同じ<sup class="cite"><a href="#r39" title="出典一覧 [39] へ移動">[39]</a></sup><sup class="cite"><a href="#r40" title="出典一覧 [40] へ移動">[40]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:5.2em;">ISMAP</span><span>Workspace（C21-0005-2）の開示書に「NotebookLM」の記載あり。基盤のVertex AIはWorkspace言明の対象外と併記<sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup></span></div>
+          <div class="vrow ng"><span class="lab" style="width:5.2em;">保存地</span><span><b>データリージョン機能の対象外</b>。日本に固定できない<sup class="cite"><a href="#r41" title="出典一覧 [41] へ移動">[41]</a></sup></span></div>
+          <div style="font-size:12px; font-weight:700; margin-top:6px; color:#1B3E7C;">使えるTier</div>
+          <div style="font-size:12.5px; line-height:1.9;"><span class="tag good">A</span>　<span class="tag warn">B 条件つき</span>　<span class="tag stamp">C 不可</span></div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3" style="font-size:15px;">Enterprise版</h3></div>
+          <div class="vrow n"><span class="lab" style="width:5.2em;">規約</span><span>Google Cloud利用規約。単体購入、またはGemini Enterpriseの一部<sup class="cite"><a href="#r38" title="出典一覧 [38] へ移動">[38]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:5.2em;">管理</span><span>自社のGoogle Cloudプロジェクト内で管理。外部への共有不可、暗号鍵の自社管理（CMEK）、監査ログなど<sup class="cite"><a href="#r38" title="出典一覧 [38] へ移動">[38]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:5.2em;">ISMAP</span><span>あり（C26-0114-2。登録名にNotebookを含む）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></span></div>
+          <div class="vrow ok"><span class="lab" style="width:5.2em;">保存地</span><span>日本を指定可（allowlist）。<b>基本機能のみ</b>（次頁）<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></span></div>
+          <div style="font-size:12px; font-weight:700; margin-top:6px; color:#1B3E7C;">使えるTier</div>
+          <div style="font-size:12.5px; line-height:1.9;"><span class="tag good">A</span>　<span class="tag good">B</span>　<span class="tag warn">C 条件つき</span></div>
+        </div>
+      </div>
+
+      <div class="box accent" style="margin-top:8px; padding:9px 14px;">
+        <h3 class="h3" style="font-size:14px; margin-bottom:2px;">Tier別の考え方</h3>
+        <ul class="list" style="font-size:12px; margin:2px 0 0;">
+          <li><b>Tier A（匿名化済み）：</b>どの版でも可。ただし個人アカウントに職場の資料を入れない運用ルールが前提。</li>
+          <li><b>Tier B（通常の個人情報・実名）：</b>Workspace版かEnterprise版。個人アカウントは不可。Workspace版は、自組織の契約でCloud利用規約とDPAが適用されることを確認する。どの版でも、法28条の同意・組織的措置・ログ設計は別に必要（第10章）。法的保証ではありません。</li>
+          <li><b>Tier C（要配慮個人情報・実名）：</b>Workspace版は日本に固定できないため不可。Enterprise版が条件つきで候補（次頁）。同意・組織的措置は別に必要。Business版の扱いと価格は、公式で確認できず未記載。</li>
+        </ul>
+      </div>
+    </div>
+    <div class="page-footer"><span>13　Gemini Notebookの3つの版</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 13f: Gemini Notebookの3つの版（根拠と条件の詳細） ============ -->
+  <section class="page" id="sec-notebookdetail" data-toc="notebookdetail" style="padding-top:10mm;">
+    <div class="page-body">
+      <div class="eyebrow">13　Gemini Notebookの3つの版（根拠と条件の詳細）</div>
+      <h2 class="h2">Tier Cで使うなら：Enterprise版の「日本で使える範囲」と、残る未確認</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">前頁（<span data-toc-target="notebookcmp"></span>）のEnterprise版を、日本（asia-northeast1）を指定した場合で整理します。日本の利用は「GA with allowlist」で、Googleの担当窓口への問い合わせが必要です<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。</p>
+
+      <div class="tbl-wrap" style="margin:6px 0 4px;">
+        <table style="font-size:11.5px;">
+          <thead><tr><th style="width:24%;">機能</th><th style="width:34%;">日本での保存とAI処理</th><th>判断（推奨水準）</th></tr></thead>
+          <tbody>
+            <tr><td><b>基本機能</b><br>資料の追加、質問・チャット、要約</td><td>保存（at-rest DRZ）：対応。AI処理（MLP）：表では対応<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td><span class="tag warn">条件つきで可</span> 食い違い①②（下）の両方を書面で確認した後</td></tr>
+            <tr><td><b>Content Studio</b><br>音声解説・スライド・インフォグラフィック・動画解説</td><td>日本（国内リージョン）では<b>提供されない</b>。米国・EUでは保存は対応、AI処理は非対応<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td><span class="tag stamp">使えない</span> 日本で完結させる前提では対象外</td></tr>
+            <tr><td><b>Discover Sources</b><br>Web上の情報源の自動探索</td><td>全ての場所で保存・AI処理とも<b>対応外</b>。Google検索による裏づけ機能で、顧客データを一時的に記録<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup></td><td><span class="tag stamp">使わない</span> 実名の資料を扱う環境では無効に</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cols2" style="margin-top:6px;">
+        <div class="box stamp">
+          <h3 class="h3" style="font-size:15px;">誤解されやすい点</h3>
+          <ul class="list" style="font-size:12px; margin:4px 0 0;">
+            <li><b>「学習に使われない＝実名の要配慮情報を入れてよい」ではありません。</b>学習・人の目、保存・処理地、同意・組織的措置は別の判断軸です（第1章）。</li>
+            <li><b>Workspaceの日本データリージョン設定は、Gemini Notebookには効きません。</b>組織部門に設定しても対象外と明記され、Geminiアプリ等とは扱いが違います<sup class="cite"><a href="#r41" title="出典一覧 [41] へ移動">[41]</a></sup>。</li>
+            <li><b>「ISMAP登録済み」もEnterprise版とWorkspace版で別です。</b>登録番号が違い、日本固定の可否も違います（第4章）。</li>
+            <li><b>トライアルの「オン」＝契約済み、ではありません。</b>利用には専用の権限付与も必要です<sup class="cite"><a href="#r38" title="出典一覧 [38] へ移動">[38]</a></sup>。</li>
+          </ul>
+        </div>
+        <div class="box accent">
+          <h3 class="h3" style="font-size:15px;">未確認（Google文書内の食い違い）</h3>
+          <ul class="list" style="font-size:12px; margin:4px 0 0;">
+            <li><b>①AI処理（MLP）：</b>同じ文書の注記は「MLPは米国・EUの基本機能のみ、国内リージョンは非対応」、表は「日本の基本機能で対応」<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。</li>
+            <li><b>②保存先：</b>概要ページは「データは自分のプロジェクトの米国またはEUのマルチリージョンに保存」と記載<sup class="cite"><a href="#r38" title="出典一覧 [38] へ移動">[38]</a></sup>。日本の対応表との関係が明記されていません。</li>
+          </ul>
+          <p style="font-size:12px; margin-top:4px;"><b>対応：</b>Tier Cで使う前に担当窓口へ書面で確認し、回答を保管。確認できるまでは実名資料を入れない運用が安全です。</p>
+        </div>
+      </div>
+
+      <div class="vband" style="margin-top:6px; align-items:flex-start;"><span class="tag accent" style="flex:none;">使い分けの例</span><span style="font-size:12px;">議事録など通常の個人情報はWorkspace版。ケース記録など要配慮情報は、第7章の構成か、条件を満たしたEnterprise版の基本機能に限る。個人アカウントでは職場の資料を扱わない。</span></div>
+    </div>
+    <div class="page-footer"><span>13　Gemini Notebookの3つの版（詳細）</span><span class="pn"></span></div>
   </section>
 
   <!-- ============ PAGE 14: 出典一覧 ============ -->
@@ -1257,9 +1351,28 @@
         </div>
       </div>
 
-      <p style="margin-top:20px; font-size:var(--fs-caption); color:#5A6B84; border-top:1px solid #E4E8EE; padding-top:12px;">本資料は2026年10月18日時点で確認できた公式一次情報に基づく技術的整理です。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。</p>
     </div>
     <div class="page-footer"><span>出典一覧（続き）</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 14c: 出典一覧（続き2：Gemini Notebook） ============ -->
+  <section class="page" id="sec-refs3">
+    <div class="page-body">
+      <div class="eyebrow">出典一覧（続き2）</div>
+      <h2 class="h2" style="font-size:24px;">追補：Gemini Notebook（第13章）</h2>
+      <p style="margin-top:8px; font-size:var(--fs-small);">第13章のために2026年10月21日に確認した公式情報です（番号は前頁と通し）。第13章では、既存の[5][14][17]も同日に該当箇所を再照合しています。</p>
+      <div style="margin-top:10px;">
+          <div class="refs-cat">Gemini Notebook（2026年10月21日確認）</div>
+          <ul class="refs">
+            <li id="r38"><span class="refnum">38.</span> What is Gemini Notebook Enterprise?｜Google Cloud — <a href="https://docs.cloud.google.com/gemini/enterprise/notebooklm-enterprise/docs/overview" target="_blank" rel="noopener noreferrer">…/notebooklm-enterprise/docs/overview</a></li>
+            <li id="r39"><span class="refnum">39.</span> Gemini Notebook ヘルプ（職場・学校アカウントの利用、プライバシー）｜Google — <a href="https://support.google.com/notebooklm/answer/16337734" target="_blank" rel="noopener noreferrer">support.google.com/notebooklm/answer/16337734</a> ／ <a href="https://support.google.com/gemininotebook/answer/16164461" target="_blank" rel="noopener noreferrer">…/gemininotebook/answer/16164461</a></li>
+            <li id="r40"><span class="refnum">40.</span> What happens when you send feedback（Gemini Notebook）｜Google — <a href="https://support.google.com/notebooklm/answer/17004255" target="_blank" rel="noopener noreferrer">support.google.com/notebooklm/answer/17004255</a></li>
+            <li id="r41"><span class="refnum">41.</span> Google Workspace Data Regions（対象サービス）｜Google Workspace公式 — <a href="https://knowledge.workspace.google.com/admin/compliance/data-covered-by-data-regions" target="_blank" rel="noopener noreferrer">knowledge.workspace.google.com/…/data-covered-by-data-regions</a></li>
+          </ul>
+      </div>
+      <p style="margin-top:14px; font-size:var(--fs-caption); color:#5A6B84; border-top:1px solid #E4E8EE; padding-top:12px;">本資料は2026年10月18日時点（第13章のみ10月21日時点）で確認できた公式一次情報に基づく技術的整理です。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。</p>
+    </div>
+    <div class="page-footer"><span>出典一覧（続き2）</span><span class="pn"></span></div>
   </section>
 
 </div>
