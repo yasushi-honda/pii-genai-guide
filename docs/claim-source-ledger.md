@@ -672,6 +672,7 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 | W2 | 現在のヘルプでも、コアサービスの版のユーザーは「Your chats and uploaded files in Gemini Apps won't be reviewed by human reviewers or otherwise used to improve generative AI models」。該当しない版のユーザーはGoogle利用規約とGemini Apps Privacy Noticeの対象で、「chats may be reviewed by human reviewers and used to improve Google's products」 | 「Turn the Gemini App on or off」（Updated as of 2026-10-20、生HTMLで確認）の版別表と注記 | 確認済 |
 | W3 | Privacy Hubは、組織のコンテンツについて「not human reviewed or otherwise used for Generative AI model training outside your domain without permission」と記載し、Cloud Data Processing Addendumが適用されると記載。Geminiアプリのコアサービスは既定でオン、管理者が無効化できる | 「Generative AI in Google Workspace Privacy Hub」（Last updated 2026-10-06、生HTMLで確認） | 確認済 |
 | W4 | 版の違い：Geminiアプリは「コアサービス」の版が対象で、Business Base等は対象外。個人（@gmail.com）アカウントは対象外で、人のレビュー・学習利用がありうる | W2の「qualifying Google Workspace edition」の注記。Business Base等の扱いはN18（Notebook）と同じ区分と読めるが、Geminiアプリ側の版別表の列は表の並びの読み取り | 一部確認（Notebookの区分との対応は読み取り） |
+| W6 | NonprofitsはBusiness／Enterprise／Frontline／Essentials系と同じ表に並び、Geminiアプリはコアサービス。規約はGoogle Workspace Terms of Service（または個別契約）で、人のレビューなし・ドメイン外の学習に許可なく使わない。Educationの対象版（表ではEducation Fundamentals／Standard／Plus）もコアサービスで、規約はWorkspace for Education Terms of Service（または個別契約）、データの扱いは同じ文言。年齢を問わず利用でき、一部機能は年齢で制限される。発表時（2024-10）の新規Education顧客の既定は、小中高（K12）がオフ、高等教育がオン | 「Turn the Gemini App on or off」（Updated as of 2026-10-20）の版別表・Education editionsの記載、Google Workspace Updates 2024-10の既定設定の記載。いずれも生HTMLで確認 | 確認済（規約の名称と文言）。既定のオン/オフは発表時点の新規顧客の記載で、現在値は未確認 |
 | W5 | コアサービスの保護があっても、保存・処理場所は日本に固定できない（G3・G4）。ISMAPはWorkspace（C21-0005-2）の登録で、Gemini Enterprise（C26-0114-2）とは別（I7）。このため、Tier Cの扱いは本文の整理（Workspace版は不可）のまま | G3、G4、I7 | 確認済（既存行の再掲） |
 
 ### 外部回答との照合（2026-10-29）
@@ -684,6 +685,7 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 ### 確認できていない点
 - 発表（2024-10）後の版の追加・変更の全履歴。W2の版別表は2026-10-20時点の表の並びの読み取り。
 - Geminiアプリのフィードバック送信時の人のレビューの扱いは、Privacy Hubの記載（学習には使わない）まで。人のレビューの有無は未確認。
+- Nonprofits・Educationを、本資料のTier（介護・福祉の民間事業者向け）にそのまま当てはめた整理はしていない（W6は規約と文言の確認まで）。Education系の「qualifying edition」の範囲は、表に並ぶ版以外は未確認。
 - Sensitive Data Protection・Model Armorの仕様と日本語の検出精度は、本節では確認していない。
 - 本節は法的助言ではない。
 
