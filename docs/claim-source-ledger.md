@@ -732,7 +732,7 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 
 | # | 主張 | 根拠 | 区分 |
 |---|---|---|---|
-| V1 | Gemini EnterpriseはGoogle Workspaceのサブスクリプションに含まれない。使うにはGemini Enterpriseのライセンスの購入が要る。Business版は営業担当・パートナー経由、すべての版は直接申込みでも購入できる | 「Turn Gemini Enterprise on or off for users」（Last updated 2026-10-26、原文：「Gemini Enterprise isn't included with your Google Workspace subscription. To use Gemini Enterprise, you must purchase Gemini Enterprise licenses.」）。Business StandardがWorkspaceのどの区分でも同様 | 確認済 |
+| V1 | Gemini EnterpriseはGoogle Workspaceのサブスクリプションに含まれない。使うにはGemini Enterpriseのライセンスの購入が要る。Business版は営業担当・パートナー経由、すべての版は直接申込みでも購入できる | 「Turn Gemini Enterprise on or off for users」（Last updated 2026-10-26、原文：「Gemini Enterprise isn't included with your Google Workspace subscription. To use Gemini Enterprise, you must purchase Gemini Enterprise licenses.」）。ヘルプはWorkspaceの版を区別せず「your Google Workspace subscription」について述べており、Business Standardを名指しした記載ではない（版を区別しない記述からの読み取り） | 確認済 |
 | V2 | WorkspaceのBusiness／Enterprise各版には、Geminiの機能（Gmail・Docs等のサイドパネル、Help me writeなど）が、版に応じて**サブスクリプションに含まれる**。これは別製品のGemini Enterpriseとは別（2025年1月から。従来のGeminiアドオン（Gemini Business–Legacy、Gemini Enterprise–Legacy等）は新規購入不可） | 「Gemini AI features now included in Google Workspace subscriptions」（Last updated 2026-10-26）。含まれる機能は版で異なる | 確認済（含まれる機能の個別一覧は未確認） |
 | V3 | 「Gemini Enterprise–Legacy」「Gemini Business–Legacy」は、旧アドオンの名称で、現在のGemini Enterprise（Business／Standard／Plus版）とは別。名前が似ているため混同しやすい | V2と同じヘルプ（アドオンの名称）、本文第12章のH2・H3 | 確認済（名称の事実）／混同の指摘は本資料の整理 |
 
