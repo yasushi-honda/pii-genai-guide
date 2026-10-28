@@ -268,7 +268,7 @@
       <p class="lede" style="font-size:var(--fs-cover-sub); margin-top:14px; max-width:46em;">個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成 — 2026年10月時点の公式一次情報を根拠に組み立て直す実務資料（筆者の検証値は<span class="mono">[†]</span>で明示）</p>
 
       <div class="cover-tags">
-        <span class="tag accent">最終確認 2026-10-21</span>
+        <span class="tag accent">最終確認 2026-10-21（第14章は10-29）</span>
         <span class="tag accent">一次情報ベース・出典51件</span>
         <span class="tag accent">対象：主に介護・福祉分野の民間事業者（医療は別枠、行政機関等は別途確認）</span>
         <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
@@ -349,7 +349,7 @@
         <ul class="list" style="font-size:12.5px; line-height:1.7; margin:4px 0 0;">
           <li><b>対象</b>：主に介護・福祉分野の民間事業者（福祉施設・介護事業所等）。自治体・行政機関等は法の第5章で規律が異なるため参考情報にとどめます（<a href="#sec-scope">補足</a>）。</li>
           <li><b>医療情報</b>：医療機関等が関与する情報は別枠で、医療情報ガイドラインの要件が加わります。要点のみ示し、網羅はしません（<a href="#sec-scope">補足</a>）。</li>
-          <li><b>位置づけ</b>：2026年10月21日時点の公式一次情報に基づく整理と推奨水準です。法令の最低要件とは区別して示し、法的助言ではありません。福祉分野の個別法の守秘義務は範囲外です。運用前に専門家へ確認してください。</li>
+          <li><b>位置づけ</b>：2026年10月21日（第14章は10月29日）時点の公式一次情報に基づく整理と推奨水準です。法令の最低要件とは区別して示し、法的助言ではありません。福祉分野の個別法の守秘義務は範囲外です。運用前に専門家へ確認してください。</li>
         </ul>
       </div>
     </div>
@@ -683,7 +683,7 @@
 
       <h3 class="h3" style="margin-top:8px;">Tier Bで利用可能な選択肢／避けるべき選択肢</h3>
       <ul class="list">
-        <li><b>Gemini in Workspace</b> — Workspace自体がISMAP登録済みで、Geminiアプリ・Gemini in Workspaceも対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup>。保存地域に日本はない<sup class="cite"><a href="#r19" title="出典一覧 [19] へ移動">[19]</a></sup>が、Tier Bでは許容（版別の整理は第14章 <span data-toc-target="workspacedetail"></span>）</li>
+        <li><b>Gemini in Workspace</b> — Workspace自体がISMAP登録済みで、Geminiアプリ・Gemini in Workspaceも対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup>。保存地域に日本はない<sup class="cite"><a href="#r19" title="出典一覧 [19] へ移動">[19]</a></sup>が、Tier Bでは、コアサービスの版に限り条件つきで許容（版別の整理は第14章 <span data-toc-target="workspacedetail"></span>）</li>
         <li><b>Gemini Enterprise（Standard/Plus）</b> — 別製品（ISMAPも別登録）。契約の種類は契約書面で確認。日本で保存・ML処理を固定可（allowlist制）。日本非対応の機能は、管理者が警告を承認して有効化するとグローバル送信<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
         <li><b>Vertex AI（現Gemini Enterprise Agent Platform）のAPI</b> — ISMAP言明書上は「Vertex AI Platform」として対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。Tier Bなら全リージョン可</li>
         <li><b>Gemini Notebook（旧NotebookLM）</b> — 個人版は不可、Workspace版・Enterprise版は条件つきで可（第13章 <span data-toc-target="notebookcmp"></span>）</li>
@@ -1308,12 +1308,12 @@
     <div class="page-body">
       <div class="eyebrow">14　Google WorkspaceのGemini（かんたん対照表）</div>
       <h2 class="h2">「Workspaceに入っているGemini」と「Gemini Enterprise」は別物です</h2>
-      <p style="margin-top:6px; font-size:var(--fs-small);">2026年10月29日時点。Geminiアプリ（チャット）やGmail・Docsなどで使えるGeminiは、Workspaceの契約に含まれます。Gemini Enterpriseはこの契約に含まれず、別にライセンスの購入が必要です<sup class="cite"><a href="#r50" title="出典一覧 [50] へ移動">[50]</a></sup>。</p>
+      <p style="margin-top:6px; font-size:var(--fs-small);">2026年10月29日時点。Geminiアプリ（チャット）やGmail・Docsなどで使えるGeminiは、Workspaceの契約に含まれます<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup><sup class="cite"><a href="#r51" title="出典一覧 [51] へ移動">[51]</a></sup>。Gemini Enterpriseはこの契約に含まれず、別にライセンスの購入が必要です<sup class="cite"><a href="#r50" title="出典一覧 [50] へ移動">[50]</a></sup>。</p>
 
       <div class="cols2" style="margin-top:4px;">
         <div class="vcard">
           <div class="vcard-head"><h3 class="h3">Workspaceに含まれるGemini</h3><div class="tags"><span class="tag accent">Geminiアプリ・Gmail・Docs等</span></div></div>
-          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>Workspaceの契約で使えるGemini。チャット（Geminiアプリ）と、Gmail・Docs等のサイドパネルなど。含まれる機能は版で異なる<sup class="cite"><a href="#r51" title="出典一覧 [51] へ移動">[51]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>Workspaceの契約で使えるGemini。チャット（Geminiアプリ）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup>と、Gmail・Docs等のサイドパネルなど。含まれる機能は版で異なる<sup class="cite"><a href="#r51" title="出典一覧 [51] へ移動">[51]</a></sup></span></div>
           <div class="vrow n"><span class="lab" style="width:6.4em;">ISMAP登録</span><span>Workspace（C21-0005-2）の登録<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></span></div>
           <p class="model" style="margin:6px 0 1px; font-size:12px;">実名の通常の個人情報を入れてよいか（本資料の推奨水準）</p>
           <div style="font-size:12.5px; line-height:1.6;"><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span>　<b>コアサービスの版</b>に限る（次頁）</div>
@@ -1366,9 +1366,10 @@
         <table style="font-size:10.5px;">
           <thead><tr><th style="width:26%;">区分</th><th style="width:17%;">規約</th><th style="width:37%;">学習・人のレビュー</th><th>使えるTier</th></tr></thead>
           <tbody>
-            <tr><td><b>コアサービス</b>（Business Starter／Standard／Plus、Enterprise各版、Frontline、Essentials系、Nonprofits）</td><td>Google Workspace利用規約（または個別契約）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td>人のレビューなし。ドメイン外の生成AIの学習に許可なく使わない<sup class="cite"><a href="#r48" title="出典一覧 [48] へ移動">[48]</a></sup><sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+            <tr><td><b>コアサービス</b>（Business Starter／Standard／Plus、Enterprise各版、Frontline、Essentials系）</td><td>Google Workspace利用規約（または個別契約）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td>人のレビューなし。ドメイン外の生成AIの学習に許可なく使わない<sup class="cite"><a href="#r48" title="出典一覧 [48] へ移動">[48]</a></sup><sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+            <tr><td><b>Nonprofits</b></td><td>Google Workspace利用規約（または個別契約）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td>コアサービスと同じ文言（人のレビューなし・学習に使わない）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td><span class="tag good">A</span> <span class="tag gray">B・C 未整理</span></td></tr>
             <tr><td><b>Education</b>（Education Fundamentals／Standard／Plus）</td><td>Workspace for Education利用規約（または個別契約）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td>同じ文言（人のレビューなし・学習に使わない）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td><span class="tag good">A</span> <span class="tag gray">B・C 未整理</span></td></tr>
-            <tr><td><b>Workspaceの「追加サービス」扱い</b>（Business Base、Essentials Starter、Workspace Individual、G Suite、Cloud Identity等）</td><td>Google利用規約<sup class="cite"><a href="#r39" title="出典一覧 [39] へ移動">[39]</a></sup></td><td>個人版と同じ。エンタープライズ級の保護の記載なし<sup class="cite"><a href="#r39" title="出典一覧 [39] へ移動">[39]</a></sup></td><td><span class="tag good">A</span> のみ</td></tr>
+            <tr><td><b>Workspaceの「追加サービス」扱い</b>（Business Base、Essentials Starter、Workspace Individual、G Suite、Cloud Identity等）</td><td>Google利用規約<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td>Notebookの版別表と同じ区分と読める（個人版と同じ。エンタープライズ級の保護の記載なし）<sup class="cite"><a href="#r39" title="出典一覧 [39] へ移動">[39]</a></sup></td><td><span class="tag good">A</span> のみ（読み取り）</td></tr>
             <tr><td><b>個人アカウント</b>（@gmail.com等）</td><td>Google利用規約、Gemini Apps Privacy Notice<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td>チャットを人がレビューし、製品改善に使うことがある<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td><span class="tag good">A</span> のみ</td></tr>
           </tbody>
         </table>
@@ -1526,13 +1527,13 @@
           </ul>
           <div class="refs-cat" style="margin-top:0; margin-bottom:4px;">Google Workspace（2026年10月29日確認）</div>
           <ul class="refs">
-            <li id="r48"><span class="refnum">48.</span> The Gemini app is now a core service with enterprise-grade data protection for more Google Workspace editions（2024年10月）｜Google Workspace Updates — <a href="https://workspaceupdates.googleblog.com/2024/10/gemini-app-enterprise-data-protection-core-service-expansion.html" target="_blank" rel="noopener noreferrer">workspaceupdates.googleblog.com/…</a></li>
-            <li id="r49"><span class="refnum">49.</span> Turn the Gemini App on or off（版別のデータの扱い・規約）｜Google Workspace Help — <a href="https://support.google.com/a/answer/14571493" target="_blank" rel="noopener noreferrer">support.google.com/a/answer/14571493</a></li>
-            <li id="r50"><span class="refnum">50.</span> Turn Gemini Enterprise on or off for users（Workspaceの契約に含まれない旨）｜Google Workspace Help — <a href="https://knowledge.workspace.google.com/admin/generative-ai/gemini-enterprise/turn-gemini-enterprise-on-or-off-for-users" target="_blank" rel="noopener noreferrer">knowledge.workspace.google.com/…（Gemini Enterprise）</a></li>
-            <li id="r51"><span class="refnum">51.</span> Gemini AI features now included in Google Workspace subscriptions（Workspaceに含まれるGemini機能・旧アドオン）｜Google Workspace Help — <a href="https://knowledge.workspace.google.com/admin/generative-ai/workspace-with-gemini/gemini-ai-features-now-included-in-google-workspace-subscriptions" target="_blank" rel="noopener noreferrer">knowledge.workspace.google.com/…（含まれる機能）</a></li>
+            <li id="r48"><span class="refnum">48.</span> Gemini app is now a core service with enterprise-grade data protection（2024年10月）｜Workspace Updates — <a href="https://workspaceupdates.googleblog.com/2024/10/gemini-app-enterprise-data-protection-core-service-expansion.html" target="_blank" rel="noopener noreferrer">workspaceupdates.googleblog.com/…</a></li>
+            <li id="r49"><span class="refnum">49.</span> Turn the Gemini App on or off（版別の扱い・規約）｜Workspace Help — <a href="https://support.google.com/a/answer/14571493" target="_blank" rel="noopener noreferrer">support.google.com/a/answer/14571493</a></li>
+            <li id="r50"><span class="refnum">50.</span> Turn Gemini Enterprise on or off for users｜Workspace Help — <a href="https://knowledge.workspace.google.com/admin/generative-ai/gemini-enterprise/turn-gemini-enterprise-on-or-off-for-users" target="_blank" rel="noopener noreferrer">knowledge.workspace.google.com/…（Gemini Enterprise）</a></li>
+            <li id="r51"><span class="refnum">51.</span> Gemini AI features now included in Workspace subscriptions｜Workspace Help — <a href="https://knowledge.workspace.google.com/admin/generative-ai/workspace-with-gemini/gemini-ai-features-now-included-in-google-workspace-subscriptions" target="_blank" rel="noopener noreferrer">knowledge.workspace.google.com/…（含まれる機能）</a></li>
           </ul>
       </div>
-      <p style="margin-top:14px; font-size:var(--fs-caption); color:#5A6B84; border-top:1px solid #E4E8EE; padding-top:12px;">本資料は2026年10月21日時点で確認できた公式一次情報に基づく技術的整理です。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。</p>
+      <p style="margin-top:8px; font-size:var(--fs-caption); color:#5A6B84; border-top:1px solid #E4E8EE; padding-top:8px;">本資料は2026年10月21日（第14章は10/29）時点で確認できた公式一次情報に基づく技術的整理です。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。</p>
     </div>
     <div class="page-footer"><span>出典一覧（続き2）</span><span class="pn"></span></div>
   </section>
