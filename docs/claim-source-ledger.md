@@ -1,6 +1,6 @@
 # 主張と出典の対応表（検証台帳）
 
-対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全27ページ、最終確認 2026-10-21。保管先と外国の制度の周知の整理は§20（2026-10-28）、医療・介護ガイダンスの原文確認と責任分界の整理は§19（2026-10-28）、Google Cloudの規約更新（AIエージェント）は§18（2026-10-28）、全行の再確認は§17（2026-10-21）、前回の全行再確認は§13（2026-10-18）、時間経過項目の追加確認は§12、第13章（Gemini Notebook）は§16）
+対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全29ページ（第14章はWorkspaceのGeminiで§21〜§23を根拠とする）、最終確認 2026-10-21（第14章は2026-10-29）。保管先と外国の制度の周知の整理は§20（2026-10-28）、医療・介護ガイダンスの原文確認と責任分界の整理は§19（2026-10-28）、Google Cloudの規約更新（AIエージェント）は§18（2026-10-28）、全行の再確認は§17（2026-10-21）、前回の全行再確認は§13（2026-10-18）、時間経過項目の追加確認は§12、第13章（Gemini Notebook）は§16）
 
 目的: 資料中の主要な主張が、どの一次情報のどの箇所に基づくかを一覧化し、行政・法務担当者が追跡できるようにする。
 
@@ -701,8 +701,8 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 
 | # | 区分 | 対象の版 | Tier B | 根拠 | 区分（台帳） |
 |---|---|---|---|---|---|
-| T1 | コアサービス | Business Starter／Standard／Plus、Enterprise各版、Frontline、Essentials系、Nonprofits | 条件つきで可（22-2の確認が前提） | W1〜W3、W6、本文p.21 | 確認済（データの扱い）／推奨水準（Tierの線引き） |
-| T2 | コアサービス（Education） | Education Fundamentals／Standard／Plus（規約はWorkspace for Education） | 規約の確認が前提。介護・福祉のTierへの当てはめは未整理 | W6 | 一部確認 |
+| T1 | コアサービス | Business Starter／Standard／Plus、Enterprise各版、Frontline、Essentials系 | 条件つきで可（22-2の確認が前提） | W1〜W3、W6、本文p.21 | 確認済（データの扱い）／推奨水準（Tierの線引き） |
+| T2 | コアサービス（Education・Nonprofits） | Education Fundamentals／Standard／Plus（規約はWorkspace for Education）、Nonprofits（規約はWorkspace利用規約） | 規約の確認が前提。介護・福祉のTierへの当てはめは未整理 | W6 | 一部確認 |
 | T3 | 追加サービス扱い | Business Base、Essentials Starter、Workspace Individual、G Suite、Cloud Identity等 | 不可（Aのみ） | W4、N18（Notebookの版別表） | 一部確認（Geminiアプリ側の版別表の列は表の並びの読み取り） |
 | T4 | 個人アカウント | @gmail.com等 | 不可 | W2 | 確認済 |
 | T5 | Tier C（要配慮個人情報・実名） | どの版でも | 不可（保存・処理場所を日本に固定できない） | G3、G4、本文p.21 | 確認済（事実）／推奨水準（Tierの線引き） |
