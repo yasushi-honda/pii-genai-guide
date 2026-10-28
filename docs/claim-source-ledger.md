@@ -746,3 +746,33 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 - 本節は法的助言ではない。
 
 出典: knowledge.workspace.google.com/admin/generative-ai/gemini-enterprise/turn-gemini-enterprise-on-or-off-for-users、knowledge.workspace.google.com/admin/generative-ai/workspace-with-gemini/gemini-ai-features-now-included-in-google-workspace-subscriptions。
+
+---
+
+## 24. Sensitive Data Protection・Model Armorの仕様と、マスキングによる「100%」の可否（2026-10-29）
+
+契機: 外部の検索AIの回答（「Sensitive Data Protection＋Vertex AIなら法律を100%クリアでき、マスキング不要。日本の氏名・住所・電話番号を標準で検出し、Model Armorが内部でSDPを呼び出して一元管理できる」）の事実確認。Google Cloudの公式ドキュメントを生HTMLで取得して確認した（curlで取得し、本文をgrepで確認。3件とも Last updated 2026-10-26）。本資料の本文（`public/index.html`）は変更していない。
+
+| # | 主張 | 根拠 | 区分 |
+|---|---|---|---|
+| P1 | 組み込みのinfoType検出器は、完全に正確な検出方法ではなく、規制への適合を保証できない。何が機微かの判断と、設定が要件を満たすかのテストは利用者の責任 | 「InfoTypes and infoType detectors」の注記（原文：「Built-in infoType detectors are not a perfectly accurate detection method. For example, they can't guarantee compliance with regulatory requirements. You must decide what data is sensitive and how to best protect it. Google recommends that you test your settings to make sure that your configuration meets your requirements.」） | 確認済 |
+| P2 | 日本固有のinfoTypeは5つ：JAPAN_CORPORATE_NUMBER（法人番号）、JAPAN_DRIVERS_LICENSE_NUMBER、JAPAN_BANK_ACCOUNT、JAPAN_INDIVIDUAL_NUMBER（マイナンバー）、JAPAN_PASSPORT。氏名（PERSON_NAME）は「GLOBAL」で日本固有ではなく、住所（STREET_ADDRESS・LOCATION）も日本固有の検出器は一覧にない。PERSON_NAME・STREET_ADDRESS・LOCATIONには「遅延に敏感な処理には非推奨」の注記がある | 「InfoType detector reference」（Last updated 2026-10-26）の一覧とLocation列。「JAPAN」を含む行をgrepで抽出 | 確認済（一覧にないことは、上記の語での検索の範囲） |
+| P3 | 国固有のinfoTypeは英語とその国の言語に対応し、グローバルのinfoTypeの多くは複数の言語で動く（日本語の氏名・住所の検出精度の数値は、公式ドキュメントに記載がない） | 「InfoTypes and infoType detectors」の「Language support」（原文：「Country-specific infoTypes support the English language and the respective country's languages. Most global infoTypes work with multiple languages.」） | 確認済（記載）／精度は未確認 |
+| P4 | Model ArmorのSDPフィルタの基本設定は、限られたinfoTypes（主に米国向け）を検査するのみ（検査のみ、テンプレート不可）。必要なinfoTypesはadvancedのSDPテンプレートで設定する。SDPフィルタの対応言語は「英語と、選んだinfoTypesに応じた他の言語」で、日本語の記載があるのは、責任あるAIとプロンプトインジェクション検出のフィルタ（品質は言語で変わりうる） | 「Model Armor overview」（原文：「basic Sensitive Data Protection provides limited infotypes, mainly addressed to the US region」「Language support」の節） | 確認済 |
+| P5 | Gemini EnterpriseとModel Armorの連携では、Model ArmorはSDPテンプレートで検出しても、匿名化・マスク済みのデータをGemini Enterpriseへ返さない。検出して強制方式がINSPECT_AND_BLOCKなら、Gemini Enterpriseは匿名化せずリクエスト・レスポンスをブロックする | 「Integrate Model Armor with Gemini Enterprise」の「De-identification and masking」（原文：「Model Armor doesn't pass de-identified or masked data back to Gemini Enterprise.」） | 確認済（Gemini Enterprise連携の範囲） |
+
+### 外部回答との照合（2026-10-29）
+- 「法律（個人情報保護法）を100%クリアできる」：P1と反する（公式が、規制適合を保証できず、検出は完全に正確ではないと明記）。法28条の整理も別（本表§2のX1・X2・X7）。**誤り**。
+- 「マスキング不要」「ヒューマンエラーがゼロ」：P1と反する。検出の取りこぼしがありうるため、マスキングの要否は「検出器で置き換えられる」とは言えない。**誤り**。
+- 「日本の氏名・住所・電話番号に標準対応」：日本固有のinfoTypeは5つで、氏名・住所に日本固有のものは一覧にない（P2）。電話番号（PHONE_NUMBER）は本節では確認していない。日本語の氏名・住所の検出精度の記載もない（P3）。**根拠なし（一部誤り）**。
+- 「Model Armorは内部でSDPを呼び出せる」：SDPフィルタがあることは確認済み（P4）。ただし基本設定は限定的で、Gemini Enterprise連携ではマスク結果を返さない（P5）。**一部合致、ただし「マスキングして渡せる」とは言えない**。
+- 「逆マスキング（[NAME_1]を元に戻す）」：本節では確認していない。SDPの匿名化機能にそうした方式（可逆の仮名化）があるかは、別途確認が必要。
+
+### 確認できていない点
+- 日本語の氏名・住所・電話番号の検出精度（再現率・適合率）は、公式ドキュメントに記載がなく、本節でも測定していない。
+- Vertex AI（Gemini Enterprise Agent Platform）のAPIをModel Armorで直接保護する場合の、匿名化結果の扱い（Gemini Enterprise連携以外）。
+- 可逆の仮名化（トークン化・暗号化）の方式と、鍵の管理。
+- 匿名化したデータが法28条の「個人データ」でなくなるかは、PPCの資料に示されていない（§2のX7）。
+- 本節は法的助言ではない。
+
+出典: docs.cloud.google.com/sensitive-data-protection/docs/concepts-infotypes、docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference、docs.cloud.google.com/model-armor/overview、docs.cloud.google.com/model-armor/model-armor-gemini-enterprise-integration。
