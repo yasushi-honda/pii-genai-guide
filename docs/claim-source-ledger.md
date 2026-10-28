@@ -671,7 +671,7 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 | W1 | Geminiアプリは、Business Starter／Standard／Plus、Enterprise Starter／Standard／Plus、Frontline Starter／Standard、Essentials系、Education Standard／Plusで「コアサービス（エンタープライズ級のデータ保護）」として提供される。Business Standardに有償アドオン（Gemini Enterprise等）は不要 | Google Workspace Updates 2024-10「The Gemini app is now a core service with enterprise-grade data protection for more Google Workspace editions」の版の一覧 | 確認済（発表時点の版。現在の対象はW2で確認） |
 | W2 | 現在のヘルプでも、コアサービスの版のユーザーは「Your chats and uploaded files in Gemini Apps won't be reviewed by human reviewers or otherwise used to improve generative AI models」。該当しない版のユーザーはGoogle利用規約とGemini Apps Privacy Noticeの対象で、「chats may be reviewed by human reviewers and used to improve Google's products」 | 「Turn the Gemini App on or off」（Updated as of 2026-10-20、生HTMLで確認）の版別表と注記 | 確認済 |
 | W3 | Privacy Hubは、組織のコンテンツについて「not human reviewed or otherwise used for Generative AI model training outside your domain without permission」と記載し、Cloud Data Processing Addendumが適用されると記載。Geminiアプリのコアサービスは既定でオン、管理者が無効化できる | 「Generative AI in Google Workspace Privacy Hub」（Last updated 2026-10-06、生HTMLで確認） | 確認済 |
-| W4 | 版の違い：Geminiアプリは「コアサービス」の版が対象で、Business Base等は対象外。個人（@gmail.com）アカウントは対象外で、人のレビュー・学習利用がありうる | W2の「qualifying Google Workspace edition」の注記。Business Base等の扱いはN18（Notebook）と同じ区分と読めるが、Geminiアプリ側の版別表の列は表の並びの読み取り | 一部確認（Notebookの区分との対応は読み取り） |
+| W4 | 版の違い：Geminiアプリは「コアサービス」の版が対象で、Business Base等は対象外。個人（@gmail.com）アカウントは対象外で、人のレビュー・学習利用がありうる | W2の「qualifying Google Workspace edition」の注記に加え、同ヘルプの版別表（列見出し「Gemini Apps as an additional service with:」に Android Enterprise、Cloud Identity、Chrome Enterprise、Business Base、Essentials Starter、G Suite、Workspace Individual。2026-10-29に生HTMLで確認、§25）。追加サービスの版は「Gemini Apps Activityがオンのとき、会話を製品改善に使う」（同ヘルプ） | 確認済（列見出しの文言。2026-10-29の再確認で、Notebookの版別表からの読み取りを解消） |
 | W6 | NonprofitsはBusiness／Enterprise／Frontline／Essentials系と同じ表に並び、Geminiアプリはコアサービス。規約はGoogle Workspace Terms of Service（または個別契約）で、人のレビューなし・ドメイン外の学習に許可なく使わない。Educationの対象版（表ではEducation Fundamentals／Standard／Plus）もコアサービスで、規約はWorkspace for Education Terms of Service（または個別契約）、データの扱いは同じ文言。年齢を問わず利用でき、一部機能は年齢で制限される。発表時（2024-10）の新規Education顧客の既定は、小中高（K12）がオフ、高等教育がオン | 「Turn the Gemini App on or off」（Updated as of 2026-10-20）の版別表・Education editionsの記載、Google Workspace Updates 2024-10の既定設定の記載。いずれも生HTMLで確認 | 確認済（規約の名称と文言）。既定のオン/オフは発表時点の新規顧客の記載で、現在値は未確認 |
 | W5 | コアサービスの保護があっても、保存・処理場所は日本に固定できない（G3・G4）。ISMAPはWorkspace（C21-0005-2）の登録で、Gemini Enterprise（C26-0114-2）とは別（I7）。このため、Tier Cの扱いは本文の整理（Workspace版は不可）のまま | G3、G4、I7 | 確認済（既存行の再掲） |
 
@@ -703,7 +703,7 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 |---|---|---|---|---|---|
 | T1 | コアサービス | Business Starter／Standard／Plus、Enterprise各版、Frontline、Essentials系 | 条件つきで可（22-2の確認が前提） | W1〜W3、W6、本文p.21 | 確認済（データの扱い）／推奨水準（Tierの線引き） |
 | T2 | コアサービス（Education・Nonprofits） | Education Fundamentals／Standard／Plus（規約はWorkspace for Education）、Nonprofits（規約はWorkspace利用規約） | 規約の確認が前提。介護・福祉のTierへの当てはめは未整理 | W6 | 一部確認 |
-| T3 | 追加サービス扱い | Business Base、Essentials Starter、Workspace Individual、G Suite、Cloud Identity等 | 不可（Aのみ） | W4、N18（Notebookの版別表） | 一部確認（Geminiアプリ側の版別表の列は表の並びの読み取り） |
+| T3 | 追加サービス扱い | Business Base、Essentials Starter、Workspace Individual、G Suite、Cloud Identity等 | 不可（Aのみ） | W4、N18 | 確認済（Geminiアプリのヘルプの版別表で直接確認。§25） |
 | T4 | 個人アカウント | @gmail.com等 | 不可 | W2 | 確認済 |
 | T5 | Tier C（要配慮個人情報・実名） | どの版でも | 不可（保存・処理場所を日本に固定できない） | G3、G4、本文p.21 | 確認済（事実）／推奨水準（Tierの線引き） |
 
@@ -711,7 +711,7 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 
 | # | 確認すること | 根拠 | 区分 |
 |---|---|---|---|
-| U1 | 自組織の契約にCloud利用規約とDPAが適用されているか | H14、本文p.21 | 確認済（規約の存在）／契約書面での確認が必要 |
+| U1 | 自組織に適用される契約（Workspace規約またはCloud利用規約。Cloud規約への統合は既存契約では次回更新時から）と、DPAが適用されているか | H14、N4、本文p.21・p.22、§25 | 確認済（規約の存在）／契約書面での確認が必要 |
 | U2 | 職員が個人アカウントで入力しない運用（内規での禁止） | W2、本文p.11 | 推奨水準 |
 | U3 | 管理コンソールでGeminiアプリがオンか。チャット履歴の保持期間と共有範囲 | W3（Privacy Hub） | 確認済（設定の存在）／推奨水準（設定値） |
 | U4 | 法28条の「外国にある第三者」該当の整理と、必要な同意 | X1〜X3、X8 | 確認済（要件）／個別判断 |
@@ -719,7 +719,6 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 | U6 | 組織的措置、ログ設計、外国の制度の把握 | 本文第10章、X5 | 推奨水準 |
 
 ### 確認できていない点
-- T3：Geminiアプリ側の版別表で、追加サービス扱いの版が同じ区分かは、Notebookの版別表からの読み取り（W4と同じ）。
 - T2：Education系の対象範囲（表に並ぶ版以外）、Nonprofits・Educationを介護・福祉のTierへ当てはめた扱い。
 - U4：生成AIが入力を応答出力のためだけに処理する場合の法28条上の扱いは、PPC資料に示されていない（X7）。
 - 本節は解釈と推奨水準の整理で、法的助言ではない。
@@ -755,7 +754,7 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 
 | # | 主張 | 根拠 | 区分 |
 |---|---|---|---|
-| P1 | 組み込みのinfoType検出器は、完全に正確な検出方法ではなく、規制への適合を保証できない。何が機微かの判断と、設定が要件を満たすかのテストは利用者の責任 | 「InfoTypes and infoType detectors」の注記（原文：「Built-in infoType detectors are not a perfectly accurate detection method. For example, they can't guarantee compliance with regulatory requirements. You must decide what data is sensitive and how to best protect it. Google recommends that you test your settings to make sure that your configuration meets your requirements.」） | 確認済 |
+| P1 | 組み込みのinfoType検出器は、完全に正確な検出方法ではなく、規制への適合を保証できない。何が機微かの判断と保護の方法は利用者が決める。設定が要件を満たすかのテストは、Googleが推奨している（義務の記載ではない） | 「InfoTypes and infoType detectors」の注記（原文：「Built-in infoType detectors are not a perfectly accurate detection method. For example, they can't guarantee compliance with regulatory requirements. You must decide what data is sensitive and how to best protect it. Google recommends that you test your settings to make sure that your configuration meets your requirements.」） | 確認済 |
 | P2 | 日本固有のinfoTypeは5つ：JAPAN_CORPORATE_NUMBER（法人番号）、JAPAN_DRIVERS_LICENSE_NUMBER、JAPAN_BANK_ACCOUNT、JAPAN_INDIVIDUAL_NUMBER（マイナンバー）、JAPAN_PASSPORT。氏名（PERSON_NAME）は「GLOBAL」で日本固有ではなく、住所（STREET_ADDRESS・LOCATION）も日本固有の検出器は一覧にない。PERSON_NAME・STREET_ADDRESS・LOCATIONには「遅延に敏感な処理には非推奨」の注記がある | 「InfoType detector reference」（Last updated 2026-10-26）の一覧とLocation列。「JAPAN」を含む行をgrepで抽出 | 確認済（一覧にないことは、上記の語での検索の範囲） |
 | P3 | 国固有のinfoTypeは英語とその国の言語に対応し、グローバルのinfoTypeの多くは複数の言語で動く（日本語の氏名・住所の検出精度の数値は、公式ドキュメントに記載がない） | 「InfoTypes and infoType detectors」の「Language support」（原文：「Country-specific infoTypes support the English language and the respective country's languages. Most global infoTypes work with multiple languages.」） | 確認済（記載）／精度は未確認 |
 | P4 | Model ArmorのSDPフィルタの基本設定は、限られたinfoTypes（主に米国向け）を検査するのみ（検査のみ、テンプレート不可）。必要なinfoTypesはadvancedのSDPテンプレートで設定する。SDPフィルタの対応言語は「英語と、選んだinfoTypesに応じた他の言語」で、日本語の記載があるのは、責任あるAIとプロンプトインジェクション検出のフィルタ（品質は言語で変わりうる） | 「Model Armor overview」（原文：「basic Sensitive Data Protection provides limited infotypes, mainly addressed to the US region」「Language support」の節） | 確認済 |
@@ -764,7 +763,7 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 ### 外部回答との照合（2026-10-29）
 - 「法律（個人情報保護法）を100%クリアできる」：P1と反する（公式が、規制適合を保証できず、検出は完全に正確ではないと明記）。法28条の整理も別（本台帳§2のX1・X2・X7）。**誤り**。
 - 「マスキング不要」「ヒューマンエラーがゼロ」：公式は検出が完全に正確ではないと明記しており（P1）、自動検出だけで取りこぼしがないとは言えない。「不要」「ゼロ」とする根拠はない。**根拠なし（P1と整合しない）**。
-- 「日本の氏名・住所・電話番号に標準対応」：日本固有のinfoTypeは5つで、氏名・住所に日本固有のものは一覧にない（P2）。電話番号（PHONE_NUMBER）は本節では確認していない。日本語の氏名・住所の検出精度の記載もない（P3）。**根拠なし（一部誤り）**。
+- 「日本の氏名・住所・電話番号に標準対応」：日本固有のinfoTypeは5つで、氏名・住所に日本固有のものは一覧にない（P2）。電話番号（PHONE_NUMBER）は本節では確認していない。日本語の氏名・住所の検出精度の記載もない（P3）。**根拠なし**（日本固有でない「グローバル」のinfoTypeは「多くが複数言語で動く」とされ（P3）、日本語の氏名・住所・電話番号の対応可否と精度は公式に記載がなく未確認。§25）。
 - 「Model Armorは内部でSDPを呼び出せる」：SDPフィルタがあることは確認済み（P4）。ただし基本設定は限定的で、Gemini Enterprise連携ではマスク結果を返さない（P5）。**一部合致、ただし「マスキングして渡せる」とは言えない**。
 - 「逆マスキング（[NAME_1]を元に戻す）」：本節では確認していない。SDPの匿名化機能にそうした方式（可逆の仮名化）があるかは、別途確認が必要。
 
@@ -776,3 +775,28 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 - 本節は法的助言ではない。
 
 出典: docs.cloud.google.com/sensitive-data-protection/docs/concepts-infotypes、docs.cloud.google.com/sensitive-data-protection/docs/infotypes-reference、docs.cloud.google.com/model-armor/overview、docs.cloud.google.com/model-armor/model-armor-gemini-enterprise-integration。
+
+---
+
+## 25. セカンドオピニオン（別系統: Codex、Web検索あり、読み取り専用、2026-10-29）
+
+対象: §21〜§24と、本文第14章（p.25〜26）。方針は反証優先。Codexに、こちらの結論は渡していない。指摘は、原文で自分でも確認してから採否を決めた。
+
+| 指摘 | 判定 | 対応 |
+|---|---|---|
+| P2・P3／§24の照合：日本固有のinfoTypeがないことは、グローバルの検出器が日本語に対応しないことの根拠にならない。「一部誤り」は根拠不足 | 妥当 | §24の照合を「根拠なし。日本語の対応可否と精度は未確認」に修正 |
+| P1：「テストは利用者の責任」は原文より強い。原文は、機微情報の判断は「You must decide」、テストは「Google recommends」 | 妥当 | P1を「判断と保護方法は利用者が決める。テストはGoogleが推奨（義務の記載ではない）」に修正 |
+| 第14章冒頭：「Workspaceの契約に含まれます」が、対象の版の限定なしに読める | 妥当 | 「対象の版」「含まれる機能は版で異なる」を追記 |
+| U1・第14章のBの条件：Cloud利用規約の適用を条件にするのは、既存契約（次回更新時に統合）に合わない可能性。個別契約が優先する場合もある | 妥当 | 「自組織に適用される契約（Workspace規約またはCloud利用規約）とDPA」に修正。p.21は別ページのため、本PRでは変更せず（要判断） |
+| T3・W4：Geminiアプリのヘルプの版別表に、追加サービス扱いの版が直接載っている（Notebookからの推測は不要） | 妥当（原文で確認） | W4・T3を確認済に更新し、本文の「読み取り」の注記と「確認できていない点」を削除 |
+
+### Codexが指摘なしとした点（確認範囲）
+- 対象の版の一覧（W1・W2・W4・W6、T1〜T3）：Business Starter／Standard／Plus、Enterprise各版、Essentials系、Frontline各版、Nonprofitsがコアサービス。Education Fundamentals／Standard／Plusも明示。
+- V1〜V3：引用は一致。
+- P2：日本固有5つとPERSON_NAMEのGLOBALは一致（APIによる最新一覧の取得は未実施。文書掲載範囲の確認）。
+- P4・P5：原文と一致。
+
+### 確認できていない点
+- W5のISMAP登録番号・登録対象の同一性、U4〜U6（法28条・国内法上の要求）は、Google公式資料だけでは未確認（Codexの確認範囲外）。
+- P3の「公式に精度の記載がない」という網羅的な不存在は、確認した範囲での主張。
+- 本節は法的助言ではない。
