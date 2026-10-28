@@ -690,3 +690,36 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 - 本節は法的助言ではない。
 
 出典: workspaceupdates.googleblog.com/2024/10/gemini-app-enterprise-data-protection-core-service-expansion.html、knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub、support.google.com/a/answer/14571493（co=DASHER._Family=Business-Enterprise）。
+
+---
+
+## 22. Workspaceの「Geminiアプリ」の版別判定と、Tier Bの確認項目の整理（2026-10-29）
+
+契機: §21（W1〜W6）を受けて、Google Workspace専用ページを検討するための、版別の判定表の整理。新しい一次情報の取得はなく、既存の行（§21のW1〜W6、§6のG3・G4・G10・G11、§2のX1〜X8、§3のI7）と、本文p.11・p.21・第10章の整理の組み合わせ。本資料の本文（`public/index.html`）は変更していない。
+
+### 22-1. 版別の判定（Geminiアプリ、Tier B＝通常の個人情報・実名）
+
+| # | 区分 | 対象の版 | Tier B | 根拠 | 区分（台帳） |
+|---|---|---|---|---|---|
+| T1 | コアサービス | Business Starter／Standard／Plus、Enterprise各版、Frontline、Essentials系、Nonprofits | 条件つきで可（22-2の確認が前提） | W1〜W3、W6、本文p.21 | 確認済（データの扱い）／推奨水準（Tierの線引き） |
+| T2 | コアサービス（Education） | Education Fundamentals／Standard／Plus（規約はWorkspace for Education） | 規約の確認が前提。介護・福祉のTierへの当てはめは未整理 | W6 | 一部確認 |
+| T3 | 追加サービス扱い | Business Base、Essentials Starter、Workspace Individual、G Suite、Cloud Identity等 | 不可（Aのみ） | W4、N18（Notebookの版別表） | 一部確認（Geminiアプリ側の版別表の列は表の並びの読み取り） |
+| T4 | 個人アカウント | @gmail.com等 | 不可 | W2 | 確認済 |
+| T5 | Tier C（要配慮個人情報・実名） | どの版でも | 不可（保存・処理場所を日本に固定できない） | G3、G4、本文p.21 | 確認済（事実）／推奨水準（Tierの線引き） |
+
+### 22-2. 「条件つきで可」の確認項目（契約・運用）
+
+| # | 確認すること | 根拠 | 区分 |
+|---|---|---|---|
+| U1 | 自組織の契約にCloud利用規約とDPAが適用されているか | H14、本文p.21 | 確認済（規約の存在）／契約書面での確認が必要 |
+| U2 | 職員が個人アカウントで入力しない運用（内規での禁止） | W2、本文p.11 | 推奨水準 |
+| U3 | 管理コンソールでGeminiアプリがオンか。チャット履歴の保持期間と共有範囲 | W3（Privacy Hub） | 確認済（設定の存在）／推奨水準（設定値） |
+| U4 | 法28条の「外国にある第三者」該当の整理と、必要な同意 | X1〜X3、X8 | 確認済（要件）／個別判断 |
+| U5 | サーバ所在国等を本人の知り得る状態に置く | X5 | 確認済（要求）／解釈（方法・形式） |
+| U6 | 組織的措置、ログ設計、外国の制度の把握 | 本文第10章、X5 | 推奨水準 |
+
+### 確認できていない点
+- T3：Geminiアプリ側の版別表で、追加サービス扱いの版が同じ区分かは、Notebookの版別表からの読み取り（W4と同じ）。
+- T2：Education系の対象範囲（表に並ぶ版以外）、Nonprofits・Educationを介護・福祉のTierへ当てはめた扱い。
+- U4：生成AIが入力を応答出力のためだけに処理する場合の法28条上の扱いは、PPC資料に示されていない（X7）。
+- 本節は解釈と推奨水準の整理で、法的助言ではない。
