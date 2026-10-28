@@ -659,3 +659,32 @@ Codexの「10/18から変わった点」は、2.5系の提供終了日の経過�
 - 個別の契約形態・施設の種別への当てはめは確認していない。
 - 個人情報保護法・厚労省GLへの適合を認定する公的制度の有無は、台帳の確認範囲では見当たらないが、網羅的な調査はしていない。
 - 本節は法的助言ではない。
+
+---
+
+## 21. Workspaceの「Geminiアプリ」のコアサービス扱いと、データの扱い（2026-10-29）
+
+契機: 外部の検索AIの回答（「アドオンなしのBusiness Standardでも、Geminiアプリはエンタープライズ級の保護を受ける」）の事実確認。G11（Privacy Hub）とN18・N3（Notebookの版別表）で、Geminiアプリ本体の一次情報が薄かったため、生HTMLを取得して照合した（要約を介さない。curlで取得し、本文をgrepで確認）。本資料の本文（`public/index.html`）は変更していない。
+
+| # | 主張 | 根拠 | 区分 |
+|---|---|---|---|
+| W1 | Geminiアプリは、Business Starter／Standard／Plus、Enterprise Starter／Standard／Plus、Frontline Starter／Standard、Essentials系、Education Standard／Plusで「コアサービス（エンタープライズ級のデータ保護）」として提供される。Business Standardに有償アドオン（Gemini Enterprise等）は不要 | Google Workspace Updates 2024-10「The Gemini app is now a core service with enterprise-grade data protection for more Google Workspace editions」の版の一覧 | 確認済（発表時点の版。現在の対象はW2で確認） |
+| W2 | 現在のヘルプでも、コアサービスの版のユーザーは「Your chats and uploaded files in Gemini Apps won't be reviewed by human reviewers or otherwise used to improve generative AI models」。該当しない版のユーザーはGoogle利用規約とGemini Apps Privacy Noticeの対象で、「chats may be reviewed by human reviewers and used to improve Google's products」 | 「Turn the Gemini App on or off」（Updated as of 2026-10-20、生HTMLで確認）の版別表と注記 | 確認済 |
+| W3 | Privacy Hubは、組織のコンテンツについて「not human reviewed or otherwise used for Generative AI model training outside your domain without permission」と記載し、Cloud Data Processing Addendumが適用されると記載。Geminiアプリのコアサービスは既定でオン、管理者が無効化できる | 「Generative AI in Google Workspace Privacy Hub」（Last updated 2026-10-06、生HTMLで確認） | 確認済 |
+| W4 | 版の違い：Geminiアプリは「コアサービス」の版が対象で、Business Base等は対象外。個人（@gmail.com）アカウントは対象外で、人のレビュー・学習利用がありうる | W2の「qualifying Google Workspace edition」の注記。Business Base等の扱いはN18（Notebook）と同じ区分と読めるが、Geminiアプリ側の版別表の列は表の並びの読み取り | 一部確認（Notebookの区分との対応は読み取り） |
+| W5 | コアサービスの保護があっても、保存・処理場所は日本に固定できない（G3・G4）。ISMAPはWorkspace（C21-0005-2）の登録で、Gemini Enterprise（C26-0114-2）とは別（I7）。このため、Tier Cの扱いは本文の整理（Workspace版は不可）のまま | G3、G4、I7 | 確認済（既存行の再掲） |
+
+### 外部回答との照合（2026-10-29）
+- 「アドオンなしでも企業向けの保護」：W1・W2と合致。
+- 「人間のレビュアーは見ない」：Geminiアプリ本体についてW2で確認済み。ただし**コアサービスの版に限る**（個人アカウントは対象外）。
+- 「顧客情報を入れてよい」：データ保護（学習・人のレビュー）と、個人情報保護法の整理は別。法28条・安全管理措置・利用目的の整理、およびTierの線引きは本文の整理による（W5）。
+- 「有料APIとWorkspaceは同等」：G10と合致しない（有料でも一時保存・キャッシュが国を問わず行われうる。ISMAP未登録）。
+- 「Sensitive Data Protection＋Vertex AIで法律を100%クリア」：台帳に根拠なし。X7（生成AIの入力の扱いはPPC資料に示されていない）、X1・X2（個別判断）に反する断定。SDP・Model Armorの日本語検出精度は未確認。
+
+### 確認できていない点
+- 発表（2024-10）後の版の追加・変更の全履歴。W2の版別表は2026-10-20時点の表の並びの読み取り。
+- Geminiアプリのフィードバック送信時の人のレビューの扱いは、Privacy Hubの記載（学習には使わない）まで。人のレビューの有無は未確認。
+- Sensitive Data Protection・Model Armorの仕様と日本語の検出精度は、本節では確認していない。
+- 本節は法的助言ではない。
+
+出典: workspaceupdates.googleblog.com/2024/10/gemini-app-enterprise-data-protection-core-service-expansion.html、knowledge.workspace.google.com/admin/generative-ai/generative-ai-in-google-workspace-privacy-hub、support.google.com/a/answer/14571493（co=DASHER._Family=Business-Enterprise）。
