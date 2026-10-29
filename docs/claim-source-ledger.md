@@ -936,10 +936,10 @@ F9、V1〜V3の第2.0版部分は、上記M6・M7に依存する行のため、�
 |---|---|---|---|
 | Y1 | 個人（Free／Plus／Pro）は、内容を学習に使うことがあり、「Improve the model for everyone」をオフにするか、プライバシーポータルの「Do not train on my content」で外せる。オプトアウトしても、フィードバックを送ると、その会話全体が学習に使われうる。Codexは別に「Include environments」の設定がある（p.31〜32） | help.openai.com/en/articles/5722486「How your data is used to improve model performance」（「Updated: 9日前」の表示から約2026-10-20）［出典61］ | 確認済（Playwrightで描画） |
 | Y2 | Temporary Chatは、一時のあいだは履歴に残らず学習に使われないが、OpenAIは安全のために最長30日、コピーを保持しうる。保存すると通常のチャットとして学習設定に従う（p.31〜32） | help.openai.com/en/articles/8914046「Temporary Chat in ChatGPT」（「Updated: 10日前」の表示から約10-19）［出典61］ | 確認済 |
-| Y3 | Business／Enterprise／Edu／APIは、既定で入出力を学習に使わない。Business／Enterprise／Eduは、別契約で許可しない限り使わず、フィードバック（thumbs up/down）も学習を許可しない。DPAは、Business・Enterprise・APIの利用で締結できる。保持は、Enterprise／Eduはワークスペース管理者が決め（削除後30日以内に消去）、Businessも管理者が設定できる。APIは、不正監視ログが既定で最長30日（承認制のゼロデータ保持等で外せる）。一方、機能が保存するデータ（application state）は別で、エンドポイントごとに保持され、ゼロデータ保持でも対象外のものがある（p.31〜32） | 同5722486（「By default, we don't use inputs or outputs from ChatGPT Business, ChatGPT Enterprise, ChatGPT Edu, or our API to improve our models.」）、openai.com/enterprise-privacy（日本語版、「更新内容：2026年1月8日」）、developers.openai.com/api/docs/guides/your-data（「Abuse monitoring logs」と「Application state」の区別、エンドポイント表の「Abuse monitoring retention」「Application state retention」「Zero Data Retention eligible」。codex reviewの指摘を受け、2026-10-29に私が描画して原文で確認）［出典61・62・64］ | 確認済 |
+| Y3 | Business／Enterprise／Edu／APIは、既定で入出力を学習に使わない。Business／Enterprise／Eduは、別契約で許可しない限り使わず、フィードバック（thumbs up/down）も学習を許可しない。DPAは、Business・Enterprise・APIの利用で締結できる。Edu・Teachersは「学生データプライバシー契約に基づいてデータを処理」で、DPAとは別。保持は、Enterprise／Eduはワークスペース管理者が決め（削除後30日以内に消去）、Businessは**記載が食い違う**（enterprise-privacyのFAQは「ワークスペース管理者は、ワークスペース内のデータの保持期間を設定できます」だが、同ページの「データの保持期間はユーザーが管理します」はEnterprise・Healthcare・Eduのみ。別の公式ページ learn.chatgpt.com/docs/enterprise/user-lifecycle は「Business workspaces keep chats, files, and canvas documents indefinitely」）。APIは、不正監視ログが既定で最長30日（承認制のゼロデータ保持等で外せる）。一方、機能が保存するデータ（application state）は別で、エンドポイントごとに保持され、ゼロデータ保持でも対象外のものがある（p.31〜32） | 同5722486（「By default, we don't use inputs or outputs from ChatGPT Business, ChatGPT Enterprise, ChatGPT Edu, or our API to improve our models.」）、openai.com/enterprise-privacy（日本語版、「更新内容：2026年1月8日」）、developers.openai.com/api/docs/guides/your-data（「Abuse monitoring logs」と「Application state」の区別、エンドポイント表の「Abuse monitoring retention」「Application state retention」「Zero Data Retention eligible」。codex reviewの指摘を受け、2026-10-29に私が描画して原文で確認）［出典61・62・64］ | 確認済（Businessの保持期間の設定は、公式ページ間の食い違いのため未確認。最終のcodex reviewの指摘を受け、2026-10-29に両ページを私が描画して原文で確認） |
 | Y4 | 契約：サービス契約（発効日2026年1月1日）は、API、ChatGPT Enterprise、ChatGPT Businessなどが対象。「OpenAI 契約当事者」の定義は「(a) EEA またはスイス以外に所在する顧客については OpenAI OpCo, LLC、(b) EEA またはスイスに所在する顧客については OpenAI Ireland Ltd.、または (c) 注文書で指定されている場合は OpenAI Public Sector, LLC」。日本の顧客は、注文書に別の指定がなければOpenAI OpCo, LLC（米国）。日本法人の記載はない（p.31〜32） | openai.com/policies/services-agreement（日本語版）［出典62］ | 確認済（独立検証で、定義条項を2026-10-29に私が描画して原文で確認） |
 | Y5 | ChatGPTのデータレジデンシー（保存）は、「Eligible API customers and new ChatGPT Enterprise/Edu customers」が、対応国に保存を選べる。新規のワークスペースのみ。対応国は、Australia／Canada／Europe（EEA+Switzerland）／India／Japan／Singapore／South Korea／United Arab Emirates／United Kingdom／United States。Enterprise／Eduは追加費用なし（p.31〜32） | help.openai.com/en/articles/9903489（「Updated: 8日前」の表示から約10-21。2026-10-29に私が描画して原文で確認）［出典63］ | 確認済 |
-| Y6 | 推論のレジデンシー（GPU処理が域内）は、現在、Europe（EEA+Switzerland）／United States／United Arab Emirates のみ。**日本は含まれない**。GPU以外の処理（認証、ルーティング、分析、PDF・Wordからのテキスト抽出等）は域外で行われうる。外部連携（Apps・MCP、Web検索）のデータは、OpenAIの基盤の外で処理・保存されうる。対象外：一般提供でない機能、サードパーティのGPT、Codex Web（Codexアプリ・CLIは対象）（p.31〜32） | 同9903489（「Inference residency for ChatGPT is currently available for the following regions」）［出典63］ | 確認済 |
+| Y6 | 推論のレジデンシー（GPU処理が域内）は、現在、Europe（EEA+Switzerland）／United States／United Arab Emirates のみ。**日本は含まれない**。これは、処理を域内に固定できる機能が使える地域の一覧で、機能を使わない場合の処理地の一覧ではない（その場合の処理地は保証されない）。GPU以外の処理（認証、ルーティング、分析、PDF・Wordからのテキスト抽出等）は域外で行われうる。外部連携（Apps・MCP、Web検索）のデータは、OpenAIの基盤の外で処理・保存されうる。対象外：一般提供でない機能、サードパーティのGPT、Codex Web（Codexアプリ・CLIは対象）（p.31〜32） | 同9903489（「Inference residency for ChatGPT is currently available for the following regions」）［出典63］ | 確認済 |
 | Y7 | ChatGPT Business：リージョン選択は段階的に提供中で、すべての顧客には未提供。選んだ地域には、ワークスペースの主要な顧客コンテンツ（プロンプトと応答）の**保存のみ**が及び、推論のレジデンシーは含まない。米国外を選んでも、安全・不正検知のログとして、すべてのプロンプトと応答のコピーが限られた期間、米国に保存される。選べる地域の一覧は、この記事にない（p.32） | help.openai.com/en/articles/20001418「Where your ChatGPT Business content is stored」（「Updated: 7日前」の表示から約10-22。私が描画して原文で確認）［出典63］ | 確認済／日本を選べるかは未確認 |
 | Y8 | API Platform：データレジデンシーを有効にしたアカウントで、プロジェクトごとに地域を選ぶ。**日本（jp.api.openai.com）は、保存（Storage）はあり、地域内処理（Processing）はなし**。「If your selected Region does not support regional processing…OpenAI may also process and temporarily store Customer Content outside of the Region」。米国外は、不正監視の管理（MAM）の承認と、Modified Retentionの補遺が必要。地域内処理があるのは、US・EU・UAE。GPT-6.1 SolとGPT-6.1 Terraは、US・EUのデータレジデンシーのみ（p.32） | developers.openai.com/api/docs/guides/your-data（日付表示なし。私が描画して原文で確認）［出典64］ | 確認済 |
 | Y9 | OpenAIの発表（2025年5月7日、2025年11月25日更新）は、ChatGPT Enterprise・Edu・APIで、日本・インド・シンガポール・韓国のデータレジデンシーを提供開始と述べる。推論には言及がない。「国内で処理される」とは読めない（p.31〜32） | openai.com/index/introducing-data-residency-in-asia（日本語版）［出典63］ | 確認済 |
@@ -954,6 +954,7 @@ F9、V1〜V3の第2.0版部分は、上記M6・M7に依存する行のため、�
 - SCIM。
 - Codex、コネクタ（Gmail・Google Drive）、ChatGPT Workの個別の扱い。ChatGPT agentのヘルプは、提供終了の旧記述が残る。
 - ChatGPT Businessのリージョン選択で日本を選べるか。
+- ChatGPT Businessの保持期間（管理者が設定できるのか、無期限なのか。公式ページ間で食い違う）。
 - APIの日本リージョンで使えるモデルの一覧（GPT-6.1 Sol・Terraは米国・EUのみ）。
 - 本節は法的助言ではない。
 
@@ -977,11 +978,20 @@ F9、V1〜V3の第2.0版部分は、上記M6・M7に依存する行のため、�
 
 ISMAPの件数：登録番号の形式に一致する語は108件だが、重複を除くと103件（備考欄に他の登録番号への言及がある）。結論には影響しない。
 
-### codex review（`codex review --base main`、reasoning effort high、1回）
-指摘は3件（すべてP2）で、いずれも妥当と判断して修正した。
+### codex review（`codex review --base main`、reasoning effort high。初回と、PR作成後の最終確認の2回。このブランチの上限）
+初回の指摘は3件（すべてP2）で、いずれも妥当と判断して修正した。
 - OpenAI APIの保持：「入出力は最長30日保持」は、不正監視ログの話。機能が保存するデータ（application state）は別で、ゼロデータ保持でも対象外のエンドポイントがある。私が原文で確認し、本文p.32とY3を修正。
 - Claudeの個人プラン：30日は、会話を削除してからの期間。許可しなければ自動で30日で消えるわけではない（Claude Codeは30日保持）。本文p.29を修正。
 - ゼロデータ保持：対象は、eligibleなAPI、商用のAPIキーを使う製品、Claude Code for Enterpriseで、Claudeアプリ（Team／Enterprise）のチャットは挙がっていない。本文p.30の行から外し、K5に原文を追記。
+
+最終確認（PR #70作成後、`--strict-config`）の指摘は2件（P2）で、どちらも原文で確認して修正した。
+- ChatGPT Businessの保持期間：本文の「保持は管理者が設定」は、enterprise-privacyのFAQ（管理者が設定できる）に基づいていたが、同ページの管理権の一覧はEnterprise・Healthcare・Eduのみで、別の公式ページ（learn.chatgpt.com/docs/enterprise/user-lifecycle）は「Business workspaces keep chats, files, and canvas documents indefinitely」と書く。公式ページ間の食い違いなので、「未確認」に改め、Y3と論点19に記録した。
+- ChatGPTの推論の地域：「欧州・米国・UAEのみ」は、処理を域内に固定できる機能が使える地域の一覧で、処理地の一覧ではない。本文（p.31〜32）、Y6、論点19の文言を「域内に固定できるのは」に改めた。
+
+### PRレビュー（`pr-review-toolkit:code-reviewer`、sonnet、読み取り専用）
+HIGHは0件、MEDIUM 2件、LOW 3件。構造（タグの閉じ、重複id、`data-toc`の整合）、ページ番号、日付、出典番号、台帳IDと論点シートの対応は問題なし。
+- MEDIUM：Claudeアプリのゼロデータ保持を「対象外」と書いた表現（台帳は「対象製品に挙がっていない」）→ 本文を台帳の表現に揃えた。EduのDPA（Eduは学生データプライバシー契約でDPAとは別）→ 本文・Y3・論点19を修正（原文で確認）。
+- LOW：17aの契約主体に「注文書の別指定を除く」を追記（修正）。出典一覧1頁目の確認日の注記（2026年10月21日に再確認）は、[48]〜[51]の追加時からの既存の不整合で、今回は変更しない。インデントのずれ（体裁のみ）は変更しない。
 
 ### 第三者評価（evaluator。元の依頼とACだけを渡した）
 判定はREQUEST_CHANGES（軽微）で、HIGHの問題はなし。指摘7件のうち、台帳§30への参照が実在しない（本節で解消）、はじめに（p.3）の補足行に第14〜17章がない、Antigravityの条件に学習に使われない旨の契約書面の確認がない、ChatGPT BusinessのISO 27001の対象が明記されていない、FAQの主語がBusinessも含むように読める、Claude個人の既定値の表現、Tier Cの誘導先の説明、をすべて本文に反映した。
