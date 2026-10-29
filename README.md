@@ -25,7 +25,7 @@ pnpm build
 ## サイト構成
 
 `public/index.html` がサイトのルート（`/`）そのものであり、元PDF「個人情報×生成AI
-実務ガイド」（A4横・29ページ）と同一の固定レイアウトHTMLです。Astroの`src/pages/`は
+実務ガイド」（A4横・36ページ）と同一の固定レイアウトHTMLです。Astroの`src/pages/`は
 存在せず、`public/`配下の静的ファイルがそのまま配信されます。本文はこのファイルが
 唯一のソースで、二重管理はありません。
 
@@ -50,5 +50,5 @@ PDF自身、両方のSHA-256を記録したマニフェスト）と実ファイ�
 
 ## 検証台帳
 
-資料中の主要な主張と一次情報の対応は [docs/claim-source-ledger.md](docs/claim-source-ledger.md) にまとめています（2026-10-21時点。全行の再確認は台帳§17、第13章のGemini Notebookは§16）。本文を更新したら、対応する行も更新してください。
+資料中の主要な主張と一次情報の対応は [docs/claim-source-ledger.md](docs/claim-source-ledger.md) にまとめています（2026-10-21時点。全行の再確認は台帳§17、第13章のGemini Notebookは§16、第15〜17章のAntigravity・Claude・ChatGPTは2026-10-29で§27〜§29）。本文を更新したら、対応する行も更新してください。
 法務担当者に確認してほしい論点は [docs/legal-review-issues.md](docs/legal-review-issues.md) に絞って整理しています。

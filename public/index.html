@@ -1,6 +1,6 @@
 <!doctype html>
 <!--
-  元PDF「個人情報×生成AI 実務ガイド」(A4横・29ページ) と同一の固定レイアウトHTML。
+  元PDF「個人情報×生成AI 実務ガイド」(A4横・36ページ) と同一の固定レイアウトHTML。
   サイトのルート(/)としてそのまま配信される単一ソース。
   scripts/generate-pdf.mjs がこのファイルを開いて public/downloads/pii-genai-guide.pdf を生成する。
   本文を更新したら `pnpm generate:pdf` を再実行してPDFを再生成すること。
@@ -187,11 +187,11 @@
   .toc-list li{
     display:flex; align-items:baseline; gap:10px;
     padding:0; border-bottom:1px dashed #DCE3EC;
-    font-size:13px; line-height:1.25;
+    font-size:13px; line-height:1.15;
   }
   .toc-list .tn{ font-family:var(--font-mono); color:#2857A6; font-weight:700; width:30px; flex:none; }
   .toc-list .tt{ flex:1; font-weight:700; }
-  .toc-list .ts{ color:#5A6B84; font-size:11.5px; font-weight:400; display:block; margin-top:0; }
+  .toc-list .ts{ color:#5A6B84; font-size:11px; font-weight:400; display:block; margin-top:0; }
   .toc-list .tp{ font-family:var(--font-mono); color:#5A6B84; font-size:12.5px; }
   .toc-list a.toc-link{ display:flex; align-items:baseline; gap:10px; flex:1; color:inherit; text-decoration:none; }
   .toc-list a.toc-link:hover .tt, .toc-list a.toc-link:focus-visible .tt{ color:var(--accent); text-decoration:underline; text-underline-offset:3px; }
@@ -268,8 +268,8 @@
       <p class="lede" style="font-size:var(--fs-cover-sub); margin-top:14px; max-width:46em;">個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成 — 2026年10月時点の公式一次情報を根拠に組み立て直す実務資料（筆者の検証値は<span class="mono">[†]</span>で明示）</p>
 
       <div class="cover-tags">
-        <span class="tag accent">最終確認 2026-10-21（第14章は10-29）</span>
-        <span class="tag accent">一次情報ベース・出典51件</span>
+        <span class="tag accent">最終確認 2026-10-21（第14〜17章は10-29）</span>
+        <span class="tag accent">一次情報ベース・出典65件</span>
         <span class="tag accent">対象：主に介護・福祉分野の民間事業者（医療は別枠、行政機関等は別途確認）</span>
         <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
       </div>
@@ -313,7 +313,10 @@
         <li><a class="toc-link" href="#sec-geminicmp"><span class="tn">12</span><span class="tt">Geminiの2つの入口<span class="ts">Gemini Enterprise（アプリ）とAgent Platform（開発用）の違い</span></span><span class="tp" data-toc-target="geminicmp"></span></a></li>
         <li><a class="toc-link" href="#sec-notebookcmp"><span class="tn">13</span><span class="tt">Gemini Notebook（旧NotebookLM）の3つの版<span class="ts">個人・Workspace・Enterpriseで、Tier A/B/Cの使える範囲が変わる</span></span><span class="tp" data-toc-target="notebookcmp"></span></a></li>
         <li><a class="toc-link" href="#sec-workspacecmp"><span class="tn">14</span><span class="tt">Google WorkspaceのGemini<span class="ts">Workspaceに含まれるGeminiとGemini Enterpriseの違い、版別のTier</span></span><span class="tp" data-toc-target="workspacecmp"></span></a></li>
-        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、51件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
+        <li><a class="toc-link" href="#sec-antigravitycmp"><span class="tn">15</span><span class="tt">Google Antigravity<span class="ts">個人と組織向けの違い。「Workspaceなら安全」とは言い切れない</span></span><span class="tp" data-toc-target="antigravitycmp"></span></a></li>
+        <li><a class="toc-link" href="#sec-claudecmp"><span class="tn">16</span><span class="tt">Claude（Anthropic直販）<span class="ts">個人と商用で学習の扱いが逆。直販では日本に固定できない</span></span><span class="tp" data-toc-target="claudecmp"></span></a></li>
+        <li><a class="toc-link" href="#sec-chatgptcmp"><span class="tn">17</span><span class="tt">ChatGPT（OpenAI直販）<span class="ts">保存は日本にできても、AI処理は日本に固定できない</span></span><span class="tp" data-toc-target="chatgptcmp"></span></a></li>
+        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、65件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
       </ul>
       <p style="margin-top:10px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
     </div>
@@ -349,7 +352,7 @@
         <ul class="list" style="font-size:12.5px; line-height:1.7; margin:4px 0 0;">
           <li><b>対象</b>：主に介護・福祉分野の民間事業者（福祉施設・介護事業所等）。自治体・行政機関等は法の第5章で規律が異なるため参考情報にとどめます（<a href="#sec-scope">補足</a>）。</li>
           <li><b>医療情報</b>：医療機関等が関与する情報は別枠で、医療情報ガイドラインの要件が加わります。要点のみ示し、網羅はしません（<a href="#sec-scope">補足</a>）。</li>
-          <li><b>位置づけ</b>：2026年10月21日（第14章は10月29日）時点の公式一次情報に基づく整理と推奨水準です。法令の最低要件とは区別して示し、法的助言ではありません。福祉分野の個別法の守秘義務は範囲外です。運用前に専門家へ確認してください。</li>
+          <li><b>位置づけ</b>：2026年10月21日（第14〜17章は10月29日）時点の公式一次情報に基づく整理と推奨水準です。法令の最低要件とは区別して示し、法的助言ではありません。福祉分野の個別法の守秘義務は範囲外です。運用前に専門家へ確認してください。</li>
         </ul>
       </div>
     </div>
@@ -1401,6 +1404,281 @@
     <div class="page-footer"><span>14　Google WorkspaceのGemini（版別の判定と条件）</span><span class="pn"></span></div>
   </section>
 
+  <!-- ============ PAGE 15a: Google Antigravity（かんたん対照表） ============ -->
+  <section class="page" id="sec-antigravitycmp" data-toc="antigravitycmp">
+    <div class="page-body">
+      <div class="eyebrow">15　Google Antigravity（かんたん対照表）</div>
+      <h2 class="h2">「Workspaceのビジネスアカウントで使えば安全」とは言い切れません</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">2026年10月29日時点。Antigravityは、個人アカウント（Google利用規約から派生）と、組織向け（Gemini Enterpriseのシート、またはCloudプロジェクト。Cloud規約）で、データの扱いが分かれます<sup class="cite"><a href="#r53" title="出典一覧 [53] へ移動">[53]</a></sup><sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup>。Workspace Business単独で使えると書いた公式の記載は、確認できていません<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup><sup class="cite"><a href="#r53" title="出典一覧 [53] へ移動">[53]</a></sup>。</p>
+
+      <div class="cols2" style="margin-top:4px;">
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">個人アカウントのAntigravity</h3><div class="tags"><span class="tag accent">無料・Google AI Pro／Ultra</span></div></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>Google利用規約から派生した規約。入力・操作の記録を製品改善に使い、Googleの従業員・委託先が閲覧しうる<sup class="cite"><a href="#r53" title="出典一覧 [53] へ移動">[53]</a></sup></span></div>
+                    <p class="model" style="margin:6px 0 1px; font-size:12px;">実名の通常の個人情報を入れてよいか（本資料の推奨水準）</p>
+          <div style="font-size:12.5px; line-height:1.6;"><span class="tag good">A</span> のみ。B・Cは使わない</div>
+          <div class="vrow ng" style="margin-top:5px;"><span class="lab" style="width:8.4em;">つまずきやすい点</span><span>削除はメールでの依頼で、依頼までは使われ続ける書き方<sup class="cite"><a href="#r53" title="出典一覧 [53] へ移動">[53]</a></sup></span></div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">組織向けのAntigravity</h3><div class="tags"><span class="tag accent">Gemini Enterprise Standard／Plus</span></div></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>Gemini Enterprise Standard／Plusのシート、またはCloudプロジェクト（従量課金）で接続。Cloud規約が適用<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup><sup class="cite"><a href="#r54" title="出典一覧 [54] へ移動">[54]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ISMAP登録</span><span>Gemini Enterprise（C26-0114-2）の登録あり。言明対象範囲にAntigravityの記載はない<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></span></div>
+          <p class="model" style="margin:6px 0 1px; font-size:12px;">実名の通常の個人情報を入れてよいか（本資料の推奨水準）</p>
+          <div style="font-size:12.5px; line-height:1.6;"><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span>　上記の<b>組織向けの接続</b>に限る</div>
+          <div style="font-size:12px; font-weight:700; margin-top:5px; color:#1B3E7C;">Bの条件</div>
+          <ul class="ck" style="font-size:12px; margin-top:3px;">
+            <li>契約（Cloud規約）とDPAの適用を確認<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup></li>
+            <li>管理者が有効化と監査ログを設定。第三者モデルは有効にする前に外国の整理（次頁）<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup><sup class="cite"><a href="#r54" title="出典一覧 [54] へ移動">[54]</a></sup></li>
+          </ul>
+          <div class="vrow ng" style="margin-top:5px;"><span class="lab" style="width:8.4em;">つまずきやすい点</span><span>Workspace Business単独の資格は不明。Gemini Enterpriseは別購入が必要<sup class="cite"><a href="#r50" title="出典一覧 [50] へ移動">[50]</a></sup></span></div>
+        </div>
+      </div>
+      <div class="vband" style="margin-top:6px; align-items:flex-start;"><span class="tag accent" style="flex:none;">どちらでも別に必要</span><span style="font-size:12px;">①法が求める場面での本人同意（法28条など）　②DPA：契約書面で確認<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup>　③組織的措置　④ログ設計。加えて、Antigravityはファイル変更・コマンド実行・ブラウザ操作を自律的に行うため、入力の範囲がチャットより広くなります。承認設定を保つことが前提です<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></span></div>
+
+      <div class="box stamp" style="margin-top:6px; padding:9px 14px;">
+        <h3 class="h3" style="font-size:14px; margin-bottom:2px;">AI検索の回答でよくある誤解</h3>
+        <ul class="list" style="font-size:12px; margin:2px 0 0; line-height:1.5;">
+          <li><b>「Workspaceのビジネスなら安全」</b>：対象はGemini Enterpriseのシート。Business単独は未確認<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup>　<b>「学習に使われないと保証」</b>：固有の明記なし。Cloud規約の一般条項が及ぶかは未確認<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup><sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></li>
+          <li><b>「Claudeも国内の境界内で処理」</b>：第三者モデルはglobal・us・euで、国内は非対応<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup><sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup>　（法令の最低要件ではなく、本資料の推奨水準。法的な保証ではありません。次頁：<span data-toc-target="antigravitydetail"></span>）</li>
+        </ul>
+      </div>
+    </div>
+    <div class="page-footer"><span>15　Google Antigravity（かんたん対照表）</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 15b: Google Antigravity（版別） ============ -->
+  <section class="page" id="sec-antigravitydetail" data-toc="antigravitydetail" style="padding-top:10mm;">
+    <div class="page-body">
+      <div class="eyebrow">15　Google Antigravity（版別の判定と条件）</div>
+      <h2 class="h2">使えるTierと、入力する前の確認項目</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">Antigravityについての整理です（2026年10月29日時点、本資料の推奨水準）。データの扱いを決めるのは<b>アカウントの区分（個人か、組織向けか）と、選ぶモデル</b>です。</p>
+
+      <div class="tbl-wrap" style="margin:6px 0 4px;">
+        <table style="font-size:10.5px;">
+          <thead><tr><th style="width:21%;">区分</th><th style="width:16%;">規約</th><th style="width:29%;">学習・人のレビュー</th><th style="width:20%;">保存・処理場所</th><th>使えるTier</th></tr></thead>
+          <tbody>
+            <tr><td><b>個人</b>（無料、Google AI Pro・Ultra）</td><td>Google利用規約から派生した規約<sup class="cite"><a href="#r53" title="出典一覧 [53] へ移動">[53]</a></sup></td><td>入力・操作の記録を製品改善に使う。Googleの従業員・委託先が閲覧しうる。削除は依頼制<sup class="cite"><a href="#r53" title="出典一覧 [53] へ移動">[53]</a></sup></td><td>記載なし</td><td><span class="tag good">A</span> のみ</td></tr>
+            <tr><td><b>組織向け</b>（Gemini Enterprise Standard／Plusのシート、Cloudプロジェクト）</td><td>Google Cloud規約<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></td><td>固有の「学習に使わない」記載はない。Cloud規約の学習制限条項（顧客データを許可なく学習に使わない）が及ぶかは未確認<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup><sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></td><td>国内リージョンは非対応（保存・処理とも）。global・us・euのみ<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup><sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+            <tr><td><b>第三者モデル</b>（Claude Opus 5.5／Sonnet 5.5。管理者のオプトイン）</td><td>Cloud規約。Anthropicの利用ポリシー等への準拠が条件<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup></td><td>Anthropic側の保持・学習の扱いは記載なし<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></td><td>global・us・eu。国内は非対応<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup><sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></td><td>有効にする場合は、外国の整理が追加で必要</td></tr>
+            <tr><td><b>Workspace各版</b>単独、Gemini Enterprise Business版</td><td>対象ライセンスの記載に挙がっていない<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup><sup class="cite"><a href="#r54" title="出典一覧 [54] へ移動">[54]</a></sup></td><td>—</td><td>—</td><td><span class="tag gray">未整理</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="vband" style="margin-top:4px; align-items:flex-start;"><span class="tag stamp" style="flex:none;">Tier Cは不可</span><span style="font-size:12px;">Antigravityを含む開発者向けツールは、日本の国内リージョンで保存・AI処理を固定できません<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。要配慮情報を実名で扱う場合は、第12章・第13章の構成を使います。</span></div>
+
+      <div class="cols2" style="margin-top:6px;">
+        <div class="box accent" style="padding:9px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">Bで入力する前の確認項目</h3>
+          <ul class="ck" style="font-size:12px; margin-top:3px;">
+            <li>契約（Cloud規約）とDPAの適用を確認<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup></li>
+            <li>管理者が有効化と監査ログを設定。必要ならVPC Service Controls<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup><sup class="cite"><a href="#r54" title="出典一覧 [54] へ移動">[54]</a></sup></li>
+            <li>第三者モデルを有効にするなら、global・us・euで処理される前提の法28条の整理（個別判断）<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></li>
+            <li>承認設定を保つ。自動承認（Turbo／Always proceed）は隔離環境だけ<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></li>
+            <li>個人アカウントで入力しない運用（内規での禁止）</li>
+            <li>組織的措置・ログ設計・外国の制度の把握（第10章）</li>
+          </ul>
+        </div>
+        <div class="box stamp" style="padding:9px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">確認できていない点</h3>
+          <ul class="list" style="font-size:12px; margin:2px 0 0; line-height:1.55;">
+            <li>Workspace Business単独の資格</li>
+            <li>AntigravityがGemini EnterpriseのISMAP言明対象範囲に含まれるか（書類に記載なし）<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></li>
+            <li>第三者モデル（Claude）の、Anthropic側の保持・学習の扱い</li>
+            <li>個人アカウントの設定名と、オフにしたときの扱い</li>
+            <li>生成AIが入力を応答出力のためだけに処理する場合の法28条上の扱いは、PPCの資料に示されていない</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>15　Google Antigravity（版別の判定と条件）</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 16a: Claude（Anthropic直販）（かんたん対照表） ============ -->
+  <section class="page" id="sec-claudecmp" data-toc="claudecmp">
+    <div class="page-body">
+      <div class="eyebrow">16　Claude（Anthropic直販）（かんたん対照表）</div>
+      <h2 class="h2">個人プランと、Team・Enterprise・APIでは、学習の扱いが逆です</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">2026年10月29日時点。対象はAnthropicの直販（Claudeアプリ、API、Claude Code）です。Bedrock・Vertex経由は第7章の範囲です。個人プランは学習に使うかを設定で選ぶ方式、商用（Team・Enterprise・API）は既定で学習に使いません<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup><sup class="cite"><a href="#r56" title="出典一覧 [56] へ移動">[56]</a></sup><sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup>。</p>
+
+      <div class="cols2" style="margin-top:4px;">
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">個人プラン（Free／Pro／Max）</h3><div class="tags"><span class="tag accent">Claudeアプリ・Claude Code</span></div></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>設定で許可すると会話が学習に使われ、最長5年保持される。許可しなければ30日。安全審査の対象は、設定にかかわらず学習に使われうる<sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup><sup class="cite"><a href="#r58" title="出典一覧 [58] へ移動">[58]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">規約の書き方</span><span>規約は「オプトアウトしない限り学習に使う」、ヘルプは「許可した場合」。書き方が異なる<sup class="cite"><a href="#r56" title="出典一覧 [56] へ移動">[56]</a></sup><sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup></span></div>
+          <p class="model" style="margin:6px 0 1px; font-size:12px;">実名の通常の個人情報を入れてよいか（本資料の推奨水準）</p>
+          <div style="font-size:12.5px; line-height:1.6;"><span class="tag good">A</span> のみ。B・Cは使わない</div>
+          <div class="vrow ng" style="margin-top:5px;"><span class="lab" style="width:8.4em;">つまずきやすい点</span><span>Claude Codeを個人アカウント（Pro・Max）で使うと、個人プランの扱いになる<sup class="cite"><a href="#r58" title="出典一覧 [58] へ移動">[58]</a></sup></span></div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">Team／Enterprise／API／Claude Code</h3><div class="tags"><span class="tag accent">商用規約</span></div></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>商用規約で、既定で学習に使わない。DPAは商用規約に組み込まれる<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup><sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">契約主体</span><span>Anthropic, PBC（米国）。EEA・スイス・英国はAnthropic Ireland<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ISMAP登録</span><span>リストに掲載なし<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></span></div>
+          <p class="model" style="margin:6px 0 1px; font-size:12px;">実名の通常の個人情報を入れてよいか（本資料の推奨水準）</p>
+          <div style="font-size:12.5px; line-height:1.6;"><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span>　<b>商用の版</b>に限る</div>
+          <div style="font-size:12px; font-weight:700; margin-top:5px; color:#1B3E7C;">Bの条件</div>
+          <ul class="ck" style="font-size:12px; margin-top:3px;">
+            <li>DPA（商用規約に組込み）の適用を契約書面で確認<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup></li>
+            <li>ISMAP未登録のため、認証（SOC 2・ISO 27001）や外国の制度の把握で補う<sup class="cite"><a href="#r60" title="出典一覧 [60] へ移動">[60]</a></sup></li>
+          </ul>
+          <div class="vrow ng" style="margin-top:5px;"><span class="lab" style="width:8.4em;">つまずきやすい点</span><span>直販のAPIは、処理地を日本に指定できない（globalかusのみ）<sup class="cite"><a href="#r59" title="出典一覧 [59] へ移動">[59]</a></sup></span></div>
+        </div>
+      </div>
+      <div class="vband" style="margin-top:6px; align-items:flex-start;"><span class="tag accent" style="flex:none;">どちらでも別に必要</span><span style="font-size:12px;">①法が求める場面での本人同意（法28条など）　②DPA：契約書面で確認<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup>　③組織的措置（3省2ガイドライン相当）　④ログ設計。製品の機能では満たせません</span></div>
+
+      <div class="cols2" style="margin-top:6px;">
+        <div class="box stamp" style="padding:10px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">お客様からよくある質問</h3>
+          <p style="font-size:12px; line-height:1.55; margin-top:2px;"><b>「Antigravity経由のClaudeも、Anthropic直販と同じ扱いですよね？」</b><br>経由先の契約が適用され、同じとは限りません。Antigravity経由は第15章（国内の処理は非対応）、Bedrock経由は第7章を見てください<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup><sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup>。</p>
+        </div>
+        <div class="box accent" style="padding:10px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">この比較の位置づけ</h3>
+          <p style="font-size:12px; line-height:1.55; margin-top:2px;">法令の最低要件ではなく、本資料の推奨水準です。法的な保証ではありません。版ごとの違いと、確認できていない点は、次頁（<span data-toc-target="claudedetail"></span>）にあります。</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>16　Claude（Anthropic直販）（かんたん対照表）</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 16b: Claude（版別） ============ -->
+  <section class="page" id="sec-claudedetail" data-toc="claudedetail" style="padding-top:10mm;">
+    <div class="page-body">
+      <div class="eyebrow">16　Claude（Anthropic直販）（版別の判定と条件）</div>
+      <h2 class="h2">直販では、保存・処理を日本に固定できません</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">Anthropicの直販についての整理です（2026年10月29日時点、本資料の推奨水準）。データの扱いを決めるのは<b>契約の区分（個人か、商用か）</b>です。</p>
+
+      <div class="tbl-wrap" style="margin:6px 0 4px;">
+        <table style="font-size:10.5px;">
+          <thead><tr><th style="width:21%;">区分</th><th style="width:15%;">規約</th><th style="width:29%;">学習・保持</th><th style="width:21%;">保存・処理場所</th><th>使えるTier</th></tr></thead>
+          <tbody>
+            <tr><td><b>個人</b>（Free／Pro／Max）、Claude Codeの個人アカウント</td><td>消費者規約、プライバシーポリシー<sup class="cite"><a href="#r56" title="出典一覧 [56] へ移動">[56]</a></sup></td><td>設定で許可すると学習に使い、最長5年保持。許可しなくても、安全審査の対象とフィードバックは使う。削除後30日<sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup><sup class="cite"><a href="#r58" title="出典一覧 [58] へ移動">[58]</a></sup></td><td>米国ほかで処理・保存されうる<sup class="cite"><a href="#r56" title="出典一覧 [56] へ移動">[56]</a></sup></td><td><span class="tag good">A</span> のみ</td></tr>
+            <tr><td><b>Team／Enterprise</b>（Claudeアプリ）</td><td>商用規約、DPA組込み<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup></td><td>既定で学習に使わない。削除後30日。ゼロデータ保持は一部のEnterpriseで個別審査<sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup></td><td>日本の指定は確認できない（アプリの地域選択は未確認）<sup class="cite"><a href="#r59" title="出典一覧 [59] へ移動">[59]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+            <tr><td><b>API</b>（Claude Platform）、Claude Code（商用）</td><td>商用規約、DPA組込み<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup></td><td>既定で学習に使わない。入出力は30日以内に削除。ゼロデータ保持は個別審査<sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup><sup class="cite"><a href="#r58" title="出典一覧 [58] へ移動">[58]</a></sup></td><td>推論はglobalかusのみ（usは1.1倍の料金）。保存はusのみ<sup class="cite"><a href="#r59" title="出典一覧 [59] へ移動">[59]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+            <tr><td><b>Bedrock・Vertex・Foundry経由</b></td><td>各クラウドの契約</td><td>各クラウドの扱い</td><td>日本を含む地域指定が案内されている<sup class="cite"><a href="#r59" title="出典一覧 [59] へ移動">[59]</a></sup></td><td><span class="tag gray">第7章で整理</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="vband" style="margin-top:4px; align-items:flex-start;"><span class="tag stamp" style="flex:none;">Tier Cは不可</span><span style="font-size:12px;">直販では、保存・AI処理を日本に固定できません<sup class="cite"><a href="#r59" title="出典一覧 [59] へ移動">[59]</a></sup>。日本・アジア太平洋の地域指定は、Bedrock・Vertex・Foundry経由として案内されています<sup class="cite"><a href="#r59" title="出典一覧 [59] へ移動">[59]</a></sup>。要配慮情報を実名で扱う場合は、第7章の構成を使います。</span></div>
+
+      <div class="cols2" style="margin-top:6px;">
+        <div class="box accent" style="padding:9px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">Bで入力する前の確認項目</h3>
+          <ul class="ck" style="font-size:12px; margin-top:3px;">
+            <li>商用の版で使い、個人アカウントで入力しない運用（内規での禁止）</li>
+            <li>DPA（商用規約に組込み）の適用を契約書面で確認<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup></li>
+            <li>契約主体Anthropic, PBC（米国）への提供として、法28条の整理と必要な同意（個別判断）<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup></li>
+            <li>サーバ所在国等を、本人の知り得る状態に置く</li>
+            <li>ISMAP未登録を、認証（SOC 2・ISO 27001）や監査資料で補う<sup class="cite"><a href="#r60" title="出典一覧 [60] へ移動">[60]</a></sup></li>
+            <li>組織的措置・ログ設計・外国の制度の把握（第10章）</li>
+          </ul>
+        </div>
+        <div class="box stamp" style="padding:9px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">確認できていない点</h3>
+          <ul class="list" style="font-size:12px; margin:2px 0 0; line-height:1.55;">
+            <li>Claudeアプリ（Team／Enterprise）で、保存・処理の地域を選べるか</li>
+            <li>個人プランの人のレビューの記載（確認したページに明示なし）</li>
+            <li>SSO・監査ログなどの管理機能</li>
+            <li>生成AIが入力を応答出力のためだけに処理する場合の法28条上の扱いは、PPCの資料に示されていない</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>16　Claude（Anthropic直販）（版別の判定と条件）</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 17a: ChatGPT（OpenAI直販）（かんたん対照表） ============ -->
+  <section class="page" id="sec-chatgptcmp" data-toc="chatgptcmp">
+    <div class="page-body">
+      <div class="eyebrow">17　ChatGPT（OpenAI直販）（かんたん対照表）</div>
+      <h2 class="h2">保存先を日本にできても、AI処理（推論）は日本に固定できません</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">2026年10月29日時点。対象はOpenAIの直販（ChatGPT、API）です。個人（Free／Plus／Pro）は内容を学習に使うことがあり、Business・Enterprise・Edu・APIは既定で学習に使いません<sup class="cite"><a href="#r61" title="出典一覧 [61] へ移動">[61]</a></sup><sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup>。</p>
+
+      <div class="cols2" style="margin-top:4px;">
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">個人（Free／Plus／Pro）</h3><div class="tags"><span class="tag accent">ChatGPTアプリ</span></div></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>内容を学習に使うことがある。「Improve the model for everyone」をオフにすると外せるが、フィードバックを送ると、その会話は学習に使われうる<sup class="cite"><a href="#r61" title="出典一覧 [61] へ移動">[61]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">一時チャット</span><span>学習には使われないが、安全のため最長30日、コピーを保持しうる<sup class="cite"><a href="#r61" title="出典一覧 [61] へ移動">[61]</a></sup></span></div>
+          <p class="model" style="margin:6px 0 1px; font-size:12px;">実名の通常の個人情報を入れてよいか（本資料の推奨水準）</p>
+          <div style="font-size:12.5px; line-height:1.6;"><span class="tag good">A</span> のみ。B・Cは使わない</div>
+          <div class="vrow ng" style="margin-top:5px;"><span class="lab" style="width:8.4em;">つまずきやすい点</span><span>職員が個人契約のアプリで下書きを作る（第6章のNG例）。個人契約は法人の保護の対象外</span></div>
+        </div>
+        <div class="vcard">
+          <div class="vcard-head"><h3 class="h3">Business／Enterprise／Edu／API</h3><div class="tags"><span class="tag accent">法人向け</span></div></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>既定で学習に使わない。DPAを締結できる<sup class="cite"><a href="#r61" title="出典一覧 [61] へ移動">[61]</a></sup><sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">契約主体</span><span>OpenAI OpCo, LLCまたはOpenAI Ireland Ltd。日本法人の記載はない<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ISMAP登録</span><span>リストに掲載なし<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></span></div>
+          <p class="model" style="margin:6px 0 1px; font-size:12px;">実名の通常の個人情報を入れてよいか（本資料の推奨水準）</p>
+          <div style="font-size:12.5px; line-height:1.6;"><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span>　<b>法人の版</b>に限る</div>
+          <div style="font-size:12px; font-weight:700; margin-top:5px; color:#1B3E7C;">日本の保存と処理</div>
+          <ul class="ck" style="font-size:12px; margin-top:3px;">
+            <li>保存：Enterprise／Eduは新規ワークスペースで、APIはプロジェクトで日本を選べる<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup><sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup></li>
+            <li>処理：ChatGPTの推論は欧州・米国・UAEのみ。APIの日本は地域内処理なし<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup><sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup></li>
+          </ul>
+        </div>
+      </div>
+      <div class="vband" style="margin-top:6px; align-items:flex-start;"><span class="tag accent" style="flex:none;">どちらでも別に必要</span><span style="font-size:12px;">①法が求める場面での本人同意（法28条など）　②DPA：契約書面で確認<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup>　③組織的措置（3省2ガイドライン相当）　④ログ設計。製品の機能では満たせません</span></div>
+
+      <div class="cols2" style="margin-top:6px;">
+        <div class="box stamp" style="padding:10px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">お客様からよくある質問</h3>
+          <p style="font-size:12px; line-height:1.55; margin-top:2px;"><b>「日本にデータレジデンシーがあるなら、国内で完結しますよね？」</b><br>しません。日本を選べるのは保存先（at rest）だけです。AI処理は、ChatGPTは欧州・米国・UAEのみ、APIの日本は地域内処理がありません<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup><sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup>。Businessは保存のみで、安全・不正検知のログのコピーが米国に残ります<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup>。</p>
+        </div>
+        <div class="box accent" style="padding:10px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">この比較の位置づけ</h3>
+          <p style="font-size:12px; line-height:1.55; margin-top:2px;">法令の最低要件ではなく、本資料の推奨水準です。法的な保証ではありません。版ごとの違いと、確認できていない点は、次頁（<span data-toc-target="chatgptdetail"></span>）にあります。</p>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>17　ChatGPT（OpenAI直販）（かんたん対照表）</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 17b: ChatGPT（版別） ============ -->
+  <section class="page" id="sec-chatgptdetail" data-toc="chatgptdetail" style="padding-top:10mm;">
+    <div class="page-body">
+      <div class="eyebrow">17　ChatGPT（OpenAI直販）（版別の判定と条件）</div>
+      <h2 class="h2">保存は日本にできても、処理は国外になります</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">OpenAIの直販についての整理です（2026年10月29日時点、本資料の推奨水準）。データの扱いを決めるのは<b>契約の区分</b>と、<b>保存と処理を分けて見ること</b>です。</p>
+
+      <div class="tbl-wrap" style="margin:6px 0 4px;">
+        <table style="font-size:10.5px;">
+          <thead><tr><th style="width:15%;">区分</th><th style="width:15%;">規約</th><th style="width:25%;">学習・保持</th><th style="width:26%;">保存・処理場所</th><th>使えるTier</th></tr></thead>
+          <tbody>
+            <tr><td><b>個人</b>（Free／Plus／Pro）</td><td>個人向けの規約<sup class="cite"><a href="#r61" title="出典一覧 [61] へ移動">[61]</a></sup></td><td>学習に使うことがある（設定でオフ）。フィードバックは例外<sup class="cite"><a href="#r61" title="出典一覧 [61] へ移動">[61]</a></sup></td><td>記載なし</td><td><span class="tag good">A</span> のみ</td></tr>
+            <tr><td><b>Business</b></td><td>サービス契約、DPA可<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></td><td>既定で学習に使わない。保持は管理者が設定<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></td><td>地域選択は段階的に提供中。保存のみ。安全・不正検知のログのコピーは米国<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+            <tr><td><b>Enterprise／Edu</b></td><td>サービス契約、DPA可<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></td><td>既定で学習に使わない。削除後30日以内に消去<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></td><td>保存：日本を選べる（新規ワークスペース）。推論：日本は非対応（欧州・米国・UAEのみ）<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+            <tr><td><b>API</b></td><td>サービス契約、DPA可<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></td><td>既定で学習に使わない。入出力は最長30日保持。ゼロデータ保持は承認制<sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup></td><td>日本：保存あり、地域内処理なし。米国外は不正監視の管理の承認等が必要<sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="vband" style="margin-top:4px; align-items:flex-start;"><span class="tag stamp" style="flex:none;">Tier Cは不可</span><span style="font-size:12px;">保存を日本にしても、AI処理を日本に固定できません<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup><sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup>。要配慮情報を実名で扱う場合は、第12章・第13章の構成を使います。</span></div>
+
+      <div class="cols2" style="margin-top:6px;">
+        <div class="box accent" style="padding:9px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">Bで入力する前の確認項目</h3>
+          <ul class="ck" style="font-size:12px; margin-top:3px;">
+            <li>法人の版で使い、個人契約で入力しない運用（内規での禁止）</li>
+            <li>DPAの締結と、契約主体（OpenAI OpCoかIreland）の確認<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></li>
+            <li>保存を日本にしても処理は国外になる前提で、法28条の整理と同意（個別判断）<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup><sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup></li>
+            <li>サーバ所在国等を、本人の知り得る状態に置く</li>
+            <li>ISMAP未登録を、認証（SOC 2・ISO 27001等）や監査資料で補う<sup class="cite"><a href="#r65" title="出典一覧 [65] へ移動">[65]</a></sup></li>
+            <li>組織的措置・ログ設計・外国の制度の把握（第10章）</li>
+          </ul>
+        </div>
+        <div class="box stamp" style="padding:9px 14px;">
+          <h3 class="h3" style="font-size:14px; margin-bottom:2px;">確認できていない点</h3>
+          <ul class="list" style="font-size:12px; margin:2px 0 0; line-height:1.55;">
+            <li>個人プランの人のレビュー、通常チャットの保持期間</li>
+            <li>SCIM、Codex・コネクタ・ChatGPT Workの個別の扱い</li>
+            <li>Businessのリージョンに日本があるか</li>
+            <li>日本の顧客の契約相手方が、OpenAI OpCoかIrelandか</li>
+            <li>生成AIが入力を応答出力のためだけに処理する場合の法28条上の扱いは、PPCの資料に示されていない</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="page-footer"><span>17　ChatGPT（OpenAI直販）（版別の判定と条件）</span><span class="pn"></span></div>
+  </section>
+
   <!-- ============ PAGE 14: 出典一覧 ============ -->
   <section class="page" id="sec-refs" data-toc="refs">
     <div class="page-body">
@@ -1532,9 +1810,44 @@
             <li id="r51"><span class="refnum">51.</span> Gemini AI features now included in Workspace subscriptions｜Workspace Help — <a href="https://knowledge.workspace.google.com/admin/generative-ai/workspace-with-gemini/gemini-ai-features-now-included-in-google-workspace-subscriptions" target="_blank" rel="noopener noreferrer">knowledge.workspace.google.com/…（含まれる機能）</a></li>
           </ul>
       </div>
-      <p style="margin-top:8px; font-size:var(--fs-caption); color:#5A6B84; border-top:1px solid #E4E8EE; padding-top:8px;">本資料は2026年10月21日（第14章は10/29）時点で確認できた公式一次情報に基づく技術的整理です。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。</p>
     </div>
     <div class="page-footer"><span>出典一覧（続き2）</span><span class="pn"></span></div>
+  </section>
+
+  <!-- ============ PAGE 14d: 出典一覧（続き3：Antigravity・Claude・ChatGPT） ============ -->
+  <section class="page" id="sec-refs4">
+    <div class="page-body">
+      <div class="eyebrow">出典一覧（続き3）</div>
+      <h2 class="h2" style="font-size:24px;">追補：Antigravity（第15章）・Claude（第16章）・ChatGPT（第17章）</h2>
+      <p style="margin-top:6px; font-size:var(--fs-small);">第15〜17章は2026年10月29日に確認した公式情報です（番号は前頁と通し）。第15章では、既存の[5][17][34]も同日に該当箇所を再照合しています（[5]はISMAPクラウドサービスリストを描画して再取得し、言明対象範囲・生成AI情報のPDFも確認）。OpenAIのヘルプ等は取得に描画が必要なため、描画した本文で確認しました。</p>
+      <div style="margin-top:8px;">
+          <div class="refs-cat">Google Antigravity（2026年10月29日確認）</div>
+          <ul class="refs">
+            <li id="r52"><span class="refnum">52.</span> Google Antigravity — Enterprise（対象ライセンス・第三者モデル・ロケーション・監査ログ）｜Google — <a href="https://antigravity.google/docs/enterprise" target="_blank" rel="noopener noreferrer">antigravity.google/docs/enterprise</a></li>
+            <li id="r53"><span class="refnum">53.</span> Google Antigravity — Plans／FAQ／Terms（個人向けの規約とデータ収集）｜Google — <a href="https://antigravity.google/docs/plans" target="_blank" rel="noopener noreferrer">…/docs/plans</a> ／ <a href="https://antigravity.google/docs/faq" target="_blank" rel="noopener noreferrer">…/docs/faq</a> ／ <a href="https://antigravity.google/terms" target="_blank" rel="noopener noreferrer">…/terms</a></li>
+            <li id="r54"><span class="refnum">54.</span> Expanding Google Antigravity for enterprise customers（2026年8月21日）｜Google Cloud Blog — <a href="https://cloud.google.com/blog/products/ai-machine-learning/expanding-google-antigravity-for-enterprise-customers" target="_blank" rel="noopener noreferrer">cloud.google.com/blog/…/expanding-google-antigravity-for-enterprise-customers</a></li>
+          </ul>
+          <div class="refs-cat" style="margin-top:0; margin-bottom:4px;">Claude（Anthropic直販。2026年10月29日確認）</div>
+          <ul class="refs">
+            <li id="r55"><span class="refnum">55.</span> Commercial Terms／Data Processing Addendum｜Anthropic — <a href="https://www.anthropic.com/legal/commercial-terms" target="_blank" rel="noopener noreferrer">anthropic.com/legal/commercial-terms</a> ／ <a href="https://www.anthropic.com/legal/data-processing-addendum" target="_blank" rel="noopener noreferrer">…/data-processing-addendum</a></li>
+            <li id="r56"><span class="refnum">56.</span> Consumer Terms／Privacy Policy｜Anthropic — <a href="https://www.anthropic.com/legal/consumer-terms" target="_blank" rel="noopener noreferrer">anthropic.com/legal/consumer-terms</a> ／ <a href="https://www.anthropic.com/legal/privacy" target="_blank" rel="noopener noreferrer">…/privacy</a></li>
+            <li id="r57"><span class="refnum">57.</span> Claude Privacy Center（学習・保持・ゼロデータ保持）｜Anthropic — <a href="https://privacy.claude.com/en/articles/10023580-is-my-data-used-for-model-training" target="_blank" rel="noopener noreferrer">privacy.claude.com/…/10023580</a> ／ <a href="https://privacy.claude.com/en/articles/7996868-is-my-data-used-for-model-training" target="_blank" rel="noopener noreferrer">…/7996868</a> ／ <a href="https://privacy.claude.com/en/articles/10023548-how-long-do-you-store-my-data" target="_blank" rel="noopener noreferrer">…/10023548</a> ／ <a href="https://privacy.claude.com/en/articles/7996866-how-long-do-you-store-my-organization-s-data" target="_blank" rel="noopener noreferrer">…/7996866</a></li>
+            <li id="r58"><span class="refnum">58.</span> Claude Code Data usage｜Anthropic — <a href="https://code.claude.com/docs/en/data-usage" target="_blank" rel="noopener noreferrer">code.claude.com/docs/en/data-usage</a></li>
+            <li id="r59"><span class="refnum">59.</span> Data residency（Claude API）／Regional compliance｜Anthropic — <a href="https://platform.claude.com/docs/en/build-with-claude/data-residency" target="_blank" rel="noopener noreferrer">platform.claude.com/…/data-residency</a> ／ <a href="https://claude.com/regional-compliance" target="_blank" rel="noopener noreferrer">claude.com/regional-compliance</a></li>
+            <li id="r60"><span class="refnum">60.</span> What certifications has Anthropic obtained?｜Anthropic Privacy Center — <a href="https://privacy.claude.com/en/articles/10015870-what-certifications-has-anthropic-obtained" target="_blank" rel="noopener noreferrer">privacy.claude.com/…/10015870</a></li>
+          </ul>
+          <div class="refs-cat" style="margin-top:0; margin-bottom:4px;">ChatGPT（OpenAI直販。2026年10月29日確認）</div>
+          <ul class="refs">
+            <li id="r61"><span class="refnum">61.</span> How your data is used to improve model performance／Temporary Chat｜OpenAI Help — <a href="https://help.openai.com/en/articles/5722486-how-your-data-is-used-to-improve-model-performance" target="_blank" rel="noopener noreferrer">help.openai.com/…/5722486</a> ／ <a href="https://help.openai.com/en/articles/8914046-temporary-chat-in-chatgpt" target="_blank" rel="noopener noreferrer">…/8914046</a></li>
+            <li id="r62"><span class="refnum">62.</span> Enterprise privacy at OpenAI／Services Agreement｜OpenAI — <a href="https://openai.com/enterprise-privacy/" target="_blank" rel="noopener noreferrer">openai.com/enterprise-privacy</a> ／ <a href="https://openai.com/policies/services-agreement/" target="_blank" rel="noopener noreferrer">…/policies/services-agreement</a></li>
+            <li id="r63"><span class="refnum">63.</span> Data residency and inference residency for ChatGPT／Where your ChatGPT Business content is stored／Introducing data residency in Asia｜OpenAI — <a href="https://help.openai.com/en/articles/9903489-data-residency-and-inference-residency-for-chatgpt" target="_blank" rel="noopener noreferrer">help.openai.com/…/9903489</a> ／ <a href="https://help.openai.com/en/articles/20001418-where-your-chatgpt-business-content-is-stored" target="_blank" rel="noopener noreferrer">…/20001418</a> ／ <a href="https://openai.com/index/introducing-data-residency-in-asia/" target="_blank" rel="noopener noreferrer">openai.com/index/introducing-data-residency-in-asia</a></li>
+            <li id="r64"><span class="refnum">64.</span> Data controls in the OpenAI platform（APIのデータレジデンシー・ゼロデータ保持）｜OpenAI — <a href="https://developers.openai.com/api/docs/guides/your-data" target="_blank" rel="noopener noreferrer">developers.openai.com/api/docs/guides/your-data</a></li>
+            <li id="r65"><span class="refnum">65.</span> OpenAI Trust Portal（SOC 2・ISO認証）｜OpenAI — <a href="https://trust.openai.com/" target="_blank" rel="noopener noreferrer">trust.openai.com</a></li>
+          </ul>
+      </div>
+      <p style="margin-top:8px; font-size:var(--fs-caption); color:#5A6B84; border-top:1px solid #E4E8EE; padding-top:8px;">本資料は2026年10月21日（第14〜17章は10/29）時点で確認できた公式一次情報に基づく技術的整理です。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。</p>
+    </div>
+    <div class="page-footer"><span>出典一覧（続き3）</span><span class="pn"></span></div>
   </section>
 
 </div>
