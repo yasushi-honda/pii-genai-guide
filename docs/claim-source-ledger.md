@@ -455,9 +455,9 @@ G11・A7は、本文の追加に伴って新設した行（§1〜§11の121行�
 
 ---
 
-## 16. Gemini Notebook（旧NotebookLM）の3つの版とプラン別一覧（第13章、p.22〜24、2026-10-21。N24〜N27と外部回答の照合は2026-10-29追記）
+## 16. Gemini Notebook（旧NotebookLM）の3つの版とプラン別一覧（第13章、p.22〜24、2026-10-21。N24〜N28と外部回答の照合は2026-10-29追記）
 
-p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版の日本での使える範囲と未確認事項、p.24はプラン別一覧（N17〜N22）。出典は38〜47を新設（当時はp.27。第14章の追加後は出典一覧がp.27〜29、第15〜17章の追加後はp.33〜36に移り、38〜47はp.35）。
+p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版の日本での使える範囲と未確認事項、p.24はプラン別一覧（N17〜N22）。出典は38〜47を新設（2026-10-29にN24〜N28のため出典66を追加し、p.23のFAQを追加。当時はp.27。第14章の追加後は出典一覧がp.27〜29、第15〜17章の追加後はp.33〜36に移り、38〜47はp.35）。
 
 照合方法: Google公式ページは2026-10-21に生HTMLを取得し、本文を抽出して該当文を検索した（要約を介さない）。ISMAPポータルのPDFは本文を抽出して確認した。Workspace Data Regionsは最終更新2026-10-20（UTC）。
 
@@ -490,6 +490,7 @@ p.22は3つの版の比較カードとTier別の考え方、p.23はEnterprise版
 | N25 | 管理者は、組織外へのノートブックの共有を設定できる（Admin console > Generative AI > Gemini Notebook >「Sharing outside of [組織名]」）。選択肢は「Off」（組織外と共有できない）、「Allowlisted domains」（許可したドメインの個別アカウントのみ。Googleグループへの共有は非対応）、「On」（任意の外部メールアドレス。任意で「Public Sharing」を併せて、リンクを知る全員に公開）。必要な権限は「Gemini Settings administrator privilege」、組織部門ごとに上書きでき、反映に最大24時間。Workspace Updates（2026-09-10）は、ドメイン・組織部門・グループ単位で設定でき、既定はオフ（「This feature will be OFF by default」）、ユーザー個人の設定はない、と告知。選択肢の名称（ヘルプは Allowlisted domains、告知は Trusted Domains）と段階の数（ヘルプは3つ＋公開のチェック、告知は4つ）に差がある | Workspace管理者ヘルプ「Manage Gemini Notebook sharing settings」（Last updated 2026-10-26 UTC）、Workspace Updates「Manage external sharing for Gemini Notebook in the Admin console」（2026-09-10）。いずれも生HTMLで確認 | 確認済（名称・段階の数に文言の差） |
 | N26 | 個人のGoogleアカウントの人が、Workspace組織が所有するノートブックについてフィードバックを送ると、その内容は、問題の評価のために収集される。フィードバックした人のアカウント種別によって、組織所有のノートブックでも扱いが変わりうる | 同ヘルプ「Manage Gemini Notebook sharing settings」（「If someone using a personal Google Account gives feedback on a notebook owned by a Workspace organization, their content will be collected to help us evaluate the issue.」） | 確認済（文言）。個人アカウントの人とノートブックを共有する場合の運用への示唆は、本資料の整理。個人アカウントの人のデータの扱いの全体は未確認 |
 | N27 | Workspace版でも、①Gemini Notebookが他のGoogleサービス（例：Geminiアプリ）と共有するデータは、そのサービスのプライバシー通知に従い、製品改善を含む。②同じ節に「The content in Gemini Notebook will not be used to directly train our foundational AI models, unless you choose to provide feedback」とある。直前のWorkspace・Education向けの文（フィードバック時も学習に使わない）と並び、この「unless…」がWorkspace版に及ぶかは読み方が割れる（未確認）。③「To ensure safety and reliability, we may process your data to prevent fraud, abuse, and technical issues.」。一方、Workspace・Education版は「uploads, queries and the model's responses…will not be reviewed by human reviewers even when you provide thumbs up or down feedback, and will not be used to train AI models」。Googleのスタッフによる閲覧を「禁止」と書いた記載は、確認した範囲にない | Gemini Notebookヘルプ（職場・学校アカウント）「Data Protections」（「Enterprise-grade security and privacy: Your uploaded files, chats and model outputs won't be reviewed by human reviewers or used to improve generative AI models.」）［出典39］、フィードバックのページ［出典40］。いずれも2026-10-29に生HTMLで再取得。ページ自身に更新日の表示はない | 確認済（文言）。③の処理の主体・条件は記載なし（未確認） |
+| N28 | 本文p.23の「お客様からよくある質問」（Workspaceなら安全で、機密の資料も入れてよい？）は、N3・N6・N17・N18・N19・N26・N27の要約：コアサービスの版は人のレビューなし・学習に使わない。Business Base等は個人版と同じ。保存地は日本に固定できず、データリージョンは対象外。他のGoogleサービスと共有したデータはその通知に従う。個人アカウントのフィードバックは収集される。「学習されない」は「入れてよい」ではなく、Tier Bは条件つき、Tier Cは不可。以前の「誤解されやすい点」の枠のうち、「学習されない≠入れてよい」（同意・組織的措置は別に必要、第1章）とデータリージョンの対象外はこの回答に取り込んだ。N27②（「unless you choose to provide feedback」の読み方）は未確認だが、Workspace・Education版は「thumbs up or down feedback」時も人のレビューなし・AI学習に使わないとする明記（N3）を採る。管理者のオン・オフと外部共有の設定（N24・N25）は、紙面の都合で本文に入れず、台帳と論点15に置いた | N3・N6・N17・N18・N19・N26・N27、出典39・40・41・66 | 確認済（各事実）／推奨水準（Tierの線引き。法令の要件ではない） |
 
 確認できていない点（第13章）:
 - 【問い合わせ状況】2026-10-21にGoogle Cloudの問い合わせフォーム（セールス スペシャリスト宛）から、下記の未確認点（Enterprise版の保存先・AI処理地の食い違い、Frontline・従量課金の日本対応、Business版の保存地域と人のレビュー、日本allowlistの手順、ISMAPの範囲）を問い合わせ済み。返答待ち。公式にはメールの宛先がなく、フォーム経由のみ。返答があれば、本節と§17・第13章（p.22〜24）を更新する。
