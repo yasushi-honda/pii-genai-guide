@@ -268,8 +268,8 @@
       <p class="lede" style="font-size:var(--fs-cover-sub); margin-top:14px; max-width:46em;">個人情報を扱う組織のための、判定フローと要配慮個人情報を扱う場合の技術構成 — 2026年10月時点の公式一次情報を根拠に組み立て直す実務資料（筆者の検証値は<span class="mono">[†]</span>で明示）</p>
 
       <div class="cover-tags">
-        <span class="tag accent">最終確認 2026-10-21（第14〜17章は10-29）</span>
-        <span class="tag accent">一次情報ベース・出典65件</span>
+        <span class="tag accent">最終確認 2026-10-21（第13章のp.23のFAQと第14〜17章は10-29）</span>
+        <span class="tag accent">一次情報ベース・出典66件</span>
         <span class="tag accent">対象：主に介護・福祉分野の民間事業者（医療は別枠、行政機関等は別途確認）</span>
         <a href="https://yasushi-honda.github.io/pii-genai-guide/" target="_blank" rel="noopener noreferrer" class="tag accent latest-version-link" style="text-decoration:none;">最新版はこちら ↗</a>
       </div>
@@ -316,7 +316,7 @@
         <li><a class="toc-link" href="#sec-antigravitycmp"><span class="tn">15</span><span class="tt">Google Antigravity<span class="ts">個人と組織向けの違い。「Workspaceなら安全」とは言い切れない</span></span><span class="tp" data-toc-target="antigravitycmp"></span></a></li>
         <li><a class="toc-link" href="#sec-claudecmp"><span class="tn">16</span><span class="tt">Claude（Anthropic直販）<span class="ts">個人と商用で学習の扱いが逆。直販では日本に固定できない</span></span><span class="tp" data-toc-target="claudecmp"></span></a></li>
         <li><a class="toc-link" href="#sec-chatgptcmp"><span class="tn">17</span><span class="tt">ChatGPT（OpenAI直販）<span class="ts">保存は日本にできても、AI処理は日本に固定できない</span></span><span class="tp" data-toc-target="chatgptcmp"></span></a></li>
-        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、65件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
+        <li><a class="toc-link" href="#sec-refs"><span class="tn">—</span><span class="tt">出典一覧<span class="ts">本文中の番号に対応する公式情報源、66件</span></span><span class="tp" data-toc-target="refs"></span></a></li>
       </ul>
       <p style="margin-top:10px; font-size:var(--fs-caption); color:#5A6B84;">各社の規約・料金・対応リージョンは頻繁に更新されます。意思決定の直前には、出典一覧のリンクから必ず最新情報を確認してください。</p>
     </div>
@@ -352,7 +352,7 @@
         <ul class="list" style="font-size:12.5px; line-height:1.7; margin:4px 0 0;">
           <li><b>対象</b>：主に介護・福祉分野の民間事業者（福祉施設・介護事業所等）。自治体・行政機関等は法の第5章で規律が異なるため参考情報にとどめます（<a href="#sec-scope">補足</a>）。</li>
           <li><b>医療情報</b>：医療機関等が関与する情報は別枠で、医療情報ガイドラインの要件が加わります。要点のみ示し、網羅はしません（<a href="#sec-scope">補足</a>）。</li>
-          <li><b>位置づけ</b>：2026年10月21日（第14〜17章は10月29日）時点の公式一次情報に基づく整理と推奨水準です。法令の最低要件とは区別して示し、法的助言ではありません。福祉分野の個別法の守秘義務は範囲外です。運用前に専門家へ確認してください。</li>
+          <li><b>位置づけ</b>：2026年10月21日（第13章のp.23のFAQと第14〜17章は10月29日）時点の公式一次情報に基づく整理と推奨水準です。法令の最低要件とは区別して示し、法的助言ではありません。福祉分野の個別法の守秘義務は範囲外です。運用前に専門家へ確認してください。</li>
         </ul>
       </div>
     </div>
@@ -1233,11 +1233,8 @@
 
       <div class="cols2" style="margin-top:6px;">
         <div class="box stamp">
-          <h3 class="h3" style="font-size:15px;">誤解されやすい点</h3>
-          <ul class="list" style="font-size:12px; margin:4px 0 0;">
-            <li><b>「学習に使われない＝実名の要配慮情報を入れてよい」ではありません。</b>学習・人の目、保存・処理地、同意・組織的措置は別の判断軸です（第1章）。</li>
-            <li><b>Workspaceのデータリージョン設定は、Gemini Notebookには効きません。</b>組織部門に設定しても対象外と明記され、Geminiアプリ等とは扱いが違います<sup class="cite"><a href="#r41" title="出典一覧 [41] へ移動">[41]</a></sup>。</li>
-          </ul>
+          <h3 class="h3" style="font-size:15px;">お客様からよくある質問</h3>
+          <p style="font-size:12px; line-height:1.55; margin:4px 0 0;"><b>「Workspaceなら安全で、機密の資料も入れてよい？」</b><br>コアサービスの版は、人のレビューなし・学習に使わない扱いです<sup class="cite"><a href="#r39" title="出典一覧 [39] へ移動">[39]</a></sup><sup class="cite"><a href="#r40" title="出典一覧 [40] へ移動">[40]</a></sup>。ただし、Business Base等は個人版と同じ<sup class="cite"><a href="#r39" title="出典一覧 [39] へ移動">[39]</a></sup>、保存地は日本に固定できず（データリージョンは対象外）<sup class="cite"><a href="#r41" title="出典一覧 [41] へ移動">[41]</a></sup>、他のGoogleサービスと共有したデータはその通知に従い<sup class="cite"><a href="#r40" title="出典一覧 [40] へ移動">[40]</a></sup>、個人アカウントのフィードバックは収集されます<sup class="cite"><a href="#r66" title="出典一覧 [66] へ移動">[66]</a></sup>。「学習されない」は「入れてよい」ではなく、Tier Bは条件つき、Tier Cは不可です。</p>
         </div>
         <div class="box accent">
           <h3 class="h3" style="font-size:15px;">未確認（Google文書内の食い違い）</h3>
@@ -1785,7 +1782,7 @@
     <div class="page-body">
       <div class="eyebrow">出典一覧（続き2）</div>
       <h2 class="h2" style="font-size:24px;">追補：Gemini Notebook（第13章）・Google Workspace（第14章）</h2>
-      <p style="margin-top:6px; font-size:var(--fs-small);">第13章は2026年10月21日、第14章は10月29日に確認した公式情報です（番号は前頁と通し）。第13章では、既存の[5][14][17]も同日に該当箇所を再照合しています（[5]はISMAPクラウドサービスリストを描画して再取得し、言明対象範囲・生成AI情報のPDFも確認）。</p>
+      <p style="margin-top:6px; font-size:var(--fs-small);">第13章は2026年10月21日（[66]とp.23のFAQは10月29日）、第14章は10月29日に確認した公式情報です（番号は前頁と通し）。第13章では、既存の[5][14][17]も同日に該当箇所を再照合しています（[5]はISMAPクラウドサービスリストを描画して再取得し、言明対象範囲・生成AI情報のPDFも確認）。</p>
       <div style="margin-top:10px;">
           <div class="refs-cat">Gemini Notebook（2026年10月21日確認）</div>
           <ul class="refs">
@@ -1806,6 +1803,7 @@
             <li id="r49"><span class="refnum">49.</span> Turn the Gemini App on or off（版別の扱い・規約）｜Workspace Help — <a href="https://support.google.com/a/answer/14571493" target="_blank" rel="noopener noreferrer">support.google.com/a/answer/14571493</a></li>
             <li id="r50"><span class="refnum">50.</span> Turn Gemini Enterprise on or off for users｜Workspace Help — <a href="https://knowledge.workspace.google.com/admin/generative-ai/gemini-enterprise/turn-gemini-enterprise-on-or-off-for-users" target="_blank" rel="noopener noreferrer">knowledge.workspace.google.com/…（Gemini Enterprise）</a></li>
             <li id="r51"><span class="refnum">51.</span> Gemini AI features now included in Workspace subscriptions｜Workspace Help — <a href="https://knowledge.workspace.google.com/admin/generative-ai/workspace-with-gemini/gemini-ai-features-now-included-in-google-workspace-subscriptions" target="_blank" rel="noopener noreferrer">knowledge.workspace.google.com/…（含まれる機能）</a></li>
+            <li id="r66"><span class="refnum">66.</span> Gemini Notebookの管理者設定（オン・オフ、外部共有）／Manage external sharing for Gemini Notebook（2026年9月10日）｜Workspace Help・Workspace Updates — <a href="https://support.google.com/a/answer/15239506" target="_blank" rel="noopener noreferrer">support.google.com/a/answer/15239506</a> ／ <a href="https://knowledge.workspace.google.com/admin/generative-ai/gemini-notebook/manage-gemini-notebook-sharing-settings" target="_blank" rel="noopener noreferrer">…/manage-gemini-notebook-sharing-settings</a> ／ <a href="https://workspaceupdates.googleblog.com/2026/09/manage-external-sharing-for-gemini-notebook-in-the-Admin-console.html" target="_blank" rel="noopener noreferrer">workspaceupdates.googleblog.com/2026/09/…</a></li>
           </ul>
       </div>
     </div>
@@ -1843,7 +1841,7 @@
             <li id="r65"><span class="refnum">65.</span> OpenAI Trust Portal（SOC 2・ISO認証）｜OpenAI — <a href="https://trust.openai.com/" target="_blank" rel="noopener noreferrer">trust.openai.com</a></li>
           </ul>
       </div>
-      <p style="margin-top:8px; font-size:var(--fs-caption); color:#5A6B84; border-top:1px solid #E4E8EE; padding-top:8px;">本資料は2026年10月21日（第14〜17章は10/29）時点で確認できた公式一次情報に基づく技術的整理です。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。</p>
+      <p style="margin-top:8px; font-size:var(--fs-caption); color:#5A6B84; border-top:1px solid #E4E8EE; padding-top:8px;">本資料は2026年10月21日（第13章のp.23のFAQと第14〜17章は10/29）時点で確認できた公式一次情報に基づく技術的整理です。各社の規約・料金・対応リージョンは頻繁に更新されるため、意思決定の直前には必ず公式ページで再確認してください。法的な最終判断は専門家にご確認ください。特定のベンダー・サービスの宣伝を意図したものではありません。</p>
     </div>
     <div class="page-footer"><span>出典一覧（続き3）</span><span class="pn"></span></div>
   </section>
