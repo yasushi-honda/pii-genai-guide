@@ -857,7 +857,7 @@ F9、V1〜V3の第2.0版部分は、上記M6・M7に依存する行のため、�
 |---|---|---|---|
 | J1 | 組織向けAntigravityの対象は、Gemini Enterprise Standard／Plusのシート、またはGoogle Cloudプロジェクト＋API（従量課金）。シートでは別のAntigravityライセンスは不要。Cloudブログは対象を「Standard、Plus、Standard Emerging Market」と記載。Antigravity IDE（単体）は組織向けでは非対応で、対象はApp・CLI・IDE拡張（p.27〜28） | antigravity.google/docs/enterprise（「Connect with your Gemini Enterprise Standard or Gemini Enterprise Plus seat license」「No separate per-user Antigravity license is required」「Antigravity IDE (standalone) is not supported for enterprise deployments」）、Google Cloudブログ 2026-08-21（「eligible Gemini Enterprise Standard, Plus, and Standard Emerging Market licenses」）［出典52・54］。docsのページ自身に更新日の表示はない | 確認済 |
 | J2 | Workspace Business（Starter／Standard／Plus）単独で使えると書いた記載は、確認した範囲（antigravity.googleのdocs 5ページ、Cloudブログ）にない。FAQは「Google Workspace accounts: Your Workspace administrator must explicitly provision Antigravity for your account. If it isn't provisioned, sign-in fails.」とだけ書く。組織向けの手順に出るのはGemini EnterpriseライセンスとCloudプロジェクトのみ（p.27〜28） | antigravity.google/docs/faq、docs/enterprise［出典52・53］ | 確認済（記載がないこと）／Workspace Business単独の資格は未確認 |
-| J3 | 個人アカウント向けは、Google利用規約から派生した規約。無料でも使え、Google AI Ultraの特典に「Access to third-party models」がある。組織向けの個別契約は現在非対応（「Organizational tiers through a custom contract」） | antigravity.google/docs/plans（「available to individual accounts under terms derived from Google's Terms of Service, and to teams under Google Cloud terms in Gemini Enterprise」）［出典53］ | 確認済 |
+| J3 | 個人アカウント向けは、Google利用規約から派生した規約。無料でも使え（FAQ：「Personal Google Accounts … can use Google Antigravity on any plan, including the free tier」）、Google AI Ultraの特典に「Access to third-party models」がある。組織向けの個別契約は現在非対応（「Organizational tiers through a custom contract」） | antigravity.google/docs/plans（「available to individual accounts under terms derived from Google's Terms of Service, and to teams under Google Cloud terms in Gemini Enterprise」）、docs/faq（無料での利用）［出典53］ | 確認済 |
 | J4 | 個人アカウントの入力・操作の記録（Interactions）は、Google・Alphabetの研究、製品、機械学習技術の評価・開発・改善に使われ、「Google employees and contractors may access, view, review and use Interactions」。設定で利用方法を変えられるが、削除はメールでの依頼で、削除依頼までは規約に従って使われる。FAQは「opt out of data collection」と書き、規約本文の「change your preference on how such data is used」と表現が異なる（p.27〜28） | antigravity.google/terms、docs/faq［出典53］。規約はプロンプト・コードを明示して列挙せず、設定名とオフ時の扱いは書かれていない | 確認済（文言）／オフ時の扱いは未確認 |
 | J5 | 組織向けの規約は「Every session runs under Google Cloud's enterprise security controls, data residency guarantees, and the Google Cloud Terms of Service」。Cloudブログは「Maintain data ownership under Google Cloud's Terms of Service, ensuring all agent activity executes strictly within your secure cloud boundary」。**Antigravity固有の「学習に使わない」という明記は、antigravity.googleのdocs・Cloudブログにない**（p.27〜28） | docs/enterprise、Cloudブログ［出典52・54］ | 確認済（記載がないこと） |
 | J6 | Cloudのサービス固有条項（AI/ML Services）に「Training Restriction」があり、「Google will not use Customer Data to train or fine-tune any AI/ML models without Customer's prior permission or instruction」。この条項がAntigravityのプロンプト・コードに及ぶかは、Antigravityのページに記載がなく未確認。なお、同じ条項の別の節（Third-Party Enterprise Models）は「Gemini Enterprise, Antigravity for Enterprise」を名指しする（p.28） | Google Cloud「Service Specific Terms」（ページの最終更新表記 October 27, 2026）の「Training Restriction」と「Third-Party Enterprise Models」の節［出典34］ | 一部確認（条項の文言は確認済。Antigravityへの適用範囲は未確認） |
@@ -865,7 +865,7 @@ F9、V1〜V3の第2.0版部分は、上記M6・M7に依存する行のため、�
 | J8 | Gemini Enterpriseのロケーション表で、AI developer tools（Antigravity app・CLI・IDE拡張、Android Studio）は「選んだモデルの保存（at-rest DRZ）とML処理（MLP）の約束に従う」。国内リージョンの列は「At-rest DRZ not supported. MLP not supported.」（列の読み取りはH5と同じ）。docs/enterpriseも「Regional data residency constraints apply to first-party Gemini models」で、ロケーションはglobal・us・euのみ（日本の記載なし）。サインイン時にはus・euを選んでもglobalのエンドポイントに接続する（p.27〜28） | Gemini Enterprise「Data residency」（Last updated 2026-10-28 UTC。2026-10-29に生HTMLで取得）、docs/enterprise［出典17・52］ | 確認済 |
 | J9 | 管理者の機能：プロンプト・エージェントの回答・メタデータを記録する監査ログ（切り替え1つ）、ワークスペースのサンドボックス・ブラウザ・MCPサーバーへのアクセスの設定、VPC Service Controls、リクエスト・レスポンスのログ（p.28） | Cloudブログ（「Central audit logging」「Configurable security policies」）、docs/enterprise（「Request and response logging」「Satisfies private networking (VPC Service Controls)」）［出典52・54］ | 確認済 |
 | J10 | エージェント特有の記載：規約は「You are solely responsible for: (a) the actions and tasks performed by an AI Agent; … (c) authorizing an AI Agent's access and connection to data, applications, and systems」。docsは、既定の隔離ターミナル（ワークスペースと一時ディレクトリのみ、ネットワークなし）または「Request Review」を保ち、「Turbo / Always proceed」は隔離した開発コンテナや使い捨てブランチに限るよう案内する。プロンプトインジェクション・データ流出を明示した警告と、Gmail・Driveのコネクタへの言及は、取得した範囲にない（p.27〜28） | antigravity.google/terms、docs/enterprise、docs/permissions［出典52・53］ | 確認済（取得範囲の記載） |
-| J11 | ISMAPクラウドサービスリスト（2026-10-29に描画、重複を除いて103件）に「Antigravity」「Anthropic」「Claude」の語はない。Gemini Enterprise（C26-0114-2、「Gemini Enterprise (including Agentspace) and Gemini Notebook Enterprise」）の登録はあるが、その言明対象範囲PDF・生成AI情報PDFにも、Antigravity、developer tools、Claude、Anthropic、第三者モデルの記載がない。Antigravityがこの登録の範囲に含まれるかは未確認（p.27〜28） | ISMAPクラウドサービスリスト（描画）と、同リストの2つのPDF（`pdftotext`で検索）［出典5］ | 確認済（記載がないこと）／範囲への該当は未確認 |
+| J11 | ISMAPクラウドサービスリスト（2026-10-29に描画、重複を除いて103件）に「Antigravity」「Anthropic」「Claude」の語はない。Gemini Enterprise（C26-0114-2、「Gemini Enterprise (including Agentspace) and Gemini Notebook Enterprise」）の登録はあるが、その言明対象範囲PDFにAntigravity、developer tools、Claude、Anthropic、第三者モデルの記載がない。生成AI情報PDF（2025年9月23日付。テキスト層が壊れているため、画像で目視）は、生成AIを含むサービスとして「Agentspace」「NotebookLM Enterprise」のみを挙げ、対象外のサービスは「該当無し」。Antigravityの企業向け提供（2026-08-21のブログ）より前の日付で、Antigravityがこの登録の範囲に含まれるかは未確認（p.27〜28） | ISMAPクラウドサービスリスト（描画）と、同リストの2つのPDF（`pdftotext`で検索）［出典5］ | 確認済（記載がないこと）／範囲への該当は未確認 |
 | J12 | 本文の整理（Tier）：個人はAのみ。組織向け（Gemini Enterpriseシート、またはCloudプロジェクト）はA・B条件つき・C不可。Workspace Business単独は資格が未確認のため判定しない。Bの条件は、契約（Cloud規約）とDPAの適用、管理者による有効化と監査ログ、第三者モデルを有効にする場合の外国の整理、エージェントの承認設定、個人アカウントでの入力禁止。Cは、AI developer toolsが国内リージョン非対応のため不可 | J1〜J11、H14、第10章の整理 | 推奨水準（法令の要件ではない。法的な保証ではない） |
 
 ### 外部回答との照合（2026-10-29）
@@ -902,10 +902,10 @@ F9、V1〜V3の第2.0版部分は、上記M6・M7に依存する行のため、�
 | K2 | 個人の規約・プライバシーポリシーは、学習への利用を既定とし、アカウント設定で外す方式（opt out）。ヘルプ（K1）は「許可した場合」と書き、書き方が異なる。オプトアウトしても、フィードバックの提供と安全審査の対象は学習に使う（p.29〜30） | 消費者規約（Effective Oct 8, 2025。「including training our models, unless you opt out of training through your account settings. Even if you opt out, we will use Materials for model training when: (1) you provide Feedback…, or (2) your Materials are flagged for safety review」）、プライバシーポリシー（Effective Sep 10, 2026。「We may use your Inputs and Outputs to train and improve Anthropic AI models, unless you opt out through your account settings.」）［出典56］ | 確認済（文言）。既定値の画面表示は未確認 |
 | K3 | 個人の保持：削除すると30日以内にバックエンドから削除。学習を許可した場合は、匿名化した形で最長5年。違反フラグの場合は最長2年（分類スコアは最長7年）。フィードバックは5年。Claude Code（個人アカウント）も、学習を許可すると5年、許可しなければ30日（p.29〜30） | privacy.claude.com「How long do you store my data?」（日付表示なし。「Deleted from our back-end storage systems within 30 days」「up to 5 years in our model training pipelines」）、code.claude.com/docs/en/data-usage［出典57・58］ | 確認済 |
 | K4 | 商用（Team／Enterprise／API）は、既定で入出力を学習に使わない。商用規約は「Anthropic may not train models on Customer Content from Services」。フィードバック送信や、顧客が許可した場合は使われうる。Claude Codeも、商用規約の下では顧客が提供を選んだ場合（Developer Partner Program等）を除き、コードとプロンプトを学習に使わない（p.29〜30） | privacy.claude.com（August 18, 2026更新の表記。「By default, we will not use your inputs or outputs from our commercial products…to train our models」）、商用規約（Effective Jun 17, 2025）、code.claude.com/docs/en/data-usage［出典55・57・58］ | 確認済 |
-| K5 | 商用の保持：APIは入出力を受領・生成から30日以内にバックエンドから削除（ゼロデータ保持の合意等を除く）。Claude for Workは製品内に保持され、削除すると30日以内に削除。ゼロデータ保持は、一部のAPIとClaude Code for Enterpriseの顧客に、Anthropicの承認のもと組織単位で適用（標準のEnterpriseには含まれない）（p.30） | privacy.claude.com「How long do you store my organization's data?」（July 1, 2026更新の表記）、「I have a zero data retention agreement…」、code.claude.com/docs/en/data-usage［出典57・58］ | 確認済（Teamへのゼロデータ保持の適用は未確認） |
+| K5 | 商用の保持：APIは入出力を受領・生成から30日以内にバックエンドから削除（ゼロデータ保持の合意等を除く）。Claude for Workは製品内に保持され、削除すると30日以内に削除。ゼロデータ保持は、一部のAPIとClaude Code for Enterpriseの顧客に、Anthropicの承認のもと組織単位で適用（標準のEnterpriseには含まれない）。ゼロデータ保持の対象製品は「eligible Anthropic APIs, Anthropic products that use your Commercial organization API key (including Claude Code accessed via the API), and Claude Code for Enterprise plans」に限られ、Claudeアプリ（Team／Enterprise）のチャットは挙がっていない（p.30） | privacy.claude.com「How long do you store my organization's data?」（July 1, 2026更新の表記）、「I have a zero data retention agreement…」、code.claude.com/docs/en/data-usage［出典57・58］ | 確認済（Teamへのゼロデータ保持の適用は未確認） |
 | K6 | DPAは商用規約に組み込まれる（「Data submitted through the Services will be processed in accordance with the Anthropic Data Processing Addendum, which is incorporated into these Terms by reference」）。DPAでは、お客様が管理者（controller）、Anthropicが処理者（processor）。サブプロセッサーは一覧に基づく包括的な承認。越境移転はSCC・英国／スイスの追補を組み込み、日本の個人情報保護法向けの個別条項は確認できない（p.30） | 商用規約、Anthropic Data Processing Addendum（Effective Feb 24, 2025）［出典55］。商用規約への同意でDPAが適用される構成に読めるが、読み取りであり確定ではない | 確認済（文言）／適用の確定は契約書面で確認 |
 | K7 | 契約主体は、EEA・スイス・英国の顧客はAnthropic Ireland, Limited、それ以外はAnthropic, PBC（米国）。日本拠点が契約主体になる記載は、商用規約・DPA・プライバシーポリシーにない。個人向けのcontrollerは、欧州圏外ではAnthropic PBC。個人の情報は米国ほかの国で処理・保存されうる（p.29〜30） | 商用規約、DPA、プライバシーポリシー（「Any information we hold about you will be transferred to, used, processed, and stored in the United States and other countries」）［出典55・56］ | 確認済 |
-| K8 | 直販のClaude APIで選べる推論地は、`global`（既定。どの地域でも動きうる）と`us`（米国のみ、1.1倍の料金）。保存（workspace geo）は作成時に決まり、現在は`us`のみ。日本・EU等は指定できない（p.30） | platform.claude.com「Data residency」（日付表示なし。「Currently, "us" is the only available workspace geo」「Inference runs only in US-based infrastructure」）［出典59］ | 確認済 |
+| K8 | 直販のClaude APIで選べる推論地は、`global`（既定。どの地域でも動きうる）と`us`（米国のみ。Claude 4.6以降のモデルで標準料金の1.1倍。古いモデルは`inference_geo`非対応で、指定すると400。Haiku 5.5は100,000トークン超の高い料金にも倍率が及ぶ）。保存（workspace geo）は作成時に決まり、現在は`us`のみ。日本・EU等は指定できない（p.30） | platform.claude.com「Data residency」（日付表示なし。「Currently, "us" is the only available workspace geo」「Inference runs only in US-based infrastructure」）［出典59］ | 確認済 |
 | K9 | claude.comの地域コンプライアンスのページは、地域別データレジデンシーを「AWS Bedrock、GCP Vertex、Microsoft Foundryで利用できる」とし、日本・韓国・シンガポール・インド・オーストラリアを含むアジア太平洋で利用できるとする。これは各クラウド経由の話で、直販のClaudeアプリ・APIが日本に固定できるという記述ではない。日本語版のモデル名は英語版より古い（Sonnet 4.5等と、Sonnet 5等） | claude.com/regional-compliance、claude.com/ja-jp/regional-compliance［出典59］ | 確認済 |
 | K10 | 認証：HIPAA対応の構成（BAAあり）、ISO 27001:2022、ISO/IEC 42001:2023、SOC 2 Type I・II（Trust Portalで資料請求）。ISMAPクラウドサービスリスト（2026-10-29に描画、103件）に「Anthropic」「Claude」の語はない（p.29〜30） | privacy.claude.com「What certifications has Anthropic obtained?」（March 16, 2026更新の表記）［出典60］、ISMAPクラウドサービスリスト［出典5］ | 確認済（記載がないこと） |
 | K11 | 本文の整理（Tier）：個人（Claude Codeを個人アカウントで使う場合を含む）はAのみ。商用（Team／Enterprise／API／Claude Code）はA・B条件つき・C不可。Bの条件は、商用で使うこと、DPA（商用規約に組込み）の適用の確認、ISMAP未登録のため安全管理措置を別の確認（認証、外国制度の把握）で補うこと、法28条の整理。Cは、直販では日本に固定できないため不可 | K1〜K10、第10章の整理 | 推奨水準（法令の要件ではない。法的な保証ではない） |
@@ -936,8 +936,8 @@ F9、V1〜V3の第2.0版部分は、上記M6・M7に依存する行のため、�
 |---|---|---|---|
 | Y1 | 個人（Free／Plus／Pro）は、内容を学習に使うことがあり、「Improve the model for everyone」をオフにするか、プライバシーポータルの「Do not train on my content」で外せる。オプトアウトしても、フィードバックを送ると、その会話全体が学習に使われうる。Codexは別に「Include environments」の設定がある（p.31〜32） | help.openai.com/en/articles/5722486「How your data is used to improve model performance」（「Updated: 9日前」の表示から約2026-10-20）［出典61］ | 確認済（Playwrightで描画） |
 | Y2 | Temporary Chatは、一時のあいだは履歴に残らず学習に使われないが、OpenAIは安全のために最長30日、コピーを保持しうる。保存すると通常のチャットとして学習設定に従う（p.31〜32） | help.openai.com/en/articles/8914046「Temporary Chat in ChatGPT」（「Updated: 10日前」の表示から約10-19）［出典61］ | 確認済 |
-| Y3 | Business／Enterprise／Edu／APIは、既定で入出力を学習に使わない。Business／Enterprise／Eduは、別契約で許可しない限り使わず、フィードバック（thumbs up/down）も学習を許可しない。DPAは、Business・Enterprise・APIの利用で締結できる。保持は、Enterprise／Eduはワークスペース管理者が決め（削除後30日以内に消去）、Businessも管理者が設定でき、APIは最大30日（ゼロデータ保持を要請できる）（p.31〜32） | 同5722486（「By default, we don't use inputs or outputs from ChatGPT Business, ChatGPT Enterprise, ChatGPT Edu, or our API to improve our models.」）、openai.com/enterprise-privacy（日本語版、「更新内容：2026年1月8日」）、developers.openai.com/api/docs/guides/your-data［出典61・62・64］ | 確認済 |
-| Y4 | 契約：サービス契約（発効日2026年1月1日）は、API、ChatGPT Enterprise、ChatGPT Businessなどが対象。当事者はOpenAI OpCo, LLCまたはOpenAI Ireland Ltd（通知先の条項）。日本法人の記載はない。日本の顧客の相手方がどちらかを定める規定は、確認した範囲にない（p.32） | openai.com/policies/services-agreement（日本語版）［出典62］ | 確認済（文言）／相手方の割当は未確認 |
+| Y3 | Business／Enterprise／Edu／APIは、既定で入出力を学習に使わない。Business／Enterprise／Eduは、別契約で許可しない限り使わず、フィードバック（thumbs up/down）も学習を許可しない。DPAは、Business・Enterprise・APIの利用で締結できる。保持は、Enterprise／Eduはワークスペース管理者が決め（削除後30日以内に消去）、Businessも管理者が設定できる。APIは、不正監視ログが既定で最長30日（承認制のゼロデータ保持等で外せる）。一方、機能が保存するデータ（application state）は別で、エンドポイントごとに保持され、ゼロデータ保持でも対象外のものがある（p.31〜32） | 同5722486（「By default, we don't use inputs or outputs from ChatGPT Business, ChatGPT Enterprise, ChatGPT Edu, or our API to improve our models.」）、openai.com/enterprise-privacy（日本語版、「更新内容：2026年1月8日」）、developers.openai.com/api/docs/guides/your-data（「Abuse monitoring logs」と「Application state」の区別、エンドポイント表の「Abuse monitoring retention」「Application state retention」「Zero Data Retention eligible」。codex reviewの指摘を受け、2026-10-29に私が描画して原文で確認）［出典61・62・64］ | 確認済 |
+| Y4 | 契約：サービス契約（発効日2026年1月1日）は、API、ChatGPT Enterprise、ChatGPT Businessなどが対象。「OpenAI 契約当事者」の定義は「(a) EEA またはスイス以外に所在する顧客については OpenAI OpCo, LLC、(b) EEA またはスイスに所在する顧客については OpenAI Ireland Ltd.、または (c) 注文書で指定されている場合は OpenAI Public Sector, LLC」。日本の顧客は、注文書に別の指定がなければOpenAI OpCo, LLC（米国）。日本法人の記載はない（p.31〜32） | openai.com/policies/services-agreement（日本語版）［出典62］ | 確認済（独立検証で、定義条項を2026-10-29に私が描画して原文で確認） |
 | Y5 | ChatGPTのデータレジデンシー（保存）は、「Eligible API customers and new ChatGPT Enterprise/Edu customers」が、対応国に保存を選べる。新規のワークスペースのみ。対応国は、Australia／Canada／Europe（EEA+Switzerland）／India／Japan／Singapore／South Korea／United Arab Emirates／United Kingdom／United States。Enterprise／Eduは追加費用なし（p.31〜32） | help.openai.com/en/articles/9903489（「Updated: 8日前」の表示から約10-21。2026-10-29に私が描画して原文で確認）［出典63］ | 確認済 |
 | Y6 | 推論のレジデンシー（GPU処理が域内）は、現在、Europe（EEA+Switzerland）／United States／United Arab Emirates のみ。**日本は含まれない**。GPU以外の処理（認証、ルーティング、分析、PDF・Wordからのテキスト抽出等）は域外で行われうる。外部連携（Apps・MCP、Web検索）のデータは、OpenAIの基盤の外で処理・保存されうる。対象外：一般提供でない機能、サードパーティのGPT、Codex Web（Codexアプリ・CLIは対象）（p.31〜32） | 同9903489（「Inference residency for ChatGPT is currently available for the following regions」）［出典63］ | 確認済 |
 | Y7 | ChatGPT Business：リージョン選択は段階的に提供中で、すべての顧客には未提供。選んだ地域には、ワークスペースの主要な顧客コンテンツ（プロンプトと応答）の**保存のみ**が及び、推論のレジデンシーは含まない。米国外を選んでも、安全・不正検知のログとして、すべてのプロンプトと応答のコピーが限られた期間、米国に保存される。選べる地域の一覧は、この記事にない（p.32） | help.openai.com/en/articles/20001418「Where your ChatGPT Business content is stored」（「Updated: 7日前」の表示から約10-22。私が描画して原文で確認）［出典63］ | 確認済／日本を選べるかは未確認 |
@@ -955,7 +955,44 @@ F9、V1〜V3の第2.0版部分は、上記M6・M7に依存する行のため、�
 - Codex、コネクタ（Gmail・Google Drive）、ChatGPT Workの個別の扱い。ChatGPT agentのヘルプは、提供終了の旧記述が残る。
 - ChatGPT Businessのリージョン選択で日本を選べるか。
 - APIの日本リージョンで使えるモデルの一覧（GPT-6.1 Sol・Terraは米国・EUのみ）。
-- 日本の顧客の契約相手方（OpenAI OpCoかOpenAI Irelandか）。
 - 本節は法的助言ではない。
 
 出典: help.openai.com/en/articles/5722486、/8914046、/9903489、/20001418、openai.com/enterprise-privacy、openai.com/policies/services-agreement、openai.com/index/introducing-data-residency-in-asia、developers.openai.com/api/docs/guides/your-data、trust.openai.com、ismap.go.jp/csm?id=cloud_service_list。
+
+---
+
+## 30. 第15〜17章（§27〜§29）の検証記録（2026-10-29）
+
+対象: §27（J1〜J12）、§28（K1〜K11）、§29（Y1〜Y11）と、本文の第15〜17章（p.27〜32）、論点17〜19。J12・K11・Y11（本資料の推奨水準の行）は、事実の照合の対象外。
+
+### 独立の事実検証（2担当。台帳の主張とURLだけを渡し、結論は渡していない）
+担当1はAntigravityとClaude（`curl`で取得した生HTMLと、ISMAPのPDF）、担当2はChatGPT（Playwrightで描画した本文）。報告は鵜呑みにせず、修正に使った原文は自分でも確認した。
+
+| 区分 | 結果 |
+|---|---|
+| 不一致 | Y4（契約主体）の1件。サービス契約の定義に「(a) EEA またはスイス以外に所在する顧客については OpenAI OpCo, LLC、(b) EEA またはスイスに所在する顧客については OpenAI Ireland Ltd.、または (c) 注文書で指定されている場合は OpenAI Public Sector, LLC」があり、「相手方を定める規定は確認した範囲にない」は誤りだった。私が原文で確認し、台帳・本文・論点19を修正 |
+| 一部不一致（軽微） | J3（無料での利用の出典はplansではなくFAQ）、K8（「1.1倍」はClaude 4.6以降のモデルの条件つき。本文からは価格の記述を外した）、K9（韓国の個別確認は未了。FAQの文言には含まれる）。修正済み |
+| 取得不能 | J11・K10・Y10のISMAPリスト本体（担当1は描画できず、担当2は描画して確認）。私が描画して、OpenAI・ChatGPT・Anthropic・Claude・Antigravityの語がなく、Gemini Enterprise（C26-0114-2）があることを確認。生成AI情報PDFは文字が壊れていたため、画像で目視（J11に反映） |
+| 一致 | 上記以外の行（J1・J2・J4〜J10、K1〜K7・K10、Y1〜Y3・Y5〜Y10） |
+
+ISMAPの件数：登録番号の形式に一致する語は108件だが、重複を除くと103件（備考欄に他の登録番号への言及がある）。結論には影響しない。
+
+### codex review（`codex review --base main`、reasoning effort high、1回）
+指摘は3件（すべてP2）で、いずれも妥当と判断して修正した。
+- OpenAI APIの保持：「入出力は最長30日保持」は、不正監視ログの話。機能が保存するデータ（application state）は別で、ゼロデータ保持でも対象外のエンドポイントがある。私が原文で確認し、本文p.32とY3を修正。
+- Claudeの個人プラン：30日は、会話を削除してからの期間。許可しなければ自動で30日で消えるわけではない（Claude Codeは30日保持）。本文p.29を修正。
+- ゼロデータ保持：対象は、eligibleなAPI、商用のAPIキーを使う製品、Claude Code for Enterpriseで、Claudeアプリ（Team／Enterprise）のチャットは挙がっていない。本文p.30の行から外し、K5に原文を追記。
+
+### 第三者評価（evaluator。元の依頼とACだけを渡した）
+判定はREQUEST_CHANGES（軽微）で、HIGHの問題はなし。指摘7件のうち、台帳§30への参照が実在しない（本節で解消）、はじめに（p.3）の補足行に第14〜17章がない、Antigravityの条件に学習に使われない旨の契約書面の確認がない、ChatGPT BusinessのISO 27001の対象が明記されていない、FAQの主語がBusinessも含むように読める、Claude個人の既定値の表現、Tier Cの誘導先の説明、をすべて本文に反映した。
+
+### 本文ページ表記の照合
+- 旧PDF（29ページ）と新PDF（36ページ）の全文を比較した。p.4〜26は変わらない。p.1〜3（表紙・目次・はじめに）は日付と目次の追加のみ。旧p.27（出典一覧1）は新p.33に同一、旧p.28・p.29は新p.34・p.35（URLの折り返しと、免責文がp.36へ移ったことだけが差）。
+- 新しい節の「p.N」32件（J・K・Yの行と論点17〜19）を、行ごとの語がそのページにあるかで照合し、不一致は0件。
+- 修正した既存の表記：§16の出典の所在（旧p.29→p.35）、§26の同じ記述。
+
+### 確認できていない点
+- 各節の「確認できていない点」のとおり（Workspace Business単独の資格、Antigravityへの学習制限条項の適用、ChatGPT Businessの日本リージョン、Claudeアプリの地域選択など）。
+- 本文の出典[43]（Gemini Enterprise for business）は、第13章の追加時から本文で引用されていない。今回の変更とは無関係なので触れていない。
+- ChatGPTのヘルプ類は「Updated: N日前」の相対表示で、日付は逆算の推定。
+- 本節は法的助言ではない。

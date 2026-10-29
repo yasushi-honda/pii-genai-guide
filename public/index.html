@@ -341,7 +341,7 @@
         <div class="vrow n"><span class="lab" style="width:7.2em;">第2章 <span class="mono" data-toc-target="flow"></span></span><span><b>判定フロー</b> — 手元のデータをAIに入れてよいかを、3つの質問で判定する方法</span></div>
         <div class="vrow n"><span class="lab" style="width:7.2em;">第7章 <span class="mono" data-toc-target="tierc"></span></span><span><b>技術構成</b> — 要配慮個人情報を実名で扱わざるを得ない場合に、現実的に組める技術構成とその根拠</span></div>
         <div class="vrow n"><span class="lab" style="width:7.2em;">第11章 <span class="mono" data-toc-target="sectors"></span></span><span><b>福祉の業種別早見表</b> — 業種ごとの規律と、医療情報の混入　<span class="tag gray">補足</span></span></div>
-        <div class="vrow n"><span class="lab" style="width:7.2em;">第12・13章 <span class="mono" data-toc-target="geminicmp"></span></span><span><b>Geminiの入口とNotebookの版</b> — Gemini Enterprise／Agent Platformの違い、Gemini Notebook（旧NotebookLM）の3つの版　<span class="tag gray">補足</span></span></div>
+        <div class="vrow n"><span class="lab" style="width:7.2em;">第12〜17章 <span class="mono" data-toc-target="geminicmp"></span></span><span><b>各サービスの版別の整理</b> — Gemini・Notebook・Workspace、Antigravity、Claude、ChatGPTの、版ごとの使えるTier　<span class="tag gray">補足</span></span></div>
       </div>
 
       <h3 class="h3" style="margin-top:6px;">読み方</h3>
@@ -1451,7 +1451,7 @@
     <div class="page-body">
       <div class="eyebrow">15　Google Antigravity（版別の判定と条件）</div>
       <h2 class="h2">使えるTierと、入力する前の確認項目</h2>
-      <p style="margin-top:6px; font-size:var(--fs-small);">Antigravityについての整理です（2026年10月29日時点、本資料の推奨水準）。データの扱いを決めるのは<b>アカウントの区分（個人か、組織向けか）と、選ぶモデル</b>です。</p>
+      <p style="margin-top:6px; font-size:var(--fs-small);">2026年10月29日時点、本資料の推奨水準。データの扱いを決めるのは<b>アカウントの区分と、選ぶモデル</b>です。</p>
 
       <div class="tbl-wrap" style="margin:6px 0 4px;">
         <table style="font-size:10.5px;">
@@ -1470,12 +1470,11 @@
         <div class="box accent" style="padding:9px 14px;">
           <h3 class="h3" style="font-size:14px; margin-bottom:2px;">Bで入力する前の確認項目</h3>
           <ul class="ck" style="font-size:12px; margin-top:3px;">
-            <li>契約（Cloud規約）とDPAの適用を確認<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup></li>
+            <li>契約（Cloud規約）とDPAの適用、学習に使われない旨を、契約書面で確認<sup class="cite"><a href="#r34" title="出典一覧 [34] へ移動">[34]</a></sup></li>
             <li>管理者が有効化と監査ログを設定。必要ならVPC Service Controls<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup><sup class="cite"><a href="#r54" title="出典一覧 [54] へ移動">[54]</a></sup></li>
-            <li>第三者モデルを有効にするなら、global・us・euで処理される前提の法28条の整理（個別判断）<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></li>
+            <li>第三者モデルを有効にするなら、global・us・euで処理される前提で法28条を整理<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></li>
             <li>承認設定を保つ。自動承認（Turbo／Always proceed）は隔離環境だけ<sup class="cite"><a href="#r52" title="出典一覧 [52] へ移動">[52]</a></sup></li>
-            <li>個人アカウントで入力しない運用（内規での禁止）</li>
-            <li>組織的措置・ログ設計・外国の制度の把握（第10章）</li>
+            <li>個人アカウントでの入力禁止（内規）、組織的措置・ログ設計・外国の制度の把握（第10章）</li>
           </ul>
         </div>
         <div class="box stamp" style="padding:9px 14px;">
@@ -1498,12 +1497,12 @@
     <div class="page-body">
       <div class="eyebrow">16　Claude（Anthropic直販）（かんたん対照表）</div>
       <h2 class="h2">個人プランと、Team・Enterprise・APIでは、学習の扱いが逆です</h2>
-      <p style="margin-top:6px; font-size:var(--fs-small);">2026年10月29日時点。対象はAnthropicの直販（Claudeアプリ、API、Claude Code）です。Bedrock・Vertex経由は第7章の範囲です。個人プランは学習に使うかを設定で選ぶ方式、商用（Team・Enterprise・API）は既定で学習に使いません<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup><sup class="cite"><a href="#r56" title="出典一覧 [56] へ移動">[56]</a></sup><sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup>。</p>
+      <p style="margin-top:6px; font-size:var(--fs-small);">2026年10月29日時点。対象はAnthropicの直販（Claudeアプリ、API、Claude Code）です。Bedrock・Vertex経由は第7章の範囲です。個人プランは学習に使うかを設定で選べる方式（既定値の画面表示は未確認）、商用（Team・Enterprise・API）は既定で学習に使いません<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup><sup class="cite"><a href="#r56" title="出典一覧 [56] へ移動">[56]</a></sup><sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup>。</p>
 
       <div class="cols2" style="margin-top:4px;">
         <div class="vcard">
           <div class="vcard-head"><h3 class="h3">個人プラン（Free／Pro／Max）</h3><div class="tags"><span class="tag accent">Claudeアプリ・Claude Code</span></div></div>
-          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>設定で許可すると会話が学習に使われ、最長5年保持される。許可しなければ30日。安全審査の対象は、設定にかかわらず学習に使われうる<sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup><sup class="cite"><a href="#r58" title="出典一覧 [58] へ移動">[58]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>設定で許可すると会話が学習に使われ、最長5年保持される。許可しなければ、削除後30日で消える（Claude Codeは30日保持）。安全審査の対象は、設定にかかわらず学習に使われうる<sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup><sup class="cite"><a href="#r58" title="出典一覧 [58] へ移動">[58]</a></sup></span></div>
           <div class="vrow n"><span class="lab" style="width:6.4em;">規約の書き方</span><span>規約は「オプトアウトしない限り学習に使う」、ヘルプは「許可した場合」。書き方が異なる<sup class="cite"><a href="#r56" title="出典一覧 [56] へ移動">[56]</a></sup><sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup></span></div>
           <p class="model" style="margin:6px 0 1px; font-size:12px;">実名の通常の個人情報を入れてよいか（本資料の推奨水準）</p>
           <div style="font-size:12.5px; line-height:1.6;"><span class="tag good">A</span> のみ。B・Cは使わない</div>
@@ -1552,8 +1551,8 @@
           <thead><tr><th style="width:21%;">区分</th><th style="width:15%;">規約</th><th style="width:29%;">学習・保持</th><th style="width:21%;">保存・処理場所</th><th>使えるTier</th></tr></thead>
           <tbody>
             <tr><td><b>個人</b>（Free／Pro／Max）、Claude Codeの個人アカウント</td><td>消費者規約、プライバシーポリシー<sup class="cite"><a href="#r56" title="出典一覧 [56] へ移動">[56]</a></sup></td><td>設定で許可すると学習に使い、最長5年保持。許可しなくても、安全審査の対象とフィードバックは使う。削除後30日<sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup><sup class="cite"><a href="#r58" title="出典一覧 [58] へ移動">[58]</a></sup></td><td>米国ほかで処理・保存されうる<sup class="cite"><a href="#r56" title="出典一覧 [56] へ移動">[56]</a></sup></td><td><span class="tag good">A</span> のみ</td></tr>
-            <tr><td><b>Team／Enterprise</b>（Claudeアプリ）</td><td>商用規約、DPA組込み<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup></td><td>既定で学習に使わない。削除後30日。ゼロデータ保持は一部のEnterpriseで個別審査<sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup></td><td>日本の指定は確認できない（アプリの地域選択は未確認）<sup class="cite"><a href="#r59" title="出典一覧 [59] へ移動">[59]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
-            <tr><td><b>API</b>（Claude Platform）、Claude Code（商用）</td><td>商用規約、DPA組込み<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup></td><td>既定で学習に使わない。入出力は30日以内に削除。ゼロデータ保持は個別審査<sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup><sup class="cite"><a href="#r58" title="出典一覧 [58] へ移動">[58]</a></sup></td><td>推論はglobalかusのみ（usは1.1倍の料金）。保存はusのみ<sup class="cite"><a href="#r59" title="出典一覧 [59] へ移動">[59]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+            <tr><td><b>Team／Enterprise</b>（Claudeアプリ）</td><td>商用規約、DPA組込み<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup></td><td>既定で学習に使わない。削除後30日。アプリのチャットはゼロデータ保持の対象外<sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup></td><td>日本の指定は確認できない（アプリの地域選択は未確認）<sup class="cite"><a href="#r59" title="出典一覧 [59] へ移動">[59]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+            <tr><td><b>API</b>（Claude Platform）、Claude Code（商用）</td><td>商用規約、DPA組込み<sup class="cite"><a href="#r55" title="出典一覧 [55] へ移動">[55]</a></sup></td><td>既定で学習に使わない。入出力は30日以内に削除。ゼロデータ保持は、一部のAPIとClaude Code for Enterpriseで個別審査<sup class="cite"><a href="#r57" title="出典一覧 [57] へ移動">[57]</a></sup><sup class="cite"><a href="#r58" title="出典一覧 [58] へ移動">[58]</a></sup></td><td>推論はglobalかusのみ。保存はusのみ<sup class="cite"><a href="#r59" title="出典一覧 [59] へ移動">[59]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
             <tr><td><b>Bedrock・Vertex・Foundry経由</b></td><td>各クラウドの契約</td><td>各クラウドの扱い</td><td>日本を含む地域指定が案内されている<sup class="cite"><a href="#r59" title="出典一覧 [59] へ移動">[59]</a></sup></td><td><span class="tag gray">第7章で整理</span></td></tr>
           </tbody>
         </table>
@@ -1605,7 +1604,7 @@
         <div class="vcard">
           <div class="vcard-head"><h3 class="h3">Business／Enterprise／Edu／API</h3><div class="tags"><span class="tag accent">法人向け</span></div></div>
           <div class="vrow n"><span class="lab" style="width:6.4em;">ひとことで</span><span>既定で学習に使わない。DPAを締結できる<sup class="cite"><a href="#r61" title="出典一覧 [61] へ移動">[61]</a></sup><sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></span></div>
-          <div class="vrow n"><span class="lab" style="width:6.4em;">契約主体</span><span>OpenAI OpCo, LLCまたはOpenAI Ireland Ltd。日本法人の記載はない<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></span></div>
+          <div class="vrow n"><span class="lab" style="width:6.4em;">契約主体</span><span>EEA・スイス以外の顧客はOpenAI OpCo, LLC（米国）。日本法人の記載はない<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></span></div>
           <div class="vrow n"><span class="lab" style="width:6.4em;">ISMAP登録</span><span>リストに掲載なし<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup></span></div>
           <p class="model" style="margin:6px 0 1px; font-size:12px;">実名の通常の個人情報を入れてよいか（本資料の推奨水準）</p>
           <div style="font-size:12.5px; line-height:1.6;"><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span>　<b>法人の版</b>に限る</div>
@@ -1621,7 +1620,7 @@
       <div class="cols2" style="margin-top:6px;">
         <div class="box stamp" style="padding:10px 14px;">
           <h3 class="h3" style="font-size:14px; margin-bottom:2px;">お客様からよくある質問</h3>
-          <p style="font-size:12px; line-height:1.55; margin-top:2px;"><b>「日本にデータレジデンシーがあるなら、国内で完結しますよね？」</b><br>しません。日本を選べるのは保存先（at rest）だけです。AI処理は、ChatGPTは欧州・米国・UAEのみ、APIの日本は地域内処理がありません<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup><sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup>。Businessは保存のみで、安全・不正検知のログのコピーが米国に残ります<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup>。</p>
+          <p style="font-size:12px; line-height:1.55; margin-top:2px;"><b>「日本にデータレジデンシーがあるなら、国内で完結しますよね？」</b><br>しません。Enterprise／Edu・APIで日本を選べるのは保存先（at rest）だけです。AI処理は、ChatGPTは欧州・米国・UAEのみ、APIの日本は地域内処理がありません<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup><sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup>。Businessは保存のみで、安全・不正検知のログのコピーが米国に残ります<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup>。</p>
         </div>
         <div class="box accent" style="padding:10px 14px;">
           <h3 class="h3" style="font-size:14px; margin-bottom:2px;">この比較の位置づけ</h3>
@@ -1646,21 +1645,21 @@
             <tr><td><b>個人</b>（Free／Plus／Pro）</td><td>個人向けの規約<sup class="cite"><a href="#r61" title="出典一覧 [61] へ移動">[61]</a></sup></td><td>学習に使うことがある（設定でオフ）。フィードバックは例外<sup class="cite"><a href="#r61" title="出典一覧 [61] へ移動">[61]</a></sup></td><td>記載なし</td><td><span class="tag good">A</span> のみ</td></tr>
             <tr><td><b>Business</b></td><td>サービス契約、DPA可<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></td><td>既定で学習に使わない。保持は管理者が設定<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></td><td>地域選択は段階的に提供中。保存のみ。安全・不正検知のログのコピーは米国<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
             <tr><td><b>Enterprise／Edu</b></td><td>サービス契約、DPA可<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></td><td>既定で学習に使わない。削除後30日以内に消去<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></td><td>保存：日本を選べる（新規ワークスペース）。推論：日本は非対応（欧州・米国・UAEのみ）<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
-            <tr><td><b>API</b></td><td>サービス契約、DPA可<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></td><td>既定で学習に使わない。入出力は最長30日保持。ゼロデータ保持は承認制<sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup></td><td>日本：保存あり、地域内処理なし。米国外は不正監視の管理の承認等が必要<sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+            <tr><td><b>API</b></td><td>サービス契約、DPA可<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></td><td>既定で学習に使わない。不正監視ログは既定で最長30日。機能が保存するデータは別（エンドポイントごと）。ゼロデータ保持は承認制<sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup></td><td>日本：保存あり、地域内処理なし。米国外は不正監視の管理の承認等が必要<sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
           </tbody>
         </table>
       </div>
-      <div class="vband" style="margin-top:4px; align-items:flex-start;"><span class="tag stamp" style="flex:none;">Tier Cは不可</span><span style="font-size:12px;">保存を日本にしても、AI処理を日本に固定できません<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup><sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup>。要配慮情報を実名で扱う場合は、第12章・第13章の構成を使います。</span></div>
+      <div class="vband" style="margin-top:4px; align-items:flex-start;"><span class="tag stamp" style="flex:none;">Tier Cは不可</span><span style="font-size:12px;">保存を日本にしても、AI処理を日本に固定できません<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup><sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup>。要配慮情報を実名で扱う場合は、国内に固定できる構成の例として、第12章・第13章の構成を使います。</span></div>
 
       <div class="cols2" style="margin-top:6px;">
         <div class="box accent" style="padding:9px 14px;">
           <h3 class="h3" style="font-size:14px; margin-bottom:2px;">Bで入力する前の確認項目</h3>
           <ul class="ck" style="font-size:12px; margin-top:3px;">
             <li>法人の版で使い、個人契約で入力しない運用（内規での禁止）</li>
-            <li>DPAの締結と、契約主体（OpenAI OpCoかIreland）の確認<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></li>
+            <li>DPAの締結と、契約主体（OpenAI OpCo, LLC。注文書で別指定がないか）の確認<sup class="cite"><a href="#r62" title="出典一覧 [62] へ移動">[62]</a></sup></li>
             <li>保存を日本にしても処理は国外になる前提で、法28条の整理と同意（個別判断）<sup class="cite"><a href="#r63" title="出典一覧 [63] へ移動">[63]</a></sup><sup class="cite"><a href="#r64" title="出典一覧 [64] へ移動">[64]</a></sup></li>
             <li>サーバ所在国等を、本人の知り得る状態に置く</li>
-            <li>ISMAP未登録を、認証（SOC 2・ISO 27001等）や監査資料で補う<sup class="cite"><a href="#r65" title="出典一覧 [65] へ移動">[65]</a></sup></li>
+            <li>ISMAP未登録を、認証（SOC 2。ISO 27001の対象はAPI・Enterprise・Edu）や監査資料で補う<sup class="cite"><a href="#r65" title="出典一覧 [65] へ移動">[65]</a></sup></li>
             <li>組織的措置・ログ設計・外国の制度の把握（第10章）</li>
           </ul>
         </div>
@@ -1670,7 +1669,6 @@
             <li>個人プランの人のレビュー、通常チャットの保持期間</li>
             <li>SCIM、Codex・コネクタ・ChatGPT Workの個別の扱い</li>
             <li>Businessのリージョンに日本があるか</li>
-            <li>日本の顧客の契約相手方が、OpenAI OpCoかIrelandか</li>
             <li>生成AIが入力を応答出力のためだけに処理する場合の法28条上の扱いは、PPCの資料に示されていない</li>
           </ul>
         </div>
