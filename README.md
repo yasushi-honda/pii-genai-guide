@@ -50,5 +50,5 @@ PDF自身、両方のSHA-256を記録したマニフェスト）と実ファイ�
 
 ## 検証台帳
 
-資料中の主要な主張と一次情報の対応は [docs/claim-source-ledger.md](docs/claim-source-ledger.md) にまとめています（2026-10-21時点。全行の再確認は台帳§17、第13章のGemini Notebookは§16、第15〜17章のAntigravity・Claude・ChatGPTは2026-10-29で§27〜§29）。本文を更新したら、対応する行も更新してください。
+資料中の主要な主張と一次情報の対応は [docs/claim-source-ledger.md](docs/claim-source-ledger.md) にまとめています（2026-10-29時点。第1〜14章の全行の独立再検証は台帳§26、第13章のGemini Notebookは§16、第15〜17章のAntigravity・Claude・ChatGPTは§27〜§29）。本文を更新したら、対応する行も更新してください。
 法務担当者に確認してほしい論点は [docs/legal-review-issues.md](docs/legal-review-issues.md) に絞って整理しています。
