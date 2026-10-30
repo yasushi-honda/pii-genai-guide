@@ -299,7 +299,7 @@
         <li><a class="toc-link" href="#sec-intro"><span class="tn">00</span><span class="tt">はじめに<span class="ts">なぜこの整理が必要か</span></span><span class="tp" data-toc-target="intro"></span></a></li>
         <li><a class="toc-link" href="#sec-pillars"><span class="tn">01</span><span class="tt">大原則：個人情報保護法の「2つの壁」<span class="ts">安全管理措置と、適法な取得・利用は独立している</span></span><span class="tp" data-toc-target="pillars"></span></a></li>
         <li><a class="toc-link" href="#sec-flow"><span class="tn">02</span><span class="tt">判定フロー：3つの質問<span class="ts">個人特定情報／要配慮個人情報／処理体制の3段階判定</span></span><span class="tp" data-toc-target="flow"></span></a></li>
-        <li><a class="toc-link" href="#sec-crossborder"><span class="tn">03</span><span class="tt">越境移転規制（法28条）<span class="ts">「日本国内処理」が重視される法的背景</span></span><span class="tp" data-toc-target="crossborder"></span></a></li>
+        <li><a class="toc-link" href="#sec-crossborder"><span class="tn">03</span><span class="tt">越境移転規制（法28条）<span class="ts">同意の要否は、サーバの場所でなく提供先で決まる</span></span><span class="tp" data-toc-target="crossborder"></span></a></li>
         <li><a class="toc-link" href="#sec-scope"><span class="tn">03+</span><span class="tt">補足：適用範囲・生成AIの注意喚起・令和8年改正<span class="ts">民間と行政機関等の違い、法改正、医療情報ガイドライン</span></span><span class="tp" data-toc-target="scope"></span></a></li>
         <li><a class="toc-link" href="#sec-ismap"><span class="tn">04</span><span class="tt">ISMAP登録の構造と落とし穴<span class="ts">「登録済み」が自動的に意味しないもの</span></span><span class="tp" data-toc-target="ismap"></span></a></li>
         <li><a class="toc-link" href="#sec-tiers"><span class="tn">05</span><span class="tt">実名データの3段階（Tier A / B / C）<span class="ts">用途別に必要な技術要件を切り分ける</span></span><span class="tp" data-toc-target="tiers"></span></a></li>
@@ -452,7 +452,7 @@
           <text x="565" y="210" text-anchor="middle" class="edge">いいえ</text>
           <rect x="630" y="184" width="250" height="76" rx="10" class="box2" />
           <text x="755" y="208" text-anchor="middle" class="a" style="font-weight:700;">通常の個人情報</text>
-          <text x="755" y="226" text-anchor="middle" class="a">ISMAP登録済クラウド＋DPA＋</text>
+          <text x="755" y="226" text-anchor="middle" class="a">ISMAP登録（目安）＋DPA＋</text>
           <text x="755" y="242" text-anchor="middle" class="a">必要な場面で同意があれば利用可</text>
           <text x="755" y="258" text-anchor="middle" class="a">（越境移転規制に注意 → 第3章）</text>
 
@@ -521,7 +521,7 @@
   <section class="page" id="sec-crossborder" data-toc="crossborder">
     <div class="page-body">
       <div class="eyebrow">03　見落とされがちな論点</div>
-      <h2 class="h2">「日本国内処理」が重視される理由 — 個人情報保護法28条</h2>
+      <h2 class="h2">「日本のサーバなら大丈夫」とは限らない — 個人情報保護法28条</h2>
       <p style="margin-top:10px;">安全管理措置（法23条）やISMAP登録の有無とは別に、もう一つ重要な論点があります。<b>外国にある第三者への提供の制限（法28条）</b>です。この規定は、令和3年改正法（令和3年法律第37号）を経て、旧24条から現在の28条になっています<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup>。</p>
 
       <p>法28条が問題になるのは、個人データの提供先が<b>「外国にある第三者」</b>に当たる場合です。判断の軸はデータセンターの所在地ではなく、提供先の事業者の所在・法人格と実態です。外国法人でも、日本国内で個人情報データベース等を事業の用に供していると認められる場合は該当しません（個別判断）<sup class="cite"><a href="#r1" title="出典一覧 [1] へ移動">[1]</a></sup><sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。当たる場合、次のいずれかに該当しない限り、<b>あらかじめ本人の同意を得ること</b>が必要で、委託先への提供も対象です<sup class="cite"><a href="#r15" title="出典一覧 [15] へ移動">[15]</a></sup>。</p>
@@ -687,7 +687,7 @@
       <h3 class="h3" style="margin-top:8px;">Tier Bで利用可能な選択肢／避けるべき選択肢</h3>
       <ul class="list">
         <li><b>Gemini in Workspace</b> — Workspace自体がISMAP登録済みで、Geminiアプリ・Gemini in Workspaceも対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup>。保存地域に日本はない<sup class="cite"><a href="#r19" title="出典一覧 [19] へ移動">[19]</a></sup>が、Tier Bでは、コアサービスの版に限り条件つきで許容（版別の整理は第14章 <span data-toc-target="workspacedetail"></span>）</li>
-        <li><b>Gemini Enterprise（Standard/Plus）</b> — 別製品（ISMAPも別登録）。契約の種類は契約書面で確認。日本で保存・ML処理を固定可（allowlist制）。日本非対応の機能は、管理者が警告を承認して有効化するとグローバル送信<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。Business版は不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
+        <li><b>Gemini Enterprise（Standard/Plus）</b> — 別製品（ISMAPも別登録）。契約の種類は契約書面で確認。日本で保存・ML処理を固定可（allowlist制）。日本非対応の機能は、管理者が警告を承認して有効化するとグローバル送信<sup class="cite"><a href="#r17" title="出典一覧 [17] へ移動">[17]</a></sup>。Business版は日本に固定不可<sup class="cite"><a href="#r18" title="出典一覧 [18] へ移動">[18]</a></sup></li>
         <li><b>Vertex AI（現Gemini Enterprise Agent Platform）のAPI</b> — ISMAP言明書上は「Vertex AI Platform」として対象<sup class="cite"><a href="#r5" title="出典一覧 [5] へ移動">[5]</a></sup>。Tier Bなら全リージョン可</li>
         <li><b>Gemini Notebook（旧NotebookLM）</b> — 個人版は不可、Workspace版・Enterprise版は条件つきで可（第13章 <span data-toc-target="notebookcmp"></span>）</li>
         <li class="stamp" style="list-style:none; margin-left:-1.3em; padding:4px 12px; background:#F7E6E4; border-radius:8px;">❌ <b>Google AI Studioの素のAPIキー</b>はNG。ISMAPリスト未登録。無料枠は入力が製品改善に使われ、有料でも一時保存・キャッシュが国を問わず行われうる<sup class="cite"><a href="#r13" title="出典一覧 [13] へ移動">[13]</a></sup></li>
@@ -1366,8 +1366,8 @@
         <table style="font-size:10.5px;">
           <thead><tr><th style="width:26%;">区分</th><th style="width:17%;">規約</th><th style="width:37%;">学習・人のレビュー</th><th>使えるTier</th></tr></thead>
           <tbody>
-            <tr><td><b>コアサービス</b>（Business Starter／Standard／Plus、Enterprise各版、Frontline、Essentials系）</td><td>Google Workspace利用規約（または個別契約）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td>人のレビューなし。ドメイン外の生成AIの学習に許可なく使わない<sup class="cite"><a href="#r48" title="出典一覧 [48] へ移動">[48]</a></sup><sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
-            <tr><td><b>Nonprofits</b></td><td>Google Workspace利用規約（または個別契約）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td>コアサービスと同じ文言（人のレビューなし・学習に使わない）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td><span class="tag good">A</span> <span class="tag gray">B・C 未整理</span></td></tr>
+            <tr><td><b>コアサービス</b>（Business Starter／Standard／Plus、Enterprise各版、Frontline、Essentials系）</td><td>Workspace利用規約（Cloud規約へ統合中）か個別契約<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup><sup class="cite"><a href="#r45" title="出典一覧 [45] へ移動">[45]</a></sup></td><td>人のレビューなし。ドメイン外の生成AIの学習に許可なく使わない<sup class="cite"><a href="#r48" title="出典一覧 [48] へ移動">[48]</a></sup><sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup><sup class="cite"><a href="#r14" title="出典一覧 [14] へ移動">[14]</a></sup></td><td><span class="tag good">A</span> <span class="tag warn">B 条件つき</span> <span class="tag stamp">C 不可</span></td></tr>
+            <tr><td><b>Nonprofits</b></td><td>Workspace利用規約（Cloud規約へ統合中）か個別契約<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup><sup class="cite"><a href="#r45" title="出典一覧 [45] へ移動">[45]</a></sup></td><td>コアサービスと同じ文言（人のレビューなし・学習に使わない）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td><span class="tag good">A</span> <span class="tag gray">B・C 未整理</span></td></tr>
             <tr><td><b>Education</b>（Education Fundamentals／Standard／Plus）</td><td>Workspace for Education利用規約（または個別契約）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td>同じ文言（人のレビューなし・学習に使わない）<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td><span class="tag good">A</span> <span class="tag gray">B・C 未整理</span></td></tr>
             <tr><td><b>Workspaceの「追加サービス」扱い</b>（Business Base、Essentials Starter、Workspace Individual、G Suite、Cloud Identity等）</td><td>Google利用規約<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td>Gemini Apps Activityがオンのとき、会話を製品改善に使う<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td><span class="tag good">A</span> のみ</td></tr>
             <tr><td><b>個人アカウント</b>（@gmail.com等）</td><td>Google利用規約、Gemini Apps Privacy Notice<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td>チャットを人がレビューし、製品改善に使うことがある<sup class="cite"><a href="#r49" title="出典一覧 [49] へ移動">[49]</a></sup></td><td><span class="tag good">A</span> のみ</td></tr>
@@ -1782,7 +1782,7 @@
     <div class="page-body">
       <div class="eyebrow">出典一覧（続き2）</div>
       <h2 class="h2" style="font-size:24px;">追補：Gemini Notebook（第13章）・Google Workspace（第14章）</h2>
-      <p style="margin-top:6px; font-size:var(--fs-small);">第13章・第14章は2026年10月29日に確認した公式情報です（番号は前頁と通し）。第13章では、既存の[5][14][17]も同日に該当箇所を再照合しています（[5]はISMAPクラウドサービスリストを描画して再取得し、言明対象範囲・生成AI情報のPDFも確認）。</p>
+      <p style="margin-top:6px; font-size:var(--fs-small);">第13章・第14章は2026年10月29日に確認した公式情報です（番号は前頁と通し）。第13章では、既存の[5][14][17]も10月21日に該当箇所を再照合しています（[5]はISMAPクラウドサービスリストを描画して再取得し、言明対象範囲・生成AI情報のPDFも確認）。</p>
       <div style="margin-top:10px;">
           <div class="refs-cat">Gemini Notebook（2026年10月29日確認）</div>
           <ul class="refs">
