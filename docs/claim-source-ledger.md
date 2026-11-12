@@ -1,6 +1,6 @@
 # 主張と出典の対応表（検証台帳）
 
-対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全36ページ（第14章はWorkspaceのGeminiで§21〜§23を根拠とする。第15章Antigravityは§27、第16章Claudeは§28、第17章ChatGPTは§29、これらの検証は§30）、最終確認 2026-10-29（第1〜14章分の全行の独立再検証は§26、資料の確認日の更新もこれを根拠とする）。保管先と外国の制度の周知の整理は§20（2026-10-28）、医療・介護ガイダンスの原文確認と責任分界の整理は§19（2026-10-28）、Google Cloudの規約更新（AIエージェント）は§18（2026-10-28）、全行の再確認は§17（2026-10-21）、前回の全行再確認は§13（2026-10-18）、時間経過項目の追加確認は§12、第13章（Gemini Notebook）は§16。N24〜N27と外部回答の照合は2026-10-29）
+対象: 公開資料「個人情報×生成AI 実務ガイド」（`public/index.html`、全36ページ（第14章はWorkspaceのGeminiで§21〜§23を根拠とする。第15章Antigravityは§27、第16章Claudeは§28、第17章ChatGPTは§29、これらの検証は§30）、最終確認 2026-11-13（公式情報の変更の有無の再確認は§32。第1〜14章分の全行の独立再検証は2026-10-29の§26）。保管先と外国の制度の周知の整理は§20（2026-10-28）、医療・介護ガイダンスの原文確認と責任分界の整理は§19（2026-10-28）、Google Cloudの規約更新（AIエージェント）は§18（2026-10-28）、全行の再確認は§17（2026-10-21）、前回の全行再確認は§13（2026-10-18）、時間経過項目の追加確認は§12、第13章（Gemini Notebook）は§16。N24〜N27と外部回答の照合は2026-10-29）
 
 目的: 資料中の主要な主張が、どの一次情報のどの箇所に基づくかを一覧化し、行政・法務担当者が追跡できるようにする。
 
@@ -104,10 +104,10 @@
 | # | 主張 | 根拠 | 区分 |
 |---|---|---|---|
 | G1 | Gemini Enterprise（Standard/Plus）は日本（asia-northeast1）で保存（DRZ）とML処理（MLP）を固定でき、2026年7月GA・Google担当窓口経由のallowlist制（p.10, p.20〜21） | Gemini Enterprise リリースノート 2026-07-06「Support for Japan and UK regions (GA with allowlist)」、「Data residency for Gemini Enterprise Standard and Plus Editions」［出典17］ | 確認済 |
-| G2 | 日本非対応のモデル・機能を管理者が警告を承認して有効化すると、グローバルエンドポイントへ送信される（p.10, p.21） | 同ドキュメントの機能別制限表（Gemini 3.8 Flash：「CA, IN, and JP regions don't offer the 3.8 Flash model. For unsupported in-country regions, you must confirm the warning dialog to route traffic to the global endpoint」。2026-10-18の表記に更新。以前の引用文にあった「UK」は、現在は他モデルの行に記載がある） | 確認済 |
+| G2 | 日本非対応のモデル・機能を管理者が警告を承認して有効化すると、グローバルエンドポイントへ送信される（p.10, p.21） | 同ドキュメントの機能別制限表（【2026-11-13に更新】3.8 Flashは日本で対応。locations文書は「CA, JP, SG, UK: At-rest DRZ and MLP supported」「The IN region doesn't offer the 3.8 Flash model」。以下は2026-10-18時点の旧引用で、3.8 Flashについては失効：Gemini 3.8 Flash：「CA, IN, and JP regions don't offer the 3.8 Flash model. For unsupported in-country regions, you must confirm the warning dialog to route traffic to the global endpoint」。2026-10-18の表記に更新。以前の引用文にあった「UK」は、現在は他モデルの行に記載がある） | 確認済 |
 | G3 | Business版は保存・処理場所を指定できない（p.10） | Gemini Enterprise ヘルプ「Security and safety features」（「It doesn't provide administrative settings or regional endpoints to restrict data processing and storage to specific regions」）［出典18］ | 確認済 |
 | G4 | Workspaceのデータリージョンは米国・EU・指定なしで、日本はない（p.10） | Google Workspace 管理者ヘルプ「Choose a geographic location for your data」［出典19］ | 確認済 |
-| G5 | Gemini 3.5 Flash は日本リージョンのAPIで標準従量課金（Standard PayGo）に非対応（対応は global・us・eu）。Gemini 3.8 Flash は日本リージョンで提供されない（p.14） | Gemini 3.5 Flash／3.8 Flash モデルページの「Supported regions」［出典9］ | 確認済 |
+| G5 | Gemini 3.5 Flash は日本リージョンのAPIで標準従量課金（Standard PayGo）に非対応（対応は global・us・eu）。Gemini 3.8 Flash は2026-11-09に日本（asia-northeast1）でGA。ただし標準従量課金は global・us・eu のみで、日本は Provisioned Throughput（p.14。2026-11-13に改訂。§32） | Gemini 3.5 Flash／3.8 Flash モデルページの「Supported regions」［出典9］ | 確認済 |
 | G6 | 日本リージョンで使えるのは単一ゾーンのProvisioned Throughput。購入はGoogle Cloudアカウント担当者への問い合わせ（p.14） | モデルページの注記、「Purchase Provisioned Throughput」、「Single Zone Provisioned Throughput」［出典10］ | 確認済 |
 | G7 | 非グローバルの1か月コミットは1GSUあたり約$4.07/時（月730時間換算で約$2,970＝日本円で約47万円。1ドル158円換算）。必要GSU数はモデルと処理量で決まる（p.14） | Agent Platform の料金ページ（非グローバル単価 $4.068493151／時、1か月コミット）［出典11］。円換算は、欧州中央銀行の参考レート（2026-10-16、1ドル＝158.02円、Frankfurter API）で 約$2,970×158.02≒469,300円 を万円に丸めた計算（為替は日々変わる）。単一ゾーンPTは標準PTと同じGSU・料金・条件（Single Zone PTドキュメント） | 確認済（※7） |
 | G7b | Gemini 3.5 Flash のProvisioned Throughputは、1GSUあたり毎秒675トークン、最小購入・増分は1GSU、出力テキストトークンは6トークン換算（入力は1）。例：入力3,000＋出力500トークン＝3,000＋500×6＝6,000換算で、1GSUなら約9秒に1件（6,000÷675）。**例は筆者の計算で、ピーク時の毎秒処理量で見積もる必要がある**（p.14） | Google Cloud「Provisioned Throughput supported models」［出典10に追加。2026-10-19に生HTMLを取得し、表の列「Per-second throughput per GSU／Minimum GSU purchase increment／Burndown rates」で確認］ | 確認済（数値）／推奨水準（試算例） |
@@ -216,9 +216,9 @@ Google文書は2026-10-13に生HTMLを取得して照合した（要約を介さ
 | H2 | Gemini Enterpriseの文書はStandard、Plus、Pay-as-you-go、Frontlineを対象とし、Business版は別のヘルプセンター | 「Data residency for Gemini Enterprise Standard and Plus Editions and Gemini Notebook Enterprise」冒頭の注記［出典17］ | 確認済 |
 | H3 | 「Gemini Enterprise app」は正式名の定義が確認できず、本資料では「アプリ」を通称として扱う（Agent Platformは「開発用」と呼ぶ。「API」は、APIキーと混同されるため使わない） | 同文書の本文には「Gemini Enterprise app」の表記があるが、製品名としての定義はない | 一部確認（通称としての使用は本資料の整理） |
 | H4 | 日本（asia-northeast1）は「GA with allowlist」（Googleの担当窓口に問い合わせ）。基本機能は保存（at-rest DRZ）とAI処理（MLP）の両方が日本の範囲（原文：「Using these locations is in GA with allowlist. To get access … contact your Google account team.」。「申請」「審査」の記載はなく、手続きの詳細は不明） | 同文書「In-country regions」「Gemini Enterprise limitations」の基本機能の行［出典17］ | 確認済 |
-| H5 | 日本で完結しないもの：Gemini 3.8／3.7／3.6 Flash（日本非対応で、警告を承認するとグローバルへ）、Google検索によるグラウンディング、動画生成、Web Grounding for Enterprise（日本のDRZ・MLPとも非対応）、AI開発ツール（同） | 同文書の機能別制限表［出典17］ | 確認済（2026-10-21再確認。文書の最終更新2026-10-20〔2026-10-29の再検証時点では2026-10-28更新。内容の食い違いなし〕。新たにGemini 4 Argon（global のみ。国内リージョンは非対応）、Gemini 3.1 Pro・画像生成系モデル等が日本の国内リージョン非対応、Gemini 2.5 Proは日本の国内リージョンで2026-10-20に提供終了。3.8 Flashは「SG・UKは対応、CA・IN・JPは非対応」。本文の「日本非対応」は変わらず正しい） |
+| H5 | 日本で完結しないもの：Gemini 3.7／3.6 Flash（日本非対応で、警告を承認するとグローバルへ。3.8 Flash は2026-11-12から日本対応。§32）、Google検索によるグラウンディング、動画生成、Web Grounding for Enterprise（日本のDRZ・MLPとも非対応）、AI開発ツール（同） | 同文書の機能別制限表［出典17］ | 確認済（2026-10-21再確認。文書の最終更新2026-10-20〔2026-10-29の再検証時点では2026-10-28更新。内容の食い違いなし〕。新たにGemini 4 Argon（global のみ。国内リージョンは非対応）、Gemini 3.1 Pro・画像生成系モデル等が日本の国内リージョン非対応、Gemini 2.5 Proは日本の国内リージョンで2026-10-20に提供終了。3.8 Flashは「SG・UKは対応、CA・IN・JPは非対応」〔2026-10-29時点。2026-11-12にCA・JPが対応となり、この記述は失効。§32〕） |
 | H6 | Agent Platformのglobalエンドポイントは処理地の保証がない。ロケーション指定のエンドポイントはML処理がその国・地域の範囲。Agent Platformが預かるデータ（モデルの重み、メタデータなど）は、選んだロケーションに留まる（呼び出すエンドポイントによらない）。自社アプリが使うDB等、Agent Platform以外のGCPサービスの保存先はこの文書の対象外（p.20は「別に確認」と記載） | 「Data residency」（Agent Platform）冒頭（「Data stored at rest in the customer selected location remains at rest in that location」）と「Where your data lives and is processed」［出典33］ | 確認済（保存先の約束は、使うサービスごとの記載を別途確認する必要がある） |
-| H7 | Agent Platformの日本列で対応が示されるGoogleモデルのうち、Gemini 3.8／3.7／3.6 Flash、3.5 Flash-Liteは日本に印がなく、3.5 Flashには印がある | 同文書のGoogle models表（日本列）［出典33］ | 確認済（印の読み取りはHTMLの該当セルで確認） |
+| H7 | Agent Platformの日本列で対応が示されるGoogleモデルのうち、Gemini 3.7／3.6 Flash、3.5 Flash-Liteは日本に印がなく、3.5 Flashと3.8 Flash（2026-11-13に確認。2026-10-29時点は印なし）には印がある | 同文書のGoogle models表（日本列）［出典33］ | 確認済（印の読み取りはHTMLの該当セルで確認） |
 | H8 | Gemini 3.5 Flashの日本提供は単一ゾーンのProvisioned Throughputのみ（購入はGoogleの担当経由） | G5、G6［出典9、10］ | 確認済 |
 | H9 | 管理者の設定（モデルのトグル、警告の承認）によって、日本の外にトラフィックが出る | 同文書の「administrators must turn on the toggle」「you must confirm the warning dialog to route traffic to the global endpoint」［出典17］ | 確認済 |
 | H10 | 表のTier Cの見立て（条件を満たせば保存とAI処理が日本に閉じうる。アプリ側は基本機能に限定）と、同意・組織的措置など第10章の項目が別に必要という整理 | 本資料の推奨水準（法令の要件ではない。法的な保証ではない） | 推奨水準 |
@@ -925,11 +925,11 @@ F9、V1〜V3の第2.0版部分は、上記M6・M7に依存する行のため、�
 
 ## 28. Claude（Anthropic直販、第16章、p.29〜30、2026-10-29）
 
-契機: §27の外部回答（「Claude Teamプラン相当」）に関連し、ClaudeとChatGPTの専用ページも設ける判断。対象はAnthropicの直販（Free／Pro／Max、Team、Enterprise、API、Claude Code）。Bedrock・Vertex経由は第7章・台帳§7の範囲。privacy.claude.com・anthropic.com・claude.com・platform.claude.com・code.claude.comは`curl`で生HTMLを取得し、タグを除いて照合した。
+契機: §27の外部回答（「Claude Teamプラン相当」）に関連し、ClaudeとChatGPTの専用ページも設ける判断。対象はAnthropicの直販（Free／Pro／Max／Ultra、Team、Enterprise、API、Claude Code）。Bedrock・Vertex経由は第7章・台帳§7の範囲。privacy.claude.com・anthropic.com・claude.com・platform.claude.com・code.claude.comは`curl`で生HTMLを取得し、タグを除いて照合した。
 
 | # | 主張 | 根拠 | 区分 |
 |---|---|---|---|
-| K1 | 個人（Free／Pro／Max）は、設定で許可すると会話・コーディングセッションがモデルの改善に使われ、安全審査の対象になった会話は設定にかかわらず使われる。シークレット（Incognito）チャットは、改善を許可していても使われない（p.29〜30） | privacy.claude.com「Is my data used for model training?」（March 16, 2026更新の表記。「You choose to allow us to use your chats and coding sessions to improve Claude」「Your conversations are flagged for safety review」「Your Incognito chats are not used to improve Claude」）［出典57］ | 確認済 |
+| K1 | 個人（Free／Pro／Max／Ultra。Ultraは2026-11-13の再確認で追加。Claude Codeのdata-usageはUltraを明記するが、アプリの学習・保持の記事はUltra未記載のため、本文のアプリ側は「未確認」と表記、§32）は、設定で許可すると会話・コーディングセッションがモデルの改善に使われ、安全審査の対象になった会話は設定にかかわらず使われる。シークレット（Incognito）チャットは、改善を許可していても使われない（p.29〜30） | privacy.claude.com「Is my data used for model training?」（March 16, 2026更新の表記。「You choose to allow us to use your chats and coding sessions to improve Claude」「Your conversations are flagged for safety review」「Your Incognito chats are not used to improve Claude」）［出典57］ | 確認済 |
 | K2 | 個人の規約・プライバシーポリシーは、学習への利用を既定とし、アカウント設定で外す方式（opt out）。ヘルプ（K1）は「許可した場合」と書き、書き方が異なる。オプトアウトしても、フィードバックの提供と安全審査の対象は学習に使う（p.29〜30） | 消費者規約（Effective Oct 8, 2025。「including training our models, unless you opt out of training through your account settings. Even if you opt out, we will use Materials for model training when: (1) you provide Feedback…, or (2) your Materials are flagged for safety review」）、プライバシーポリシー（Effective Sep 10, 2026。「We may use your Inputs and Outputs to train and improve Anthropic AI models, unless you opt out through your account settings.」）［出典56］ | 確認済（文言）。既定値の画面表示は未確認 |
 | K3 | 個人の保持：削除すると30日以内にバックエンドから削除。学習を許可した場合は、匿名化した形で最長5年。違反フラグの場合は最長2年（分類スコアは最長7年）。フィードバックは5年。Claude Code（個人アカウント）も、学習を許可すると5年、許可しなければ30日（p.29〜30） | privacy.claude.com「How long do you store my data?」（日付表示なし。「Deleted from our back-end storage systems within 30 days」「up to 5 years in our model training pipelines」）、code.claude.com/docs/en/data-usage［出典57・58］ | 確認済 |
 | K4 | 商用（Team／Enterprise／API）は、既定で入出力を学習に使わない。商用規約は「Anthropic may not train models on Customer Content from Services」。フィードバック送信や、顧客が許可した場合は使われうる。Claude Codeも、商用規約の下では顧客が提供を選んだ場合（Developer Partner Program等）を除き、コードとプロンプトを学習に使わない（p.29〜30） | privacy.claude.com（August 18, 2026更新の表記。「By default, we will not use your inputs or outputs from our commercial products…to train our models」）、商用規約（Effective Jun 17, 2025）、code.claude.com/docs/en/data-usage［出典55・57・58］ | 確認済 |
@@ -972,7 +972,7 @@ F9、V1〜V3の第2.0版部分は、上記M6・M7に依存する行のため、�
 | Y5 | ChatGPTのデータレジデンシー（保存）は、「Eligible API customers and new ChatGPT Enterprise/Edu customers」が、対応国に保存を選べる。新規のワークスペースのみ。対応国は、Australia／Canada／Europe（EEA+Switzerland）／India／Japan／Singapore／South Korea／United Arab Emirates／United Kingdom／United States。Enterprise／Eduは追加費用なし（p.31〜32） | help.openai.com/en/articles/9903489（「Updated: 8日前」の表示から約10-21。2026-10-29に私が描画して原文で確認）［出典63］ | 確認済 |
 | Y6 | 推論のレジデンシー（GPU処理が域内）は、現在、Europe（EEA+Switzerland）／United States／United Arab Emirates のみ。**日本は含まれない**。これは、処理を域内に固定できる機能が使える地域の一覧で、機能を使わない場合の処理地の一覧ではない（その場合の処理地は保証されない）。GPU以外の処理（認証、ルーティング、分析、PDF・Wordからのテキスト抽出等）は域外で行われうる。外部連携（Apps・MCP、Web検索）のデータは、OpenAIの基盤の外で処理・保存されうる。対象外：一般提供でない機能、サードパーティのGPT、Codex Web（Codexアプリ・CLIは対象）（p.31〜32） | 同9903489（「Inference residency for ChatGPT is currently available for the following regions」）［出典63］ | 確認済 |
 | Y7 | ChatGPT Business：リージョン選択は段階的に提供中で、すべての顧客には未提供。選んだ地域には、ワークスペースの主要な顧客コンテンツ（プロンプトと応答）の**保存のみ**が及び、推論のレジデンシーは含まない。米国外を選んでも、安全・不正検知のログとして、すべてのプロンプトと応答のコピーが限られた期間、米国に保存される。選べる地域の一覧は、この記事にない（p.32） | help.openai.com/en/articles/20001418「Where your ChatGPT Business content is stored」（「Updated: 7日前」の表示から約10-22。私が描画して原文で確認）［出典63］ | 確認済／日本を選べるかは未確認 |
-| Y8 | API Platform：データレジデンシーを有効にしたアカウントで、プロジェクトごとに地域を選ぶ。**日本（jp.api.openai.com）は、保存（Storage）はあり、地域内処理（Processing）はなし**。「If your selected Region does not support regional processing…OpenAI may also process and temporarily store Customer Content outside of the Region」。米国外は、不正監視の管理（MAM）の承認と、Modified Retentionの補遺が必要。地域内処理があるのは、US・EU・UAE。GPT-6.1 SolとGPT-6.1 Terraは、US・EUのデータレジデンシーのみ（p.32） | developers.openai.com/api/docs/guides/your-data（日付表示なし。私が描画して原文で確認）［出典64］ | 確認済 |
+| Y8 | API Platform：データレジデンシーを有効にしたアカウントで、プロジェクトごとに地域を選ぶ。**日本（jp.api.openai.com）は、保存（Storage）あり。地域内処理（Processing）は、2026-11-11ごろから、ゼロデータ保持（ZDR）が有効な組織の gpt-6-luna に限って「あり」（標準従量課金のみ、ホステッドツール不可。MAMだけでは不可）。2026-10-29時点は「なし」だった（§32）**。「If your selected Region does not support regional processing…OpenAI may also process and temporarily store Customer Content outside of the Region」。米国外は、不正監視の管理（MAM）の承認と、Modified Retentionの補遺が必要。地域内処理があるのは、US・EU・UAE。GPT-6.1 SolとGPT-6.1 Terraは、US・EUのデータレジデンシーのみ（p.32） | developers.openai.com/api/docs/guides/your-data（日付表示なし。私が描画して原文で確認）［出典64］ | 確認済 |
 | Y9 | OpenAIの発表（2025年5月7日、2025年11月25日更新）は、ChatGPT Enterprise・Edu・APIで、日本・インド・シンガポール・韓国のデータレジデンシーを提供開始と述べる。推論には言及がない。「国内で処理される」とは読めない（p.31〜32） | openai.com/index/introducing-data-residency-in-asia（日本語版）［出典63］ | 確認済 |
 | Y10 | ISMAPクラウドサービスリスト（2026-10-29に描画、103件）に「OpenAI」「ChatGPT」の語はない。認証：SOC 2 Type 2、ISO/IEC 27001・27017・27018・27701・42001ほか。ISO 27001の証明書の対象は「API、ChatGPT Enterprise、ChatGPT Edu」で、Businessの明記はない（SOC 2はBusinessも完了とされる）（p.31〜32） | ISMAPクラウドサービスリスト［出典5］、trust.openai.com、openai.com/enterprise-privacy［出典62・65］ | 確認済（記載がないこと）／ISMAP以外はTrust Portalの表示 |
 | Y11 | 本文の整理（Tier）：個人はAのみ。Business・Enterprise／Edu・APIはA・B条件つき・C不可。Bの条件は、法人の版で使うこと、DPAの締結、ISMAP未登録のため安全管理措置を別の確認で補うこと、法28条の整理。Cは、**保存を日本にできても、AI処理（推論）を日本に固定できない**ため不可 | Y1〜Y10、第10章の整理 | 推奨水準（法令の要件ではない。法的な保証ではない） |
@@ -1056,3 +1056,39 @@ HIGHは0件、MEDIUM 2件、LOW 3件。構造（タグの閉じ、重複id、`da
 ### 確認できていない点
 - 通読は1回で、筆者（Claude）自身によるもの。第三者による通読はしていない。
 - 2026年夏以降の製品・規約・法令の事実は、台帳の各行の記録に依拠しており、本節で新たに一次情報を照合したのは#2の規約ページのみ。
+
+## 32. 公式情報の変更の有無の再確認（2026-11-13）
+
+2026-10-29の確認日以降に公式情報が変わっていないかを、5担当（法令・ISMAP／医療・介護／Google／AWS／Claude・ChatGPT）が並列で、公式の一次情報に当たり直した。本文を直したのは下表のとおり。主な変更は、10-29以降に公式側が変わったもの（#1〜#4）と、10-29以前から公式に出ていたが台帳に載せていなかったもの（#5〜#8）。
+
+| # | 箇所 | 修正前 | 修正後 | 根拠（2026-11-13に原文確認） |
+|---|---|---|---|---|
+| 1 | 第7章のGemini Flashカード（G5） | Gemini 3.8 Flashは日本未提供 | 2026-11-09に日本でGA。標準従量課金は global・us・eu のみで、日本は Provisioned Throughput | Agent Platformリリースノート2026-11-09（「Gemini 3.8 Flash regional support in Canada and Japan」）。GA、in-region ML processing、Provisioned Throughputの記載を直接確認 |
+| 2 | 第12章の対照表（G2・H5） | Gemini 3.8／3.7／3.6 Flashは日本で完結しない | 3.7／3.6 Flashのみ。3.8 Flashは2026-11-12から日本対応 | Gemini Enterpriseリリースノート（「Gemini 3.8 Flash regional availability in Canada and Japan」）。at-rest DRZとMLPの対応を確認 |
+| 3 | 第17章・OpenAI API（Y8、論点19） | APIの日本は地域内処理なし | ZDRが有効な組織の gpt-6-luna に限り地域内処理あり。ChatGPT（Enterprise／Edu）は変わらず日本に固定不可。Tier Cの判定は変えず、理由の文言のみ改訂 | developers.openai.com/api/docs/guides/your-data（日本の行が「Processing Yes」、注記「In Australia, India, and Japan, organizations with active Zero Data Retention can use gpt-6-luna for regional processing」）。2026-10-29の保存版（Wayback）は「No」 |
+| 4 | 第16章・Claude個人プラン（K1） | Free／Pro／Max | Free／Pro／Max／Ultra | claude.com/pricing にUltraがあり、Claude Codeのdata-usageは「Consumer users (Free, Pro, Max, and Ultra plans)」。10-29のWaybackにUltraの記載なし。privacy.claude.comの学習・保持の記事はUltraを未記載（学習・保持はFree／Pro／Maxと同じ扱いと読むが、推定） |
+| 5 | 第16章のFoundry（K9） | Bedrock・Vertex・Foundry経由で日本を含む地域指定が案内されている | FoundryのAsia-Pacificは「Not included」。Bedrock・Vertexで案内 | claude.com/regional-compliance の対照表（Asia-Pacific：Bedrock Included／Vertex Included／Foundry Not included）。10-29以前からの台帳の見落とし |
+| 6 | 第7章のBedrock（A2） | Sonnet 4.5が対応と記載 | Sonnet 4.5はレガシー（2027-04-08に提供終了予定）と追記 | AWSのモデルカード（Legacy、EOL 2027-04-08）。10-29時点でレガシー表記だったかは未確認 |
+| 7 | 第5章（M4）の介護事業者 | 第2.0版の対象になる介護事業者だけを記載 | 第7.0版も概説編で介護事業者を「医療機関等」に含め、Q&A（令和8年9月）Q4は、介護事業者が医療情報を情報システムで扱う場合を対象とする。記録のみで医療情報を含まない場合の線引きは未確認 | 厚労省 第7.0版 概説編2.1、ガイドラインQ&A（令和8年9月）Q4をPDFから直接確認。10-29以前から公式にあったもの |
+| 8 | 第13章の表記 | Gemini Notebook Enterprise／Discover Sources | 2026-11-12に「Gemini Notebook for business」へ改称（ISMAP登録名と一部の公式ページは旧名のまま）。Discover Sourcesの現行表記は「Search the web for new sources」（2026-10-30からWeb／Fast Research） | Gemini Enterpriseリリースノート。製品名の全置換はせず、注記方式にした（公式側が旧名を併用中のため） |
+
+### 変更不要と確認したもの（要点）
+- 個人情報保護法：本資料が引く条文（17・18・20・21・23・25・27・28条、66・69・71条）は、2026-11-02施行の改正（防災庁設置法の整備法。第2条8項と第63条の引用号数のみ）の前後で文言も番号も同じ。令和8年改正の本体は未施行（2027-01-17に一部、2028-07-16）で、本文の記述は妥当。PPCのQ&Aは2026-10-30にゲノムデータ関連（Q1-24-2・Q1-24-3）が追加されたのみで、本文が引くQ&Aに影響なし。通則編は令和8年6月、外国提供編は令和7年12月のままで、新たな外国指定もなし。
+- ISMAP：C21-0004-2、C21-0005-2、C26-0114-2、C21-0008-2の名称と最終変更日は10-29から変更なし。Anthropic・OpenAIの登録はなし。
+- 医療・介護：厚労省第7.0版（令和8年6月）、経産省・総務省第2.0版（令和7年3月）、医療・介護ガイダンス（令和8年4月一部改正）に新版なし。
+- AWS：jp.のクロスリージョン推論プロファイル（東京・大阪のみ）の対象モデル、Bedrockのモデル一覧、Transcribeの90日削除は変更なし。
+- Google：Gemini Enterpriseの日本（GA with allowlist）、Business版は地域指定不可、Workspaceのデータリージョン（US・EU・指定なし）、Gemini 2.5系の提供終了日（2026-10-20）、料金（約$4.07/時）、Cloud規約・DPAの要点は変更なし。
+- Claude・ChatGPT：学習の既定、保持期間、DPA、データレジデンシー、ChatGPTの推論レジデンシー（欧州・米国・UAEのみ）は、公式の最新記載と一致。
+
+### 本文に反映しなかったもの（decision-makerの判断待ち）
+- OpenAIのTier Cの判定：APIにも日本の地域内処理が加わったが、gpt-6-luna＋ZDRに限られ、ホステッドツール不可・標準従量課金のみ・GPT-6.1 Sol／Terraは対象外のため、Tier C（不可）は変えず、理由の文言のみ改訂した。判定を変えるかは筆者の判断。
+- Claudeの対象モデルの30日保持（Covered Models、2026-06-09発効）をK5に追記するか（privacy.claude.com/en/articles/15425996）。
+- Q&A（令和8年9月）Q18の「保存されない契約があれば国内法の適用は必須でない」例外を、チェックリストに反映するか。
+- ISMAP言明対象範囲PDF（Google・Gemini Enterprise）の全文再取得は今回していない。
+
+### 確認できていない点
+- 経産省・総務省第2.0版のPDF（`01gl_20250328_rev1.pdf`）は、2026-10-18に取得して逐語で照合済み（§26）。2026-11-13は再取得していない（curlはWAFで403）。経産省のページ上で、第2.0版（令和7年3月28日改定）が最新で、掲載一覧に差し替えの形跡がないことのみ確認した。
+- 公式が変更履歴を公開していないページ（locations文書、Workspace管理者ヘルプ等）は、2026-10-29時点の本文との直接比較ができない。台帳の記録との照合による。
+- ChatGPT Businessの日本リージョンの有無と保持期間の公式ページ間の食い違いは、解消されていない。
+- 本節の確認は、AIの担当者による照合で、法務担当者や第三者の確認ではない。
+
